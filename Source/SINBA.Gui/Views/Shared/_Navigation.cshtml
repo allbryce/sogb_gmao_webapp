@@ -1,0 +1,91 @@
+﻿@functions{
+    string GetRootNodeMarker() {
+        return string.Empty;
+    }
+
+    void LoadTreeView(MVCxTreeViewNodeCollection nodes, SectionItemModel product) 
+    {
+        var node = nodes.Add(product.NavItemTitle, string.Empty, string.Empty);
+        node.Name = product.Key;
+        LoadTreeView(product, node);
+    }
+    void LoadTreeView(SectionItemModel item, MVCxTreeViewNode itemNode) 
+    {
+        foreach (var group in item.Groups) {
+            if(group.Visible)
+            {
+                var groupNode = itemNode.Nodes.Add(group.Title);
+                groupNode.Name = string.Format("{0}_{1}", item.Key, group.Key);
+                foreach (var section in group.GetAllSections())
+                {
+                    if(section.Visible)
+                    {
+                        var sectionNode = groupNode.Nodes.Add(section.Title, string.Empty, string.Empty, Utils.GenerateSectionUrl(section));
+                        sectionNode.Name = string.Format("{0}_{1}_{2}", item.Key, group.Key, section.Key);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@if(Utils.IsSiteMode) {
+    <div class="IntroPageLink">
+        @if(Utils.RootItem != null) {
+            @Html.DevExpress().Image(settings => {
+                settings.Name = "RootIco";
+                settings.Properties.SpriteCssClass = CssClasses.Ico;
+            }).GetHtml()
+            <a class="Text @GetRootNodeMarker()">
+                @Utils.RootItem.NavItemTitle
+            </a>
+        }
+    </div>
+}
+
+@Html.DevExpress().TreeView(settings => {
+    settings.Name = "NavigationTreeView";
+    settings.EnableTheming = false;
+    settings.ControlStyle.CssClass = CssClasses.SinbaTree;
+    settings.ShowTreeLines = false;
+    settings.ClientSideEvents.NodeClick = JavaScriptEvents.SectionTreeViewNodeClick;
+    settings.ClientSideEvents.ExpandedChanging = JavaScriptEvents.SectionTreeViewExpandedChanging;
+    settings.AccessibilityCompliant = true;
+    settings.EncodeHtml = false;
+    settings.Width = Unit.Pixel(268);
+
+    if(!Utils.IsSiteMode) {
+        LoadTreeView(settings.Nodes, Utils.CurrentSection.Item);
+    }
+    else {
+        foreach (var sectionItem in UserSectionItemsModel.GetUserInstance().SortedSectionItems)
+        {
+            if (!sectionItem.HideNavItem && sectionItem.Visible)
+                LoadTreeView(settings.Nodes, sectionItem);
+        }
+    }
+
+    if (UserSectionItemsModel.GetUserInstance().ExpandAllSectionsAtFirstTime)
+    {
+        settings.SaveStateToCookies = true;
+        settings.SaveStateToCookiesID = Strings.NavigationTreeViewState;
+    }
+    
+    settings.PreRender = (s, e) => {
+        var treeView = s as MVCxTreeView;
+        var node = treeView.Nodes.FindByName(Utils.CurrentSectionNodeName);
+        treeView.SelectedNode = node;
+        if(node != null) {
+            treeView.ExpandToNode(node);
+            node.Expanded = true;
+            while(node != null) {
+                node.NodeStyle.CssClass = CssClasses.SectionSelected;
+                node = node.Parent;
+            }
+        }
+        if (UserSectionItemsModel.GetUserInstance().ExpandAllSectionsAtFirstTime && Request.Cookies[Strings.NavigationTreeViewState] == null)
+        {
+            treeView.ExpandAll();
+        }
+    };
+}).GetHtml()

@@ -1,0 +1,48 @@
+﻿@model Section
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(Model.Id < 0 ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.SectionEMS, FormMethod.Post, new { id="frm", @class = CssClasses.EditForm }))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "sectionFormLayout";
+
+    // Nom
+    settings.Items.Add(m => m.Libelle, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+        maxLength: SinbaConstants.NumericValues.Length.NomMax));
+
+    // Type de section
+    settings.Items.Add(m => m.IdTypeSection, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+        valueType: typeof(byte),
+        textField: DbColumns.Libelle,
+        valueField: DbColumns.IdTypeSection,
+        dataSource: ViewBag.TypeSectionList));
+
+    // Utilisateurs
+    settings.Items.Add(m => m.SectionUtilisateurToken, tokenBox => ViewHelper.FormLayoutTokenBoxSettings(tokenBox,
+        textField: DbColumns.PrenomNom,
+        valueField: DbColumns.Id,
+        dataSource: ViewBag.UserList));
+
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+            Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                text: Model.Id < 0 ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+            Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                text: CommonResource.btnCancel,
+                controller: SinbaConstants.Controllers.SectionEMS,
+                action: SinbaConstants.Actions.Index)).GetHtml());
+        });
+    });
+}).GetHtml()
+}

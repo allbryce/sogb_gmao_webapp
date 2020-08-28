@@ -1,0 +1,73 @@
+﻿@model UserRight
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(string.IsNullOrWhiteSpace(Model.IdHidden) ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.UtilisateurRight, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.HiddenFor(m => m.IdHidden);
+    @Html.Hidden(DbColumns.IdUser);
+    
+    @Html.DevExpress().FormLayout(settings => 
+    {
+        settings.Name = "utilisateurRightFormLayout";
+
+        if(string.IsNullOrWhiteSpace(Model.IdHidden))
+        {
+            // Code fonction
+            settings.Items.Add(m => m.CodeFonction, comboBox =>
+            {
+                ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                dataSource: ViewBag.FonctionList,
+                textField: DbColumns.Code,
+                valueField: DbColumns.Code);
+
+                ComboBoxSettings s = (ComboBoxSettings)comboBox.NestedExtensionSettings;
+                s.Name = DbColumns.CodeFonction;
+                s.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) { CodeAction.PerformCallback(); }";
+            });
+
+            // Code action
+            settings.Items.Add(m => m.CodeAction, s =>
+            {
+                s.Caption = ResourceNames.Entity.Action;
+                s.CaptionSettings.AssociatedNestedExtensionName = ResourceNames.Entity.CodeAction;
+                s.SetNestedContent(() =>
+                {
+                    Html.RenderPartial(ViewNames.ActionsFonctionPartial, Model);
+                });
+            });
+        }
+        else
+        {
+            // Code fonction
+            settings.Items.Add(m => m.CodeFonction, label => ViewHelper.FormLayoutLabelSettings(label));
+
+            // Code action
+            settings.Items.Add(m => m.CodeAction, label => ViewHelper.FormLayoutLabelSettings(label));
+        }
+
+        // Deny Access
+        settings.Items.Add(m => m.DenyAccess, checkBox => ViewHelper.FormLayoutCheckBoxSetting(checkBox));
+
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    text: string.IsNullOrWhiteSpace(Model.IdHidden) ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.UtilisateurRight,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+        
+    }).GetHtml()
+}

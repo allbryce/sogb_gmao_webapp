@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="errorCodeExists" xml:space="preserve">
+    <value>Ce code existe déjà</value>
+  </data>
+  <data name="errorFieldLength" xml:space="preserve">
+    <value>Le champ {0} doit contenir entre {2} et {1} caractères</value>
+  </data>
+  <data name="errorFieldMaxLength" xml:space="preserve">
+    <value>Le champ {0} ne doit pas dépasser {1} caractères</value>
+  </data>
+  <data name="errorIdExists" xml:space="preserve">
+    <value>Cet identifiant est déjà utilisé</value>
+  </data>
+  <data name="errorInvalidEmail" xml:space="preserve">
+    <value>Adresse mail invalide</value>
+  </data>
+  <data name="errorNomExists" xml:space="preserve">
+    <value>Ce nom existe déjà</value>
+  </data>
+  <data name="errorPasswordConfirmation" xml:space="preserve">
+    <value>Le mot de passe et la confirmation ne correspondent pas</value>
+  </data>
+  <data name="errorRequiredField" xml:space="preserve">
+    <value>Le champ {0} est obligatoire</value>
+  </data>
+  <data name="errorReservedWord" xml:space="preserve">
+    <value>Ce mot ne peut pas être utilisé.</value>
+  </data>
+  <data name="errorSiteIdExists" xml:space="preserve">
+    <value>Un site avec le même identifiant est déjà défini pour cette société</value>
+  </data>
+  <data name="errorWrongFormat" xml:space="preserve">
+    <value>Le format du champ est incorrecte</value>
+  </data>
+  <data name="Hevea" xml:space="preserve">
+    <value>Hévéa</value>
+  </data>
+  <data name="msgConfirmDelete" xml:space="preserve">
+    <value>Voulez-vous supprimer cet enregistrement ?</value>
+  </data>
+  <data name="Palmier" xml:space="preserve">
+    <value>Palmier</value>
+  </data>
+  <data name="errorRange" xml:space="preserve">
+    <value>La valeur de {0} doit être entre {1} et {2}.</value>
+  </data>
+  <data name="msgConfirmCloturer" xml:space="preserve">
+    <value>Voulez-vous clôturer cet ordre de travail ?</value>
+  </data>
+  <data name="msgConfirmProlonger" xml:space="preserve">
+    <value>Voulez-vous prolonger cet ordre de travail ?</value>
+  </data>
+  <data name="msgConfirmReceptionner" xml:space="preserve">
+    <value>Voulez-vous réceptionner cet ordre de travail ?</value>
+  </data>
+  <data name="msgConfirmAugmenterCredit" xml:space="preserve">
+    <value>Voulez-vous augmenter le crédit de cet ordre de travail ?</value>
+  </data>
+  <data name="msgConfirmRelanceOT" xml:space="preserve">
+    <value>Voulez-vous relancer la validation de cet ordre de travail ?</value>
+  </data>
+  <data name="errorThisFieldIsRequired" xml:space="preserve">
+    <value>Ce champ est obligatoire</value>
+  </data>
+  <data name="errorCodeAndSocieteExists" xml:space="preserve">
+    <value>Ce code existe déjà pour la société sélectionnée!</value>
+  </data>
+  <data name="Critere" xml:space="preserve">
+    <value>Critères</value>
+  </data>
+  <data name="Parametres" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="labelCoefficient" xml:space="preserve">
+    <value>Coefficients</value>
+  </data>
+  <data name="labelCritere" xml:space="preserve">
+    <value>Critères</value>
+  </data>
+  <data name="labelValeurUO" xml:space="preserve">
+    <value>Valeurs unité d'oeuvre</value>
+  </data>
+  <data name="DataSaving" xml:space="preserve">
+    <value>Enregistrement des données</value>
+  </data>
+  <data name="DensiteArbresSaignables" xml:space="preserve">
+    <value>Densité arbres saignables</value>
+  </data>
+  <data name="NombreAnneesCulture" xml:space="preserve">
+    <value>Nombre d’années de culture</value>
+  </data>
+  <data name="NombreAnneesExploitation" xml:space="preserve">
+    <value>Nombre d’années d’exploitation</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="Tous" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Chargement</value>
+  </data>
+  <data name="LibelleArticle" xml:space="preserve">
+    <value>Libellé Article</value>
+  </data>
+  <data name="Doublons" xml:space="preserve">
+    <value>Doublons</value>
+  </data>
+  <data name="Ligne" xml:space="preserve">
+    <value>Ligne(s)</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur(s)</value>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Opération effectuée avec succès!</value>
+  </data>
+  <data name="CodeNotExists" xml:space="preserve">
+    <value>Code(s) inexistant(s)</value>
+  </data>
+  <data name="errorCumul" xml:space="preserve">
+    <value>La valeur totale des {0} doit être égale à {1}.</value>
+  </data>
+  <data name="errorUniqueValue" xml:space="preserve">
+    <value>Cette valeur doit être unique.</value>
+  </data>
+  <data name="errorProprieteIntrouvable" xml:space="preserve">
+    <value>Propriété {0} introuvable</value>
+  </data>
+  <data name="TravailleursSansPrestation" xml:space="preserve">
+    <value>Travailleurs sans prestation</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="CaseACocher" xml:space="preserve">
+    <value>Case à cocher</value>
+  </data>
+  <data name="ListeAChoixMultiples" xml:space="preserve">
+    <value>Liste à choix multiples</value>
+  </data>
+  <data name="ListeDeroulante" xml:space="preserve">
+    <value>Liste déroulante</value>
+  </data>
+  <data name="Numerique" xml:space="preserve">
+    <value>Numérique</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="errorGreatherThan" xml:space="preserve">
+    <value>Le champ {0} doit être plus grand que la valeur minimum</value>
+  </data>
+  <data name="errorFormatDesDonneesInvalides" xml:space="preserve">
+    <value>Format des données invalides</value>
+  </data>
+  <data name="TravailleursEncodesSansContrat" xml:space="preserve">
+    <value>Travailleurs encodés sans contrat</value>
+  </data>
+  <data name="Cloture" xml:space="preserve">
+    <value>Clôturé</value>
+  </data>
+  <data name="Rejete" xml:space="preserve">
+    <value>Rejeté</value>
+  </data>
+  <data name="errorAlphanumericField" xml:space="preserve">
+    <value>Ce champ ne peut contenir que des chiffres, des lettres et des tirets</value>
+  </data>
+  <data name="ExportTo" xml:space="preserve">
+    <value>Exporter vers</value>
+  </data>
+  <data name="Non" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="Oui" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="FactureLePar" xml:space="preserve">
+    <value>Facturée le &lt;b&gt;{0}&lt;/b&gt; par &lt;b&gt;{1}&lt;/b&gt; </value>
+  </data>
+  <data name="errorLibelleExists" xml:space="preserve">
+    <value>Ce libellé est déjà utilisé</value>
+  </data>
+  <data name="errorImmatriculationExists" xml:space="preserve">
+    <value>Cette immatriculation est déjà utilisée</value>
+  </data>
+  <data name="Accueil" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="msgConfirmCancel" xml:space="preserve">
+    <value>Voulez-vous annuler la saisie en cours ?</value>
+  </data>
+  <data name="BatchEditChangesLossMsg" xml:space="preserve">
+    <value>Les données non enregistrées seront perdues. Voulez-vous continuez ?</value>
+  </data>
+  <data name="BlocNombreEmplacementFinalRemarque" xml:space="preserve">
+    <value>Abattage total</value>
+  </data>
+  <data name="Toutes" xml:space="preserve">
+    <value>Toutes</value>
+  </data>
+  <data name="Canceling" xml:space="preserve">
+    <value>Annulation</value>
+  </data>
+  <data name="Annuler" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="DataChecking" xml:space="preserve">
+    <value>Vérification des données</value>
+  </data>
+  <data name="ConnexionEnCours" xml:space="preserve">
+    <value>Connexion en cours</value>
+  </data>
+  <data name="Xlsx" xml:space="preserve">
+    <value>XLSX</value>
+  </data>
+  <data name="Xls" xml:space="preserve">
+    <value>XLS</value>
+  </data>
+  <data name="msgValidRecensement1" xml:space="preserve">
+    <value>Le nombre d’emplacement doit être égal : arbres exploitables + arbres immatures + arbres en arrêt de saignée + emplacements vides.</value>
+  </data>
+  <data name="errorDateOverloaps" xml:space="preserve">
+    <value>Cet intervale est partielerment ou entièrement déjà défini</value>
+  </data>
+  <data name="errorPanneauExists" xml:space="preserve">
+    <value>Ce panneau a déjà  été utilisé sur ce bloc dans cette version de budget, veuillez changer de panneau</value>
+  </data>
+  <data name="msgValidRecensement2" xml:space="preserve">
+    <value>Le nombre d’arbres vivants doit être égal : arbres immatures + arbres exploitables + arbres en arrêt de saignée.</value>
+  </data>
+  <data name="lblModifie" xml:space="preserve">
+    <value>Modifié(e)</value>
+  </data>
+  <data name="lblNonModifie" xml:space="preserve">
+    <value>Non Modifié(e)</value>
+  </data>
+  <data name="msgValidRecensement3" xml:space="preserve">
+    <value>Le nombre d’emplacement doit être égal : arbres sains + arbres malades+ emplacements vides.</value>
+  </data>
+  <data name="errorBeginingDateExists" xml:space="preserve">
+    <value>Cette date de début existe déjà pour le bloc {0}</value>
+  </data>
+  <data name="errorUpTo" xml:space="preserve">
+    <value>La valeur doit être supérieure à {0}.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="errorSavindData" xml:space="preserve">
+    <value>Erreur lors de l'enregistrement des données!</value>
+  </data>
+  <data name="Aide" xml:space="preserve">
+    <value>Aide en ligne</value>
+  </data>
+  <data name="msgFailure" xml:space="preserve">
+    <value>Echec de l'opération</value>
+  </data>
+  <data name="errorDeleteImportRow" xml:space="preserve">
+    <value>La modification des lignes importées d'EMSAGRO n'est pas autorisée</value>
+  </data>
+  <data name="ImpoossibleSupprime" xml:space="preserve">
+    <value>Impoossible de supprimer</value>
+  </data>
+  <data name="ImpossibleSupprime" xml:space="preserve">
+    <value>Impossible de supprimer</value>
+  </data>
+  <data name="errorRecensementExists" xml:space="preserve">
+    <value>Un recensement existe déjà pour ce bloc à cette date.</value>
+  </data>
+  <data name="Prixunitaireduplique" xml:space="preserve">
+    <value>Prix unitaire dupliqué / existant</value>
+  </data>
+  <data name="PrixunitaireDupliquer" xml:space="preserve">
+    <value>Prix unitaire à dupliquer</value>
+  </data>
+  <data name="CriteresDuplication" xml:space="preserve">
+    <value>Critères de duplication</value>
+  </data>
+  <data name="DupliquerSur" xml:space="preserve">
+    <value>Dupliquer sur</value>
+  </data>
+  <data name="msgCCSIntrouvable" xml:space="preserve">
+    <value>Aucun centre de coût site correspondant n'a été trouvé</value>
+  </data>
+  <data name="errorLoginPassword" xml:space="preserve">
+    <value>Login ou mot de passe incorrect </value>
+  </data>
+  <data name="AjoutPlanteur" xml:space="preserve">
+    <value>Ajout planteur</value>
+  </data>
+  <data name="ModifPlanteur" xml:space="preserve">
+    <value>Modification planteur</value>
+  </data>
+  <data name="SuppressionPlantation" xml:space="preserve">
+    <value>Suppression plantation</value>
+  </data>
+  <data name="AjoutProjetPlanteur" xml:space="preserve">
+    <value>Ajout projet planteur</value>
+  </data>
+  <data name="ModifProjetPlanteur" xml:space="preserve">
+    <value>Modification projet planteur</value>
+  </data>
+  <data name="SuppProjetPlanteur" xml:space="preserve">
+    <value>Suppression projet planteur</value>
+  </data>
+  <data name="msgValidationSurfaceGeo" xml:space="preserve">
+    <value>La surface totale doit correspondre à la surface de {0}  ha géolocalisée.</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="PersonneMorale" xml:space="preserve">
+    <value>Personne morale</value>
+  </data>
+  <data name="PersonnePhysique" xml:space="preserve">
+    <value>Personne physique</value>
+  </data>
+  <data name="errorContactExiste" xml:space="preserve">
+    <value>Ce contact existe déjà!</value>
+  </data>
+</root>

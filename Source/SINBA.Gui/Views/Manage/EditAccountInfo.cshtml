@@ -1,0 +1,33 @@
+﻿@model AccountInfoViewModel
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(SinbaConstants.Actions.EditAccountInfo, SinbaConstants.Controllers.Manage, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.SinbaValidationSumary();
+    
+    @Html.DevExpress().FormLayout(settings => 
+    {
+        settings.Name = "accountInfoFormLayout";
+        
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings, text: CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Manage,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+
+    }).GetHtml()
+}

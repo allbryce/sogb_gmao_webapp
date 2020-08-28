@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Evenement" xml:space="preserve">
+    <value>Evénement</value>
+  </data>
+  <data name="Acces" xml:space="preserve">
+    <value>Accès</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="AgeAndMaterialDistributionReport" xml:space="preserve">
+    <value>Distribution par age et matériel</value>
+  </data>
+  <data name="Bloc" xml:space="preserve">
+    <value>Bloc</value>
+  </data>
+  <data name="BudgetNombreJoursH" xml:space="preserve">
+    <value>Nombre de jours de saignée</value>
+  </data>
+  <data name="BudgetNombreJoursP" xml:space="preserve">
+    <value>Nombre de jours de récolte</value>
+  </data>
+  <data name="BudgetProductionAnnuelleBloc" xml:space="preserve">
+    <value>Objectif de production annuelle par bloc</value>
+  </data>
+  <data name="BudgetRepartitiBudgetRepartitionProductionMensuelle" xml:space="preserve">
+    <value>Répartition mensuelle de la production</value>
+  </data>
+  <data name="Champs" xml:space="preserve">
+    <value>Champs</value>
+  </data>
+  <data name="CropTelexReport" xml:space="preserve">
+    <value>Crop Telex</value>
+  </data>
+  <data name="DailyProductionReport" xml:space="preserve">
+    <value>Daily production report</value>
+  </data>
+  <data name="Division" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="DonneesBudgetaires" xml:space="preserve">
+    <value>Budgétaires</value>
+  </data>
+  <data name="DonneesExternes" xml:space="preserve">
+    <value>Données externes</value>
+  </data>
+  <data name="DonneesIndustrielles" xml:space="preserve">
+    <value>Industrielles</value>
+  </data>
+  <data name="DryRubberContent" xml:space="preserve">
+    <value>Dry rubber content</value>
+  </data>
+  <data name="EncoderPrestation" xml:space="preserve">
+    <value>Encoder prestation</value>
+  </data>
+  <data name="Equipe" xml:space="preserve">
+    <value>Equipe</value>
+  </data>
+  <data name="EquipeTransfert" xml:space="preserve">
+    <value>Transfert d'équipe</value>
+  </data>
+  <data name="EtatDesSurfacesReport" xml:space="preserve">
+    <value>Etat des surfaces</value>
+  </data>
+  <data name="CentreCout" xml:space="preserve">
+    <value>Centre de coût</value>
+  </data>
+  <data name="FeuillePresence" xml:space="preserve">
+    <value>Feuille de présence</value>
+  </data>
+  <data name="FieldSetupReport" xml:space="preserve">
+    <value>Parcellaire</value>
+  </data>
+  <data name="Fonction" xml:space="preserve">
+    <value>Fonction</value>
+  </data>
+  <data name="FrequenceSaigneeAlternance" xml:space="preserve">
+    <value>Fréquence saignée alternance</value>
+  </data>
+  <data name="Gestion" xml:space="preserve">
+    <value>Gestion</value>
+  </data>
+  <data name="Liste" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="LivraisonsJournalieresParEnginReport" xml:space="preserve">
+    <value>Livraisons journalières par engin</value>
+  </data>
+  <data name="LivraisonsJournalieresReport" xml:space="preserve">
+    <value>Livraisons journalières</value>
+  </data>
+  <data name="MaladieTraitement" xml:space="preserve">
+    <value>Maladie et traitement</value>
+  </data>
+  <data name="Meteo" xml:space="preserve">
+    <value>Météo</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Opération</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>Ordre de travail</value>
+  </data>
+  <data name="OTSousTraitanceReport" xml:space="preserve">
+    <value>Ordres de travail sous-traitance</value>
+  </data>
+  <data name="Parametres" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Parcelle" xml:space="preserve">
+    <value>Parcelle</value>
+  </data>
+  <data name="PartSaignee" xml:space="preserve">
+    <value>Part de saignée</value>
+  </data>
+  <data name="Pays" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Pente" xml:space="preserve">
+    <value>Pente</value>
+  </data>
+  <data name="Periode" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="PlanteCouverture" xml:space="preserve">
+    <value>Plante de couverture</value>
+  </data>
+  <data name="PrecedentCultural" xml:space="preserve">
+    <value>Précédent cultural</value>
+  </data>
+  <data name="Prestation" xml:space="preserve">
+    <value>Prestation</value>
+  </data>
+  <data name="Prime" xml:space="preserve">
+    <value>Prime</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Rapports" xml:space="preserve">
+    <value>Rapports</value>
+  </data>
+  <data name="Recensement" xml:space="preserve">
+    <value>Recensement</value>
+  </data>
+  <data name="RelevePontBascule" xml:space="preserve">
+    <value>Relevés</value>
+  </data>
+  <data name="RepartitionParAgeEtParCloneReport" xml:space="preserve">
+    <value>Répartition par age et par clone</value>
+  </data>
+  <data name="RessourcesHumaines" xml:space="preserve">
+    <value>Ressources Humaines</value>
+  </data>
+  <data name="SectionEMS" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="Societe" xml:space="preserve">
+    <value>Société</value>
+  </data>
+  <data name="SousTraitance" xml:space="preserve">
+    <value>Sous-traitance</value>
+  </data>
+  <data name="StatistiqueProductionHeveaReport" xml:space="preserve">
+    <value>Statistique production Hévéa</value>
+  </data>
+  <data name="StatistiqueProductionMensuelleHeveaReport" xml:space="preserve">
+    <value>Statistique mensuelle production Hévéa</value>
+  </data>
+  <data name="SurfaceAndBiologicalAssets" xml:space="preserve">
+    <value>Surface &amp; Biological assets</value>
+  </data>
+  <data name="SurfaceParCloneEtAnneeDePlantingReport" xml:space="preserve">
+    <value>Par clone et année de planting</value>
+  </data>
+  <data name="SurfacePerMaterialReport" xml:space="preserve">
+    <value>Par type matériel &amp; année de planting</value>
+  </data>
+  <data name="TauxExtraction" xml:space="preserve">
+    <value>Taux d'extraction</value>
+  </data>
+  <data name="TechniqueImplantation" xml:space="preserve">
+    <value>Technique d'implantation</value>
+  </data>
+  <data name="TechniquePreparationTerrain" xml:space="preserve">
+    <value>Technique de préparation du terrain</value>
+  </data>
+  <data name="Terrain" xml:space="preserve">
+    <value>Terrain</value>
+  </data>
+  <data name="Topographie" xml:space="preserve">
+    <value>Topographie</value>
+  </data>
+  <data name="Travailleur" xml:space="preserve">
+    <value>Travailleur</value>
+  </data>
+  <data name="TypePlantation" xml:space="preserve">
+    <value>Type de plantation</value>
+  </data>
+  <data name="Unite" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="Utilisateur" xml:space="preserve">
+    <value>Utilisateur</value>
+  </data>
+  <data name="Ville" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Wasp" xml:space="preserve">
+    <value>WASP</value>
+  </data>
+  <data name="WeighbridgeDailyProductionReport" xml:space="preserve">
+    <value>Weighbridge daily production report</value>
+  </data>
+  <data name="BiologicalAssetsReport" xml:space="preserve">
+    <value>Biological assets</value>
+  </data>
+  <data name="BudgetRepartitionProductionMensuelle" xml:space="preserve">
+    <value>Répartition mensuelle de la production</value>
+  </data>
+  <data name="Axe" xml:space="preserve">
+    <value>Axe</value>
+  </data>
+  <data name="OperationOT" xml:space="preserve">
+    <value>Opération &amp; OT</value>
+  </data>
+  <data name="Saignee" xml:space="preserve">
+    <value>Saignée</value>
+  </data>
+  <data name="Aide" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="ManuelUtilisateur" xml:space="preserve">
+    <value>Manuel utilisateur</value>
+  </data>
+  <data name="GuideCheminementParametrage" xml:space="preserve">
+    <value>Guide cheminement paramétrage</value>
+  </data>
+  <data name="AttributionPartSaignee" xml:space="preserve">
+    <value>Attribution des parts de saignée</value>
+  </data>
+  <data name="Absence" xml:space="preserve">
+    <value>Absence</value>
+  </data>
+  <data name="EditerAbsence" xml:space="preserve">
+    <value>Editer les absences</value>
+  </data>
+  <data name="Statistique" xml:space="preserve">
+    <value>Statistiques</value>
+  </data>
+  <data name="StatistiqueParametrage" xml:space="preserve">
+    <value>Statistiques paramétrage</value>
+  </data>
+  <data name="EquipeSansOT" xml:space="preserve">
+    <value>Equipes sans OT</value>
+  </data>
+  <data name="TravailleurSansOT" xml:space="preserve">
+    <value>Travailleurs sans OT</value>
+  </data>
+  <data name="Absenteisme" xml:space="preserve">
+    <value>Absentéisme</value>
+  </data>
+  <data name="StatistiqueOperationnelle" xml:space="preserve">
+    <value>Statistique opérationnelle</value>
+  </data>
+  <data name="PrimeMensuelle" xml:space="preserve">
+    <value>Prime mensuelle</value>
+  </data>
+  <data name="PrestationSansOT" xml:space="preserve">
+    <value>Prestation sans OT</value>
+  </data>
+  <data name="Controle" xml:space="preserve">
+    <value>Contrôle</value>
+  </data>
+  <data name="ControlePrestation" xml:space="preserve">
+    <value>Prestation</value>
+  </data>
+  <data name="PrestationDouble" xml:space="preserve">
+    <value>Prestations doubles</value>
+  </data>
+  <data name="Norme" xml:space="preserve">
+    <value>Norme</value>
+  </data>
+  <data name="Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Groupe" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="TacheExceptionnelle" xml:space="preserve">
+    <value>Tâche exceptionnelle</value>
+  </data>
+  <data name="CodeChamp" xml:space="preserve">
+    <value>Code champ</value>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="Cockpit" xml:space="preserve">
+    <value>Cockpit</value>
+  </data>
+  <data name="TravailleursRecap" xml:space="preserve">
+    <value>Récapitulatif des travailleurs</value>
+  </data>
+  <data name="AbsenceConsecutive" xml:space="preserve">
+    <value>Absence consécutive</value>
+  </data>
+  <data name="SearchNullText" xml:space="preserve">
+    <value>Recherche Menu</value>
+  </data>
+  <data name="MainMenuText" xml:space="preserve">
+    <value>Menu Principal</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="PrestationListe" xml:space="preserve">
+    <value>Liste des prestations</value>
+  </data>
+  <data name="PrimeListe" xml:space="preserve">
+    <value>Liste des primes</value>
+  </data>
+  <data name="TypeMachine" xml:space="preserve">
+    <value>Type de machine</value>
+  </data>
+  <data name="Machine" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="SousTraitanceListe" xml:space="preserve">
+    <value>Liste des sous-traitants</value>
+  </data>
+  <data name="MachineListe" xml:space="preserve">
+    <value>Liste des machines</value>
+  </data>
+  <data name="ControleSaignee" xml:space="preserve">
+    <value>Saignée</value>
+  </data>
+  <data name="ControlePartSaignee" xml:space="preserve">
+    <value>Parts de saignée</value>
+  </data>
+  <data name="Recolte" xml:space="preserve">
+    <value>Récolte</value>
+  </data>
+  <data name="ComptabilisationSousTraitance" xml:space="preserve">
+    <value>Comptabilisation des relevés WASP</value>
+  </data>
+  <data name="ComptabilisationSousTraitanceReport" xml:space="preserve">
+    <value>Comptabilisation des relevés WASP</value>
+  </data>
+  <data name="OTFacturation" xml:space="preserve">
+    <value>Facturation OT</value>
+  </data>
+  <data name="EncoderPrimeMensuelle" xml:space="preserve">
+    <value>Encoder prime mensuelle</value>
+  </data>
+</root>

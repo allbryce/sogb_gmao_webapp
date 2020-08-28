@@ -1,0 +1,194 @@
+.icon {
+    font-size: 10px;
+}
+
+img.icon,
+.icon.dx-acc-s,
+.icon:not(.dx-acc-s):before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 40em 206.0em;
+}
+
+.no-svg .icon:not(.dx-acc-s):before {
+    background-image: url("../sprite.png");
+}
+
+  img.icon.angle-down,
+  .icon.angle-down.dx-acc-s,
+  .icon.angle-down:not(.dx-acc-s):before {
+      background-position: 0em 0em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+  img.icon.angle-right,
+  .icon.angle-right.dx-acc-s,
+  .icon.angle-right:not(.dx-acc-s):before {
+      background-position: 0em -1.2em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+  img.icon.arrow-left,
+  .icon.arrow-left.dx-acc-s,
+  .icon.arrow-left:not(.dx-acc-s):before {
+      background-position: 0em -2.4em;
+      width: 40em;
+      height: 40em;
+  }
+
+  img.icon.arrow-right,
+  .icon.arrow-right.dx-acc-s,
+  .icon.arrow-right:not(.dx-acc-s):before {
+      background-position: 0em -42.4em;
+      width: 40em;
+      height: 40em;
+  }
+
+  img.icon.arrow-right-long,
+  .icon.arrow-right-long.dx-acc-s,
+  .icon.arrow-right-long:not(.dx-acc-s):before {
+      background-position: 0em -82.4em;
+      width: 40em;
+      height: 40em;
+  }
+
+  img.icon.clear-button,
+  .icon.clear-button.dx-acc-s,
+  .icon.clear-button:not(.dx-acc-s):before {
+      background-position: 0em -122.4em;
+      width: 2em;
+      height: 2em;
+  }
+
+  img.icon.cog,
+  .icon.cog.dx-acc-s,
+  .icon.cog:not(.dx-acc-s):before {
+      background-position: 0em -124.4em;
+      width: 2.2em;
+      height: 2.2em;
+  }
+
+  img.icon.copy,
+  .icon.copy.dx-acc-s,
+  .icon.copy:not(.dx-acc-s):before {
+      background-position: 0em -126.6em;
+      width: 2.6em;
+      height: 2.6em;
+  }
+
+  img.icon.copy.dxbButtonHover,
+  .icon.copy.dxbButtonHover.dx-acc-s,
+  .icon.copy.dxbButtonHover:not(.dx-acc-s):before {
+      background-position: 0em -129.2em;
+      width: 2.6em;
+      height: 2.6em;
+  }
+
+  img.icon.copy.dxbButtonPressed,
+  .icon.copy.dxbButtonPressed.dx-acc-s,
+  .icon.copy.dxbButtonPressed:not(.dx-acc-s):before {
+      background-position: 0em -131.8em;
+      width: 2.6em;
+      height: 2.6em;
+  }
+
+  img.icon.download,
+  .icon.download.dx-acc-s,
+  .icon.download:not(.dx-acc-s):before {
+      background-position: 0em -134.4em;
+      width: 2.2em;
+      height: 2.2em;
+  }
+
+  img.icon.drop-down,
+  .icon.drop-down.dx-acc-s,
+  .icon.drop-down:not(.dx-acc-s):before {
+      background-position: 0em -136.6em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+  img.icon.font,
+  .icon.font.dx-acc-s,
+  .icon.font:not(.dx-acc-s):before {
+      background-position: 0em -137.8em;
+      width: 1.2em;
+      height: 1.2em;
+  }
+
+  img.icon.menu,
+  .icon.menu.dx-acc-s,
+  .icon.menu:not(.dx-acc-s):before {
+      background-position: 0em -139em;
+      width: 2.6em;
+      height: 2.6em;
+  }
+
+  img.icon.play-button,
+  .icon.play-button.dx-acc-s,
+  .icon.play-button:not(.dx-acc-s):before {
+      background-position: 0em -141.6em;
+      width: 10em;
+      height: 10em;
+  }
+
+  img.icon.search,
+  .icon.search.dx-acc-s,
+  .icon.search:not(.dx-acc-s):before {
+      background-position: 0em -151.6em;
+      width: 40em;
+      height: 40em;
+  }
+
+  img.icon.shopping-cart,
+  .icon.shopping-cart.dx-acc-s,
+  .icon.shopping-cart:not(.dx-acc-s):before {
+      background-position: 0em -191.6em;
+      width: 2.2em;
+      height: 2.2em;
+  }
+
+  img.icon.three-dots,
+  .icon.three-dots.dx-acc-s,
+  .icon.three-dots:not(.dx-acc-s):before {
+      background-position: 0em -193.8em;
+      width: 1.3em;
+      height: 1.3em;
+  }
+
+  img.icon.user-logout,
+  .icon.user-logout.dx-acc-s,
+  .icon.user-logout:not(.dx-acc-s):before {
+      background-position: 0.6em -194.6em;
+      width: 2.8em;
+      height: 2.7em;
+  }
+
+  img.icon.user-login,
+  .icon.user-login.dx-acc-s,
+  .icon.user-login:not(.dx-acc-s):before {
+     background-position: 0.7em -197.5em;
+     width: 2.7em;
+     height: 2.8em;
+  }
+
+   img.icon.confluence,
+   .icon.confluence.dx-acc-s,
+   .icon.confluence:not(.dx-acc-s):before {
+       background-position: 0.6em -200.2em;
+       width: 2.2em;
+       height: 2.9em;
+   }
+
+  img.icon.bug,
+  .icon.bug.dx-acc-s,
+  .icon.bug:not(.dx-acc-s):before {
+      background-position: 0.7em -203.1em;
+      width: 2.9em;
+      height: 2.8em;
+  }

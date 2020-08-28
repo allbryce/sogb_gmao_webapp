@@ -1,0 +1,225 @@
+﻿@model ContactModalViewModels
+@Html.DevExpress().FormLayout(formfields =>
+{
+    string fieldPrefix = "ContactModal";
+    formfields.Name = "formlayoutAddContact";
+    //formfields.ColCount = 3;
+
+    formfields.Items.AddGroupItem(etatcivil => {
+
+        etatcivil.Caption = EntityColumnResource.EtatCivil;
+        etatcivil.UseDefaultPaddings = false;
+        etatcivil.Paddings.PaddingLeft = Unit.Pixel(10);
+        //etatcivil.ColSpan = 2;
+        etatcivil.ColCount = 2;
+
+        // NomContact
+        etatcivil.Items.Add(m => m.Nom, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.Nom, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}",fieldPrefix, textBox.Name);
+        });
+
+        // PrenomContact
+        etatcivil.Items.Add(m => m.Prenom, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox,  caption: EntityColumnResource.Prenom, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+
+        // SexeContact
+        etatcivil.Items.Add(m => m.Sexe, combobox =>
+        {
+            ViewHelper.FormLayoutComboBoxSettings(combobox, valueType: typeof(string), valueField: DbColumns.Id, showModelErrors: false, textField: DbColumns.Libelle, dataSource: ViewBag.Genre,caption:EntityColumnResource.Genre);
+            ComboBoxSettings comboboxSettings = (ComboBoxSettings)combobox.NestedExtensionSettings;
+            comboboxSettings.Name = string.Format("{0}_{1}", fieldPrefix, combobox.Name);
+
+        });
+
+        // LocaliteID
+        etatcivil.Items.Add(m => m.LocaliteID, combobox =>
+        {
+            ViewHelper.FormLayoutComboBoxSettings(combobox, valueType: typeof(string), caption: EntityColumnResource.LocaliteID, valueField: DbColumns.LocaliteID, showModelErrors: false, textField: DbColumns.LibelleLocalite, dataSource: ViewBag.Localite);
+            ComboBoxSettings comboboxSettings = (ComboBoxSettings)combobox.NestedExtensionSettings;
+            comboboxSettings.Name = string.Format("{0}_{1}", fieldPrefix, combobox.Name);
+        });
+
+        // PieceIdentiteID
+        etatcivil.Items.Add(m => m.PieceIdentiteID, combobox =>
+        {
+            ViewHelper.FormLayoutComboBoxSettings(combobox, valueType: typeof(string), caption: EntityColumnResource.PieceIdentiteID, valueField: DbColumns.PieceIdentiteID, showModelErrors: false, textField: DbColumns.LibellePiece, dataSource: ViewBag.PieceIdentite);
+            ComboBoxSettings comboboxSettings = (ComboBoxSettings)combobox.NestedExtensionSettings;
+            comboboxSettings.Name = string.Format("{0}_{1}", fieldPrefix, combobox.Name);
+        });
+
+        // NumeroPieceContact
+        etatcivil.Items.Add(m => m.NumeroPiece, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.NumeroPiece, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+        // DateDelivrancePiece
+        etatcivil.Items.Add(m => m.DateDelivrancePiece, textBox =>
+        {
+            ViewHelper.FormLayoutDateEditSettings(textBox, caption: EntityColumnResource.DateDelivrance);
+            DateEditSettings dateEditSettings = (DateEditSettings)textBox.NestedExtensionSettings;
+            dateEditSettings.ShowModelErrors = false;
+            dateEditSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+        // LieuDelivrancePiece
+        etatcivil.Items.Add(m => m.LieuDelivrancePiece, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.LieuDelivrance, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+        //DateNaissance
+        etatcivil.Items.Add(m => m.DateNaissance, textBox =>
+        {
+            ViewHelper.FormLayoutDateEditSettings(textBox, caption: EntityColumnResource.DateNaissance);
+            DateEditSettings dateEditSettings = (DateEditSettings)textBox.NestedExtensionSettings;
+            dateEditSettings.ShowModelErrors = false;
+            dateEditSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+        //LieuNaissance
+        etatcivil.Items.Add(m => m.LieuNaissance, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.LieuNaissance, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+
+    });
+
+    formfields.Items.AddGroupItem(adresse => {
+
+
+        adresse.Caption = EntityColumnResource.Adresse;
+        adresse.ColCount = 2;
+
+        //Adresse
+        adresse.Items.Add(m => m.Adresse, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.Adresse, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+        //NumeroTelephone1
+        adresse.Items.Add(m => m.NumeroTelephone1, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: string.Format("{0} 1", EntityColumnResource.Telephone), showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+        //NumeroTelephone1
+        adresse.Items.Add(m => m.NumeroTelephone2, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: string.Format("{0} 2", EntityColumnResource.Telephone), showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+        //NumeroTelephone1
+        adresse.Items.Add(m => m.NumeroTelephone3, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: string.Format("{0} 3", EntityColumnResource.Telephone), showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+        //AdresseMail1
+        adresse.Items.Add(m => m.AdresseMail1, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: string.Format("{0} 1", EntityColumnResource.Email), showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+        //AdresseMail2
+        adresse.Items.Add(m => m.AdresseMail2, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: string.Format("{0} 2", EntityColumnResource.Email), showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+
+        });
+
+    });
+
+    formfields.Items.AddGroupItem(apromac =>
+    {
+        apromac.Caption = EntityColumnResource.Apromac  ;
+        apromac.ColCount = 2;
+
+        //NumeroMatriculeNational
+        apromac.Items.Add(m => m.NumeroMatriculeNational, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption:  EntityColumnResource.NumIdentification, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+
+        });
+        //NumIdentification
+        apromac.Items.Add(m => m.NumeroTicketIdentification, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox, caption: EntityColumnResource.NumTicket, showModelErrors: false);
+            TextBoxSettings textBoxSettings = (TextBoxSettings)textBox.NestedExtensionSettings;
+            textBoxSettings.Name = string.Format("{0}_{1}", fieldPrefix, textBox.Name);
+        });
+
+    });
+
+    formfields.Items.AddGroupItem(autres =>
+    {
+        autres.Caption = EntityColumnResource.Autres;
+        autres.ColCount = 2;
+
+        //CulturePratiquee
+        autres.Items.Add(m => m.CultureArray, i =>
+        {
+            i.Name = ResourceNames.Entity.Culture;
+            i.Caption = EntityColumnResource.CulturePratiquee;
+            //i.ColSpan = 2;
+            //i.Width = width;
+            //i.CaptionSettings.AssociatedNestedExtensionName = EntityColumnResource.CulturePratiquee;
+            i.SetNestedContent(() => Html.RenderPartial(ViewNames.GridLookupCulturePartial, new CultureGridLookupViewModel { Liste = (List<Culture>)ViewBag.Culture, Values = Model.CultureArray }));
+        });
+
+        autres.Items.Add(m => m.ActiviteArray, i =>
+        {
+            i.Name = ResourceNames.Entity.Activite;
+            i.Caption = EntityColumnResource.Activites;
+            //i.ColSpan = 2;
+            //i.Width = width;
+            //i.CaptionSettings.AssociatedNestedExtensionName = ResourceNames.Entity.Activite;
+            i.SetNestedContent(() => Html.RenderPartial(ViewNames.GridLookupActivitePartial, new ActiviteGridLookupViewModel { Liste = (List<Activite>)ViewBag.Activite, Values = Model.ActiviteArray }));
+        });
+
+
+
+    });
+
+    formfields.Items.AddTabbedGroupItem(tabbedGroup =>
+    {
+
+        tabbedGroup.Items.Add(item =>
+        {
+            item.Name = "tab1";
+            item.Caption = EntityColumnResource.ReferenceBancaire;
+            item.SetNestedContent(() =>
+            {
+                Html.RenderPartial(ViewNames.ReferenceBancairePartial, (Model.ReferenceBancaires ?? new List<ReferenceBancaire>()).ToList());
+
+            });
+        });
+
+
+    });
+
+}).GetHtml()

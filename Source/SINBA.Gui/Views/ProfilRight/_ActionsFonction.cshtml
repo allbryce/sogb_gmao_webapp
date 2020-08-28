@@ -1,0 +1,18 @@
+﻿@Html.DevExpress().TokenBox(
+    settings =>
+    {
+        settings.Name = ResourceNames.Entity.Actions;
+        settings.ControlStyle.CssClass = CssClasses.Editor;
+        settings.Properties.AllowCustomTokens = false;
+        settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+        settings.Properties.ShowDropDownOnFocus = ShowDropDownOnFocusMode.Always;
+        settings.Properties.TextField = DbColumns.CodeAction;
+        settings.Properties.ValueField = DbColumns.CodeAction;
+        if(ViewBag.Tokens != null)
+        {
+            settings.Properties.Tokens = new TokenCollection(ViewBag.Tokens);
+        }
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.ProfilRight, Action = SinbaConstants.Actions.ProfilRightActionsPartial, codeFonction = ViewData[DbColumns.CodeFonction] };
+        settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { e.customArgs['CodeFonction'] = CodeFonction.GetValue(); }";
+
+    }).BindList(ViewBag.ActionList).GetHtml()

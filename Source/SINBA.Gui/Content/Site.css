@@ -1,0 +1,2215 @@
+﻿/* Reset */
+
+body, form, div, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset,
+p, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+/* Common */
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+body {
+    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #3c3c3c;
+    background: #FFFFFF;
+    height: 100%;
+}
+
+a {
+    color: #018522;
+}
+
+.AspForm {
+    display: block;
+    height: 100%;
+}
+
+/* Sprite */
+.LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxWeb_tvExpBtn,
+.Search .Pic,
+.LayoutLeft .Inner .Navigation .SinbaTree .dxWeb_tvExpBtn,
+.LayoutLeft .Inner .Navigation .SinbaTree .dxWeb_tvColBtn,
+.LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxWeb_tvExpBtn,
+.LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxWeb_tvColBtn,
+.LayoutRight .Inner .Header .LoginButton .Icon, .LogoutButton .Icon,
+.LayoutRight .Inner .Header .BuyButton .Icon,
+.LayoutRight .Inner .ThemeButton .Icon,
+.LayoutRight .Inner .ThemeButton .Glyph,
+.LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft,
+.LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight,
+.LayoutLeft .Inner .Navigation .SinbaTree .IntroNodeIco,
+.LayoutLeft .Inner .Navigation .SinbaTree .UpdatedIco,
+.LayoutLeft .Inner .Navigation .SinbaTree .NewIco,
+.LayoutLeft .Inner .Navigation .SinbaTree .PreviewIco,
+.LayoutLeft .Inner .Navigation .IntroPageLink .Ico {
+    background-image: url(sprite.png);
+    background-repeat: no-repeat;
+}
+
+/* Socfin Logo */
+.SocfinLogoImage {
+    background-image: url(logo-sogb.png);
+    background-repeat: no-repeat;
+}
+
+/* help Logo */
+.HelpImage {
+    background-image: url(info.png);
+    background-repeat: no-repeat;
+    background-position: center 10px;
+    width: 50px;
+    height: 50px;
+    padding-top: 20px;
+}
+
+/* SINBA Logo */
+.SinbaLogoImage {
+    /*background-image: url(sinba-small.png);*/
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+    width: 200px;
+    height: 60px;
+    margin-left: 50px;
+}
+
+
+/* Common Sizes */
+.LayoutContainer {
+    margin: 0 auto;
+    min-height: 100%;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.LayoutFooterSpacing {
+    clear: both;
+    height: 240px; /* footer height + spacing */
+}
+
+.LayoutFooter {
+    margin: -180px auto 0;
+    height: 180px;
+    width: 100%;
+    position: relative;
+}
+/* right */
+.LayoutRight {
+    width: 100%;
+    padding-left: 315px;
+    padding-right: 20px;
+    padding-top: 75px;
+}
+
+
+/* Left */
+.LayoutLeft {
+    width: 290px;
+    /*margin-right: 20px;*/
+    z-index: 999;
+    top: 75px;
+    left: 0;
+    bottom: 0;
+    clear: both;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    position: fixed;
+    height: 100%; /* 100% Full-height */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    box-shadow: 0 8px 6px 0px #323232;
+    background-color: white;
+    margin-bottom: 80px;
+    overflow: auto;
+}
+
+    .LayoutLeft .Inner .Header {
+        height: 96px;
+    }
+
+        .LayoutLeft .Inner .Header .SinbaLogo {
+            padding-top: 0px;
+            padding-bottom: 21px;
+            white-space: nowrap;
+        }
+
+        .LayoutLeft .Inner .Header .AspLogo h2 {
+            font-size: 36px;
+            font-weight: lighter;
+        }
+
+        .LayoutLeft .Inner .Header .AspLogo h5 {
+            font-size: 14px;
+            margin-top: -4px;
+        }
+
+        .LayoutLeft .Inner .Header .AspLogo h2 a {
+            color: #323232;
+            text-decoration: none;
+        }
+
+        .LayoutLeft .Inner .Header .AspLogo h5 a {
+            color: #8f8f8f;
+            text-decoration: none;
+        }
+
+    /* Tree View*/
+    .LayoutLeft .Inner .Navigation {
+        margin-bottom: 80px;
+    }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd {
+            margin-left: 25px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndTxt {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #505050;
+            padding-left: 1px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxtv-ndTxt {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-nd {
+            margin: 3px 0 1px -4px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxtv-nd {
+            margin: 2px 0 0 -4px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndSel {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+
+            .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndSel .dxtv-ndTxt {
+                font-weight: bold;
+                color: #018522;
+            }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndHov .dxtv-ndTxt {
+            text-decoration: underline;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndSel.dxtv-ndHov .dxtv-ndTxt {
+            text-decoration: none;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-ndHov {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxWeb_tvExpBtn {
+            width: 24px;
+            height: 22px;
+            background-position: -124px 0;
+            margin: 6px 0 0 0;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxWeb_tvColBtn {
+            width: 24px;
+            height: 22px;
+            background-position: -96px 0;
+            margin: 6px 0 0 0;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxWeb_tvExpBtn {
+            margin-top: 10px;
+            width: 11px;
+            height: 11px;
+            background-position: -67px -56px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxWeb_tvColBtn {
+            margin-top: 10px;
+            width: 11px;
+            height: 11px;
+            background-position: -52px -56px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxtv-elbNoLn,
+        .LayoutLeft .Inner .Navigation .SinbaTree .dxtv-subnd .dxtv-elb {
+            width: 15px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .section-selected {
+            font-weight: bold;
+        }
+
+            .LayoutLeft .Inner .Navigation .SinbaTree .section-selected.dxtv-ndHov .dxtv-ndTxt {
+                text-decoration: none;
+            }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .UpdatedIco,
+        .LayoutLeft .Inner .Navigation .SinbaTree .NewIco,
+        .LayoutLeft .Inner .Navigation .SinbaTree .PreviewIco {
+            width: 21px;
+            height: 13px;
+            padding: 0;
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 7px;
+            margin-top: 2px;
+            vertical-align: top;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .UpdatedIco,
+        .LayoutLeft .Inner .Navigation .SinbaTree .NewIco {
+            width: 21px;
+            height: 13px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .PreviewIco {
+            width: 38px;
+            height: 13px;
+            background-position: -52px -78px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .UpdatedIco {
+            background-position: -80px -36px;
+        }
+
+        .LayoutLeft .Inner .Navigation .SinbaTree .NewIco {
+            background-position: -107px -36px;
+        }
+
+
+        .LayoutLeft .Inner .Navigation .IntroPageLink {
+            margin-bottom: 3px;
+        }
+
+            .LayoutLeft .Inner .Navigation .IntroPageLink .Ico {
+                width: 22px;
+                height: 22px;
+                background-position: -134px -31px;
+                vertical-align: middle;
+                display: inline-block;
+                margin-top: -4px;
+            }
+
+            .LayoutLeft .Inner .Navigation .IntroPageLink .Text {
+                display: inline-block;
+                font-size: 13px;
+                margin-left: 3px;
+                color: #505050;
+                text-decoration: none;
+            }
+
+                .LayoutLeft .Inner .Navigation .IntroPageLink .Text.Bold {
+                    font-weight: bold;
+                }
+
+                .LayoutLeft .Inner .Navigation .IntroPageLink .Text:hover {
+                    text-decoration: underline;
+                }
+
+    /* Left Footer */
+    .LayoutLeft .FooterInner {
+        border-top: 1px #006A00 solid;
+        background-color: white;
+        width: inherit;
+        bottom: 0;
+        left: 0;
+        /*position:fixed;*/
+    }
+
+        .LayoutLeft .FooterInner .Version {
+            font-size: 16px;
+            margin-bottom: 9px;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .LayoutLeft .FooterInner .Copyrights {
+            margin-top: 5px;
+            margin-right: -5px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+/* Right */
+
+.LayoutRight .Inner .Header {
+    height: 96px;
+}
+
+    .LayoutRight .Inner .Header .Buttons {
+        padding-top: 25px;
+        float: right;
+    }
+
+        .LayoutRight .Inner .Header .Buttons .LogoutForm,
+        .LayoutRight .Inner .Header .Buttons .LogoutForm a {
+            display: inline-block;
+            vertical-align: top;
+            float: left;
+        }
+
+            .LayoutRight .Inner .Header .Buttons .LogoutForm a {
+                margin-top: 15px;
+            }
+
+            .LayoutRight .Inner .Header .Buttons .LogoutForm .LogoutButton,
+            .LayoutRight .Inner .Header .Buttons .LoginButton,
+            .LayoutRight .Inner .Header .Buttons .BuyButton {
+                font-size: 13px;
+                color: #006A00;
+                text-decoration: none;
+                margin-right: 0px;
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 15px;
+                float: left;
+            }
+
+                .LayoutRight .Inner .Header .Buttons .BuyButton .Icon {
+                    width: 28px;
+                    height: 28px;
+                    vertical-align: middle;
+                    margin-top: -5px;
+                }
+
+        .LayoutRight .Inner .Header .Buttons .LogoutButton .Icon {
+            width: 27px;
+            height: 26px;
+            vertical-align: middle;
+            margin-top: -5px;
+            background-position: -32px 0;
+        }
+
+        .LayoutRight .Inner .Header .Buttons .LoginButton .Icon {
+            width: 28px;
+            height: 26px;
+            vertical-align: middle;
+            margin-top: -5px;
+            background-position: -90px -68px;
+        }
+
+        .LayoutRight .Inner .Header .Buttons .BuyButton .Icon {
+            background-position: 0 0;
+        }
+
+        .LayoutRight .Inner .Header .Buttons .Logo {
+            vertical-align: top;
+            display: inline-block;
+            margin-top: -11px;
+            float: left;
+        }
+
+        .LayoutRight .Inner .Header .Buttons .LogoutForm .Separator.Vertical,
+        .LayoutRight .Inner .Header .Buttons .Separator.Vertical {
+            height: 46px;
+            float: left;
+            display: inline-block;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+
+.LayoutRight .Inner .ThemeButton {
+    display: inline-block;
+    font-size: 16px;
+    color: #018522;
+    text-decoration: none;
+    vertical-align: top;
+    float: right;
+    margin-top: 20px;
+}
+
+    .LayoutRight .Inner .ThemeButton .Icon {
+        width: 28px;
+        height: 28px;
+        background-position: -62px 0;
+        vertical-align: middle;
+        margin-top: -5px;
+    }
+
+    .LayoutRight .Inner .ThemeButton .Glyph {
+        width: 9px;
+        height: 5px;
+        background-position: -62px -36px;
+        vertical-align: middle;
+        margin-left: 2px;
+        margin-top: -2px;
+    }
+
+.LayoutRight .Inner .SectionTitle {
+    float: left;
+    margin: 19px 0 40px 0;
+}
+
+    .LayoutRight .Inner .SectionTitle span.SectionNavigationTitle {
+        font-size: 16px;
+        color: #848484;
+        margin: 0 0 5px 0;
+    }
+
+    .LayoutRight .Inner .SectionTitle span {
+        font-weight: lighter;
+        font-size: 30px;
+        color: #3c3c3c;
+        margin-top: -8px;
+        margin-left: -2px;
+        display: block;
+    }
+
+/* Intro Area */
+.LayoutRight .Inner .IntroArea {
+    margin-top: 49px;
+}
+
+    .LayoutRight .Inner .IntroArea .Banner.Featured {
+        margin-top: 45px;
+    }
+
+    .LayoutRight .Inner .IntroArea .Banner .LeftArea {
+        text-align: center;
+        width: 240px;
+    }
+
+        .LayoutRight .Inner .IntroArea .Banner .LeftArea a.BannerLink {
+            text-decoration: none;
+            color: #2e45a6;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .LeftArea .SmallScreenshotShadow {
+            background-color: white;
+            border: #CBCBCB solid 1px;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            padding: 4px;
+            width: 230px;
+            height: 150px;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .LeftArea .VideoButton {
+            margin: -125px auto 0 auto;
+            display: block;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .LeftArea .VideoFrame {
+            width: 230px;
+            height: 150px;
+            display: inline-block;
+        }
+
+    .LayoutRight .Inner .IntroArea .Banner .RightArea {
+        width: 642px;
+        padding-left: 38px;
+        font-size: 16px;
+        color: #727272;
+    }
+
+        .LayoutRight .Inner .IntroArea .Banner .RightArea h1 {
+            font-size: 48px;
+            line-height: 52px;
+            font-weight: lighter;
+            color: #3c3c3c;
+            margin-top: -10px;
+            margin-bottom: 14px;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .RightArea h3 {
+            font-size: 24px;
+            font-weight: lighter;
+            color: #3c3c3c;
+            margin-bottom: 5px;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .RightArea .SeeDemo {
+            color: #244db5;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+    .LayoutRight .Inner .IntroArea .Banner.Featured .RightArea {
+        font-size: 14px;
+    }
+
+    .LayoutRight .Inner .IntroArea .FeaturesHeader {
+        margin-top: 42px;
+        color: #8c8c8c;
+        text-align: right;
+        font-size: 20px;
+        font-weight: lighter;
+    }
+
+        .LayoutRight .Inner .IntroArea .FeaturesHeader .Separator {
+            height: 1px;
+            margin-top: 4px;
+        }
+
+/* Demo */
+.LayoutRight .Inner .DemoPageControl {
+    margin-top: 50px;
+}
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-content {
+        border: none;
+        font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+        color: #3c3c3c;
+        padding: 25px 0 0 0;
+    }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-text,
+    .LayoutRight .Inner .DemoPageControl .dxtc-tab .dxtc-text {
+        font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        color: #3c3c3c;
+    }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-text {
+        color: #018522;
+    }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-activeTab,
+    .LayoutRight .Inner .DemoPageControl .dxtc-tab,
+    .LayoutRight .Inner .DemoPageControl .dxtc-rightIndent,
+    .LayoutRight .Inner .DemoPageControl .dxtc-spacer {
+        height: 29px;
+        border: #e0e0e0 1px solid;
+    }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-tab .dxtc-link {
+            padding: 7px 10px 0 10px;
+        }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-activeTab {
+        border-bottom: none;
+    }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-link {
+            padding: 6px 9px 0 9px;
+        }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-tab,
+    .LayoutRight .Inner .DemoPageControl .dxtc-rightIndent,
+    .LayoutRight .Inner .DemoPageControl .dxtc-spacer {
+        background-color: transparent;
+        border-width: 0 0 1px 0;
+    }
+
+    .LayoutRight .OverviewArea .DemoPageControl .dxtc-spacer,
+    .LayoutRight .Inner .DemoPageControl .dxtc-sbWrapper,
+    .LayoutRight .Inner .DemoPageControl .dxtc-sbSpacer,
+    .LayoutRight .Inner .DemoPageControl .dxtc-sbIndent {
+        border: 0;
+    }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-sbWrapper {
+        height: 30px;
+    }
+
+    .LayoutRight .OverviewArea .DemoPageControl .dxtc-rightIndent,
+    .LayoutRight .OverviewArea .DemoPageControl .dxtc-leftIndent,
+    .LayoutRight .Inner .DemoPageControl .dxtc-sbIndent {
+        width: 0;
+    }
+
+    .LayoutRight .Inner .DemoPageControl .dxtc-sb {
+        border: 0;
+        padding: 5px 0;
+        background-color: transparent;
+    }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft {
+            width: 20px;
+            height: 20px;
+            background-position: -0px -53px;
+            margin-right: 5px;
+        }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft.dxWeb_tcScrollLeftDisabled {
+                background-position: -0px -75px;
+            }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight {
+            width: 20px;
+            height: 20px;
+            background-position: -25px -53px;
+            margin-left: 5px;
+        }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight.dxWeb_tcScrollRightDisabled {
+                background-position: -25px -75px;
+            }
+
+    /* Code Viewer */
+    .LayoutRight .Inner .DemoPageControl .NewWinLink {
+        text-align: right;
+        margin-top: -15px;
+        margin-bottom: 5px;
+    }
+
+.LayoutRight .Inner .CodeBlock {
+    overflow: auto;
+    font-family: 'Courier New', Courier, 'Nimbus Mono L', monospace;
+}
+
+.LayoutRight .Inner .DemoArea .DemoPageControl .CodeBlock {
+    height: 600px;
+    width: 100%;
+}
+
+.LayoutRight .Inner .CodeBlock.ASPX .NotHighlightedBlock {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=40);
+    opacity: 0.4;
+}
+
+.dxMacOSMobilePlatform .LayoutRight .Inner .CodeBlock.ASPX .NotHighlightedBlock {
+    opacity: 0.2;
+}
+
+/* Overview Demo */
+.OverviewArea .Description {
+    padding-top: 50px;
+}
+
+    .OverviewArea .RightArea .KeyFeatures,
+    .OverviewArea .Description .TextContent {
+        padding-bottom: 0;
+    }
+
+.OverviewArea .KeyFeatures ul li {
+    margin-bottom: 13px;
+}
+
+.OverviewArea .TextContent {
+    padding: 0 0 50px 0px;
+}
+
+.OverviewArea .RightArea,
+.OverviewArea .LeftArea {
+    vertical-align: top;
+}
+
+.LayoutRight .OverviewArea .LeftArea {
+    padding-right: 10px;
+    width: 100%;
+}
+
+.LayoutRight .OverviewArea .Title {
+    display: inline-block;
+    font-weight: lighter;
+    margin-bottom: 11px;
+    margin-top: -8px;
+    font-size: 24px;
+}
+
+.OverviewArea .TextContent ul {
+    margin-left: 15px;
+    color: #989898;
+}
+
+.OverviewArea .TextContent li {
+    margin-bottom: 6px;
+}
+
+.OverviewArea .TextContent .KeyFeatureName,
+.OverviewArea .TextContent .KeyFeatureName a {
+    color: #3C3C3C;
+}
+
+.OverviewArea .TextContent .KeyFeatureDescription {
+    color: #737373;
+}
+
+.LayoutRight .Inner .OverviewArea .DemoPageControl ul,
+.LayoutRight .Inner .OverviewArea .DemoPageControl li {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.LayoutRight .OverviewArea .DemoPageControl .dxtc-activeTab {
+    border-bottom: 2px solid;
+    background-color: #EFEFEF;
+    border-color: #EFEFEF;
+}
+
+.LayoutRight .OverviewArea .DemoPageControl .dxtc-tab {
+    background-color: #EFEFEF;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.LayoutRight .OverviewArea .DemoPageControl .dxtc-spacer {
+    width: 2px;
+}
+
+.LayoutRight .Inner .Description .DemoPageControl .dxtc-text {
+    color: #7D7D7D;
+}
+
+.LayoutRight .Inner .Description .DemoPageControl .dxtc-activeTab .dxtc-text {
+    color: #333333;
+}
+
+.LayoutRight .Inner .OverviewArea .DemoPageControl {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.LayoutRight .OverviewArea .CodeBlock {
+    padding: 20px 20px 4px;
+    background-color: #EFEFEF;
+}
+
+.LayoutRight .OverviewArea .DemoPageControl .CodeBlock {
+    height: 180px;
+    overflow: auto;
+}
+
+.LayoutRight .OverviewArea .DemoPageControl .dxtc-content {
+    padding: 0;
+}
+
+/* Right Footer */
+.LayoutRight .FooterInner,
+.LayoutLeft .FooterInner {
+    font-size: 12px;
+}
+
+    .LayoutRight .FooterInner .Slogan {
+        font-size: 16px;
+        margin-bottom: 9px;
+        margin-top: 10px;
+    }
+
+.RootIntro {
+    width: 1090px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+    .RootIntro .Header {
+        font-size: 24px;
+        font-weight: lighter;
+        color: #7b7b7b;
+        margin: 30px 0 30px 0;
+        display: inline-block;
+    }
+
+        .RootIntro .Header h1 {
+            color: #131313;
+            font-size: 60px;
+            font-weight: lighter;
+        }
+
+    .RootIntro .Search {
+        width: 270px;
+        margin: 0 auto 40px auto;
+    }
+
+    .RootIntro .ProductsView {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+        .RootIntro .ProductsView.Small td.dxdvCtrl {
+            padding: 0;
+        }
+
+        .RootIntro .ProductsView .Product {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+            text-align: center;
+            color: #5c5c5c;
+            overflow: hidden;
+        }
+
+        .RootIntro .ProductsView.Large .Product {
+            width: 275px;
+            height: 290px;
+            display: inline-block;
+            margin: 0 40px 0 40px;
+            vertical-align: top;
+        }
+
+        .RootIntro .ProductsView.Large.Row4 {
+            width: 1115px;
+            margin-left: -37px;
+        }
+
+            .RootIntro .ProductsView.Large.Row4 .Product {
+                margin: 0;
+            }
+
+        .RootIntro .ProductsView.Small .Product {
+            background: transparent;
+            border: 0;
+            padding: 0;
+            height: auto;
+        }
+
+        .RootIntro .ProductsView .Product .ProductWrapper {
+            width: 230px;
+            padding-bottom: 5px;
+        }
+
+        .RootIntro .ProductsView .Product .SmallScreenshotShadow {
+            background-color: white;
+            border: #CBCBCB solid 1px;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            padding: 4px;
+            width: 180px;
+            height: 110px;
+            margin: 0 auto;
+        }
+
+        .RootIntro .ProductsView .Product h3 {
+            font-size: 18px;
+            font-weight: lighter;
+            margin-bottom: 6px;
+        }
+
+        .RootIntro .ProductsView.Large {
+            margin-bottom: 14px;
+        }
+
+            .RootIntro .ProductsView.Large .Product h3 {
+                font-size: 30px;
+                font-weight: lighter;
+                margin-bottom: 10px;
+            }
+
+
+        .RootIntro .ProductsView .Product h3 a {
+            color: #5c5c5c;
+            text-decoration: none;
+        }
+
+        .RootIntro .ProductsView.Large .Product .SmallScreenshotShadow {
+            width: 250px;
+            height: 138px;
+        }
+
+        .RootIntro .ProductsView.Large .Product .Description {
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+.ErrorContainer {
+    background-color: #F7F7F7;
+    border: 1px solid #DBDBDB;
+    margin: 100px auto;
+    padding: 46px 58px 46px 58px;
+    width: 663px;
+}
+
+    .ErrorContainer .MainMessage {
+        font-size: 24px;
+    }
+
+    .ErrorContainer .Details {
+        font-size: 16px;
+        margin-top: 35px;
+        margin-bottom: 10px;
+    }
+
+        .ErrorContainer .Details p {
+            margin-bottom: 12px;
+        }
+
+    .ErrorContainer .ProductsView {
+        margin: 0px;
+        margin-bottom: 24px;
+        width: 720px;
+    }
+
+        .ErrorContainer .ProductsView td {
+            padding: 0px;
+        }
+
+        .ErrorContainer .ProductsView .Product {
+            background: none;
+            border-style: none;
+            padding-top: 8px;
+            height: 16px;
+        }
+
+        .ErrorContainer .ProductsView .EmptyProduct {
+            height: 16px;
+            width: 285px;
+        }
+
+        .ErrorContainer .ProductsView a {
+            text-decoration: none;
+        }
+
+/* Utils */
+.Separator {
+    height: 2px;
+    background: #e0e0e0;
+}
+
+    .Separator.Orange {
+        background: #018522;
+    }
+
+    .Separator.Vertical {
+        width: 1px;
+    }
+
+.SocfinLogoImage {
+    background-position: 0 0px;
+    width: 100px;
+    height: 50px;
+}
+
+
+.TextContent p,
+.TextContent ul li,
+.TextContent ol li,
+.TextContent code {
+    margin-bottom: 10px;
+}
+
+.TextContent ul,
+.TextContent ol {
+    list-style: outside;
+    padding: 0;
+    margin-left: 32px;
+}
+
+.TextContent ul {
+    list-style-type: disc;
+}
+
+.TextContent ol {
+    list-style-type: decimal;
+}
+
+.TextContent a {
+    color: #f28022;
+    text-decoration: none;
+}
+
+    .TextContent a:hover {
+        text-decoration: underline;
+    }
+
+.TextContent .SeeAlso {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Demo pages */
+
+#DemoArea h1 {
+    font-size: 24px;
+}
+
+#DemoArea h2 {
+    font-size: 20px;
+}
+
+#DemoArea h3 {
+    font-size: 18px;
+}
+
+#DemoArea h4 {
+    font-size: 16px;
+}
+
+#DemoArea h5 {
+    font-size: 14px;
+}
+
+#DemoArea h6 {
+    font-size: 13px;
+}
+
+#DemoArea p {
+    margin-bottom: 10px;
+}
+
+/* Event monitor */
+
+.EventLogPanel {
+    clear: both;
+    float: left;
+    padding: 0 10px 0 0;
+}
+
+.EventListPanel {
+    line-height: 200%;
+    float: left;
+    white-space: nowrap;
+}
+
+    .EventListPanel input {
+        vertical-align: middle;
+    }
+
+
+#EventLog,
+.EventLog {
+    background-color: White;
+    border: solid 1px #9d9d9d;
+    color: Black;
+    font-family: Tahoma, Sans-Serif;
+    font-size: 11px;
+    overflow: auto;
+    padding: 5px;
+    width: 550px;
+    height: 200px;
+    margin-bottom: 8px;
+}
+
+/* UploadedFilesContainer */
+.uploadedFilesContainer {
+    width: 100%;
+    table-layout: fixed;
+}
+
+    .uploadedFilesContainer > tbody > tr > td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .uploadedFilesContainer .sizeCell {
+        text-align: right;
+    }
+
+/* ThemeSelector */
+.ThemeSelectorPopup {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+    .ThemeSelectorPopup .dxpc-content {
+        padding: 0 !important;
+        font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+        color: #3c3c3c;
+    }
+
+    .ThemeSelectorPopup .ContainerTopBorder {
+        float: left;
+        width: 311px;
+        height: 2px;
+        overflow: hidden;
+        padding: 8px 0 0 0;
+        margin: 39px -10px -2px 8px;
+    }
+
+    .ThemeSelectorPopup .TopBorder {
+        float: left;
+        width: 316px;
+        height: 1px;
+        border-top: 1px solid #b0b0b0;
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.345);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.345);
+    }
+
+    .ThemeSelectorPopup .ButtonWrapper {
+        overflow: hidden;
+        padding: 8px 10px 0 10px;
+        float: right;
+    }
+
+        .ThemeSelectorPopup .ButtonWrapper .ThemeButtonBorder {
+            border: 1px solid #b0b0b0;
+            border-bottom-width: 0;
+            width: 136px;
+            height: 40px;
+        }
+
+    .ThemeSelectorPopup .ButtonWrapperBtmBorder {
+        position: absolute;
+        width: 136px;
+        height: 1px;
+        background-color: white;
+        z-index: 1000;
+        top: 48px;
+        left: 321px;
+    }
+
+    .ThemeSelectorPopup .ContainerWrapper {
+        padding: 0 10px 20px 10px;
+        overflow: hidden;
+        width: 448px;
+        display: inline-block;
+        margin-top: -1px;
+    }
+
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer {
+            background-color: white;
+            border: 1px solid #b0b0b0;
+            -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+            padding: 17px 25px;
+            clear: both;
+            height: 350px; /* for IE7 */
+        }
+
+            .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeColumnLeft {
+                width: 170px;
+                float: left;
+            }
+
+            .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeColumnRight {
+                float: right;
+                width: 160px;
+            }
+
+
+            .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroup {
+                color: #999999;
+                font-size: 14px;
+                margin: 10px 0 5px 0;
+            }
+
+            .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu {
+                background-color: transparent !important;
+                border: 0 !important;
+                padding: 0 !important;
+            }
+
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-item,
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-hover,
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-selected,
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-content {
+                    background-color: transparent !important;
+                    border: 0 !important;
+                    padding: 0 !important;
+                    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+                    color: #3c3c3c;
+                }
+
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .ThemeIco {
+                    vertical-align: middle;
+                    margin: 1px 7px 3px 2px;
+                    display: inline-block;
+                    width: 40px;
+                    height: 19px;
+                    padding: 1px;
+                    zoom: 1;
+                    *display: inline;
+                }
+
+                .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-selected .ThemeIco {
+                    border: #018522 solid 2px;
+                    margin: -1px 4px 1px 0;
+                }
+
+/* Themes*/
+.Theme,
+.ThemeDevEx,
+.ThemeMetropolis,
+.ThemeMetropolisBlue,
+.ThemeModerno,
+.ThemeOffice2010Blue,
+.ThemeOffice2010Black,
+.ThemeOffice2010Silver,
+.ThemeOffice2003Blue,
+.ThemeOffice2003Olive,
+.ThemeOffice2003Silver,
+.ThemeAqua,
+.ThemeMulberry,
+.ThemeGlass,
+.ThemeBlackGlass,
+.ThemePlasticBlue,
+.ThemeRedWine,
+.ThemeSoftOrange,
+.ThemeYouthful {
+    width: 40px;
+    height: 19px;
+    display: inline-block;
+}
+
+.Theme {
+    background-color: #DCDCDC;
+}
+
+.ThemeDevEx {
+    background-color: #CDCCF5;
+}
+
+.ThemeMetropolis {
+    background-color: #7F7F7F;
+}
+
+.ThemeMetropolisBlue {
+    background-color: #0072C6;
+}
+
+.ThemeModerno {
+    background-color: #1279c0;
+}
+
+.ThemeOffice2010Blue {
+    background-color: #B5CCE5;
+}
+
+.ThemeOffice2010Black {
+    background-color: #474747;
+}
+
+.ThemeOffice2010Silver {
+    background-color: #E7EAEF;
+}
+
+.ThemeOffice2003Blue {
+    background-color: #B5CEF2;
+}
+
+.ThemeOffice2003Olive {
+    background-color: #D4DEB6;
+}
+
+.ThemeOffice2003Silver {
+    background-color: #D1D1E0;
+}
+
+.ThemeAqua {
+    background-color: #96B9EC;
+}
+
+.ThemeMulberry {
+    background-color: #BF4E6A;
+}
+
+.ThemeGlass {
+    background-color: #C8DDE8;
+}
+
+.ThemeBlackGlass {
+    background-color: #4D5A63;
+}
+
+.ThemePlasticBlue {
+    background-color: #5066B3;
+}
+
+.ThemeRedWine {
+    background-color: #8A0E3C;
+}
+
+.ThemeSoftOrange {
+    background-color: #F06F30;
+}
+
+.ThemeYouthful {
+    background-color: #9CC524;
+}
+
+/* Search box */
+.Search {
+    margin-top: 49px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+    .Search .SearchBox {
+        float: left;
+        border: 0;
+    }
+
+        .Search .SearchBox .dxeEditAreaSys {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+        }
+
+    .Search .Pic {
+        float: left;
+        width: 13px;
+        height: 13px;
+        background-position: -40px -37px;
+        margin: 5px 6px;
+    }
+
+/* Search Popup */
+.SearchPopup .dxpc-mainDiv,
+td.SearchPopup {
+    background-color: white;
+    border: 1px solid #c6c6c6 !important;
+}
+
+.SearchPopup .dxpc-content {
+    min-height: 50px;
+    padding: 0 !important;
+}
+
+.SearchPopup .ResultsPanel {
+    padding: 5px 1px;
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-bottom: 3px;
+}
+
+    .SearchPopup .ResultsPanel .ResultsNavBar {
+        margin: 1px 0 0 0;
+        padding: 0;
+        font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+        color: #3c3c3c;
+    }
+
+        .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-gr {
+            padding-bottom: 16px;
+            margin-bottom: 0;
+        }
+
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-gr.dxnb-last {
+                padding-bottom: 5px;
+            }
+
+        .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-content {
+            background: none;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header {
+            background: none;
+            border: 0;
+            padding: 4px 11px;
+        }
+
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header,
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header a {
+                color: #999999;
+                text-decoration: none;
+                font-weight: normal;
+            }
+
+        .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item {
+            padding: 0px 12px 1px 12px;
+            margin: 1px 0;
+            font-size: 12px;
+            line-height: 110%;
+        }
+
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemHover,
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemSelected {
+                background-color: #018522;
+                border-color: transparent;
+            }
+
+                .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemHover a,
+                .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemSelected a {
+                    color: white;
+                }
+
+            .SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item a {
+                color: #323232;
+                text-decoration: none;
+            }
+
+
+    .SearchPopup .ResultsPanel .dxm-item.dxm-hovered {
+        background-color: #018522;
+    }
+
+        .SearchPopup .ResultsPanel .dxm-item.dxm-hovered a {
+            color: white;
+        }
+
+.SearchPopup .NoResultsPanel {
+    padding: 10px;
+}
+
+.SearchLoadingPanel {
+    background: White;
+    width: 120px;
+    height: 40px;
+    border: #c6c6c6 solid 1px;
+}
+
+    .SearchLoadingPanel .dx {
+        padding: 5px 5px 3px 5px;
+    }
+
+/* Loading DIV */
+.LoadingDiv {
+    background-color: white;
+    opacity: 0.9 !important;
+}
+
+/* Aux */
+
+.Clear {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    width: 1px;
+    height: 0;
+}
+
+.LeftPadding {
+    padding-left: 12px;
+}
+
+.TopPadding {
+    padding-top: 6px;
+}
+
+.BottomPadding {
+    padding-bottom: 6px;
+}
+
+.AlignCenter {
+    margin: 0 auto;
+}
+
+.TopMargin {
+    margin-top: 6px;
+}
+
+.BottomMargin {
+    margin-bottom: 6px;
+}
+
+.TopLargeMargin {
+    margin-top: 16px;
+}
+
+.BottomLargeMargin {
+    margin-bottom: 16px;
+}
+
+.Note {
+    margin: 10px 0;
+}
+
+div.Spacer {
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+
+.NoWrap {
+    white-space: nowrap;
+}
+
+.NoBorder {
+    border-style: none !important;
+}
+
+.OptionsTable > tbody > tr > td {
+    padding: 2px 8px 2px 0;
+}
+
+    .OptionsTable > tbody > tr > td.edit {
+        padding-right: 18px;
+    }
+
+.helplink {
+    font-weight: bold;
+}
+
+.fullscreenlinksContainer {
+    line-height: 2em;
+    text-align: center;
+    width: 100%;
+}
+
+    .fullscreenlinksContainer > span {
+        font-size: 1.1em !important;
+        width: 540px;
+        display: inline-block;
+    }
+
+    .fullscreenlinksContainer .links {
+        margin: 20px auto;
+        width: 840px;
+    }
+
+    .fullscreenlinksContainer .link {
+        margin: 0 12px;
+        float: left;
+    }
+
+        .fullscreenlinksContainer .link > a {
+            display: inline-block;
+        }
+
+.qrcode {
+    background-color: white;
+    display: inline-block;
+    width: 82px;
+    height: 82px;
+    padding: 28px 32px;
+}
+
+    .qrcode img {
+        border: 1px solid #c3c3c3;
+        padding: 2px;
+        width: 82px;
+        height: 82px;
+    }
+
+.report-parameters-panel {
+    float: left;
+    width: 260px;
+    margin-left: 10px;
+}
+
+.report-with-parameters {
+    float: left;
+}
+
+.grid-with-updown {
+    float: left;
+}
+
+.updown-buttons {
+    float: left;
+    margin-left: 20px;
+}
+
+.arrowUp {
+    background-image: url(../Content/Images/ArrowUp.gif);
+    width: 20px;
+    height: 20px;
+}
+
+.arrowUpDisabled {
+    background-image: url(../Content/Images/ArrowUpDisabled.gif);
+    width: 20px;
+    height: 20px;
+}
+
+.arrowUpHottracked {
+    background-position: -20px 0px;
+}
+
+.arrowUpPressed {
+    background-position: -40px 0px;
+}
+
+.arrowDown {
+    background-image: url(../Content/Images/ArrowDown.gif);
+    width: 20px;
+    height: 20px;
+}
+
+.arrowDownDisabled {
+    background-image: url(../Content/Images/ArrowDownDisabled.gif);
+    width: 20px;
+    height: 20px;
+}
+
+.arrowDownHottracked {
+    background-position: -20px 0px;
+}
+
+.arrowDownPressed {
+    background-position: -40px 0px;
+}
+
+.validation-summary-errors {
+    color: #ff0000;
+}
+
+    .validation-summary-errors ul {
+        padding-left: 0;
+    }
+
+.error-modal, .error-transfert {
+    display: none;
+    color: red;
+}
+
+.button {
+    margin-top: 10px
+}
+
+.button-gauche {
+    margin-right: 10px
+}
+
+.glyphicon-green {
+    color: #5A8B3C
+}
+
+.glyphicon-orange {
+    color: #f28022
+}
+
+.glyphicon-left-margin {
+    margin-left: 4px
+}
+
+.formLayoutLabel {
+    font-weight: 700;
+    padding: 0 !important;
+}
+
+.field-validation-error {
+    color: red
+}
+
+.transfert-table {
+    padding-top: 12px
+}
+
+    .transfert-table:nth-child(2) {
+        padding: 12px 30px 0 30px;
+        vertical-align: top
+    }
+
+.pointer {
+    cursor: pointer
+}
+
+.requiredField {
+    border: solid 2px #ff0000;
+}
+
+#gridTravailleurOperation {
+    margin-top: 10px
+}
+
+.exportToolbarCaption {
+    height: 38px;
+    padding: 0 6px 0 6px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: default;
+}
+
+#bloc-list {
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
+    padding-top: 13px;
+    padding-left: 30px;
+}
+
+.bloc-list-title {
+    float: left;
+}
+
+.bloc-list-refresh {
+    float: right;
+    font-size: large;
+    cursor: pointer;
+}
+
+/*
+    Added by Brice for top Menu
+*/
+
+.TopMenu {
+    padding: 10px 16px;
+    color: #f1f1f1;
+    border-bottom: 2px double #006A00;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 8px 6px -6px #323232;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+}
+
+    .TopMenu .Inner .Header {
+        height: 60px;
+    }
+
+        .TopMenu .Inner .Header .Buttons {
+            padding-top: 10px;
+            float: right;
+        }
+
+            .TopMenu .Inner .Header .Buttons .LogoutForm,
+            .TopMenu .Inner .Header .Buttons .LogoutForm a {
+                display: inline-block;
+                vertical-align: top;
+                float: left;
+            }
+
+                .TopMenu .Inner .Header .Buttons .LogoutForm a {
+                    margin-top: 15px;
+                }
+
+                .TopMenu .Inner .Header .Buttons .LogoutForm .LogoutButton,
+                .TopMenu .Inner .Header .Buttons .LoginButton,
+                .TopMenu .Inner .Header .Buttons .BuyButton {
+                    font-size: 13px;
+                    color: #006A00;
+                    text-decoration: none;
+                    margin-right: 0px;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-top: 15px;
+                    float: left;
+                }
+
+                    .TopMenu .Inner .Header .Buttons .BuyButton .Icon {
+                        width: 28px;
+                        height: 28px;
+                        vertical-align: middle;
+                        margin-top: -5px;
+                    }
+
+            .TopMenu .Inner .Header .Buttons .LogoutButton .Icon {
+                width: 27px;
+                height: 26px;
+                vertical-align: middle;
+                margin-top: -5px;
+                background-position: -32px 0;
+            }
+
+            .TopMenu .Inner .Header .Buttons .LoginButton .Icon {
+                width: 28px;
+                height: 26px;
+                vertical-align: middle;
+                margin-top: -5px;
+                background-position: -90px -68px;
+            }
+
+            .TopMenu .Inner .Header .Buttons .BuyButton .Icon {
+                background-position: 0 0;
+            }
+
+            .TopMenu .Inner .Header .Buttons .Logo {
+                vertical-align: top;
+                display: inline-block;
+                margin-top: -11px;
+                float: left;
+            }
+
+            .TopMenu .Inner .Header .Buttons .LogoutForm .Separator.Vertical,
+            .TopMenu .Inner .Header .Buttons .Separator.Vertical {
+                height: 46px;
+                float: left;
+                display: inline-block;
+                margin-left: 15px;
+                margin-right: 10px;
+            }
+
+    .TopMenu .Inner .ThemeButton {
+        display: inline-block;
+        font-size: 16px;
+        color: #018522;
+        text-decoration: none;
+        vertical-align: top;
+        float: right;
+        margin-top: 20px;
+    }
+
+        .TopMenu .Inner .ThemeButton .Icon {
+            width: 28px;
+            height: 28px;
+            background-position: -62px 0;
+            vertical-align: middle;
+            margin-top: -5px;
+        }
+
+        .TopMenu .Inner .ThemeButton .Glyph {
+            width: 9px;
+            height: 5px;
+            background-position: -62px -36px;
+            vertical-align: middle;
+            margin-left: 2px;
+            margin-top: -2px;
+        }
+
+    .TopMenu .Inner .SectionTitle {
+        float: left;
+        margin: 19px 0 20px 0;
+    }
+
+        .TopMenu .Inner .SectionTitle span.SectionNavigationTitle {
+            font-size: 14px;
+            color: #848484;
+            margin: 0 0 5px 0;
+        }
+
+        .TopMenu .Inner .SectionTitle span {
+            font-weight: lighter;
+            font-size: 30px;
+            color: #3c3c3c;
+            margin-top: -8px;
+            margin-left: -2px;
+            display: block;
+        }
+
+    /* Intro Area */
+    .TopMenu .Inner .IntroArea {
+        margin-top: 49px;
+    }
+
+        .TopMenu .Inner .IntroArea .Banner.Featured {
+            margin-top: 45px;
+        }
+
+        .TopMenu .Inner .IntroArea .Banner .LeftArea {
+            text-align: center;
+            width: 240px;
+        }
+
+            .TopMenu .Inner .IntroArea .Banner .LeftArea a.BannerLink {
+                text-decoration: none;
+                color: #2e45a6;
+                margin-top: 10px;
+                display: inline-block;
+                font-size: 14px;
+            }
+
+            .TopMenu .Inner .IntroArea .Banner .LeftArea .SmallScreenshotShadow {
+                background-color: white;
+                border: #CBCBCB solid 1px;
+                -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                padding: 4px;
+                width: 230px;
+                height: 150px;
+            }
+
+            .TopMenu .Inner .IntroArea .Banner .LeftArea .VideoButton {
+                margin: -125px auto 0 auto;
+                display: block;
+            }
+
+            .TopMenu .Inner .IntroArea .Banner .LeftArea .VideoFrame {
+                width: 230px;
+                height: 150px;
+                display: inline-block;
+            }
+
+        .TopMenu .Inner .IntroArea .Banner .RightArea {
+            width: 642px;
+            padding-left: 38px;
+            font-size: 16px;
+            color: #727272;
+        }
+
+            .TopMenu .Inner .IntroArea .Banner .RightArea h1 {
+                font-size: 48px;
+                line-height: 52px;
+                font-weight: lighter;
+                color: #3c3c3c;
+                margin-top: -10px;
+                margin-bottom: 14px;
+            }
+
+            .TopMenu .Inner .IntroArea .Banner .RightArea h3 {
+                font-size: 24px;
+                font-weight: lighter;
+                color: #3c3c3c;
+                margin-bottom: 5px;
+            }
+
+            .TopMenu .Inner .IntroArea .Banner .RightArea .SeeDemo {
+                color: #244db5;
+                text-decoration: none;
+                display: block;
+                font-size: 14px;
+                margin-top: 6px;
+            }
+
+        .TopMenu .Inner .IntroArea .Banner.Featured .RightArea {
+            font-size: 14px;
+        }
+
+        .TopMenu .Inner .IntroArea .FeaturesHeader {
+            margin-top: 42px;
+            color: #8c8c8c;
+            text-align: right;
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+            .TopMenu .Inner .IntroArea .FeaturesHeader .Separator {
+                height: 1px;
+                margin-top: 4px;
+            }
+
+    /* Demo */
+    .TopMenu .Inner .DemoPageControl {
+        margin-top: 50px;
+    }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-content {
+            border: none;
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+            padding: 25px 0 0 0;
+        }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-activeTab .dxtc-text,
+        .TopMenu .Inner .DemoPageControl .dxtc-tab .dxtc-text {
+            font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #3c3c3c;
+        }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-activeTab .dxtc-text {
+            color: #018522;
+        }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-activeTab,
+        .TopMenu .Inner .DemoPageControl .dxtc-tab,
+        .TopMenu .Inner .DemoPageControl .dxtc-rightIndent,
+        .TopMenu .Inner .DemoPageControl .dxtc-spacer {
+            height: 29px;
+            border: #e0e0e0 1px solid;
+        }
+
+            .TopMenu .Inner .DemoPageControl .dxtc-tab .dxtc-link {
+                padding: 7px 10px 0 10px;
+            }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-activeTab {
+            border-bottom: none;
+        }
+
+            .TopMenu .Inner .DemoPageControl .dxtc-activeTab .dxtc-link {
+                padding: 6px 9px 0 9px;
+            }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-tab,
+        .TopMenu .Inner .DemoPageControl .dxtc-rightIndent,
+        .TopMenu .Inner .DemoPageControl .dxtc-spacer {
+            background-color: transparent;
+            border-width: 0 0 1px 0;
+        }
+
+        .TopMenu .OverviewArea .DemoPageControl .dxtc-spacer,
+        .TopMenu .Inner .DemoPageControl .dxtc-sbWrapper,
+        .TopMenu .Inner .DemoPageControl .dxtc-sbSpacer,
+        .TopMenu .Inner .DemoPageControl .dxtc-sbIndent {
+            border: 0;
+        }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-sbWrapper {
+            height: 30px;
+        }
+
+        .TopMenu .OverviewArea .DemoPageControl .dxtc-rightIndent,
+        .TopMenu .OverviewArea .DemoPageControl .dxtc-leftIndent,
+        .TopMenu .Inner .DemoPageControl .dxtc-sbIndent {
+            width: 0;
+        }
+
+        .TopMenu .Inner .DemoPageControl .dxtc-sb {
+            border: 0;
+            padding: 5px 0;
+            background-color: transparent;
+        }
+
+            .TopMenu .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft {
+                width: 20px;
+                height: 20px;
+                background-position: -0px -53px;
+                margin-right: 5px;
+            }
+
+                .TopMenu .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft.dxWeb_tcScrollLeftDisabled {
+                    background-position: -0px -75px;
+                }
+
+            .TopMenu .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight {
+                width: 20px;
+                height: 20px;
+                background-position: -25px -53px;
+                margin-left: 5px;
+            }
+
+                .TopMenu .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight.dxWeb_tcScrollRightDisabled {
+                    background-position: -25px -75px;
+                }
+
+        /* Code Viewer */
+        .TopMenu .Inner .DemoPageControl .NewWinLink {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 5px;
+        }
+
+    .TopMenu .Inner .CodeBlock {
+        overflow: auto;
+        font-family: 'Courier New', Courier, 'Nimbus Mono L', monospace;
+    }
+
+    .TopMenu .Inner .DemoArea .DemoPageControl .CodeBlock {
+        height: 600px;
+        width: 100%;
+    }
+
+    .TopMenu .Inner .CodeBlock.ASPX .NotHighlightedBlock {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=40);
+        opacity: 0.4;
+    }
+
+.dxMacOSMobilePlatform .TopMenu .Inner .CodeBlock.ASPX .NotHighlightedBlock {
+    opacity: 0.2;
+}
+
+.TopMenu .OverviewArea .LeftArea {
+    padding-right: 10px;
+    width: 100%;
+}
+
+.TopMenu .OverviewArea .Title {
+    display: inline-block;
+    font-weight: lighter;
+    margin-bottom: 11px;
+    margin-top: -8px;
+    font-size: 24px;
+}
+
+.TopMenu .Inner .OverviewArea .DemoPageControl ul,
+.TopMenu .Inner .OverviewArea .DemoPageControl li {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.TopMenu .OverviewArea .DemoPageControl .dxtc-activeTab {
+    border-bottom: 2px solid;
+    background-color: #EFEFEF;
+    border-color: #EFEFEF;
+}
+
+.TopMenu .OverviewArea .DemoPageControl .dxtc-tab {
+    background-color: #EFEFEF;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.TopMenu .OverviewArea .DemoPageControl .dxtc-spacer {
+    width: 2px;
+}
+
+.TopMenu .Inner .Description .DemoPageControl .dxtc-text {
+    color: #7D7D7D;
+}
+
+.TopMenu .Inner .Description .DemoPageControl .dxtc-activeTab .dxtc-text {
+    color: #333333;
+}
+
+.TopMenu .Inner .OverviewArea .DemoPageControl {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.TopMenu .OverviewArea .CodeBlock {
+    padding: 20px 20px 4px;
+    background-color: #EFEFEF;
+}
+
+.TopMenu .OverviewArea .DemoPageControl .CodeBlock {
+    height: 180px;
+    overflow: auto;
+}
+
+.TopMenu .OverviewArea .DemoPageControl .dxtc-content {
+    padding: 0;
+}
+
+/* Right Footer */
+.TopMenu .FooterInner {
+    font-size: 12px;
+}
+
+    .TopMenu .FooterInner .Slogan {
+        font-size: 16px;
+        margin-bottom: 9px;
+        margin-top: 10px;
+    }
+
+.TopMenu .MenuButton {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    background-image: url(menu.png);
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.TopMenu .MenuButton:hover {
+
+}
+
+/*small-box*/
+.small-box {
+    border-radius: .25rem;
+    box-shadow: 0 0 1px rgba(0,0,0,.125),0 1px 3px rgba(0,0,0,.2);
+    display: block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    position: relative;
+    height:100px;   
+}
+.small-box .icon {
+    color: rgba(0,0,0,.15);
+    z-index: 0;
+}
+    .small-box .icon > i.ion {
+        font-size: 70px;
+        top: 20px;
+    }
+
+    .small-box .icon > i {
+        font-size: 90px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        transition: all .3s linear;
+    }
+
+    .small-box > .small-box-footer {
+        background: rgba(0,0,0,.1);
+        color: rgba(255,255,255,.8);
+        display: block;
+        padding: 3px 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        z-index: 10;
+        bottom:0;
+    }
+
+.bg-info, .bg-info > a {
+    color: #fff !important;
+}
+.bg-info, .bg-info > a {
+    color: #fff !important;
+}
+
+.bg-info {
+    background-color: #17a2b8 !important;
+}

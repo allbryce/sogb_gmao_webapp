@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="btnAddTooltip" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="btnAfficher" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="btnClose" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="btnDeleteHistoryNotAuthorised" xml:space="preserve">
+    <value>L'historique ne peut pas être supprimé.</value>
+  </data>
+  <data name="btnDeleteIsUsed" xml:space="preserve">
+    <value>Suppression non autorisée. Des données sont attachées.</value>
+  </data>
+  <data name="btnDeleteTooltip" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="btnEditHistoryNotAuthorised" xml:space="preserve">
+    <value>L'historique ne peut pas être modifié.</value>
+  </data>
+  <data name="btnEditIsUsed" xml:space="preserve">
+    <value>Modification non autorisée. Des données sont attachées.</value>
+  </data>
+  <data name="btnEditTooltip" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="btnMoveDown" xml:space="preserve">
+    <value>Descendre</value>
+  </data>
+  <data name="btnMoveUp" xml:space="preserve">
+    <value>Monter</value>
+  </data>
+  <data name="btnRejeter" xml:space="preserve">
+    <value>Rejeter</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="btnTooltipNotAuthorised" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé à effectuer cette action.</value>
+  </data>
+  <data name="btnUpdate" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="btnValider" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="confirmDelete" xml:space="preserve">
+    <value>Voulez-vous supprimer cet enregistrement ?</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="errorChampRequis" xml:space="preserve">
+    <value>Un ou plusieurs champs obligatoires n'ont pas été renseignés.</value>
+  </data>
+  <data name="errorDataInaccessible" xml:space="preserve">
+    <value>Vous ne disposez pas des autorisations requises pour ces données.</value>
+  </data>
+  <data name="errorGeneralError" xml:space="preserve">
+    <value>Une erreure est survenue.</value>
+  </data>
+  <data name="errorSiteInaccessible" xml:space="preserve">
+    <value>Vous ne disposez pas des autorisations requises pour ce site.</value>
+  </data>
+  <data name="Ici" xml:space="preserve">
+    <value>ici</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+  <data name="NotAuthorised" xml:space="preserve">
+    <value>Vous n'êtes pas autorisé à effectuer cette action.</value>
+  </data>
+  <data name="Rejete" xml:space="preserve">
+    <value>Rejeté</value>
+  </data>
+  <data name="Retirer" xml:space="preserve">
+    <value>Retirer</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="Valide" xml:space="preserve">
+    <value>Validé</value>
+  </data>
+  <data name="errorDeleteRecordUsed" xml:space="preserve">
+    <value>Cet enregistrement est utilisé et ne peut pas être supprimée.</value>
+  </data>
+  <data name="btnDelete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="btnConsulter" xml:space="preserve">
+    <value>Consulter</value>
+  </data>
+  <data name="btnRepartir" xml:space="preserve">
+    <value>Répartir</value>
+  </data>
+  <data name="btnGenerer" xml:space="preserve">
+    <value>Générer</value>
+  </data>
+  <data name="lblPrevision" xml:space="preserve">
+    <value>Prévisions</value>
+  </data>
+  <data name="lblCritere" xml:space="preserve">
+    <value>Critères de sélection</value>
+  </data>
+  <data name="btnDupliquer" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="btnSupprimer" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="filterMinLength" xml:space="preserve">
+    <value>Veuillez saisir au minimum {0} caratères</value>
+  </data>
+  <data name="lblExportTo" xml:space="preserve">
+    <value>Exporter en {0}</value>
+  </data>
+  <data name="lblLoading" xml:space="preserve">
+    <value>Chargement en cours...</value>
+  </data>
+  <data name="Aucun" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
+  <data name="btnCancel1" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="btnValider1" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="confirmEcart" xml:space="preserve">
+    <value>Vous avez un écart de </value>
+  </data>
+  <data name="confirmValidation" xml:space="preserve">
+    <value>Voulez-vous continuer ?</value>
+  </data>
+  <data name="btnImporter" xml:space="preserve">
+    <value>Importer</value>
+  </data>
+  <data name="Commentaire" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="Repartition" xml:space="preserve">
+    <value>Repartition</value>
+  </data>
+  <data name="Kilogramme" xml:space="preserve">
+    <value>(Kg)</value>
+  </data>
+  <data name="btnConfirmer" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="lblRecherche" xml:space="preserve">
+    <value>Recherche de {0}</value>
+  </data>
+</root>

@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+
+    var userSiteName = User.Identity.SocieteSite();
+    using (Html.BeginForm(SinbaConstants.Actions.LogOff, SinbaConstants.Controllers.Account, FormMethod.Post, new { @class = CssClasses.LogoutForm, id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*@Html.ActionLink(string.Format("{0}{1}\n {2}", AccountResource.LoginWelcomeText, User.Identity.GetUserName(), userSiteName), SinbaConstants.Actions.Index, SinbaConstants.Controllers.Manage, routeValues: null, htmlAttributes: new { title = AccountResource.LoginWelcomeTextTitle })*@
+        <a class=@CssClasses.LogoutButton href="">
+            <ul>
+                <li> @User.Identity.GetUserName()</li>
+                <li> @userSiteName</li>
+            </ul>
+           
+        </a>
+
+        <div class="Separator Vertical"></div>
+        <a class=@CssClasses.LogoutButton href="javascript:document.getElementById('logoutForm').submit()">
+            @Html.DevExpress().Image(s => ViewHelper.ImageEditSettings(s, "LogoutLogo", AccountResource.btnLogout)).GetHtml()
+            @AccountResource.btnLogout.ToUpper()
+        </a>
+    }
+}
+else
+{
+    <a class=@CssClasses.LoginButton href="@Url.Action(SinbaConstants.Actions.Login, SinbaConstants.Controllers.Account)">
+        @Html.DevExpress().Image(s => ViewHelper.ImageEditSettings(s, "LoginLogo", AccountResource.btnLogin)).GetHtml()
+        @AccountResource.btnLogin.ToUpper()
+    </a>
+}

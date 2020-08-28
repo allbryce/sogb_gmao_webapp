@@ -1,0 +1,68 @@
+﻿@model ProfilRight
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(Model.IdHidden < 0 ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.ProfilRight, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.HiddenFor(m => m.IdHidden);
+    @Html.Hidden(DbColumns.IdProfil);
+    
+    @Html.DevExpress().FormLayout(settings => 
+    {
+        settings.Name = "profilRightFormLayout";
+
+        // Code
+        if(Model.IdHidden < 0)
+        {
+            settings.Items.Add(m => m.CodeFonction, comboBox =>
+            {
+                ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                dataSource: ViewBag.FonctionList,
+                textField: DbColumns.Code,
+                valueField: DbColumns.Code);
+
+                ComboBoxSettings s = (ComboBoxSettings)comboBox.NestedExtensionSettings;
+                s.Name = DbColumns.CodeFonction;
+                s.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) { Actions.PerformCallback(); }";
+            });
+        }
+        else
+        {
+            settings.Items.Add(m => m.CodeFonction, label =>
+                {
+                    ViewHelper.FormLayoutLabelSettings(label);
+                });
+        }
+
+        settings.Items.Add(m => m.ActionsToken, s =>
+        {
+            s.Caption = ResourceNames.Entity.Actions;
+            s.CssClass = CssClasses.FormLayoutLabel;
+            s.SetNestedContent(() =>
+            {
+                Html.RenderPartial(ViewNames.ActionsFonctionPartial, Model);
+            });
+        });
+
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    text: Model.IdHidden < 0 ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.ProfilRight,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+        
+    }).GetHtml()
+}

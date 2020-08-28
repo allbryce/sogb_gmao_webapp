@@ -1,0 +1,89 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gridFonction";
+        settings.KeyFieldName = DbColumns.Code;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Fonction, Action = SinbaConstants.Actions.ListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+        // Setting for row detail
+        settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
+        settings.SettingsDetail.ShowDetailRow = true;
+
+        // Buttons column: Add, Edit, Delete
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(57);
+            column.Caption = Strings.NumberSign;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+                    // Button Edit
+                    (bool)ViewBag.CanEdit ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Edit, null, new { code = DataBinder.Eval(c.DataItem, DbColumns.Code) },
+                            new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip }) :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+                    // Button Delete
+                    (bool)DataBinder.Eval(c.DataItem, DbColumns.IsUsed) ?
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnDeleteIsUsed }) :
+                        (bool)ViewBag.CanDelete ?
+                            Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { code = DataBinder.Eval(c.DataItem, DbColumns.Code) },
+                                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+                            Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    // Button Add (column header)
+                    (bool)ViewBag.CanAdd ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString() :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        });
+
+        // Code
+        settings.Columns.Add(DbColumns.Code, EntityColumnResource.Code);
+
+        // Menu
+        settings.Columns.Add(DbColumns.MenuPath, EntityColumnResource.MenuPath);
+
+        // Fonction SA
+        settings.Columns.Add(c => ViewHelper.GridViewDefaultColumn(c, SinbaRoles.SuperAdmin,
+            columnType: MVCxGridViewColumnType.CheckBox));
+
+        // Log
+        settings.Columns.Add(c => ViewHelper.GridViewDefaultColumn(c, EntityColumnResource.Log,
+            columnType: MVCxGridViewColumnType.CheckBox));
+
+        // Adding event to display row detail
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            Html.RenderAction(SinbaConstants.Actions.ActionsFonctionPartial, new { codeFonction = DataBinder.Eval(c.DataItem, DbColumns.Code) });
+        });
+
+        // Keeping grid state
+        settings.ClientLayout = (s, e) =>
+        {
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.GridStateFonction] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateFonction];
+            }
+            else
+                Session[Strings.GridStateFonction] = e.LayoutData;
+        };
+
+    }).Bind(Model).GetHtml()

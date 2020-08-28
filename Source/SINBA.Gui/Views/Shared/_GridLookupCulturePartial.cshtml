@@ -1,0 +1,46 @@
+﻿@model CultureGridLookupViewModel
+
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "CultureArray";
+    settings.ControlStyle.CssClass = CssClasses.Editor;
+    settings.CommandColumn.Caption = Strings.EmptyLink;
+    
+    settings.KeyFieldName = DbColumns.CultureID;
+    settings.Columns.Add(DbColumns.LibelleCulture);
+
+    settings.CommandColumn.Visible = true;
+    settings.CommandColumn.ShowSelectCheckbox = true;
+    settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.AllPages;
+    settings.Properties.SelectionMode = DevExpress.Web.GridLookupSelectionMode.Multiple;
+    settings.Properties.TextFormatString = "{0}";
+    settings.Properties.MultiTextSeparator = ", ";
+    settings.Properties.NullText = CommonResource.Aucun;
+    //settings.Width = Unit.Percentage(81);
+
+    
+
+    settings.GridViewProperties.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Contact, Action = SinbaConstants.Actions.GetCulture };
+    settings.GridViewProperties.Settings.ShowFilterRow = true;
+    settings.GridViewProperties.Settings.ShowStatusBar = GridViewStatusBarMode.Visible;
+    ///settings.GridViewClientSideEvents.BeginCallback = "CultureOnBeginCallback";
+
+    settings.GridViewProperties.SetStatusBarTemplateContent(c =>
+    {
+        ViewContext.Writer.Write("<div style=\"padding: 2px 8px 2px 0; float: right\">");
+        Html.DevExpress().Button(btnSettings =>
+        {
+            btnSettings.Name = Strings.btnClose + settings.Name;
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.Text = CommonResource.btnClose;
+            btnSettings.ClientSideEvents.Click = String.Format("function(){{ {0}.HideDropDown(); }}", settings.Name);
+        }).Render();
+        ViewContext.Writer.Write("</div>");
+    });
+
+    settings.DataBound = (sender, e) =>
+    {
+        var gridLookup = (MVCxGridLookup)sender;
+        gridLookup.GridView.Width = 300;
+    };
+}).BindList(Model.Liste).Bind(Model.Values).GetHtml()

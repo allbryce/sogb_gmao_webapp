@@ -1,0 +1,79 @@
+﻿
+@(Html.DevExpress().GridView<FonctionContactViewModels>
+    (settings =>
+    {
+        ViewHelper.GridViewDefaultSettings(settings,
+        "gridViewFonctionContact",
+        allowDragDrop: false,
+        allowSortResize: false,
+        showFilter: false,
+        enablePaging: false,
+        gridViewEditingMode: GridViewEditingMode.Batch);
+
+        settings.KeyFieldName = DbColumns.FonctionID;
+        settings.Settings.UseFixedTableLayout = true;
+        settings.Settings.ShowFooter = true;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Contact, Action = SinbaConstants.Actions.FonctionContactPartial };
+        settings.ClientSideEvents.BatchEditStartEditing = "OnBatchEditStartEditing";
+        //settings.ClientSideEvents.BatchEditRowValidating = "gridViewFonctionContactBatchEditRowValidating";
+
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(25);
+            column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", settings.Name, CommonResource.btnAddTooltip);
+            column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+            column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.FixedStyle = GridViewColumnFixedStyle.Left;
+
+        });
+
+        // IdCentreDeCoutSite
+        settings.Columns.Add(m => m.FonctionID, c =>
+        {
+            ViewHelper.GridViewComboBoxColumn(c,
+            width: 250,
+            valueField: DbColumns.FonctionID,
+            caption: EntityColumnResource.Fonction,
+            textField: DbColumns.LibelleFonction,
+            valueType: typeof(string),
+            dataSource: ViewBag.Fonction);
+
+        });
+
+        //Taux
+        settings.Columns.Add(m => m.ContactID, c => ViewHelper.GridViewDefaultColumn(c, caption: EntityColumnResource.ContactID, width: 0));
+        settings.Columns.Add(m => m.AutreContactID, c => ViewHelper.GridViewDefaultColumn(c, caption: EntityColumnResource.ContactID, width: 0));
+        settings.Columns.Add(m => m.DescriptionContact, column => {
+            column.Caption = EntityColumnResource.Contacts;
+            column.ReadOnly = true;
+            column.Settings.ShowEditorInBatchEditMode = false;
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains; });
+
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(50);
+            column.Caption = string.Format("<span class=\" linkbutton\"  title=\"{0}\"></span>", EntityColumnResource.Contacts);
+            column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-search linkbutton\" onclick=\"(function(s, e) {{ SelectContact(); }} )()\" title=\"{0}\"></span>",  CommonResource.btnConsulter)));
+            column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-search linkbutton\" onclick=\"(function(s, e) {{ SelectContact(); }} )()\" title=\"{0}\"></span>",  CommonResource.btnConsulter)));
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        });
+
+
+        settings.CellEditorInitialize = (s, e) =>
+        {
+            ASPxEdit editor = (ASPxEdit)e.Editor;
+            editor.ValidationSettings.Display = Display.None;
+            e.Editor.ReadOnly = false;
+        };
+
+
+    }).Bind(Model).GetHtml())
+
+

@@ -1,0 +1,74 @@
+﻿@model SinbaUser
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(string.IsNullOrWhiteSpace(Model.UserName) ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Utilisateur, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.SinbaValidationSumary()
+
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.DevExpress().FormLayout(settings =>
+    {
+        settings.Name = "utilisateurFormLayout";
+
+        // Email
+        settings.Items.Add(m => m.Email, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox,
+            caption: EntityColumnResource.Email,
+            focus: true,
+            enabled: string.IsNullOrWhiteSpace(Model.UserName),
+            maxLength: SinbaConstants.NumericValues.Length.ProfilNomMax);
+        });
+        
+        // Nom
+        settings.Items.Add(m => m.Nom, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox,
+            maxLength: SinbaConstants.NumericValues.Length.ProfilNomMax);
+        });
+
+        // Prénom
+        settings.Items.Add(m => m.Prenom, textBox =>
+        {
+            ViewHelper.FormLayoutTextBoxSettings(textBox,
+            maxLength: SinbaConstants.NumericValues.Length.ProfilNomMax);
+        });
+        
+        // Profil
+        settings.Items.Add(m => m.IdProfil, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+            caption: EntityColumnResource.Profil,
+            textField: DbColumns.Nom,
+            valueType: typeof(long),
+            dataSource: ViewBag.ProfilList));
+        
+        if(ViewBag.IsSuperAdmin)
+        {
+            settings.Items.Add(m => m.AdminSite, checkBox => ViewHelper.FormLayoutCheckBoxSetting(checkBox));
+        }
+        
+        
+        
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    text: string.IsNullOrWhiteSpace(Model.UserName) ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Utilisateur,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+
+    }).GetHtml()
+}

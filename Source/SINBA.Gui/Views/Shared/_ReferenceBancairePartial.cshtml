@@ -1,0 +1,91 @@
+﻿
+@(Html.DevExpress().GridView<ReferenceBancaire>
+    (settings =>
+    {
+        ViewHelper.GridViewDefaultSettings(settings,
+        "gridViewReferenceBancaire",
+        allowDragDrop: false,
+        allowSortResize: false,
+        showFilter: false,
+        enablePaging: false,
+        gridViewEditingMode: GridViewEditingMode.Batch);
+
+        settings.KeyFieldName = string.Format("{0};{1}", DbColumns.FournisseurID, DbColumns.DateDebutSituation);
+        settings.Settings.UseFixedTableLayout = true;
+        settings.Settings.ShowFooter = true;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Contact, Action = SinbaConstants.Actions.ReferenceBancairePartial };
+        //settings.ClientSideEvents.BatchEditStartEditing = "OnBatchEditStartEditing";
+        //settings.ClientSideEvents.BatchEditRowValidating = "gridViewReferenceBancaireBatchEditRowValidating";
+
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(25);
+            column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", settings.Name, CommonResource.btnAddTooltip);
+            column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+            column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.FixedStyle = GridViewColumnFixedStyle.Left;
+
+        });
+
+        //FournisseurID
+        settings.Columns.Add(m => m.FournisseurID, column =>
+        {
+            ViewHelper.GridViewComboBoxColumn(column,
+            width: 100,
+            valueField: DbColumns.FournisseurID,
+            caption: string.Format("{0}<br/>Fournisseur", EntityColumnResource.Code),
+            textField: DbColumns.FournisseurID,
+            valueType: typeof(string),
+            dataSource: ViewBag.Fournisseur);
+
+        });
+        //DateDebutSituation
+        settings.Columns.Add(m => m.DateDebutSituation, c => ViewHelper.GridViewDateColumn(c, caption: EntityColumnResource.DateDebut,width:100));
+        // CodeBanque
+        settings.Columns.Add(m => m.CodeBanque, c =>
+        {
+            ViewHelper.GridViewComboBoxColumn(c,
+            width: 100,
+            valueField: DbColumns.CodeBanque,
+            caption: EntityColumnResource.BanqueID,
+            textField: DbColumns.LibelleBanque,
+            valueType: typeof(string),
+            dataSource: ViewBag.Banque);
+
+        });
+
+        //NumeroCompte
+        settings.Columns.Add(m => m.NumeroCompte, c => ViewHelper.GridViewDefaultColumn(c, caption: EntityColumnResource.NumeroCompte));
+        //CleRib
+        settings.Columns.Add(m => m.CleRib, c => ViewHelper.GridViewDefaultColumn(c, caption: EntityColumnResource.RibPlanteur, width: 50));
+
+        settings.Columns.Add(m => m.ModePaiementID, c =>
+        {
+            ViewHelper.GridViewComboBoxColumn(c,
+            width: 100,
+            valueField: DbColumns.ModePaiementID,
+            caption: EntityColumnResource.ModePaiementID,
+            textField: DbColumns.LibelleModePaiement,
+            valueType: typeof(string),
+            dataSource: ViewBag.ModePayement);
+
+        });
+
+        //DateFinSituation
+        settings.Columns.Add(m => m.DateFinSituation, c => ViewHelper.GridViewDateColumn(c, caption: EntityColumnResource.DateFin, width: 100));
+
+        settings.CellEditorInitialize = (s, e) =>
+        {
+            ASPxEdit editor = (ASPxEdit)e.Editor;
+            editor.ValidationSettings.Display = Display.None;
+            e.Editor.ReadOnly = false;
+        };
+
+
+    }).Bind(Model).GetHtml())
+
+

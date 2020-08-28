@@ -1,0 +1,12 @@
+﻿@model HandleErrorInfo
+
+@{
+    if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <h5>@SharedResource.ErrorGeneralMessage</h5>
+    }
+    else
+    {
+        <h5>@ViewBag.errorMessage</h5>
+    }
+}

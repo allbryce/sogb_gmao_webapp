@@ -1,0 +1,16 @@
+﻿@model UserRight
+
+@Html.DevExpress().ComboBoxFor(m => m.CodeAction,
+    settings =>
+    {
+        settings.Name = ResourceNames.Entity.CodeAction;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.UtilisateurRight, Action = SinbaConstants.Actions.UtilisateurRightActionsPartial, codeFonction = ViewData[DbColumns.CodeFonction] };
+        settings.ControlStyle.CssClass = CssClasses.Editor;
+        settings.Properties.TextField = DbColumns.CodeAction;
+        settings.Properties.ValueField = DbColumns.CodeAction;
+        settings.Properties.CallbackPageSize = 10;
+        settings.Properties.ClientSideEvents.BeginCallback = "function(s, e) { e.customArgs['CodeFonction'] = CodeFonction.GetValue(); }";
+        settings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+        settings.ShowModelErrors = true;
+
+    }).BindList(ViewBag.ActionList).Bind(Model.CodeAction).GetHtml()

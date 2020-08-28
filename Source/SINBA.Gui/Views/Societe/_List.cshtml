@@ -1,0 +1,71 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gridSociete";
+        settings.KeyFieldName = DbColumns.Id;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Societe, Action = SinbaConstants.Actions.ListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+        // Buttons column: Add, Edit, Delete
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(57);
+            column.Caption = Strings.NumberSign;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+                    // Button Edit
+                    (bool)ViewBag.CanEdit ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Edit, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                            new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip }) :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+                    // Button Delete
+                    (bool)DataBinder.Eval(c.DataItem, DbColumns.IsUsed) ?
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnDeleteIsUsed }) :
+                        (bool)ViewBag.CanDelete ?
+                            Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+                            Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    // Button Add (column header)
+                    (bool)ViewBag.CanAdd ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString() :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        });
+
+        // Code
+        settings.Columns.Add(DbColumns.Id, EntityColumnResource.Id);
+
+        // Libelle
+        settings.Columns.Add(DbColumns.Libelle, EntityColumnResource.Libelle);        
+
+        // Keeping grid state
+        settings.ClientLayout = (s, e) =>
+        {
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.GridStateSociete] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateSociete];
+            }
+            else
+                Session[Strings.GridStateSociete] = e.LayoutData;
+        };
+
+    }).Bind(Model).GetHtml()

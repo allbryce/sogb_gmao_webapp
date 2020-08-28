@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Acquisition" xml:space="preserve">
+    <value>Acquisition</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="Annee" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="AnneePlanting" xml:space="preserve">
+    <value>Planting year</value>
+  </data>
+  <data name="Au" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="Bloc" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="Blocs" xml:space="preserve">
+    <value>Blocks</value>
+  </data>
+  <data name="BlocsVisites" xml:space="preserve">
+    <value>Visited blocks</value>
+  </data>
+  <data name="Budget" xml:space="preserve">
+    <value>Budget {0} [T]</value>
+  </data>
+  <data name="CultureString" xml:space="preserve">
+    <value>Crop</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateDebut" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="DateFin" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="Densite" xml:space="preserve">
+    <value>Density</value>
+  </data>
+  <data name="ArbresSaignables" xml:space="preserve">
+    <value>Tappable trees</value>
+  </data>
+  <data name="NombreEmplacement" xml:space="preserve">
+    <value>Initial stands number</value>
+  </data>
+  <data name="MaterielStandard" xml:space="preserve">
+    <value>Standard material</value>
+  </data>
+  <data name="RepartitionParAgeEtTypeDeMateriel" xml:space="preserve">
+    <value>Distribution by age and material type</value>
+  </data>
+  <data name="RepartitionParTypeDeMateriel" xml:space="preserve">
+    <value>Distribution by material type (tolerance)</value>
+  </data>
+  <data name="SurfaceParTypeMateriel" xml:space="preserve">
+    <value>Area by material type and planting year</value>
+  </data>
+  <data name="Immature" xml:space="preserve">
+    <value>Immature</value>
+  </data>
+  <data name="Mature" xml:space="preserve">
+    <value>Mature</value>
+  </data>
+  <data name="MatureArea" xml:space="preserve">
+    <value>Mature Area [ha]</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="NombreRegimes" xml:space="preserve">
+    <value>Number of bunches</value>
+  </data>
+  <data name="ProductionRegimes" xml:space="preserve">
+    <value>Bunches production</value>
+  </data>
+  <data name="PoidsBordChamp" xml:space="preserve">
+    <value>Field weight</value>
+  </data>
+  <data name="ListeAutresClones" xml:space="preserve">
+    <value>* List of other clones:</value>
+  </data>
+  <data name="Abs" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="Achievement" xml:space="preserve">
+    <value>Achievement</value>
+  </data>
+  <data name="ACJ" xml:space="preserve">
+    <value>ACJ</value>
+  </data>
+  <data name="AffectationDu" xml:space="preserve">
+    <value>Assignment of</value>
+  </data>
+  <data name="ArbresVivants" xml:space="preserve">
+    <value>Living trees</value>
+  </data>
+  <data name="AutresClones" xml:space="preserve">
+    <value>Other clones*</value>
+  </data>
+  <data name="CcDelivered" xml:space="preserve">
+    <value>CC delivered (dry equ) [T]</value>
+  </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="CoefPontBascule" xml:space="preserve">
+    <value>Weighbridge coef</value>
+  </data>
+  <data name="CoefficientFiabilite" xml:space="preserve">
+    <value>Reliability coefficient</value>
+  </data>
+  <data name="Controleur" xml:space="preserve">
+    <value>Controller</value>
+  </data>
+  <data name="CropTelex" xml:space="preserve">
+    <value>Crop Telex</value>
+  </data>
+  <data name="DensiteASHect" xml:space="preserve">
+    <value>Density TT/ha</value>
+  </data>
+  <data name="DensiteInitiale" xml:space="preserve">
+    <value>Initial density</value>
+  </data>
+  <data name="DernierRecensement" xml:space="preserve">
+    <value>Last census</value>
+  </data>
+  <data name="Division" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="DRC" xml:space="preserve">
+    <value>DRC</value>
+  </data>
+  <data name="DonneesWaspIncompletes" xml:space="preserve">
+    <value>Incomplete WASP data</value>
+  </data>
+  <data name="Palmier" xml:space="preserve">
+    <value>Palm</value>
+  </data>
+  <data name="PalmiersVivants" xml:space="preserve">
+    <value>Living palms</value>
+  </data>
+  <data name="Heure" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="Hevea" xml:space="preserve">
+    <value>Rubber</value>
+  </data>
+  <data name="Livraisons" xml:space="preserve">
+    <value>Deliveries</value>
+  </data>
+  <data name="LivraisonsJournalieresParEnginTitle" xml:space="preserve">
+    <value>Daily deliveries by machine</value>
+  </data>
+  <data name="MiseADisposition" xml:space="preserve">
+    <value>Provision</value>
+  </data>
+  <data name="Parcellaire" xml:space="preserve">
+    <value>Field Setup Report</value>
+  </data>
+  <data name="pmr" xml:space="preserve">
+    <value>PMR</value>
+  </data>
+  <data name="SituationAu" xml:space="preserve">
+    <value>Situation at</value>
+  </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="SortOrder" xml:space="preserve">
+    <value>Sort order</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Area (ha)</value>
+  </data>
+  <data name="SurfaceHa" xml:space="preserve">
+    <value>Area (ha)</value>
+  </data>
+  <data name="Repartition" xml:space="preserve">
+    <value>Distribution</value>
+  </data>
+  <data name="WeighbridgeDailyProductionTitle" xml:space="preserve">
+    <value>Weighbridge daily report</value>
+  </data>
+  <data name="ParDivision" xml:space="preserve">
+    <value>per division</value>
+  </data>
+  <data name="ParUnite" xml:space="preserve">
+    <value>per unit</value>
+  </data>
+  <data name="Parcelles" xml:space="preserve">
+    <value>Parcels</value>
+  </data>
+  <data name="Periode" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Produit" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Vehicule" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="Livraison" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TotalAnnee" xml:space="preserve">
+    <value>Total year</value>
+  </data>
+  <data name="Totaux" xml:space="preserve">
+    <value>Totals</value>
+  </data>
+  <data name="TonnageTotalNet" xml:space="preserve">
+    <value>Total net tonnage (T)</value>
+  </data>
+  <data name="TonnageMoyen" xml:space="preserve">
+    <value>Average tonnage (T)</value>
+  </data>
+  <data name="Capitaine" xml:space="preserve">
+    <value>Captain</value>
+  </data>
+  <data name="ClassementAnneeExploitataion" xml:space="preserve">
+    <value>Classification by year of exploitation</value>
+  </data>
+  <data name="EcartAnneeNMoins1" xml:space="preserve">
+    <value>Gap year N-1</value>
+  </data>
+  <data name="EcartCumule" xml:space="preserve">
+    <value>Cumulative gap</value>
+  </data>
+  <data name="EcartCumuleAnneeNMoins1" xml:space="preserve">
+    <value>Cumulative gap year N-1</value>
+  </data>
+  <data name="Encoder" xml:space="preserve">
+    <value>Encode</value>
+  </data>
+  <data name="Equipe" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="FfbDelivered" xml:space="preserve">
+    <value>FFB Delivered [T]</value>
+  </data>
+  <data name="TolerantFusarium" xml:space="preserve">
+    <value>Fusarium tolerant</value>
+  </data>
+  <data name="TolerantFusaGano" xml:space="preserve">
+    <value>Fusa.Gano tolerant</value>
+  </data>
+  <data name="TolerantGanoderma" xml:space="preserve">
+    <value>Ganodema tolerant</value>
+  </data>
+  <data name="RepartitionClonale" xml:space="preserve">
+    <value>Clonal distribution</value>
+  </data>
+  <data name="RepartitionParAge" xml:space="preserve">
+    <value>Age distribution</value>
+  </data>
+  <data name="AgeAndClonalDistributionTitle" xml:space="preserve">
+    <value>Age and clone distribution</value>
+  </data>
+  <data name="Unite" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="TypeDePlanting" xml:space="preserve">
+    <value>Planting type</value>
+  </data>
+  <data name="DensiteAS" xml:space="preserve">
+    <value>Density T.T.</value>
+  </data>
+  <data name="SurfacePlanteeParAnneeDePlanting" xml:space="preserve">
+    <value>Planted area (ha) per planting year</value>
+  </data>
+  <data name="SurfaceParCloneEtAnneeDePlanting" xml:space="preserve">
+    <value>Area per clone and year of planting</value>
+  </data>
+  <data name="FrequenceSaignee" xml:space="preserve">
+    <value>Tapping frequency</value>
+  </data>
+  <data name="FusaGano" xml:space="preserve">
+    <value>Fusa/Gano</value>
+  </data>
+  <data name="Fusarium" xml:space="preserve">
+    <value>Fusarium</value>
+  </data>
+  <data name="Ganoderma" xml:space="preserve">
+    <value>Ganoderma</value>
+  </data>
+  <data name="Hod" xml:space="preserve">
+    <value>H.O.D.</value>
+  </data>
+  <data name="Iden" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Mensuel" xml:space="preserve">
+    <value>monthly</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="MoyenneJournaliere" xml:space="preserve">
+    <value>Daily average</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Objectif" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="ObjectifJournalier" xml:space="preserve">
+    <value>Daily target</value>
+  </data>
+  <data name="Ouverture" xml:space="preserve">
+    <value>Opening</value>
+  </data>
+  <data name="Panneau" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="PoidsNet" xml:space="preserve">
+    <value>Net weight</value>
+  </data>
+  <data name="PoidsPontBascule" xml:space="preserve">
+    <value>Weighbridge weigh</value>
+  </data>
+  <data name="PoidsSec" xml:space="preserve">
+    <value>Dry weigh</value>
+  </data>
+  <data name="ProdCumulSecObj" xml:space="preserve">
+    <value>Dry cumul. prod. objevtive %</value>
+  </data>
+  <data name="ProdCumulSecKg" xml:space="preserve">
+    <value>Dry cumul. prod. Kg</value>
+  </data>
+  <data name="ProductionsJournalieres" xml:space="preserve">
+    <value>Daily production</value>
+  </data>
+  <data name="Transfert" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Tolerance" xml:space="preserve">
+    <value>Tolerance</value>
+  </data>
+  <data name="Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="Tache" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="SystemeExploitataion" xml:space="preserve">
+    <value>Tapping system</value>
+  </data>
+  <data name="StatistiqueProduction" xml:space="preserve">
+    <value>Production statictics</value>
+  </data>
+  <data name="StatistiqueProductionMensuelles" xml:space="preserve">
+    <value>Monthly production statictics</value>
+  </data>
+  <data name="RendementJournalier" xml:space="preserve">
+    <value>Daily yield</value>
+  </data>
+  <data name="RendementCumuleKgHa" xml:space="preserve">
+    <value>Cumulative yield kg/ha</value>
+  </data>
+  <data name="RealiseEquivSec" xml:space="preserve">
+    <value>Achieved equiv. dry</value>
+  </data>
+  <data name="RealiseAnneeNMoins1" xml:space="preserve">
+    <value>Achieved year N-1</value>
+  </data>
+  <data name="RealiseSurBudget" xml:space="preserve">
+    <value>Achieved / budget</value>
+  </data>
+  <data name="Realise" xml:space="preserve">
+    <value>Achieved</value>
+  </data>
+  <data name="SurfaceMatureEnExploitation" xml:space="preserve">
+    <value>Mature surface in exploitation</value>
+  </data>
+  <data name="SurfaceParAnneeDePlanting" xml:space="preserve">
+    <value>Area per {0} and year of planting</value>
+  </data>
+  <data name="PlantationCountry" xml:space="preserve">
+    <value>Plantation - Country</value>
+  </data>
+  <data name="Ot" xml:space="preserve">
+    <value>WO</value>
+  </data>
+  <data name="Oper" xml:space="preserve">
+    <value>Oper.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="Superviseur" xml:space="preserve">
+    <value>Supervisor</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="FeuilleDePresence" xml:space="preserve">
+    <value>Timesheet</value>
+  </data>
+  <data name="OTSoustraitantTitle" xml:space="preserve">
+    <value>Work Order - Subcontracting</value>
+  </data>
+  <data name="PourcentagePresence" xml:space="preserve">
+    <value>Presence percentage</value>
+  </data>
+  <data name="PartSaigneeRealisee" xml:space="preserve">
+    <value>Tapping tasks - achieved</value>
+  </data>
+  <data name="PartSaigneeObjectif" xml:space="preserve">
+    <value>Tapping tasks - goal</value>
+  </data>
+  <data name="PartNonSaigneeParJour" xml:space="preserve">
+    <value>Daily non tapped tasks</value>
+  </data>
+  <data name="NombrePartsJournalieres" xml:space="preserve">
+    <value>Number of daily tasks</value>
+  </data>
+  <data name="TourStumilPrevuTotal" xml:space="preserve">
+    <value>Total planned stimulus</value>
+  </data>
+  <data name="TourStumilAnnuel" xml:space="preserve">
+    <value>Cumulative stimulus</value>
+  </data>
+  <data name="RendementJxKg" xml:space="preserve">
+    <value>Yield by Jx kg / jx</value>
+  </data>
+  <data name="RendementAsKg" xml:space="preserve">
+    <value>Yield by AS kg / AS</value>
+  </data>
+  <data name="NbCoupCouteau" xml:space="preserve">
+    <value>Number of stabs</value>
+  </data>
+  <data name="Oer" xml:space="preserve">
+    <value>OER [%]</value>
+  </data>
+  <data name="Yield" xml:space="preserve">
+    <value>Yield [T / ha]</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Prevision" xml:space="preserve">
+    <value>Projection</value>
+  </data>
+  <data name="Young" xml:space="preserve">
+    <value>Young</value>
+  </data>
+  <data name="Prime" xml:space="preserve">
+    <value>Prime</value>
+  </data>
+  <data name="Overdue" xml:space="preserve">
+    <value>Overdue</value>
+  </data>
+  <data name="Old" xml:space="preserve">
+    <value>Old</value>
+  </data>
+  <data name="PartSaignee" xml:space="preserve">
+    <value>Tapping task</value>
+  </data>
+  <data name="PartCollectee" xml:space="preserve">
+    <value>Collected task</value>
+  </data>
+  <data name="PoidsFDT" xml:space="preserve">
+    <value>Cup lump weigh</value>
+  </data>
+  <data name="ComptabilisationSousTraitantReportTitle" xml:space="preserve">
+    <value>Daily posting report</value>
+  </data>
+  <data name="Releve" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="Poids" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="ValidePar" xml:space="preserve">
+    <value>Validated by</value>
+  </data>
+  <data name="SousTraitant" xml:space="preserve">
+    <value>Subcontractor</value>
+  </data>
+  <data name="Recolte" xml:space="preserve">
+    <value>Harvesting</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Transport</value>
+  </data>
+  <data name="AucunTicketComptabilise" xml:space="preserve">
+    <value>No posted ticket was found for this date and this subcontractor.</value>
+  </data>
+  <data name="ErrorSousTraitantRequired" xml:space="preserve">
+    <value>Please fill out a subcontractor !</value>
+  </data>
+  <data name="Du" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="RealiseNuit" xml:space="preserve">
+    <value>Achieved night</value>
+  </data>
+</root>

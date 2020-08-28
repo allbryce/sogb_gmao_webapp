@@ -1,0 +1,118 @@
+﻿/* Overriding bootstrap link effects */
+a:hover, a:visited, a:link
+{
+    text-decoration: none;
+}
+
+.panel
+{
+    margin-bottom: 0px;
+}
+
+
+.edit_form .label
+{
+    text-align: left;
+}
+
+.requiredlabel{}
+
+.edit_form .requiredlabel:after
+{
+    content: " *";
+    color: red;
+}
+
+.editdelete td
+{
+    padding: 0px 5px;
+}
+
+.mainContentPane
+{
+}
+
+.underMenuPane
+{
+    margin-top: 20px;
+}
+
+/*Remove Mozilla Firefox Border – Remove Dotted Line Around Link */
+a { outline: 0; }
+    
+a:active { outline: none; }  
+a:focus{ -moz-outline-style: none; }
+
+a:hover, a:active, a:focus, a:link, a:visited {
+  outline: 0;
+  outline: 0 !important;
+  outline-style:none;
+}
+button, object, embed { 
+  outline: 0;
+}
+
+/* All Input elements */
+input::-moz-focus-inner { 
+ outline: 0; 
+}
+
+/* Remove padding from DevExpress FormLayout */
+.dxflGroupSys {
+padding-left: 0px !important;
+padding-right: 0px !important;
+padding-right: 0px !important;
+padding-bottom: 0px !important;
+}
+table.dxflGroupSys > tbody > tr > td:first-child {
+    padding-left: 10px !important;
+}
+
+/* Override required field color */
+.dxflRequired_Sinba
+{
+    color:red !important;
+}
+
+/* Align error message to the left when using Help text */
+.dxeRoot_Sinba
+{
+    float: left !important;
+}
+
+/* Remove bold from labels in FormLayout (bold added by bootstrap) */
+.dxflCaption_Sinba
+{
+    font-weight: normal !important;
+}
+
+/* Adjust comboBox width in editor formLayout */
+.edit_form .dxflAGSys .editor {
+    width: 200px;
+}
+
+/* ValidationSummary formatting */
+.validationSummary ul
+{
+    list-style:inside;
+    padding-left: 0;
+    padding-bottom: 20px;
+    color:red;
+}
+
+.LeftArea .dl-horizontal dt
+{
+    text-align:left;
+    width:140px;
+}
+
+.LeftArea .dl-horizontal dd
+{
+    margin-left: 140px;
+}
+
+.glyphicon-disabled
+{
+    color: darkgrey !important;
+}
+

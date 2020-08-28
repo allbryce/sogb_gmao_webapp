@@ -1,0 +1,63 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "SearchGrid";
+        settings.KeyFieldName = DbColumns.ContactID;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Contact, Action = SinbaConstants.Actions.SearchListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+        //settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.SettingsCommandButton.SelectButton.RenderMode = GridCommandButtonRenderMode.Button;
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+        // Evenements
+        settings.ClientSideEvents.BeginCallback = "SearchGridOnBeginCallback";
+        settings.ClientSideEvents.SelectionChanged = "SearchGridOnSelectionChanged";
+
+        // Colonnes
+
+        settings.Columns.Add(DbColumns.ContactID, EntityColumnResource.Code);
+        settings.Columns.Add(DbColumns.Nom, EntityColumnResource.Nom);
+        settings.Columns.Add(DbColumns.Prenom, EntityColumnResource.Prenom);
+        //settings.Columns.Add(DbColumns.NomEtPrenom, EntityColumnResource.NomPrenom);
+        settings.Columns.Add(column =>
+        {
+            ViewHelper.GridViewComboBoxColumn(column, fieldName: DbColumns.Sexe, caption: EntityColumnResource.Genre, valueField: DbColumns.Id, textField: DbColumns.Libelle, dataSource: ViewBag.Genre, valueType: typeof(string));
+        });
+
+        settings.Columns.Add(DbColumns.DateNaissance, EntityColumnResource.DateNaissance);
+        settings.Columns.Add(DbColumns.NumeroTelephone1, string.Format("{0} 1", EntityColumnResource.Telephone));
+        settings.Columns.Add(DbColumns.PieceIdentiteID, EntityColumnResource.PieceIdentiteID);
+        settings.Columns.Add(DbColumns.NumeroPiece, EntityColumnResource.NumeroPiece);
+        settings.Columns.Add(DbColumns.LieuDelivrancePiece, EntityColumnResource.LieuDelivrance);
+        settings.Columns.Add(DbColumns.LocaliteID, EntityColumnResource.LocaliteID);
+
+        settings.Columns.Add(DbColumns.CompteContribuable, EntityColumnResource.CompteContribuable);
+
+        settings.FormatConditions.AddHighlight(DbColumns.Actif, "[Actif] <> 1", GridConditionHighlightFormat.LightRedFill).ApplyToRow = true;
+
+
+        //// Keeping grid state
+        //settings.ClientLayout = (s, e) =>
+        //{
+        //    if (e.LayoutMode == ClientLayoutMode.Loading   )
+        //    {
+        //        if (Session[gridstate] != null)
+        //            e.LayoutData = (string)Session[gridstate];
+        //    }
+        //    else
+        //        Session[gridstate] = e.LayoutData;
+        //};
+
+    }).Bind(Model).GetHtml()
+

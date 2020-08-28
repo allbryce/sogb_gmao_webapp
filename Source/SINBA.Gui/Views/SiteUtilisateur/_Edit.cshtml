@@ -1,0 +1,62 @@
+﻿@model SiteUtilisateurViewModel
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(SinbaConstants.Actions.Edit, SinbaConstants.Controllers.SiteUtilisateur, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.IdUser);
+
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "siteUtilisateurFormLayout";
+
+    settings.Items.Add(m => m.NomPrenom, label =>
+    {
+        ViewHelper.FormLayoutLabelSettings(label);
+    });
+
+    settings.Items.Add(m => m.SitesToken, s =>
+    {
+        s.Caption = ResourceNames.Entity.Sites;
+        s.CssClass = CssClasses.FormLayoutLabel;
+        s.SetNestedContent(() =>
+        {
+            @Html.DevExpress().TokenBox(
+    tSettings =>
+    {
+        tSettings.Name = ResourceNames.Entity.Sites;
+        tSettings.ControlStyle.CssClass = CssClasses.Editor;
+        tSettings.Properties.AllowCustomTokens = false;
+        tSettings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+        tSettings.Properties.ShowDropDownOnFocus = ShowDropDownOnFocusMode.Always;
+        tSettings.Properties.TextField = DbColumns.Id;
+        tSettings.Properties.ValueField = DbColumns.Id;
+        if (ViewBag.Tokens != null)
+        {
+            tSettings.Properties.Tokens = new TokenCollection(ViewBag.Tokens);
+        }
+    }).BindList(ViewBag.SiteList).GetHtml();
+        });
+    });
+
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+            Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                text: CommonResource.btnSave)).GetHtml(),
+            Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                text: CommonResource.btnCancel,
+                controller: SinbaConstants.Controllers.Utilisateur,
+                action: SinbaConstants.Actions.Index)).GetHtml());
+        });
+    });
+}).GetHtml()
+}

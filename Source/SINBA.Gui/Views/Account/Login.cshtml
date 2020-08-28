@@ -1,0 +1,84 @@
+﻿@model LoginViewModel
+
+@section AdditionalResources {
+    <script src="@Url.VersionedContent("~/Scripts/gmao/Login.js")" type="text/javascript"></script>
+}
+
+@{
+    Html.EnableClientValidation();
+}
+
+<div style="margin: auto;  width: 50%;  padding: 10px;">
+    @using (Html.BeginForm(SinbaConstants.Actions.Login, SinbaConstants.Controllers.Account, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "loginForm", @class = CssClasses.EditForm }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.SinbaValidationSumary()
+        @Html.HiddenFor(m => m.ReturnUrl)
+        @Html.Hidden(SinbaConstants.Actions.GetUserSites, @Url.Action(SinbaConstants.Actions.GetUserSites, SinbaConstants.Controllers.Account));
+
+        @Html.DevExpress().FormLayout(settings =>
+   {
+       settings.Name = "loginFormLayout";
+
+       ViewContext.Writer.Write("<div id='msgAddRequiredFields' class='alert alert-block hidden bg-danger'>");
+       ViewContext.Writer.Write("   <button type='button' class='close' onclick='return closeMessage()'>&times;</button>");
+       ViewContext.Writer.Write("   <h4 id='msgAddRequiredFields_message' class = 'ui-state-error-text'>  </h4>");
+       ViewContext.Writer.Write("</div>");
+
+
+       // Username
+       settings.Items.Add(m => m.UserName, textBox =>
+       {
+           //ViewHelper.FormLayoutTextBoxSettings(textBox, focus: true, clientSideEvents: new JSEvents[] { JSEvents.LostFocus, JSEvents.ValueChanged });
+           ViewHelper.FormLayoutTextBoxSettings(textBox, focus: true);
+       });
+
+       // Password
+       settings.Items.Add(m => m.Password, textBox =>
+       {
+           ViewHelper.FormLayoutTextBoxSettings(textBox, isPassword: true);
+       });
+
+       // Site
+       //settings.Items.Add(m => m.IdSite, comboBox =>
+       //{
+       //    ViewHelper.FormLayoutComboBoxSettings(comboBox, valueField: DbColumns.Id, textField: DbColumns.Libelle, clientSideEvents: JSEvents.GotFocus);
+       //    ComboBoxSettings cbxSettings = (ComboBoxSettings)comboBox.NestedExtensionSettings;
+       //    cbxSettings.Properties.Columns.Add(DbColumns.Id, EntityColumnResource.Site);
+       //});
+
+       // Remember me
+       //settings.Items.Add(checkBox => ViewHelper.FormLayoutCheckBoxSetting(checkBox,
+       //                name: Html.GetPropertyName(p => p.RememberMe),
+       //                displayName: Html.GetPropertyDisplayName(p => p.RememberMe),
+       //                textAlign: TextAlign.Right));
+
+       // Login button
+       settings.Items.Add(submitButton =>
+       {
+           ViewHelper.FormLayoutSubmitButtonSettings(submitButton, text: AccountResource.btnLogin);
+       });
+
+       // Line break
+       settings.Items.AddEmptyItem();
+
+       // Forget password link
+       settings.Items.Add(hyperLink => ViewHelper.FormLayoutHyperLinkSettings(hyperLink,
+                       text: AccountResource.LoginForgotPasswordQuestion,
+                       controller: SinbaConstants.Controllers.Account,
+                       action: SinbaConstants.Actions.ForgotPassword));
+   }).GetHtml()
+    }
+
+    @Html.DevExpress().LoadingPanel(
+            settings =>
+            {
+                settings.Name = "LoadingPanel";
+                settings.Text = AccountResource.LoadingSites;
+                settings.Modal = true;
+                settings.Images.LoadingPanel.Url = "~/Content/Loading.gif";
+                settings.ContainerElementID = "loginForm";
+            }
+    ).GetHtml()
+
+</div>

@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="Sinba_Gui.MvcApplication" Language="C#" %>

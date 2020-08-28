@@ -1,0 +1,55 @@
+﻿@model ContactModalViewModels
+@{
+    Html.EnableClientValidation();
+
+}
+@Html.DevExpress().PopupControl(settings =>
+{
+
+    ViewHelper.PopupSettings(settings, "AddContactModal", "", 550);
+
+    settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Contact, Action = SinbaConstants.Actions.ModalPartial };
+
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write("<div id='msgModalError' class='alert alert-block hidden bg-warning'>");
+        ViewContext.Writer.Write("   <button type='button' class='close' onclick='closeMessage();'>&times;</button>");
+        ViewContext.Writer.Write("   <h4 id='msgModalError_Message'>  </h4>");
+        ViewContext.Writer.Write("</div>");
+        //Html.HiddenFor(m=>m.ContactID);
+
+        if (Model.PersonnePhysique)
+        {
+            Html.RenderPartial(ViewNames.PersonnePhysiquePartial, Model);
+        }
+        else
+        {
+            Html.RenderPartial(ViewNames.PersonneMoralePartial, Model);
+        }
+
+
+        ViewContext.Writer.Write("<hr/>");
+        ViewContext.Writer.Write("<div class='col-md-7'></div>");
+        ViewContext.Writer.Write("<div class='col-md-5'>");
+        Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = "btnAdd";
+            buttonSettings.ControlStyle.CssClass = "button button-gauche";
+            buttonSettings.Width = 80;
+            buttonSettings.Text = ViewBag.AddMode ? CommonResource.Add : CommonResource.Edit;
+            buttonSettings.ClientSideEvents.Click = ViewBag.AddMode ? "function(s, e){ AddContact();}": "function(s, e){ EditContact();}";
+        }).GetHtml();
+
+        Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = "btnCancelAdd";
+            buttonSettings.ControlStyle.CssClass = "button";
+            buttonSettings.Width = 80;
+            buttonSettings.Text = CommonResource.btnCancel;
+            buttonSettings.ClientSideEvents.Click = "function(s, e){ AddContactModal.Hide();}";
+        }).GetHtml();
+        ViewContext.Writer.Write("</div>");
+
+    });
+
+}).GetHtml()

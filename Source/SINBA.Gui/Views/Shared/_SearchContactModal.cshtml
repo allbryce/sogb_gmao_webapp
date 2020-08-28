@@ -1,0 +1,106 @@
+﻿@model ContactViewModels
+@{
+    Html.EnableClientValidation();
+}
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    ViewHelper.PopupSettings(settings,"SearchContactModal",string.Format(CommonResource.lblRecherche,EntityColumnResource.Contacts));
+
+    settings.SetContent(() =>
+    {
+        Html.DevExpress().FormLayout(searchlayout =>
+        {
+            searchlayout.Name = "FormLayoutSearchContact";
+            searchlayout.ColCount = 3;
+
+            ViewContext.Writer.Write("<br/>");
+            searchlayout.Items.Add(m => m.RechercheNomEtPrenom, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.Nom);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.NomEtPrenom);
+            });
+            searchlayout.Items.Add(m => m.RechercheDateNaissance, textbox => {
+                ViewHelper.FormLayoutDateEditSettings(textbox, caption: EntityColumnResource.DateNaissance);
+                DateEditSettings txtSettings = (DateEditSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.DateNaissance);
+            });
+
+            searchlayout.Items.Add(m => m.RechercheSexe, combobox =>
+            {
+                ViewHelper.FormLayoutComboBoxSettings(combobox, valueType: typeof(string), valueField: DbColumns.Id, showModelErrors: false, textField: DbColumns.Libelle, dataSource: ViewBag.Genre);
+                ComboBoxSettings cbxSettings = (ComboBoxSettings)combobox.NestedExtensionSettings;
+                cbxSettings.Name = string.Format("Contact_{0}", DbColumns.Sexe);
+            });
+
+            searchlayout.Items.Add(m => m.RechercheNumeroPiece, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.NumeroPiece);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}",DbColumns.NumeroPiece);
+            });
+            searchlayout.Items.Add(m => m.RechercheNumeroTicketIdentification, textbox =>
+            {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.NumTicket);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.NumeroTicketIdentification);
+            });
+            searchlayout.Items.Add(m => m.RechercheNumeroMatriculeNational, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.NumIdentification);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.NumeroMatriculeNational);
+            });
+
+            searchlayout.Items.Add(m => m.RechercheTelephone, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.Telephone);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.NumeroTelephone);
+            });
+            searchlayout.Items.Add(m => m.RechercheEmail, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.Email);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.Email);
+            });
+            searchlayout.Items.Add(m => m.RechercheLocaliteID, textbox => {
+                ViewHelper.FormLayoutTextBoxSettings(textbox, caption: EntityColumnResource.LocaliteID);
+                TextBoxSettings txtSettings = (TextBoxSettings)textbox.NestedExtensionSettings;
+                txtSettings.Name = string.Format("Contact_{0}", DbColumns.LocaliteID);
+            });
+
+        }).GetHtml();
+
+        ViewContext.Writer.Write(@"<hr/><div class='col-sm-11'></div><div class='col-sm-1'>");
+        Html.DevExpress().Button(btnSettings =>
+        {
+            btnSettings.Name = "btnSubmitSearch";
+            ViewHelper.ButtonSettings(btnSettings,name: "btnSubmitSearch", text: CommonResource.btnAfficher, clientSideEventClickFunction: "LoadSearchGrid");
+        }).GetHtml();
+        ViewContext.Writer.Write("</div><hr/><br/>");
+
+        Html.RenderPartial(ViewNames.SearchContactList, (Model.Contacts ?? new List<Contact>()).ToList());
+
+        ViewContext.Writer.Write(@"<div class='col-sm-10'></div><div class='col-sm-2'>");
+
+        Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = "btnSelect";
+            buttonSettings.ControlStyle.CssClass = "button button-droite";
+            buttonSettings.Width = 80;
+            buttonSettings.Text = CommonResource.Add;
+            buttonSettings.ClientSideEvents.Click = "function(s, e){ AjouterDirigeant(); }";
+        }).GetHtml();
+
+        Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = "btnCancelSearch";
+            buttonSettings.ControlStyle.CssClass = "button button-droite";
+            buttonSettings.Width = 80;
+            buttonSettings.Text = CommonResource.btnCancel;
+            buttonSettings.ClientSideEvents.Click = "function(s, e){ SearchContactModal.Hide(); }";
+
+        }).GetHtml();
+
+        ViewContext.Writer.Write("</div>");
+    });
+}).GetHtml()
+
+

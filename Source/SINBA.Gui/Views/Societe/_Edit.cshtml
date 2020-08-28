@@ -1,0 +1,54 @@
+﻿@model Societe
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(string.IsNullOrWhiteSpace(Model.IdHidden) ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Societe, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.IdHidden)
+
+    @Html.DevExpress().FormLayout(settings =>
+    {
+        settings.Name = "societeFormLayout";
+
+        if (string.IsNullOrWhiteSpace(Model.IdHidden))
+        {
+            // Code
+            settings.Items.Add(m => m.Id, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+                focus: true,
+                maxLength: SinbaConstants.NumericValues.Length.IdSocieteMax));
+        }
+        else
+        {
+            // Code
+            settings.Items.Add(m => m.Id, label =>
+            {
+                ViewHelper.FormLayoutLabelSettings(label);
+            });
+        }
+        
+        // Libelle
+        settings.Items.Add(m => m.Libelle, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox));
+              
+
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    text: string.IsNullOrEmpty(Model.Id) ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Societe,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+
+    }).GetHtml()
+}

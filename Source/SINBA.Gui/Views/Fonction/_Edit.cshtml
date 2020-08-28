@@ -1,0 +1,67 @@
+﻿@model Fonction
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm(string.IsNullOrWhiteSpace(Model.CodeHidden) ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Fonction, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.CodeHidden)
+
+    @Html.DevExpress().FormLayout(settings =>
+    {
+        settings.Name = "fonctionFormLayout";
+
+        if (string.IsNullOrWhiteSpace(Model.CodeHidden))
+        {
+            // Code
+            settings.Items.Add(m => m.Code, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+                focus: true,
+                maxLength: SinbaConstants.NumericValues.Length.CodeFonctionActionMax));
+        }
+        else
+        {
+            // Code
+            settings.Items.Add(m => m.Code, label =>
+            {
+                ViewHelper.FormLayoutLabelSettings(label);
+            });
+        }
+        
+        // Menu path
+        settings.Items.Add(m => m.MenuPath, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,widthPixel:400));
+
+        // SA
+        settings.Items.Add(m => m.SuperAdmin, checkBox => ViewHelper.FormLayoutCheckBoxSetting(checkBox));
+
+        // Log
+        settings.Items.Add(m => m.Log, checkBox => ViewHelper.FormLayoutCheckBoxSetting(checkBox));
+
+        settings.Items.AddEmptyItem();
+
+        // Actions
+        settings.Items.Add(m => m.FonctionActionsToken, tokenBox => ViewHelper.FormLayoutTokenBoxSettings(tokenBox,
+            textField: DbColumns.CodeAction,
+            valueField: DbColumns.CodeAction,
+            dataSource: ViewBag.ActionList,widthPixel:400));
+
+        // Boutons Enregistrer/Annuler
+        settings.Items.Add(item =>
+        {
+            item.Caption = string.Empty;
+            item.SetNestedContent(() =>
+            {
+                ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    text: string.IsNullOrEmpty(Model.CodeHidden) ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Fonction,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+            });
+        });
+
+    }).GetHtml()
+}

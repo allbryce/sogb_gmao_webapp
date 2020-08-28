@@ -1,0 +1,19 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gridAction_" + ViewData[DbColumns.CodeFonction];
+        settings.SettingsDetail.MasterGridName = "gridFonction";
+        settings.KeyFieldName = DbColumns.Code;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Fonction, Action = SinbaConstants.Actions.ActionsFonctionPartial, CodeFonction = ViewData[DbColumns.CodeFonction] };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+        settings.Width = Unit.Percentage(100);
+        
+        // Code
+        settings.Columns.Add(DbColumns.Code, EntityColumnResource.Code);
+        
+        // Nom
+        settings.Columns.Add(DbColumns.Nom, EntityColumnResource.Nom);
+
+    }).Bind(Model).GetHtml()

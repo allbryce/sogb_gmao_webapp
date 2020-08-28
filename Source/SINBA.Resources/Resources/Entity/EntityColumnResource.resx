@@ -1,0 +1,2158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="AdminSite" xml:space="preserve">
+    <value>Administrateur site</value>
+  </data>
+  <data name="Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="AnneePlantation" xml:space="preserve">
+    <value>Année de planting</value>
+  </data>
+  <data name="Attestation" xml:space="preserve">
+    <value>Attestation</value>
+  </data>
+  <data name="Bloc" xml:space="preserve">
+    <value>Bloc</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CodePostal" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Couleur" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="CulturesText" xml:space="preserve">
+    <value>Cultures</value>
+  </data>
+  <data name="CultureText" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="DateChangement" xml:space="preserve">
+    <value>Date du changement</value>
+  </data>
+  <data name="DateDebut" xml:space="preserve">
+    <value>Date début</value>
+  </data>
+  <data name="DateFin" xml:space="preserve">
+    <value>Date fin</value>
+  </data>
+  <data name="DateFinProduction" xml:space="preserve">
+    <value>Date de fin de production</value>
+  </data>
+  <data name="DateMiseProduction" xml:space="preserve">
+    <value>Date de mise en production</value>
+  </data>
+  <data name="DateRecensement" xml:space="preserve">
+    <value>Date du recensement</value>
+  </data>
+  <data name="DenyAccess" xml:space="preserve">
+    <value>Bloquer l'accès</value>
+  </data>
+  <data name="DistanceUsine" xml:space="preserve">
+    <value>Distance usine</value>
+  </data>
+  <data name="Division" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>Email confirmé</value>
+  </data>
+  <data name="EspacementPlantation" xml:space="preserve">
+    <value>Espacement plantation</value>
+  </data>
+  <data name="EtatArbre" xml:space="preserve">
+    <value>Etat d'arbre</value>
+  </data>
+  <data name="Fonction" xml:space="preserve">
+    <value>Fonction</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Langue" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Libelle" xml:space="preserve">
+    <value>Libellé</value>
+  </data>
+  <data name="LigneDouble" xml:space="preserve">
+    <value>Ligne double</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="MaterielVegetal" xml:space="preserve">
+    <value>Matériel végétal</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MenuPath" xml:space="preserve">
+    <value>Chemin d'accès</value>
+  </data>
+  <data name="MotifChangement" xml:space="preserve">
+    <value>Motif du changement</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nouveau mot de passe</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="NombreArbre" xml:space="preserve">
+    <value>Nombre d'arbres</value>
+  </data>
+  <data name="NombreEmplacements" xml:space="preserve">
+    <value>Nombre d'emplacements</value>
+  </data>
+  <data name="NombrePanneaux" xml:space="preserve">
+    <value>Nombre de panneaux</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Mot de passe actuel</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Pays" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="PlanteCouverture" xml:space="preserve">
+    <value>Plante de couverture</value>
+  </data>
+  <data name="PourcentageExploite" xml:space="preserve">
+    <value>Pourcentage exploité</value>
+  </data>
+  <data name="PrecedentCultural" xml:space="preserve">
+    <value>Précédent cultural</value>
+  </data>
+  <data name="Prenom" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="Remarque" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Se souvenir de moi</value>
+  </data>
+  <data name="Rights" xml:space="preserve">
+    <value>Droits</value>
+  </data>
+  <data name="SA" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="Societe" xml:space="preserve">
+    <value>Société</value>
+  </data>
+  <data name="Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="SurfaceExploitee" xml:space="preserve">
+    <value>Surface exploitée</value>
+  </data>
+  <data name="TechniqueImplantation" xml:space="preserve">
+    <value>Technique d'implantation</value>
+  </data>
+  <data name="TechniquePreparationTerrain" xml:space="preserve">
+    <value>Technique de préparation du terrain</value>
+  </data>
+  <data name="Telecopie" xml:space="preserve">
+    <value>Télécopie</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>N° de Téléphone</value>
+  </data>
+  <data name="Tolerance" xml:space="preserve">
+    <value>Tolérance</value>
+  </data>
+  <data name="Topographie" xml:space="preserve">
+    <value>Topographie</value>
+  </data>
+  <data name="TypePlanting" xml:space="preserve">
+    <value>Type de planting</value>
+  </data>
+  <data name="TypePropagation" xml:space="preserve">
+    <value>Type de propagation</value>
+  </data>
+  <data name="Unite" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="Ville" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Villes" xml:space="preserve">
+    <value>Villes</value>
+  </data>
+  <data name="DatePesee" xml:space="preserve">
+    <value>Date de pesée</value>
+  </data>
+  <data name="NombreRegimes" xml:space="preserve">
+    <value>Nombre de régimes</value>
+  </data>
+  <data name="PoidsChargement" xml:space="preserve">
+    <value>Poids du chargement</value>
+  </data>
+  <data name="Vehicule" xml:space="preserve">
+    <value>Véhicule</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Valeur" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="Annee" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="Ascendant" xml:space="preserve">
+    <value>Ascendant</value>
+  </data>
+  <data name="Descendant" xml:space="preserve">
+    <value>Descendant</value>
+  </data>
+  <data name="Heure" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="DateChargement" xml:space="preserve">
+    <value>Date de chargement</value>
+  </data>
+  <data name="DeuxiemePesee" xml:space="preserve">
+    <value>Deuxième pesée</value>
+  </data>
+  <data name="PoidsFruitsDetaches" xml:space="preserve">
+    <value>Poids fruits détachés</value>
+  </data>
+  <data name="PoidsMoyenRegime" xml:space="preserve">
+    <value>Poids moyen régime</value>
+  </data>
+  <data name="PremierePesee" xml:space="preserve">
+    <value>Première pesée</value>
+  </data>
+  <data name="Produit" xml:space="preserve">
+    <value>Produit</value>
+  </data>
+  <data name="ReleveBordChamps" xml:space="preserve">
+    <value>Relevé bord champs</value>
+  </data>
+  <data name="TonnageAchemine" xml:space="preserve">
+    <value>Tonnage acheminé</value>
+  </data>
+  <data name="CodeArticle" xml:space="preserve">
+    <value>Code article</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Crédit</value>
+  </data>
+  <data name="EncoderHeureSup" xml:space="preserve">
+    <value>Encoder heures sup.</value>
+  </data>
+  <data name="OperationNuit" xml:space="preserve">
+    <value>Opération nuit</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>Réception</value>
+  </data>
+  <data name="SousTraitance" xml:space="preserve">
+    <value>Sous-traitance</value>
+  </data>
+  <data name="FamilleOperation" xml:space="preserve">
+    <value>Famille opération</value>
+  </data>
+  <data name="CentreCout" xml:space="preserve">
+    <value>Centre de coût</value>
+  </data>
+  <data name="QuantiteTache" xml:space="preserve">
+    <value>Quantité  tâche</value>
+  </data>
+  <data name="Dimanche" xml:space="preserve">
+    <value>Dimanche</value>
+  </data>
+  <data name="Jeudi" xml:space="preserve">
+    <value>Jeudi</value>
+  </data>
+  <data name="Lundi" xml:space="preserve">
+    <value>Lundi</value>
+  </data>
+  <data name="Mardi" xml:space="preserve">
+    <value>Mardi</value>
+  </data>
+  <data name="Mercredi" xml:space="preserve">
+    <value>Mercredi</value>
+  </data>
+  <data name="Samedi" xml:space="preserve">
+    <value>Samedi</value>
+  </data>
+  <data name="Vendredi" xml:space="preserve">
+    <value>Vendredi</value>
+  </data>
+  <data name="CodeArticleSage" xml:space="preserve">
+    <value>Code article SAGE</value>
+  </data>
+  <data name="CodeEventSage" xml:space="preserve">
+    <value>Code Event SAGE</value>
+  </data>
+  <data name="PourcentageAlerte" xml:space="preserve">
+    <value>Pourcentage alerte</value>
+  </data>
+  <data name="OTValidateurFamille" xml:space="preserve">
+    <value>Validateur OT</value>
+  </data>
+  <data name="Types" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="Ordinal" xml:space="preserve">
+    <value>Ordre</value>
+  </data>
+  <data name="NombreDecimal" xml:space="preserve">
+    <value>Nombre de décimal</value>
+  </data>
+  <data name="Obligatoire" xml:space="preserve">
+    <value>Obligatoire</value>
+  </data>
+  <data name="IdChamp" xml:space="preserve">
+    <value>Champ</value>
+  </data>
+  <data name="Champs" xml:space="preserve">
+    <value>Champs</value>
+  </data>
+  <data name="Champ" xml:space="preserve">
+    <value>Champ</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Opération</value>
+  </data>
+  <data name="Actif" xml:space="preserve">
+    <value>Actif</value>
+  </data>
+  <data name="LieuPaie" xml:space="preserve">
+    <value>Lieu paie</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="CloturePar" xml:space="preserve">
+    <value>Clôturer par</value>
+  </data>
+  <data name="DateCloture" xml:space="preserve">
+    <value>Date clôture</value>
+  </data>
+  <data name="DateReception" xml:space="preserve">
+    <value>Date reception</value>
+  </data>
+  <data name="Equipe" xml:space="preserve">
+    <value>Equipe</value>
+  </data>
+  <data name="MotifCloture" xml:space="preserve">
+    <value>Motif clôture</value>
+  </data>
+  <data name="ReceptionePar" xml:space="preserve">
+    <value>Receptionné par</value>
+  </data>
+  <data name="Recpetion" xml:space="preserve">
+    <value>Reception</value>
+  </data>
+  <data name="RemarqueReception" xml:space="preserve">
+    <value>Remarque reception</value>
+  </data>
+  <data name="Travailleur" xml:space="preserve">
+    <value>Travailleur</value>
+  </data>
+  <data name="TypeSection" xml:space="preserve">
+    <value>Type de section</value>
+  </data>
+  <data name="Utilisateurs" xml:space="preserve">
+    <value>Utilisateurs</value>
+  </data>
+  <data name="Affectation" xml:space="preserve">
+    <value>Affectation</value>
+  </data>
+  <data name="Prolonger" xml:space="preserve">
+    <value>Prolonger</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Opérations</value>
+  </data>
+  <data name="Blocs" xml:space="preserve">
+    <value>Blocs</value>
+  </data>
+  <data name="Cloturer" xml:space="preserve">
+    <value>Clôturer</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="Receptionner" xml:space="preserve">
+    <value>Réceptionner</value>
+  </data>
+  <data name="AugmenterCredit" xml:space="preserve">
+    <value>Augmenter crédit</value>
+  </data>
+  <data name="Relancer" xml:space="preserve">
+    <value>Relancer</value>
+  </data>
+  <data name="Etape" xml:space="preserve">
+    <value>Etape</value>
+  </data>
+  <data name="EmailsNotification" xml:space="preserve">
+    <value>Emails notification</value>
+  </data>
+  <data name="UtilisateurNotification" xml:space="preserve">
+    <value>Utilisateur notification</value>
+  </data>
+  <data name="UserNotification" xml:space="preserve">
+    <value>Utilisateur notification</value>
+  </data>
+  <data name="Valider" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="CreditActuel" xml:space="preserve">
+    <value>Crédit actuel</value>
+  </data>
+  <data name="CreditsAAjouter" xml:space="preserve">
+    <value>Crédits à ajouter</value>
+  </data>
+  <data name="OTValide" xml:space="preserve">
+    <value>Validé</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="FrequenceSaignee" xml:space="preserve">
+    <value>Fréquence saignée</value>
+  </data>
+  <data name="Panneau" xml:space="preserve">
+    <value>Panneau</value>
+  </data>
+  <data name="Spirale" xml:space="preserve">
+    <value>Spirale</value>
+  </data>
+  <data name="StimulationFrequence" xml:space="preserve">
+    <value>Stimulation fréquence</value>
+  </data>
+  <data name="StimulationProduit" xml:space="preserve">
+    <value>Stimulation produit</value>
+  </data>
+  <data name="SystemeExploitation" xml:space="preserve">
+    <value>Système d'exploitation</value>
+  </data>
+  <data name="DateEntree" xml:space="preserve">
+    <value>Date d'entrée</value>
+  </data>
+  <data name="DateSortie" xml:space="preserve">
+    <value>Date de sortie</value>
+  </data>
+  <data name="DateTransfert" xml:space="preserve">
+    <value>Date de transfert</value>
+  </data>
+  <data name="CodePrimeSage" xml:space="preserve">
+    <value>Code prime SAGE</value>
+  </data>
+  <data name="MontantMax" xml:space="preserve">
+    <value>Montant max</value>
+  </data>
+  <data name="RegleCalcul" xml:space="preserve">
+    <value>Règle de calcul</value>
+  </data>
+  <data name="Fonctions" xml:space="preserve">
+    <value>Fonctions</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="UniteTerrain" xml:space="preserve">
+    <value>Unité terrain</value>
+  </data>
+  <data name="Parcelle" xml:space="preserve">
+    <value>Parcelle</value>
+  </data>
+  <data name="Parcelles" xml:space="preserve">
+    <value>Parcelles</value>
+  </data>
+  <data name="TypeChamp" xml:space="preserve">
+    <value>Type de champ</value>
+  </data>
+  <data name="EncoderPrestation" xml:space="preserve">
+    <value>Encoder prestation</value>
+  </data>
+  <data name="OTOperation" xml:space="preserve">
+    <value>OT opération</value>
+  </data>
+  <data name="Equipes" xml:space="preserve">
+    <value>Equipes</value>
+  </data>
+  <data name="DatePrestation" xml:space="preserve">
+    <value>Date de la prestation</value>
+  </data>
+  <data name="EncoderCredit" xml:space="preserve">
+    <value>Encoder crédit</value>
+  </data>
+  <data name="UniteMesure" xml:space="preserve">
+    <value>Unité de mesure</value>
+  </data>
+  <data name="UtilisateursNotification" xml:space="preserve">
+    <value>Utilisateurs notification</value>
+  </data>
+  <data name="OT" xml:space="preserve">
+    <value>OT</value>
+  </data>
+  <data name="CodeParcelle" xml:space="preserve">
+    <value>Code parcelle</value>
+  </data>
+  <data name="HeuresSupp" xml:space="preserve">
+    <value>Heures supp</value>
+  </data>
+  <data name="Realise" xml:space="preserve">
+    <value>Réalisé</value>
+  </data>
+  <data name="Tache" xml:space="preserve">
+    <value>Tâche</value>
+  </data>
+  <data name="Alternance" xml:space="preserve">
+    <value>Alternance</value>
+  </data>
+  <data name="Alternances" xml:space="preserve">
+    <value>Alternances</value>
+  </data>
+  <data name="NoAlternance" xml:space="preserve">
+    <value>Aucune alternance</value>
+  </data>
+  <data name="NumeroPart" xml:space="preserve">
+    <value>Numéro part</value>
+  </data>
+  <data name="ArbresSaignables" xml:space="preserve">
+    <value>Arbres saignables</value>
+  </data>
+  <data name="ArbresSaignablesParPart" xml:space="preserve">
+    <value>Arbres saignables /Part</value>
+  </data>
+  <data name="IdRubriqueNiveau1" xml:space="preserve">
+    <value>Rubrique niveau 1</value>
+  </data>
+  <data name="Departement" xml:space="preserve">
+    <value>Departement</value>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="IdRubriqueNiveau2" xml:space="preserve">
+    <value>Rubrique niveau 2</value>
+  </data>
+  <data name="Ordre" xml:space="preserve">
+    <value>Ordre</value>
+  </data>
+  <data name="IdRapport0" xml:space="preserve">
+    <value>Rapport 0</value>
+  </data>
+  <data name="IdRapport1" xml:space="preserve">
+    <value>Rapport 1</value>
+  </data>
+  <data name="IdRapport2" xml:space="preserve">
+    <value>Rapport 2</value>
+  </data>
+  <data name="IdRapport3" xml:space="preserve">
+    <value>Rapport 3</value>
+  </data>
+  <data name="IdSysUniteOeuvre" xml:space="preserve">
+    <value>Unité d'oeuvre</value>
+  </data>
+  <data name="IdConseil0" xml:space="preserve">
+    <value>Conseil 0</value>
+  </data>
+  <data name="IdConseil1" xml:space="preserve">
+    <value>Conseil 1</value>
+  </data>
+  <data name="IdConseil2" xml:space="preserve">
+    <value>Conseil 2</value>
+  </data>
+  <data name="IdConseil3" xml:space="preserve">
+    <value>Conseil 3</value>
+  </data>
+  <data name="IdConseil4" xml:space="preserve">
+    <value>Conseil 4</value>
+  </data>
+  <data name="IdDepartement" xml:space="preserve">
+    <value>Département</value>
+  </data>
+  <data name="IdDirection" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="IdService" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="IdPlanComptable1" xml:space="preserve">
+    <value>Plan Comptable1</value>
+  </data>
+  <data name="IdCompteAnalytique" xml:space="preserve">
+    <value>Compte Analytique</value>
+  </data>
+  <data name="Exercice" xml:space="preserve">
+    <value>Exercice</value>
+  </data>
+  <data name="IdIndicateur" xml:space="preserve">
+    <value>Indicateur</value>
+  </data>
+  <data name="IndicateurBudget" xml:space="preserve">
+    <value>Indicateur Budget</value>
+  </data>
+  <data name="IdSociete" xml:space="preserve">
+    <value>Société</value>
+  </data>
+  <data name="CodePeriode" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="BudgetIndicateur" xml:space="preserve">
+    <value>Budget Indicateur</value>
+  </data>
+  <data name="ClotureBudget" xml:space="preserve">
+    <value>Clôture budget</value>
+  </data>
+  <data name="ClotureRealise" xml:space="preserve">
+    <value>Clôture réalisés</value>
+  </data>
+  <data name="Mois" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="Periode" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="IdYieldProfile" xml:space="preserve">
+    <value>Yield profile</value>
+  </data>
+  <data name="IdCentreDeCoutNiveau3" xml:space="preserve">
+    <value>Centre de coût niveau 3</value>
+  </data>
+  <data name="IdNatureNiv1Groupe" xml:space="preserve">
+    <value>Nature niveau 1</value>
+  </data>
+  <data name="IdNatureNiv2Groupe" xml:space="preserve">
+    <value>Nature niveau 2</value>
+  </data>
+  <data name="IdNatureNiv3Groupe" xml:space="preserve">
+    <value>Nature niveau 3</value>
+  </data>
+  <data name="IdClasseNature" xml:space="preserve">
+    <value>Classe de nature</value>
+  </data>
+  <data name="IdGroupeNature" xml:space="preserve">
+    <value>Groupe de nature</value>
+  </data>
+  <data name="IdNature" xml:space="preserve">
+    <value>Nature</value>
+  </data>
+  <data name="IdRubriqueNiveau3" xml:space="preserve">
+    <value>Rubrique niveau 3</value>
+  </data>
+  <data name="CodeCompteGeneralAnalytique" xml:space="preserve">
+    <value>Compte général analytique</value>
+  </data>
+  <data name="IdSysTypeRubrique" xml:space="preserve">
+    <value>Type de rubrique</value>
+  </data>
+  <data name="NbDecimal" xml:space="preserve">
+    <value>Nombre de décimal</value>
+  </data>
+  <data name="UoUniformise" xml:space="preserve">
+    <value>UO uniformisé</value>
+  </data>
+  <data name="IdAnneeCulture" xml:space="preserve">
+    <value>Année culture</value>
+  </data>
+  <data name="IdCentreDeCout" xml:space="preserve">
+    <value>Centre de coût</value>
+  </data>
+  <data name="IdDestination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="IdSysCulture" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="IdSysNatureBudget" xml:space="preserve">
+    <value>Nature Budget</value>
+  </data>
+  <data name="IdSite" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="CloneBudget" xml:space="preserve">
+    <value>Classe de Clone</value>
+  </data>
+  <data name="IdCloneBudget" xml:space="preserve">
+    <value>Classe de Clone</value>
+  </data>
+  <data name="NombreJours" xml:space="preserve">
+    <value>Nombres Jours</value>
+  </data>
+  <data name="DensiteTheoriqueInitial" xml:space="preserve">
+    <value>Densité Théorique Initiale</value>
+  </data>
+  <data name="EspacementException" xml:space="preserve">
+    <value>Espacement exception</value>
+  </data>
+  <data name="CodeUnite" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="IdClasseAgePalmier" xml:space="preserve">
+    <value>Classe âge palmier</value>
+  </data>
+  <data name="CodeBloc" xml:space="preserve">
+    <value>Bloc</value>
+  </data>
+  <data name="CodeBlocBudget" xml:space="preserve">
+    <value>Facteur contextuel</value>
+  </data>
+  <data name="ExerciceDebut" xml:space="preserve">
+    <value>Exercice début</value>
+  </data>
+  <data name="ExerciceFin" xml:space="preserve">
+    <value>Exercice fin</value>
+  </data>
+  <data name="CodeNumeroBudget" xml:space="preserve">
+    <value>Numéro budget</value>
+  </data>
+  <data name="PeriodeDebut" xml:space="preserve">
+    <value>Période début</value>
+  </data>
+  <data name="PeriodeFin" xml:space="preserve">
+    <value>Période fin</value>
+  </data>
+  <data name="CodeEmploi" xml:space="preserve">
+    <value>Emploi</value>
+  </data>
+  <data name="Franc" xml:space="preserve">
+    <value>Franc</value>
+  </data>
+  <data name="NbDecimaux" xml:space="preserve">
+    <value>Nb Décimal</value>
+  </data>
+  <data name="IdSysMois" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="Effectif" xml:space="preserve">
+    <value>Effectif</value>
+  </data>
+  <data name="NbJourTravaille" xml:space="preserve">
+    <value>Nombre de Jour Travaillé</value>
+  </data>
+  <data name="IdConditionnement" xml:space="preserve">
+    <value>Conditionnement</value>
+  </data>
+  <data name="QuantiteUsine" xml:space="preserve">
+    <value>Quantité usine</value>
+  </data>
+  <data name="IdArticle" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <data name="ValeurParEmploye" xml:space="preserve">
+    <value>Valeur</value>
+  </data>
+  <data name="CodeVersionBudget" xml:space="preserve">
+    <value>Version budget</value>
+  </data>
+  <data name="IdCentreDeCoutSite" xml:space="preserve">
+    <value>Centre de coût site</value>
+  </data>
+  <data name="IdSysTypeBudget" xml:space="preserve">
+    <value>Type budget</value>
+  </data>
+  <data name="Montant" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="nbuo" xml:space="preserve">
+    <value>Nb uo</value>
+  </data>
+  <data name="Aou" xml:space="preserve">
+    <value>Aou</value>
+  </data>
+  <data name="Avr" xml:space="preserve">
+    <value>Avr</value>
+  </data>
+  <data name="CentreDeCoutSite" xml:space="preserve">
+    <value>Centre de coût site</value>
+  </data>
+  <data name="Dec" xml:space="preserve">
+    <value>Déc.</value>
+  </data>
+  <data name="Fev" xml:space="preserve">
+    <value>Fév.</value>
+  </data>
+  <data name="Janv" xml:space="preserve">
+    <value>Janv.</value>
+  </data>
+  <data name="Juil" xml:space="preserve">
+    <value>Juil</value>
+  </data>
+  <data name="Juin" xml:space="preserve">
+    <value>Juin</value>
+  </data>
+  <data name="Nature" xml:space="preserve">
+    <value>Nature</value>
+  </data>
+  <data name="Nov" xml:space="preserve">
+    <value>Nov.</value>
+  </data>
+  <data name="Oct" xml:space="preserve">
+    <value>Oct</value>
+  </data>
+  <data name="PrixUnitaire" xml:space="preserve">
+    <value>Prix unitaire</value>
+  </data>
+  <data name="RubriqueNiveau1" xml:space="preserve">
+    <value>Rubrique Niveau 1</value>
+  </data>
+  <data name="RubriqueNiveau2" xml:space="preserve">
+    <value>Rubrique Niveau 2</value>
+  </data>
+  <data name="RubriqueNiveau3" xml:space="preserve">
+    <value>Rubrique Niveau 3</value>
+  </data>
+  <data name="Sept" xml:space="preserve">
+    <value>Sep.</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="UniteOeuvre" xml:space="preserve">
+    <value>Unité oeuvre</value>
+  </data>
+  <data name="BudgetReel" xml:space="preserve">
+    <value>Budget réel</value>
+  </data>
+  <data name="CommentaireBudget" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="AnneeSaigneeDebut" xml:space="preserve">
+    <value>Année de saignée début</value>
+  </data>
+  <data name="AnneeSaigneeFin" xml:space="preserve">
+    <value>Année de saignée fin</value>
+  </data>
+  <data name="Coefficient" xml:space="preserve">
+    <value>Coefficient</value>
+  </data>
+  <data name="IdNormeProductionHevea" xml:space="preserve">
+    <value>Code norme production hévéa</value>
+  </data>
+  <data name="ProductionParHectare" xml:space="preserve">
+    <value>Production par ha</value>
+  </data>
+  <data name="TauxProduction" xml:space="preserve">
+    <value>Taux</value>
+  </data>
+  <data name="ValeurFacteurTerroir" xml:space="preserve">
+    <value>Valeur facteur terroir</value>
+  </data>
+  <data name="ValeurRendement" xml:space="preserve">
+    <value>Valeur rendement</value>
+  </data>
+  <data name="Mars" xml:space="preserve">
+    <value>Mars</value>
+  </data>
+  <data name="Mai" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="AnneePlanting" xml:space="preserve">
+    <value>Année de planting</value>
+  </data>
+  <data name="ChampObligatoire" xml:space="preserve">
+    <value>Ce champ est obligatoire</value>
+  </data>
+  <data name="PU" xml:space="preserve">
+    <value>Prix Unitaire</value>
+  </data>
+  <data name="Commentaire" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="IdSysTableParametre" xml:space="preserve">
+    <value>Table Paramètre</value>
+  </data>
+  <data name="CodeNumeroBudgetCopie" xml:space="preserve">
+    <value>Numéro budget à copier</value>
+  </data>
+  <data name="ArticleSage" xml:space="preserve">
+    <value>Article Sage</value>
+  </data>
+  <data name="IdSysUniteCalcul" xml:space="preserve">
+    <value>Unité de calcul</value>
+  </data>
+  <data name="PcAna" xml:space="preserve">
+    <value>Plan comptable Analytique</value>
+  </data>
+  <data name="TauxConversion" xml:space="preserve">
+    <value>Taux conversion</value>
+  </data>
+  <data name="ChargeUtile" xml:space="preserve">
+    <value>Charge utile ( T )</value>
+  </data>
+  <data name="QuotePart" xml:space="preserve">
+    <value>Quote part</value>
+  </data>
+  <data name="UoTrajet" xml:space="preserve">
+    <value>Unite oeuvre Trajet</value>
+  </data>
+  <data name="VentilationOutillage" xml:space="preserve">
+    <value>Ventilation outillage</value>
+  </data>
+  <data name="TauxRepartition" xml:space="preserve">
+    <value>Taux répartition</value>
+  </data>
+  <data name="NumeroBudget" xml:space="preserve">
+    <value>Numéro budget</value>
+  </data>
+  <data name="TauxVentilation" xml:space="preserve">
+    <value>Taux ventilation</value>
+  </data>
+  <data name="JourDebutAnneeAgricole" xml:space="preserve">
+    <value>Jour début année agricole</value>
+  </data>
+  <data name="MoisDebutAnneeAgricole" xml:space="preserve">
+    <value>Mois début année agricole</value>
+  </data>
+  <data name="Quantite" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="QuantiteCalcule" xml:space="preserve">
+    <value>Quantité Calculée</value>
+  </data>
+  <data name="AA" xml:space="preserve">
+    <value>Nombre d’arbres en arrêt d’exploitation</value>
+  </data>
+  <data name="AE" xml:space="preserve">
+    <value>Nombre d’arbres exploitables</value>
+  </data>
+  <data name="AI" xml:space="preserve">
+    <value>Nombre d’arbres immatures</value>
+  </data>
+  <data name="AM" xml:space="preserve">
+    <value>Nombre d’arbres malades</value>
+  </data>
+  <data name="AS" xml:space="preserve">
+    <value>Nombre d’arbres sains</value>
+  </data>
+  <data name="AV" xml:space="preserve">
+    <value>Nombre d’arbres vivants</value>
+  </data>
+  <data name="EV" xml:space="preserve">
+    <value>Nombre d’emplacements vides</value>
+  </data>
+  <data name="IdSysMaterielVegetal" xml:space="preserve">
+    <value>Matériel végétal</value>
+  </data>
+  <data name="LibelleNature" xml:space="preserve">
+    <value>Libellé nature</value>
+  </data>
+  <data name="LibelleTypeBudget" xml:space="preserve">
+    <value>Libellé type budget</value>
+  </data>
+  <data name="BlocSystemeExploitation" xml:space="preserve">
+    <value>Evolution système exploitation</value>
+  </data>
+  <data name="IdSysFrequenceSaignee" xml:space="preserve">
+    <value>Fréquence saignée</value>
+  </data>
+  <data name="IdSysPanneau" xml:space="preserve">
+    <value>Panneau</value>
+  </data>
+  <data name="IdSysSpirale" xml:space="preserve">
+    <value>Spirale</value>
+  </data>
+  <data name="IdSysStimulationFrequence" xml:space="preserve">
+    <value>Stimulation fréquence</value>
+  </data>
+  <data name="IdSysStimulationProduit" xml:space="preserve">
+    <value>Stimulation produit</value>
+  </data>
+  <data name="Taux" xml:space="preserve">
+    <value>Taux</value>
+  </data>
+  <data name="EvolutionBloc" xml:space="preserve">
+    <value>Evolution surface</value>
+  </data>
+  <data name="AnneeSaignee" xml:space="preserve">
+    <value>Année Saignée</value>
+  </data>
+  <data name="KgParAs" xml:space="preserve">
+    <value>Kg par AS</value>
+  </data>
+  <data name="Conditionnement" xml:space="preserve">
+    <value>Conditionnement(s)</value>
+  </data>
+  <data name="HasAnneeCulture" xml:space="preserve">
+    <value>Année de culture requise</value>
+  </data>
+  <data name="HasDestination" xml:space="preserve">
+    <value>Destination requise</value>
+  </data>
+  <data name="CodeDivision" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="IdEmsAgro" xml:space="preserve">
+    <value>Identifiant EmsAgro</value>
+  </data>
+  <data name="IdGroupeNorme" xml:space="preserve">
+    <value>Groupe de norme</value>
+  </data>
+  <data name="ReferenceBudget" xml:space="preserve">
+    <value>Référence budget</value>
+  </data>
+  <data name="TypeIntervalle" xml:space="preserve">
+    <value>Type d'intervalle</value>
+  </data>
+  <data name="Valeurs" xml:space="preserve">
+    <value>Valeurs</value>
+  </data>
+  <data name="Tous" xml:space="preserve">
+    <value>Tous</value>
+  </data>
+  <data name="UseCoefficient" xml:space="preserve">
+    <value>Utiliser les coefficients</value>
+  </data>
+  <data name="Rubrique" xml:space="preserve">
+    <value>Rubrique</value>
+  </data>
+  <data name="LibelleRubrique" xml:space="preserve">
+    <value>Libellé rubrique</value>
+  </data>
+  <data name="GroupeNorme" xml:space="preserve">
+    <value>Groupe de norme</value>
+  </data>
+  <data name="IdAnneePlanting" xml:space="preserve">
+    <value>Année de planting</value>
+  </data>
+  <data name="IdRubriqueGroupe" xml:space="preserve">
+    <value>Rubrique groupe</value>
+  </data>
+  <data name="RubriqueGroupe" xml:space="preserve">
+    <value>Rubrique groupe</value>
+  </data>
+  <data name="IdCentreDeCoutNiveau1" xml:space="preserve">
+    <value>Centre de coût niveau 1</value>
+  </data>
+  <data name="IdCentreDeCoutNiveau2" xml:space="preserve">
+    <value>Centre de coût niveau 2</value>
+  </data>
+  <data name="LibelleDestination" xml:space="preserve">
+    <value>Libellé Destination</value>
+  </data>
+  <data name="NormeStandard" xml:space="preserve">
+    <value>Norme standard</value>
+  </data>
+  <data name="FacteurDenominateur" xml:space="preserve">
+    <value>Facteur dénominateur</value>
+  </data>
+  <data name="FacteurNumerateur" xml:space="preserve">
+    <value>Facteur numérateur</value>
+  </data>
+  <data name="Frequence" xml:space="preserve">
+    <value>Fréquence</value>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="LibelleEmploi" xml:space="preserve">
+    <value>Libellé Emploi</value>
+  </data>
+  <data name="LibelleService" xml:space="preserve">
+    <value>Libellé Service</value>
+  </data>
+  <data name="Ventilation" xml:space="preserve">
+    <value>Ventilation</value>
+  </data>
+  <data name="IdSysOrigineBudget" xml:space="preserve">
+    <value>Origine budget</value>
+  </data>
+  <data name="LibelleRubriqueGroupe" xml:space="preserve">
+    <value>Libellé Rubrique</value>
+  </data>
+  <data name="CodeBlocBudgetCopie" xml:space="preserve">
+    <value>Facteur contextuel à copier</value>
+  </data>
+  <data name="IdAnneeCultureCopie" xml:space="preserve">
+    <value>Année de culture à copier</value>
+  </data>
+  <data name="IdAnneePlantingCopie" xml:space="preserve">
+    <value>Année de planting à copier</value>
+  </data>
+  <data name="IdCentreDeCoutCopie" xml:space="preserve">
+    <value>Centre de coût à copier</value>
+  </data>
+  <data name="IdDestinationCopie" xml:space="preserve">
+    <value>Destination à copier</value>
+  </data>
+  <data name="Janvier" xml:space="preserve">
+    <value>Janv.</value>
+  </data>
+  <data name="Fevrier" xml:space="preserve">
+    <value>Fév.</value>
+  </data>
+  <data name="Avril" xml:space="preserve">
+    <value>Avril</value>
+  </data>
+  <data name="Juillet" xml:space="preserve">
+    <value>Juil.</value>
+  </data>
+  <data name="Aout" xml:space="preserve">
+    <value>Août</value>
+  </data>
+  <data name="Septembre" xml:space="preserve">
+    <value>Sep.</value>
+  </data>
+  <data name="Octobre" xml:space="preserve">
+    <value>Oct</value>
+  </data>
+  <data name="Novembre" xml:space="preserve">
+    <value>Nov.</value>
+  </data>
+  <data name="Decembre" xml:space="preserve">
+    <value>Déc.</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Prevision" xml:space="preserve">
+    <value>Prévisions</value>
+  </data>
+  <data name="RepartitionMensuelle" xml:space="preserve">
+    <value>Répartition mensuelle</value>
+  </data>
+  <data name="IdArticleEmploi" xml:space="preserve">
+    <value>Emploi</value>
+  </data>
+  <data name="CodePcanax3" xml:space="preserve">
+    <value>Compte analytique (X3)</value>
+  </data>
+  <data name="LibelleArticle" xml:space="preserve">
+    <value>Libellé Article</value>
+  </data>
+  <data name="LibelleEn" xml:space="preserve">
+    <value>Libellé en anglais</value>
+  </data>
+  <data name="Pcanax3" xml:space="preserve">
+    <value>Compte analytique</value>
+  </data>
+  <data name="IdExercice" xml:space="preserve">
+    <value>Exercice</value>
+  </data>
+  <data name="LibelleArticleEmploi" xml:space="preserve">
+    <value>Libellé Emploi</value>
+  </data>
+  <data name="LibelleCentreDeCout" xml:space="preserve">
+    <value>Libellé Centre de coût</value>
+  </data>
+  <data name="ArticleALier" xml:space="preserve">
+    <value>Article lié</value>
+  </data>
+  <data name="ArticleDeReference" xml:space="preserve">
+    <value>Article de référence</value>
+  </data>
+  <data name="Constante" xml:space="preserve">
+    <value>Constante</value>
+  </data>
+  <data name="Denominateur" xml:space="preserve">
+    <value>Dénominateur</value>
+  </data>
+  <data name="Numerateur" xml:space="preserve">
+    <value>Numérateur</value>
+  </data>
+  <data name="ArticlesLies" xml:space="preserve">
+    <value>Articles liés</value>
+  </data>
+  <data name="Fichier" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="EcraserExistant" xml:space="preserve">
+    <value>Ecraser l'existant</value>
+  </data>
+  <data name="LibelleCentreDeCoutSite" xml:space="preserve">
+    <value>Libellé Centre de coût site</value>
+  </data>
+  <data name="LibellePeriode" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="LibelleDepartement" xml:space="preserve">
+    <value>Libellé Département</value>
+  </data>
+  <data name="LibelleDirection" xml:space="preserve">
+    <value>Libellé Direction</value>
+  </data>
+  <data name="LibelleCulture" xml:space="preserve">
+    <value>Libellé culture</value>
+  </data>
+  <data name="LibelleSysSpirale" xml:space="preserve">
+    <value>Spirale</value>
+  </data>
+  <data name="LibelleSysPanneau" xml:space="preserve">
+    <value>Panneau</value>
+  </data>
+  <data name="LibelleSysStimulationFrequence" xml:space="preserve">
+    <value>Fréquence stimulation</value>
+  </data>
+  <data name="LibelleSysStimulationProduit" xml:space="preserve">
+    <value>Produit stimulation</value>
+  </data>
+  <data name="LibelleSysFrequenceSaignee" xml:space="preserve">
+    <value>Fréquence saignee</value>
+  </data>
+  <data name="CentreDeCout" xml:space="preserve">
+    <value>Centre de coût</value>
+  </data>
+  <data name="LibelleCentreDeCoutNiveau1" xml:space="preserve">
+    <value>Libellé Centre coût niveau1</value>
+  </data>
+  <data name="LibelleCentreDeCoutNiveau2" xml:space="preserve">
+    <value>Libellé Centre coût niveau2</value>
+  </data>
+  <data name="LibelleCentreDeCoutNiveau3" xml:space="preserve">
+    <value>Libellé Centre coût niveau3</value>
+  </data>
+  <data name="Clones" xml:space="preserve">
+    <value>Clones</value>
+  </data>
+  <data name="SurfaceModifie" xml:space="preserve">
+    <value>Surface modifiée</value>
+  </data>
+  <data name="SurfaceInitiale" xml:space="preserve">
+    <value>Surface initiale</value>
+  </data>
+  <data name="VersionDeReference" xml:space="preserve">
+    <value>Version de référence</value>
+  </data>
+  <data name="VersionBudget" xml:space="preserve">
+    <value>Version de budget</value>
+  </data>
+  <data name="AfficherBlocExistant" xml:space="preserve">
+    <value>Afficher blocs existant</value>
+  </data>
+  <data name="AfficherBlocAbattu" xml:space="preserve">
+    <value>Afficher blocs abattus</value>
+  </data>
+  <data name="EvolutionYieldProfile" xml:space="preserve">
+    <value>Evolution yield profile</value>
+  </data>
+  <data name="ValeurYieldProfile" xml:space="preserve">
+    <value>Valeur yield profile</value>
+  </data>
+  <data name="GroupeNormeParNumeroBudget" xml:space="preserve">
+    <value>Groupe norme Par version budget</value>
+  </data>
+  <data name="Norme" xml:space="preserve">
+    <value>Norme</value>
+  </data>
+  <data name="LibelleGroupeNorme" xml:space="preserve">
+    <value>Libellé groupe norme</value>
+  </data>
+  <data name="RatioConsommation" xml:space="preserve">
+    <value>Ratio consommation</value>
+  </data>
+  <data name="Densite" xml:space="preserve">
+    <value>Densité</value>
+  </data>
+  <data name="DensiteAA" xml:space="preserve">
+    <value>Densité AA</value>
+  </data>
+  <data name="DensiteAE" xml:space="preserve">
+    <value>Densité AE</value>
+  </data>
+  <data name="DensiteAI" xml:space="preserve">
+    <value>Densité AI</value>
+  </data>
+  <data name="DensiteAM" xml:space="preserve">
+    <value>Densité AM</value>
+  </data>
+  <data name="DensiteAS" xml:space="preserve">
+    <value>Densité AS</value>
+  </data>
+  <data name="DensiteAV" xml:space="preserve">
+    <value>Densité AV</value>
+  </data>
+  <data name="DensiteEV" xml:space="preserve">
+    <value>Densité EV</value>
+  </data>
+  <data name="BudgetOperation" xml:space="preserve">
+    <value>Unité d'oeuvre normes</value>
+  </data>
+  <data name="LibelleOperation" xml:space="preserve">
+    <value>Opération</value>
+  </data>
+  <data name="IdOperation" xml:space="preserve">
+    <value>Opération</value>
+  </data>
+  <data name="CodeVariableMacro" xml:space="preserve">
+    <value>Variable macro</value>
+  </data>
+  <data name="LibelleVariableMacro" xml:space="preserve">
+    <value>Libellé variable macro</value>
+  </data>
+  <data name="NombreEmplacement" xml:space="preserve">
+    <value>Nombre d'emplacement</value>
+  </data>
+  <data name="LibelleDivision" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="LibelleBloc" xml:space="preserve">
+    <value>Bloc</value>
+  </data>
+  <data name="LibelleUnite" xml:space="preserve">
+    <value>Unité</value>
+  </data>
+  <data name="Suppression" xml:space="preserve">
+    <value>Suppression</value>
+  </data>
+  <data name="Journee" xml:space="preserve">
+    <value>Jx</value>
+  </data>
+  <data name="NombreTours" xml:space="preserve">
+    <value>Nombre de tours</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="RealiseHeure" xml:space="preserve">
+    <value>Réalisé (h)</value>
+  </data>
+  <data name="RealiseJour" xml:space="preserve">
+    <value>Réalisé (j)</value>
+  </data>
+  <data name="RealisePaie" xml:space="preserve">
+    <value>Réalisé paie</value>
+  </data>
+  <data name="ReceptionnaireOt" xml:space="preserve">
+    <value>Réceptionnaire OT</value>
+  </data>
+  <data name="ReceptionPontBascule" xml:space="preserve">
+    <value>Réception pont-bascule</value>
+  </data>
+  <data name="ReceptionWASP" xml:space="preserve">
+    <value>Réception WASP</value>
+  </data>
+  <data name="Recolte" xml:space="preserve">
+    <value>Récolte</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Référence</value>
+  </data>
+  <data name="EquivalentTerrainUniteTravail" xml:space="preserve">
+    <value>Equivalent d'une unité de travail en unité de terrain</value>
+  </data>
+  <data name="PartTacheDepassee" xml:space="preserve">
+    <value>Tâche dépassée</value>
+  </data>
+  <data name="PartSaignee" xml:space="preserve">
+    <value>Part saignée</value>
+  </data>
+  <data name="PartNonTerminee" xml:space="preserve">
+    <value>Non terminée</value>
+  </data>
+  <data name="PartNonSaignee" xml:space="preserve">
+    <value>Non saignée</value>
+  </data>
+  <data name="PartCollectee" xml:space="preserve">
+    <value>Part collectée</value>
+  </data>
+  <data name="Regie" xml:space="preserve">
+    <value>Régie</value>
+  </data>
+  <data name="Interim" xml:space="preserve">
+    <value>Intérim</value>
+  </data>
+  <data name="Generation" xml:space="preserve">
+    <value>Génération</value>
+  </data>
+  <data name="Closing" xml:space="preserve">
+    <value>Clôture</value>
+  </data>
+  <data name="Recensement" xml:space="preserve">
+    <value>Recensement</value>
+  </data>
+  <data name="Statut" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="NbEmplacement" xml:space="preserve">
+    <value>Nb Emplacement</value>
+  </data>
+  <data name="IdNormePeriode" xml:space="preserve">
+    <value>Norme période</value>
+  </data>
+  <data name="IdUniteMesure" xml:space="preserve">
+    <value>Unité mesure</value>
+  </data>
+  <data name="LibelleNorme" xml:space="preserve">
+    <value>Libellé norme</value>
+  </data>
+  <data name="LibelleUniteOeuvre" xml:space="preserve">
+    <value>Libelle unité oeuvre</value>
+  </data>
+  <data name="Jx" xml:space="preserve">
+    <value>Jx</value>
+  </data>
+  <data name="ArbresExploitables" xml:space="preserve">
+    <value>Arbres exploitables</value>
+  </data>
+  <data name="LibelleCloneBudget" xml:space="preserve">
+    <value>Classe de clône</value>
+  </data>
+  <data name="DestinationArray" xml:space="preserve">
+    <value>Destination(s)</value>
+  </data>
+  <data name="RechercheCCSite" xml:space="preserve">
+    <value>Recherche CC Site</value>
+  </data>
+  <data name="CentreDeCoutSiteService" xml:space="preserve">
+    <value>Centre coût site service</value>
+  </data>
+  <data name="CodeLibelleCentreDeCout" xml:space="preserve">
+    <value>Libellé centre coût</value>
+  </data>
+  <data name="CodeLibelleCulture" xml:space="preserve">
+    <value>Libellé Culture</value>
+  </data>
+  <data name="CodeLibelleRapport0" xml:space="preserve">
+    <value>Libellé Rapport0</value>
+  </data>
+  <data name="CodeLibelleRapport1" xml:space="preserve">
+    <value>Libellé Rapport1</value>
+  </data>
+  <data name="CodeLibelleRapport2" xml:space="preserve">
+    <value>Libellé Rapport2</value>
+  </data>
+  <data name="CodeLibelleRapport3" xml:space="preserve">
+    <value>Libellé Rapport3</value>
+  </data>
+  <data name="Destinations" xml:space="preserve">
+    <value>Destinations</value>
+  </data>
+  <data name="PlantingArray" xml:space="preserve">
+    <value>Année(s) de planting</value>
+  </data>
+  <data name="CentreDeCoutArray" xml:space="preserve">
+    <value>Centre(s) de coût(s)</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="Dotation" xml:space="preserve">
+    <value>Dotation</value>
+  </data>
+  <data name="MajDotationEtVentilation" xml:space="preserve">
+    <value>Mise à jour dotation et ventilation</value>
+  </data>
+  <data name="NombreUO" xml:space="preserve">
+    <value>Nombre UO</value>
+  </data>
+  <data name="TotalMontant" xml:space="preserve">
+    <value>Montant total</value>
+  </data>
+  <data name="NombreDeTours" xml:space="preserve">
+    <value>Nombre de tours</value>
+  </data>
+  <data name="testressource" xml:space="preserve">
+    <value>test ressource</value>
+    <comment>test ressource</comment>
+  </data>
+  <data name="LibelleMaterielVegetal" xml:space="preserve">
+    <value>Matériel Végétal</value>
+  </data>
+  <data name="IdArticleProduit" xml:space="preserve">
+    <value>Produit</value>
+  </data>
+  <data name="LibelleProduit" xml:space="preserve">
+    <value>Libellé Produit</value>
+  </data>
+  <data name="NatureArray" xml:space="preserve">
+    <value>Nature(s)</value>
+  </data>
+  <data name="ArticleArray" xml:space="preserve">
+    <value>Article(s)</value>
+  </data>
+  <data name="Origine" xml:space="preserve">
+    <value>Origine</value>
+  </data>
+  <data name="TotalUo" xml:space="preserve">
+    <value>Total UO</value>
+  </data>
+  <data name="ImportationParcellaire" xml:space="preserve">
+    <value>Importation parcellaire</value>
+  </data>
+  <data name="UO" xml:space="preserve">
+    <value>UO</value>
+  </data>
+  <data name="UoArticle" xml:space="preserve">
+    <value>UO article</value>
+  </data>
+  <data name="UoTravail" xml:space="preserve">
+    <value>UO travail</value>
+  </data>
+  <data name="AffichageExlcusifModif" xml:space="preserve">
+    <value>Valeurs modifiées</value>
+  </data>
+  <data name="Rapport" xml:space="preserve">
+    <value>Rapport</value>
+  </data>
+  <data name="TarifSousTraitant" xml:space="preserve">
+    <value>Tarif sous-traitant</value>
+  </data>
+  <data name="MontantBudget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="RatioHectare" xml:space="preserve">
+    <value>Ratio/Hectare</value>
+  </data>
+  <data name="RatioTonne" xml:space="preserve">
+    <value>Ratio/To</value>
+  </data>
+  <data name="TotProduction" xml:space="preserve">
+    <value>Total Production</value>
+  </data>
+  <data name="TotSurface" xml:space="preserve">
+    <value>Total Surface</value>
+  </data>
+  <data name="Evolution" xml:space="preserve">
+    <value>Evolution</value>
+  </data>
+  <data name="IdOrigineMatierePremiere" xml:space="preserve">
+    <value>Origine matière première</value>
+  </data>
+  <data name="IdArticleMatierePremiere" xml:space="preserve">
+    <value>Matière première</value>
+  </data>
+  <data name="LibelleOrigineBudget" xml:space="preserve">
+    <value>Origine budget</value>
+  </data>
+  <data name="IdSysGroupeDeRapport" xml:space="preserve">
+    <value>Groupe de rapport</value>
+  </data>
+  <data name="IdProduitParMatierePremiere" xml:space="preserve">
+    <value>Produit par matière première</value>
+  </data>
+  <data name="LibelleNatureNiv1Groupe" xml:space="preserve">
+    <value>Nature Niv1</value>
+  </data>
+  <data name="LibelleNatureNiv2Groupe" xml:space="preserve">
+    <value>Nature Niv2</value>
+  </data>
+  <data name="LibelleNatureNiv3Groupe" xml:space="preserve">
+    <value>Nature Niv3</value>
+  </data>
+  <data name="RatioToMP" xml:space="preserve">
+    <value>Ratio /To MP</value>
+  </data>
+  <data name="RatioToMPA" xml:space="preserve">
+    <value>Ratio /To MPA</value>
+  </data>
+  <data name="RatioToMPP" xml:space="preserve">
+    <value>Ratio /To MPP</value>
+  </data>
+  <data name="RatioToSurfExp" xml:space="preserve">
+    <value>Ratio / Hec Surf Exp</value>
+  </data>
+  <data name="RatioToSurfTotal" xml:space="preserve">
+    <value>Ratio / Hec Surf Tot</value>
+  </data>
+  <data name="RatioToUsine" xml:space="preserve">
+    <value>Ratio / To Usine</value>
+  </data>
+  <data name="ParTour" xml:space="preserve">
+    <value>Par Tour</value>
+  </data>
+  <data name="DRC" xml:space="preserve">
+    <value>DRC</value>
+  </data>
+  <data name="Moyenne" xml:space="preserve">
+    <value>Moyenne</value>
+  </data>
+  <data name="MatierePremiere" xml:space="preserve">
+    <value>Matière(s) Première(s)</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="EstSoustraitance" xml:space="preserve">
+    <value>Est soustraitance</value>
+  </data>
+  <data name="MoyenneEffectif" xml:space="preserve">
+    <value>Moyenne Effectif</value>
+  </data>
+  <data name="MoyenneJx" xml:space="preserve">
+    <value>Moyenne Jx</value>
+  </data>
+  <data name="NomPlanteur" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="PlanteurID" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="PrenomPlanteur" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="SexePlanteur" xml:space="preserve">
+    <value>Sexe</value>
+  </data>
+  <data name="DateDelivrance" xml:space="preserve">
+    <value>Date de délivrance</value>
+  </data>
+  <data name="DateNaissance" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="LieuDelivrance" xml:space="preserve">
+    <value>Lieu de délivrance</value>
+  </data>
+  <data name="LieuNaissance" xml:space="preserve">
+    <value>Lieu de naissance</value>
+  </data>
+  <data name="NumeroPiece" xml:space="preserve">
+    <value>N° Pièce</value>
+  </data>
+  <data name="PieceIdentiteID" xml:space="preserve">
+    <value>Pièce d'identité</value>
+  </data>
+  <data name="Sexe" xml:space="preserve">
+    <value>Sexe</value>
+  </data>
+  <data name="Village" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="BanqueID" xml:space="preserve">
+    <value>Banque</value>
+  </data>
+  <data name="GroupementID" xml:space="preserve">
+    <value>Groupement</value>
+  </data>
+  <data name="ModePaiementID" xml:space="preserve">
+    <value>Mode Paiement</value>
+  </data>
+  <data name="NumeroPlanteur" xml:space="preserve">
+    <value>Code Planteur</value>
+  </data>
+  <data name="ProjetPlanteurID" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ZonePlanteurID" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="CompteContribuable" xml:space="preserve">
+    <value>Compte contribuable</value>
+  </data>
+  <data name="NumIdentification" xml:space="preserve">
+    <value>N° d'identification </value>
+  </data>
+  <data name="TypeActeurID" xml:space="preserve">
+    <value>Type d'acteur</value>
+  </data>
+  <data name="Acteur" xml:space="preserve">
+    <value>Acteur</value>
+  </data>
+  <data name="AdresseMail1" xml:space="preserve">
+    <value>Mail 1</value>
+  </data>
+  <data name="AdresseMail2" xml:space="preserve">
+    <value>Mail 2</value>
+  </data>
+  <data name="IDTbPlanteursID" xml:space="preserve">
+    <value>Id Planteur</value>
+  </data>
+  <data name="Analytique" xml:space="preserve">
+    <value>Analytique</value>
+  </data>
+  <data name="Bloque" xml:space="preserve">
+    <value>Bloque</value>
+  </data>
+  <data name="ClefPlanteur" xml:space="preserve">
+    <value>Rib</value>
+  </data>
+  <data name="CodeSecuriteID" xml:space="preserve">
+    <value>Code sécurité</value>
+  </data>
+  <data name="CompteGeneral" xml:space="preserve">
+    <value>Compte général</value>
+  </data>
+  <data name="DateDelivrancePiece" xml:space="preserve">
+    <value>Date delivrance</value>
+  </data>
+  <data name="DistanceEstimee" xml:space="preserve">
+    <value>Distance estimée</value>
+  </data>
+  <data name="EstDelegue" xml:space="preserve">
+    <value>Est délégué</value>
+  </data>
+  <data name="KilometrePlanteur" xml:space="preserve">
+    <value>Kilomètre</value>
+  </data>
+  <data name="KmFacture" xml:space="preserve">
+    <value>Km facture</value>
+  </data>
+  <data name="LieuDelivrancePiece" xml:space="preserve">
+    <value>Lieu délivrance</value>
+  </data>
+  <data name="LocaliteID" xml:space="preserve">
+    <value>Localité</value>
+  </data>
+  <data name="NoApromac" xml:space="preserve">
+    <value>No apromac</value>
+  </data>
+  <data name="NumeroCompte" xml:space="preserve">
+    <value>Numéro compte</value>
+  </data>
+  <data name="NumeroDelegue" xml:space="preserve">
+    <value>Numéro délégué</value>
+  </data>
+  <data name="NumeroPiecePlanteur" xml:space="preserve">
+    <value>N° Pièce</value>
+  </data>
+  <data name="NumeroTelephone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="P2ASaisir" xml:space="preserve">
+    <value>P2 à saisir</value>
+  </data>
+  <data name="PayeBordChamps" xml:space="preserve">
+    <value>Paye bord champs</value>
+  </data>
+  <data name="PlanfondPoids" xml:space="preserve">
+    <value>Planfond poids</value>
+  </data>
+  <data name="PlanfondPoids2" xml:space="preserve">
+    <value>Planfond poids 2</value>
+  </data>
+  <data name="PlanfondPoids3" xml:space="preserve">
+    <value>Planfond poids 3</value>
+  </data>
+  <data name="PrimeExceptionnelle" xml:space="preserve">
+    <value>Prime exceptionnelle</value>
+  </data>
+  <data name="PrimePlanfondPoids" xml:space="preserve">
+    <value>Prime planfond poids</value>
+  </data>
+  <data name="PrimePlanfondPoids2" xml:space="preserve">
+    <value>Prime planfond poids 2</value>
+  </data>
+  <data name="PrimePlanfondPoids3" xml:space="preserve">
+    <value>Prime planfond poids 3</value>
+  </data>
+  <data name="PrimePlanfondPoids4" xml:space="preserve">
+    <value>Prime planfond poids 4</value>
+  </data>
+  <data name="PrixTpKg" xml:space="preserve">
+    <value>Prix Tp Kg</value>
+  </data>
+  <data name="PrixTpKgTpt" xml:space="preserve">
+    <value>Prix Tp Kg Tpt</value>
+  </data>
+  <data name="RetenuePreCollecte" xml:space="preserve">
+    <value>Retenue Précollecte</value>
+  </data>
+  <data name="RetSubCollecte" xml:space="preserve">
+    <value>Retenu subvention collecte</value>
+  </data>
+  <data name="RetSubPreCollecte" xml:space="preserve">
+    <value>Retenu subvention Précollecte</value>
+  </data>
+  <data name="ReversActionnaire" xml:space="preserve">
+    <value>Reversement actionnaire</value>
+  </data>
+  <data name="ReversPreCollecte" xml:space="preserve">
+    <value>Reversement Précollecte</value>
+  </data>
+  <data name="RevSubCollecte" xml:space="preserve">
+    <value>Revenu subvention collecte</value>
+  </data>
+  <data name="RevSubPreCollecte" xml:space="preserve">
+    <value>Revenu subvention Précollecte</value>
+  </data>
+  <data name="RibPlanteur" xml:space="preserve">
+    <value>Rib</value>
+  </data>
+  <data name="VillagePlanteur" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="AnneeCulture" xml:space="preserve">
+    <value>Année culture</value>
+  </data>
+  <data name="CoordonneesGPS" xml:space="preserve">
+    <value>Coordonnées GPS</value>
+  </data>
+  <data name="CulturePratiquee" xml:space="preserve">
+    <value>Cultures pratiquées</value>
+  </data>
+  <data name="DateGeolocalisation" xml:space="preserve">
+    <value>Date géolocalisation</value>
+  </data>
+  <data name="DebutExploitation" xml:space="preserve">
+    <value>Date exploitation</value>
+  </data>
+  <data name="DonneesGeolocalisation" xml:space="preserve">
+    <value>Données géolocalisation</value>
+  </data>
+  <data name="NumeroGeolocalisation" xml:space="preserve">
+    <value>N° géoolocalisation</value>
+  </data>
+  <data name="PlanfondPoids4" xml:space="preserve">
+    <value>Planfond poids 4</value>
+  </data>
+  <data name="Superficie" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="EtatCivil" xml:space="preserve">
+    <value>Etat Civil</value>
+  </data>
+  <data name="ActeurID" xml:space="preserve">
+    <value>Acteur</value>
+  </data>
+  <data name="NumeroTelephone1" xml:space="preserve">
+    <value>Téléphone 1</value>
+  </data>
+  <data name="NumeroTelephone2" xml:space="preserve">
+    <value>Téléphone 2</value>
+  </data>
+  <data name="NumeroTelephone3" xml:space="preserve">
+    <value>Téléphone 3</value>
+  </data>
+  <data name="DateCreation" xml:space="preserve">
+    <value>Date création</value>
+  </data>
+  <data name="RaisonSociale" xml:space="preserve">
+    <value>Raison sociale</value>
+  </data>
+  <data name="Siege" xml:space="preserve">
+    <value>Siège</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactID" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Apromac" xml:space="preserve">
+    <value>APROMAC</value>
+  </data>
+  <data name="National" xml:space="preserve">
+    <value>National</value>
+  </data>
+  <data name="Nationale" xml:space="preserve">
+    <value>Nationale</value>
+  </data>
+  <data name="NumTicket" xml:space="preserve">
+    <value>N° de ticket</value>
+  </data>
+  <data name="Membres" xml:space="preserve">
+    <value>Membre(s)</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="NomPrenom" xml:space="preserve">
+    <value>Nom et prénom(s)</value>
+  </data>
+  <data name="ActiviteID" xml:space="preserve">
+    <value>Activité</value>
+  </data>
+  <data name="LibelleActivite" xml:space="preserve">
+    <value>Libellé groupe contact</value>
+  </data>
+  <data name="Autres" xml:space="preserve">
+    <value>Autres</value>
+  </data>
+  <data name="AdresseMails" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Noms" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="NumeroMatriculeNational" xml:space="preserve">
+    <value>Matricule national</value>
+  </data>
+  <data name="NumeroTelephones" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="NumeroTicketIdentification" xml:space="preserve">
+    <value>Ticket identification</value>
+  </data>
+  <data name="Altitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="CulturePlantation" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="DateAttestationPropriete" xml:space="preserve">
+    <value>Date attestation</value>
+  </data>
+  <data name="DateMiseExploitation" xml:space="preserve">
+    <value>Date exploitation</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="MatriculeOperateur" xml:space="preserve">
+    <value>Opérateur</value>
+  </data>
+  <data name="PersonnePhysique" xml:space="preserve">
+    <value>Personne physique</value>
+  </data>
+  <data name="Plantation" xml:space="preserve">
+    <value>Plantation</value>
+  </data>
+  <data name="CultureID" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+  <data name="NumeroApromac" xml:space="preserve">
+    <value>No Apromac</value>
+  </data>
+  <data name="PlantationID" xml:space="preserve">
+    <value>Plantation</value>
+  </data>
+  <data name="SuperficieGeolocalisee" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="Activites" xml:space="preserve">
+    <value>Activités</value>
+  </data>
+  <data name="FonctionID" xml:space="preserve">
+    <value>Fonction</value>
+  </data>
+  <data name="Dirigeants" xml:space="preserve">
+    <value>Dirigeants</value>
+  </data>
+  <data name="ReferenceBancaire" xml:space="preserve">
+    <value>Références bancaires</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="Sites" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="TypeContact" xml:space="preserve">
+    <value>Type intervenant</value>
+  </data>
+  <data name="DateAdhesion" xml:space="preserve">
+    <value>Date adhésion</value>
+  </data>
+  <data name="ModeSaisie" xml:space="preserve">
+    <value>Options de saisie</value>
+  </data>
+  <data name="TypeContactID" xml:space="preserve">
+    <value>Type intervenant</value>
+  </data>
+  <data name="LibelleTypeContact" xml:space="preserve">
+    <value>Type contact</value>
+  </data>
+  <data name="Plantations" xml:space="preserve">
+    <value>Plantation</value>
+  </data>
+  <data name="NouvellePlantationID" xml:space="preserve">
+    <value>Plantation</value>
+  </data>
+  <data name="CloneID" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="DateEvolution" xml:space="preserve">
+    <value>Date évolution</value>
+  </data>
+  <data name="LibelleMotifEvolution" xml:space="preserve">
+    <value>Libellé</value>
+  </data>
+  <data name="MotifEvolutionID" xml:space="preserve">
+    <value>Motif</value>
+  </data>
+  <data name="NbOccurenceContact" xml:space="preserve">
+    <value>Nb occurence contact</value>
+  </data>
+  <data name="NbOccurencePlantation" xml:space="preserve">
+    <value>Nb occurence plantation</value>
+  </data>
+  <data name="SaisieAutorise" xml:space="preserve">
+    <value>Saisie autorisée</value>
+  </data>
+  <data name="Groupements" xml:space="preserve">
+    <value>Groupement</value>
+  </data>
+  <data name="Localites" xml:space="preserve">
+    <value>Localité</value>
+  </data>
+  <data name="Lot" xml:space="preserve">
+    <value>Lot</value>
+  </data>
+  <data name="GroupeOrganismeID" xml:space="preserve">
+    <value>Groupe organisme</value>
+  </data>
+  <data name="LibelleGroupeOrganisme" xml:space="preserve">
+    <value>Libellé groupe organisme</value>
+  </data>
+  <data name="LibelleOrganisme" xml:space="preserve">
+    <value>Libellé organisme</value>
+  </data>
+  <data name="LibelleProjet" xml:space="preserve">
+    <value>Libellé projet</value>
+  </data>
+  <data name="OrganismeID" xml:space="preserve">
+    <value>Organisme</value>
+  </data>
+  <data name="ProjetID" xml:space="preserve">
+    <value>Projet</value>
+  </data>
+</root>

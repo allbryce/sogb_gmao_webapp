@@ -1,0 +1,30 @@
+﻿@model IndexViewModel
+
+<p class=@CssClasses.StatusMessage>@ViewBag.StatusMessage</p>
+
+<div>
+    <hr />
+    <dl class=@CssClasses.HorizontalLine>
+        <dt>@EntityColumnResource.Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+            @Html.ActionLink(ManageResource.ChangeLinkText, SinbaConstants.Actions.ChangePassword)
+            }
+            else
+            {
+            @Html.ActionLink(ManageResource.CreateLinkText, SinbaConstants.Actions.SetPassword)
+            }
+            ]
+        </dd>
+    </dl>
+    <dl class =@CssClasses.HorizontalLine>
+        <dt>
+            @Html.DevExpress().Button(buttonSettings => ViewHelper.ButtonSettings(buttonSettings,
+                text: ManageResource.btnEditAccountInfo,
+                controller: SinbaConstants.Controllers.Manage,
+                action: SinbaConstants.Actions.EditAccountInfo)).GetHtml()
+        </dt>
+    </dl>
+</div>

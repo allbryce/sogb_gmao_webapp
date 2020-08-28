@@ -1,0 +1,120 @@
+﻿@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "gridUtilisateur";
+        settings.KeyFieldName = DbColumns.Id;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Utilisateur, Action = SinbaConstants.Actions.ListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+        settings.SettingsPager.PageSize = 25;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+        // Buttons column: Add, Edit, Delete
+        settings.Columns.Add(column =>
+        {
+            column.Width = Unit.Pixel(57);
+            column.Caption = Strings.NumberSign;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+                    // Button Edit
+                    (bool)ViewBag.CanEdit ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Edit, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                            new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip }) :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+                    // Button Delete
+                    (bool)ViewBag.CanDelete ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                            new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+                );
+            });
+            column.SetHeaderTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(
+                    // Button Add (column header)
+                    (bool)ViewBag.CanAdd ?
+                        Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString() :
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+                );
+            });
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowSort = DefaultBoolean.False;
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        });
+
+        // E-mail
+        settings.Columns.Add(DbColumns.Email, EntityColumnResource.Email);
+
+        // Nom
+        settings.Columns.Add(DbColumns.Nom, EntityColumnResource.Nom);
+
+        // Prénom
+        settings.Columns.Add(DbColumns.Prenom, EntityColumnResource.Prenom);
+
+        // Profil
+        settings.Columns.Add(c => ViewHelper.GridViewComboBoxColumn(c, DbColumns.IdProfil,
+            caption: EntityColumnResource.Profil,
+            dataSource: ViewBag.ProfilList,
+            valueField: DbColumns.Id,
+            textField: DbColumns.Nom,
+            valueType: typeof(long)));
+
+        // Email confirmed
+        settings.Columns.Add(c => ViewHelper.GridViewDefaultColumn(c, DbColumns.EmailConfirmed,
+                minWidth: 50,
+                caption: EntityColumnResource.EmailConfirmed,
+                columnType: MVCxGridViewColumnType.CheckBox));
+
+
+        // Bouton User rights
+        settings.Columns.Add(column =>
+        {
+            column.MinWidth = 90;
+            column.Caption = EntityColumnResource.Rights;
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+                    // Button
+                    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Index, SinbaConstants.Controllers.UtilisateurRight, new { idUtilisateur = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                        new { @class = CssClasses.FolderIcon, title = RightManagementResource.btnProfilRightsTooltip })
+                );
+            });
+        });
+
+        // Bouton User sites
+        settings.Columns.Add(column =>
+        {
+            column.MinWidth = 90;
+            column.Caption = EntityColumnResource.Sites;
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+                    // Button
+                    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Edit, SinbaConstants.Controllers.SiteUtilisateur, new { idUser = DataBinder.Eval(c.DataItem, DbColumns.Id) },
+                        new { @class = CssClasses.ListAltIcon, title = RightManagementResource.btnSiteUtilisateurTooltip })
+                );
+            });
+        });
+        // ListeSite
+        settings.Columns.Add(DbColumns.ListeSite, EntityColumnResource.Sites);
+
+
+        // Keeping grid state
+        settings.ClientLayout = (s, e) =>
+        {
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.GridStateUtilisateur] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateUtilisateur];
+            }
+            else
+                Session[Strings.GridStateUtilisateur] = e.LayoutData;
+        };
+
+
+    }).Bind(Model).GetHtml()

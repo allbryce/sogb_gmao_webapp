@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>@Utils.GetCurrentSectionPageTitle()</title>
+    @Styles.Render("~/Content/css")
+    <script src="@Url.Content("~/Scripts/Section.js?v=" + Utils.GetVersionSuffix())" type="text/javascript"></script>
+    @if (!Utils.IsEmbedRequiredClientLibraries)
+    {
+        <script src="@Url.Content("~/Scripts/jquery-1.11.3.min.js")" type="text/javascript"></script>
+    }
+    <script src="@Url.Content("~/Scripts/gmao/Common.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var navIsOpened = true;
+
+    </script>
+    @RenderSection("AdditionalResources", false)
+    @Html.Partial(ViewNames.HeadPartial)
+</head>
+<body>
+    <div id="myTopMenusinba" class="TopMenu">
+        <div class="Inner">
+            <div class="Header">
+                <div id="menuButtonShower" class="MenuButton"></div>
+                <div class="SinbaLogo " style="float:left;">
+                    <a href="/" class="Logo"> 
+                        @Html.DevExpress().Image(s =>
+                        {
+                            s.Name = "SINBALogo";
+                            s.Properties.SpriteCssClass = "SinbaLogoImage";
+                            s.Properties.AlternateText = "SINBA";
+                        }).GetHtml()
+                    </a>
+                </div>
+                <div style="float:left;">
+
+                    @if (Utils.CurrentSectionPage != null)
+                    {
+                        <h1 class="SectionTitle">
+                            <span class="SectionNavigationTitle">@Utils.GetSectionNavigationTitle() &nbsp;</span>
+                            @if (Utils.CurrentSection.UseSecondTitle)
+                            {
+                                <span>@Utils.CurrentSection.SecondTitle</span>
+                            }
+                            else
+                            {
+                                <span id="CurrentSectionTitle">@Utils.CurrentSection.Title</span>
+                            }
+                        </h1>
+                        @*<b class="Clear"></b>*@
+                    }
+                </div>
+                @{
+                    Utils.CurrentSection.HelpUrl = string.IsNullOrWhiteSpace(Utils.CurrentSection.HelpUrl) ? "http://10.22.11.37:8090/display/SF/Documentation+SINBA" : Utils.CurrentSection.HelpUrl;
+                }
+                <div class="Buttons">
+                    @*<a href="@Utils.CurrentSection.HelpUrl" title="@EntityCommonResource.Aide" class="Logo" target="_blank">
+                        @Html.DevExpress().Image(s =>
+                        {
+                            s.Name = "helplink";
+                            s.Properties.SpriteCssClass = "HelpImage";
+                            //s.Properties.AlternateText = EntityCommonResource.Aide;
+                        }).GetHtml()
+                    </a>*@
+                    <div class="Separator Vertical"></div>
+                    @Html.Partial(ViewNames.LoginPartial)
+                    <div class="Separator Vertical"></div>
+                    <a href="http://www.sogbci.com" class="Logo" target="_blank">
+                        @Html.DevExpress().Image(s =>
+                        {
+                         s.Name = "SocfinLogo";
+                         s.Properties.SpriteCssClass = "SocfinLogoImage";
+                         s.Properties.AlternateText = "SOGB";
+                        }).GetHtml()
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="LayoutContainer">
+        @if (!Utils.CurrentSection.IsErrorPage)
+        {
+            if (Request.IsAuthenticated)
+            {
+                <div id="navLayoutLeft" class="LayoutLeft">
+                    <div class="Inner">
+                        @Html.Partial(ViewNames.SearchPartial)
+                        <div class="Navigation">
+                            @Html.Partial(ViewNames.NavigationPartial)
+                        </div>
+
+                    </div>
+                    <div class="FooterInner">
+                        <div class="Version">
+                            Version: @Utils.GetVersionText()
+                        </div>
+                        <div class="Copyrights">
+                            Copyright &copy; @DateTime.Now.Year
+                            Socfin
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <div id="mainLayoutRight" class="LayoutRight">
+            <div class="Inner">
+                @if (!Utils.CurrentSection.IsErrorPage)
+                {
+                    @*<div class="Separator"></div>*@
+                    <b class="Clear"></b>
+                    <br />
+                    @*if(Utils.CanChangeTheme) {
+                            @Html.Partial("_ThemeSelector")
+                        }*@
+                    @*if(Utils.CurrentSectionPage != null) {
+                            <h1 class="SectionTitle">
+                                <span class="SectionNavigationTitle">@Utils.GetSectionNavigationTitle() &nbsp;</span>
+                                @if(Utils.CurrentSection.UseSecondTitle)
+                                {
+                                    <span>@Utils.CurrentSection.SecondTitle</span>
+                                }
+                                else
+                                {
+                                    <span>@Utils.CurrentSection.Title</span>
+                                }
+                            </h1>
+                            <b class="Clear"></b>
+                        }*@
+                    <div id="DemoArea">
+                        <div class="OverviewArea">
+                            <div class="LeftArea">
+                                @RenderBody()
+                            </div>
+                        </div>
+                        <div class="RightArea">
+                            <div class="TextContent">
+                                @if (Utils.CurrentSectionPage.SeeAlsoLinks.Count > 0)
+                                {
+                                    <span class="Title">Resources to Learn</span>
+                                    <ul>
+                                        @foreach (var sa in Utils.CurrentSectionPage.SeeAlsoLinks)
+                                        {
+                                            <li><a href="@Utils.EncodeUrl(Url.Content(sa.Url))">@sa.Title</a></li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <b class="Clear"></b>
+        @if (Utils.CurrentSection.IsErrorPage)
+        {
+            <div class="Separator"></div>
+            @RenderBody()
+        }
+        <div class="LayoutFooterSpacing"></div>
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    /* When the user scrolls the page, execute myFunction*/
+    //window.onscroll = function () { stickMenu(); };
+
+    ///*Get the offset position of the navbar*/
+    //var sticky = $("#myTopMenusinba").position().top;
+
+    ///*Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position*/
+    //function stickMenu() {
+    //    if (window.pageYOffset > sticky) {
+    //        $("#myTopMenusinba").addClass("sticky");
+    //    } else {
+    //        $("#myTopMenusinba").removeClass("sticky");
+    //    }
+    //}
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+    function openNav() {
+        $("#navLayoutLeft").removeClass('hidden');
+        document.getElementById("mainLayoutRight").style.paddingLeft = "315px";
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        $("#navLayoutLeft").addClass('hidden');
+        document.getElementById("mainLayoutRight").style.paddingLeft = "20px";
+    }
+
+    $("#menuButtonShower").click(function () {
+        if (navIsOpened) { closeNav(); navIsOpened = false; } else { openNav(); navIsOpened = true; }
+    })
+
+</script>
+@{
+    var largeScreen = new string[] { "SaisieBudget", "DuplicationPrixUnitaire", "ConsultationBudget", "CentreDeCoutSite", "ProductionHevea", "ProductionPalmier", "PrevisionUsinage", "PrevisionEffectif" };
+    if (largeScreen.Contains( Utils.CurrentSectionPage.Key))
+    {
+    <script type="text/javascript">
+        closeNav();
+        navIsOpened = false;
+    </script>
+    }
+}

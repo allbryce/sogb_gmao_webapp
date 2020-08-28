@@ -1,0 +1,18 @@
+﻿
+@{
+    Html.EnableClientValidation();
+}
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    ViewHelper.PopupSettings(settings,
+        "LoadingModal",
+        EntityColumnResource.Budget);
+    settings.SetContent(() =>
+    {
+        
+        ViewContext.Writer.Write(string.Format("<p><div class=\"\" > {0} </div></p>", CommonResource.lblLoading));
+
+    });
+}).GetHtml()
+
