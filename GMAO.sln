@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{7DC9558C-56CF-414E-AC15-F9E8C6964609}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{54003F60-2A64-4C14-9653-361737AD98B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{3DC7366B-EDE9-4061-AED0-2064B60C5862}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7EB94A64-4DBF-474A-B49D-53C9B3A19AB1}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMAO.BusinessLogic", "Source\SINBA.BusinessLogic\GMAO.BusinessLogic.csproj", "{139ABBAB-CD21-4B49-8C6D-FA1184015A45}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB} = {9BB60192-761E-4079-A953-7EB9FCD80DDB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMAO.BusinessModel", "Source\SINBA.BusinessModel\GMAO.BusinessModel.csproj", "{E7E36E72-9646-47EC-B74E-2B922C7A2822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMAO.DataAccess", "Source\SINBA.DataAccess\GMAO.DataAccess.csproj", "{9BB60192-761E-4079-A953-7EB9FCD80DDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Test", "UnitTest\BusinessLogic.Test\BusinessLogic.Test.csproj", "{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gui", "Gui", "{D56866E2-0D83-4A50-80D3-5504A9C8DA1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMAO.Gui", "Source\SINBA.Gui\GMAO.Gui.csproj", "{F442DC1A-25FD-4706-8F25-74628560F8C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{33496D19-58EC-4A22-9FEC-22EC40788DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMAO.Resources", "Source\SINBA.Resources\GMAO.Resources.csproj", "{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{139ABBAB-CD21-4B49-8C6D-FA1184015A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139ABBAB-CD21-4B49-8C6D-FA1184015A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139ABBAB-CD21-4B49-8C6D-FA1184015A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139ABBAB-CD21-4B49-8C6D-FA1184015A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E36E72-9646-47EC-B74E-2B922C7A2822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E36E72-9646-47EC-B74E-2B922C7A2822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E36E72-9646-47EC-B74E-2B922C7A2822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E36E72-9646-47EC-B74E-2B922C7A2822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F442DC1A-25FD-4706-8F25-74628560F8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F442DC1A-25FD-4706-8F25-74628560F8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F442DC1A-25FD-4706-8F25-74628560F8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F442DC1A-25FD-4706-8F25-74628560F8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{139ABBAB-CD21-4B49-8C6D-FA1184015A45} = {7DC9558C-56CF-414E-AC15-F9E8C6964609}
+		{E7E36E72-9646-47EC-B74E-2B922C7A2822} = {7DC9558C-56CF-414E-AC15-F9E8C6964609}
+		{9BB60192-761E-4079-A953-7EB9FCD80DDB} = {54003F60-2A64-4C14-9653-361737AD98B4}
+		{1D3133B0-406A-4920-AFD8-B9ABD3FDA78D} = {3DC7366B-EDE9-4061-AED0-2064B60C5862}
+		{F442DC1A-25FD-4706-8F25-74628560F8C0} = {D56866E2-0D83-4A50-80D3-5504A9C8DA1A}
+		{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C} = {33496D19-58EC-4A22-9FEC-22EC40788DA7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28FE0496-7233-44F8-9904-4431D7C42C60}
+	EndGlobalSection
+EndGlobal
