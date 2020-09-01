@@ -6,8 +6,6 @@
     
     <SectionGroup Key="Liste" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Liste" >
       <Keywords>Liste</Keywords>
-      <!--<Section Key="Societe" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Societe"  Help=""></Section>
-      <Section Key="Site" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Site"></Section>-->
       <Section Key="Fonction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Fonction"></Section>
     </SectionGroup>
     
@@ -19,83 +17,16 @@
     
   </SectionItem>
   
-  <!--<SectionItem Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de base" NavItemTitle="Données de base" OrderIndex="2" IntegrationHighlighted="true">
-
-    <SectionGroup Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de base" >
-      
-      
-      <Keywords>DonneesDeBase</Keywords>
-      
-
-      --><!--<Section Key="Societe" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Societe"  Help=""></Section>
-      <Section Key="Site" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Site"></Section>
-      <Section Key="Fonction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Fonction"></Section>--><!--
-    </SectionGroup>
-
-    <SectionGroup Key="Contact" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Contacts">
-      <Keywords>Contact, Contacts, Planteur,</Keywords>
-      <Section Key="Fonction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Fonctions"></Section>
-      <Section Key="Utilisateur" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Utilisateur"></Section>
-    </SectionGroup>
-
-  </SectionItem>-->
-
-
 
   <SectionItem Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de base" NavItemTitle="Données de base" OrderIndex="1" IntegrationHighlighted="true">
 
-    <SectionGroup Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF/Contact" Title="Données de base">
+    <SectionGroup Key="DonneesDeBase" HelpUrl="" Title="Données de base">
       <Keywords>Liste</Keywords>
-      <!--<Section Key="Contact" HelpUrl="http://10.22.11.37:8090/display/SF/Contact" Title="Contact" ></Section>-->
-      <Section Key="Localite" HelpUrl="http://10.22.11.37:8090/display/SF/Localite" Title="Localité" ></Section>
-      <Section Key="Activite" HelpUrl="http://10.22.11.37:8090/display/SF/Activite" Title="Activité" ></Section>
-      <Section Key="Groupement" HelpUrl="http://10.22.11.37:8090/display/SF/Groupement" Title="Groupement" ></Section>
-      <Section Key="PieceIdentite" HelpUrl="http://10.22.11.37:8090/display/SF/PieceIdentite" Title="Pièce identité" ></Section>
-      <Section Key="TypeContact" HelpUrl="http://10.22.11.37:8090/display/SF/TypeContact" Title="Type intervenant" ></Section>
-    </SectionGroup>
-
-  </SectionItem>
-
-
-  <SectionItem Key="DonneesContact" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de contacts" NavItemTitle="Données de contacts" OrderIndex="2" IntegrationHighlighted="true">
-
-    <SectionGroup Key="Contact" HelpUrl="http://10.22.11.37:8090/display/SF/Contact" Title="Contacts">
-      <Keywords>Liste</Keywords>
-      <Section Key="Contact" HelpUrl="http://10.22.11.37:8090/display/SF/Contact" Title="Contact" ></Section>
-    
-    </SectionGroup>
-
-  </SectionItem>
-
-  <SectionItem Key="Plantation" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Plantation" NavItemTitle="Plantation" OrderIndex="3" IntegrationHighlighted="true">
-
-    <SectionGroup Key="Plantation" HelpUrl="http://10.22.11.37:8090/display/SF/Planteur" Title="Editions">
-      <Keywords>Liste</Keywords>
-      <Section Key="Plantation" HelpUrl="http://10.22.11.37:8090/display/SF/Plantation" Title="Edition par contact" ></Section>
-
-      <Section Key="PlantationAutreModel" HelpUrl="http://10.22.11.37:8090/display/SF/PlantationAutreModel" Title="Edition par plantation" ></Section>
-      <Section Key="PlantationAutre" HelpUrl="http://10.22.11.37:8090/display/SF/PlantationAutre" Title="Edition par plantation bis" ></Section>
-      <Section Key="CessionPlantation" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Cession plantation"  Help=""></Section>
-
-      <Section Key="Intervenant" HelpUrl="http://10.22.11.37:8090/display/SF/Intervenant" Title="Intervenant" ></Section>
     </SectionGroup>
 
   </SectionItem>
 
   
-  
-  <!--<SectionItem Key="Cession" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Cession" NavItemTitle="Cession" OrderIndex="6" IntegrationHighlighted="true">
-
-    <SectionGroup Key="Cession" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Cession" >
-      <Keywords>Cession</Keywords>
-      <Section Key="Cession" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Cession"  Help=""></Section>
-      <Section Key="CessionPlantation" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Cession Plantation"  Help=""></Section>
-
-
-    </SectionGroup>
-    
-  </SectionItem>-->
-
   <Search>
     <Synonyms>
     </Synonyms>
