@@ -1,0 +1,102 @@
+﻿            @Html.DevExpress().FormLayout(setting =>{
+
+                setting.Name = "AssocieModalFormLayout";
+                setting.RequiredMarkDisplayMode = RequiredMarkMode.None;
+                setting.Width = Unit.Percentage(100);
+                setting.Height = Unit.Percentage(100);
+                setting.ColumnCount = 4;
+                setting.NestedExtensionWidth = Unit.Percentage(100);
+
+                //setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox, maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+                //Date D'acquisition
+                setting.Items.Add(m => m.DateInstallation, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+                //Garantie
+                setting.Items.Add(m => m.DateRetrait, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+            }).Render();
+
+           @Html.DevExpress().GridView<AssocierMateriel>
+    (setting =>
+
+    {
+    ViewHelper.GridViewDefaultSettings(setting, "gridAssocier",
+    allowDragDrop: false,
+    allowSortResize: false,
+    showFilter: false,
+    enablePaging: false);
+    setting.KeyFieldName = "MaterielId";
+    setting.CallbackRouteValues = new { Controller = "Materiel", Action = "MaterielAssocie" };
+    setting.SettingsEditing.AddNewRowRouteValues = new { Controller = "Materiel", Action = "MaterielAssocie" };
+    setting.CommandColumn.Visible = true;
+    setting.CommandColumn.ShowDeleteButton = true;
+    setting.CommandColumn.Width = Unit.Pixel(100);
+
+    setting.Columns.Add(column =>
+    {
+
+    column.Width = Unit.Pixel(25);
+    column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", setting.Name, CommonResource.btnAddTooltip);
+    //column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+    //column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)
+    column.Settings.AllowDragDrop = DefaultBoolean.False;
+    column.Settings.AllowSort = DefaultBoolean.False;
+    column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+    column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+    column.FixedStyle = GridViewColumnFixedStyle.Left;
+
+
+
+    });
+
+
+    setting.Columns.Add(c =>
+    {
+    c.FieldName = "MaterielAssocieId";
+    c.Caption = "Materiels Associés ";
+    c.EditorProperties().ComboBox(p =>
+    {
+    p.TextField = "LibelleMateriel";
+    p.ValueField = "MaterielAssocieId";
+    p.ValueType = typeof(long);
+    p.DataSource = ViewBag.MaterielAssocie;
+
+    });
+    c.Width = 500;
+    c.ReadOnly = false;
+    });
+
+    setting.Columns.Add(column =>
+    {
+    ViewHelper.GridViewDateColumn(column, fieldName: "DateInstallation", caption: "Date d'installation", dateTimeFormat: SinbaDateTimeFormat.Date);
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    column.Width = Unit.Pixel(50);
+    });
+
+    setting.Columns.Add(column =>
+    {
+    ViewHelper.GridViewDateColumn(column, fieldName: "DateRetrait", caption: "Date de retrait", dateTimeFormat: SinbaDateTimeFormat.Date);
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    column.Width = Unit.Pixel(50);
+    });
+
+    });
+
+
+
+    column.SetDataItemTemplateContent(c =>
+    {
+    ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+
+    // Button Delete
+    (bool)ViewBag.CanDelete ?
+    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+    new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+    );
+    });
+    column.SetHeaderTemplateContent(c =>
+    {
+    ViewContext.Writer.Write(
+    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+    );
+    });

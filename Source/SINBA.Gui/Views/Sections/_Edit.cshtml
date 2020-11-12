@@ -1,0 +1,105 @@
+﻿@model Sinba.BusinessModel.Entity.Sections
+
+
+
+
+@{
+
+    Html.EnableClientValidation();
+
+}
+
+
+
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Sections, FormMethod.Post, new { @class = CssClasses.EditForm }))
+
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+    @Html.AntiForgeryToken()
+
+
+
+    // @Html.HiddenFor(m => m.Id)
+
+    //@Html.HiddenFor(m => m.IdSociete)
+
+    ;
+
+
+
+    @Html.DevExpress().FormLayout(settings =>
+
+{
+
+    settings.Name = "sectionsFormLayout";
+
+    // Code
+    if (ViewBag.AddMode == true)
+    {
+        settings.Items.Add(m => m.SectionsId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+
+       maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    }
+
+    // Libelle
+
+    settings.Items.Add(m => m.LibelleSections, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+                maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    // Direction
+
+    settings.Items.Add(m => m.ServiceId, ComboBox => ViewHelper.FormLayoutComboBoxSettings(ComboBox,
+
+        valueType: typeof(string),
+        caption:"Libelle Service",
+        valueField: "ServiceId",
+        textField: "LibelleService",
+        displayColumns: new string[] { "LibelleService" },
+        dataSource:ViewBag.Service
+
+
+        ));
+
+    // Boutons Enregistrer/Annuler
+
+    settings.Items.Add(item =>
+
+    {
+
+        item.Caption = string.Empty;
+
+        item.SetNestedContent(() =>
+
+        {
+
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+
+                    name: "btnValider",
+
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+
+                    text: CommonResource.btnCancel,
+
+                    controller: SinbaConstants.Controllers.Sections,
+
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+
+        });
+
+    });
+
+
+
+}).GetHtml()
+
+}
+

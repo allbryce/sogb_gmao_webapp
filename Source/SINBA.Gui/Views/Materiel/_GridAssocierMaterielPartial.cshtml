@@ -1,0 +1,104 @@
+﻿@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "gridAssociation";
+    settings.KeyFieldName = DbColumns.MaterielId;
+    settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action =SinbaConstants.Actions.AssocierMaterielPartial, MaterielId = (ViewData[DbColumns.MaterielId] ?? "").ToString() };
+    settings.Settings.ShowFilterRow = true;
+    settings.Settings.ShowFilterRowMenu = true;
+    settings.Styles.Header.Font.Bold = true;
+    // Pagination
+
+    settings.SettingsPager.FirstPageButton.Visible = true;
+    settings.SettingsPager.LastPageButton.Visible = true;
+    settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+    // Buttons column: Add, Edit, Delete
+    settings.Columns.Add(column =>
+    {
+        column.Width = Unit.Pixel(45);
+        column.Caption = Strings.NumberSign;
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+                // Button Edit
+
+                (bool)ViewBag.CanEdit ?
+                 Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openMaterielEditModal(\"{0}\")", DataBinder.Eval(c.DataItem, DbColumns.MaterielId)) }) :
+                 Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+                // Button Delete
+
+                (bool)ViewBag.CanDelete ?
+                Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+                Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+            );
+
+        });
+        column.SetHeaderTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(
+             // Button Add (column header)
+             Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+            );
+        });
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+    });
+    // Code
+    settings.Columns.Add(column =>
+
+    {
+        column.FieldName = "Materiel.LibelleMateriel";
+        column.Caption = "Materiels associé";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(30);
+    });
+    //settings.Columns.Add(c =>
+    //{
+    //    c.FieldName = "MaterielAssocieId";
+    //    c.Caption = "Materiel Associé ";
+    //    c.EditorProperties().ComboBox(p =>
+    //    {
+    //        p.TextField = "LibelleMateriel";
+    //        p.ValueField = "MaterielAssocieId";
+    //        p.ValueType = typeof(long);
+    //        p.DataSource = ViewBag.AssocierMateriel;
+    //    });
+    //    c.Width = 250;
+    //    c.ReadOnly = false;
+    //});
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "DateInstallation", caption: "Date d'installation", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(100);
+    });
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "DateRetrait", caption: "Date de retrait", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(100);
+    });
+    // Adding event to display row detail
+    settings.SetDetailRowTemplateContent(c =>
+    {
+        string idmateriel = (DataBinder.Eval(c.DataItem, DbColumns.MaterielId)??"").ToString();
+        if (!string.IsNullOrEmpty(idmateriel))
+        {
+            Html.RenderAction(SinbaConstants.Actions.ComposantPartial, new { MaterielId = idmateriel });
+        }
+    });
+    // Keeping grid state
+    settings.ClientLayout = (s, e) =>
+    {
+        if (e.LayoutMode == ClientLayoutMode.Loading)
+        {
+            if (Session[Strings.Acces] != null)
+                e.LayoutData = (string)Session[Strings.GridStateMateriel];
+        }
+        else
+            Session[Strings.GridStateMateriel] = e.LayoutData;
+    };
+}).Bind(Model).GetHtml()

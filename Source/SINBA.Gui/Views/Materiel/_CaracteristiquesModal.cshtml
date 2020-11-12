@@ -1,0 +1,170 @@
+﻿@model  Sinba.BusinessModel.Entity.ViewModels.ComposantCaracteristiqueViewModel
+@{
+    Html.EnableClientValidation(false);
+}
+
+@Html.DevExpress().PopupControl(
+    settings =>
+    {
+
+
+        settings.Name = "CaracteristiquesModal";
+        settings.Width = 800;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.None;
+        settings.HeaderText = "Composant-Caractéristiques";
+        settings.Modal = true;
+        settings.AutoUpdatePosition = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SetContent(() =>
+        {
+            Html.DevExpress().FormLayout(set =>
+            {
+                set.Name = "ModalCaracteristiqueFormLayout";
+                set.RequiredMarkDisplayMode = RequiredMarkMode.None;
+                set.Width = Unit.Percentage(100);
+                set.Height = Unit.Percentage(100);
+                set.ColumnCount = 3;
+                set.NestedExtensionWidth = Unit.Percentage(100);
+                set.Items.Add(m => m.ComposantId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                      valueType: typeof(string),
+                      caption: "Composant",
+                      valueField: "ComposantId",
+                      textField: "LibelleComposant",
+                      //displayColumns: new string[] { "ComposantId", "LibelleComposant" },
+                      widthPixel: 150
+                      , dataSource: ViewBag.Composant));
+                set.Items.Add(c => c.Quantite, textbox => ViewHelper.FormLayoutNumericTextBoxSettings(textbox,
+                     caption: "Quantite",
+                     widthPixel: 100
+                ));
+                set.Items.Add(c => c.Plafond, textbox => ViewHelper.FormLayoutNumericTextBoxSettings(textbox,
+                     caption: "Plafond",
+                     widthPixel: 100
+                ));
+                set.Items.Add(c => c.DateInsertion, date => ViewHelper.FormLayoutDateEditSettings(date,
+                    caption: "Date d'insertion",
+                    width: 150
+               ));
+            }).Render();
+
+
+            @Html.DevExpress().GridView<PossederCaracteristiques>(setting =>
+            {
+                ViewHelper.GridViewDefaultSettings(setting, "gridCaracteristique",
+                allowDragDrop: false,
+                allowSortResize: false,
+                showFilter: false, 
+                enablePaging: false, 
+                gridViewEditingMode: GridViewEditingMode.Batch);
+                setting.KeyFieldName = "ComposantcaracteristiqueId";
+                setting.CallbackRouteValues = new { Controller = "Materiel", Action = "Loadcaracteristique" };
+                setting.SettingsEditing.AddNewRowRouteValues = new { Controller = "Materiel", Action = "Loadcaracteristique" };
+                setting.SettingsEditing.Mode = GridViewEditingMode.Batch;
+                setting.CommandColumn.Visible = true;
+                setting.CommandColumn.ShowDeleteButton = true;
+                setting.CommandColumn.Width = Unit.Pixel(100);
+
+                setting.Columns.Add(column =>
+                {
+
+                    column.Width = Unit.Pixel(25);
+                    column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", setting.Name, CommonResource.btnAddTooltip);
+                    //column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+                    //column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)
+                    column.Settings.AllowDragDrop = DefaultBoolean.False;
+                    column.Settings.AllowSort = DefaultBoolean.False;
+                    column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+                    column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+                    column.FixedStyle = GridViewColumnFixedStyle.Left;
+
+
+
+                });
+
+
+                setting.Columns.Add(c =>
+                {
+                    c.FieldName = "CaracteristiqueComposantId";
+                    c.Caption = "Caracteristique ";
+                    c.EditorProperties().ComboBox(p =>
+                    {
+                        p.TextField = "LibelleCaracteristique";
+                        p.ValueField = "CaracteristiqueComposantId";
+                        p.ValueType = typeof(long);
+                        p.DataSource = ViewBag.CaracteristiqueComposant;
+
+
+                    });
+                    c.Width = 500;
+                    c.ReadOnly = false;
+                });
+
+                setting.Columns.Add(c =>
+                {
+                    c.FieldName = "Valeur";
+                    c.Width = Unit.Pixel(500);
+                    c.ReadOnly = false;
+
+                });
+
+
+                setting.Columns.Add(c =>
+                {
+                    c.FieldName = "UniteId";
+                    c.Caption = "Unite";
+                    c.Width = 300;
+                    c.EditorProperties().ComboBox(p =>
+                    {
+                        p.TextField = "LibelleUnite";
+                        p.ValueField = "UniteId";
+                        p.ValueType = typeof(int);
+                        p.DataSource = ViewBag.Unite;
+                    });
+                    c.Width = 500;
+                    c.ReadOnly = false;
+
+                });
+
+
+            }).Bind(Model.Caracteristiques.ToList()).Render();
+
+
+
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnSave";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "OK";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveCaracteristiques(s,e); } ";
+
+
+                }
+            ).Render();
+
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnExit";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "Annuler";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ CaracteristiquesModal.Hide(); }";
+                }
+            ).Render();
+
+
+
+
+
+
+
+        });
+    }).GetHtml()
+
+

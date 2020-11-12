@@ -1,0 +1,237 @@
+﻿@Html.DevExpress().GridView(settings =>
+
+{
+
+    settings.Name = "gridMateriel";
+    settings.KeyFieldName = DbColumns.MaterielId;
+    settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action = SinbaConstants.Actions.ListPartial };
+    settings.Settings.ShowFilterRow = true;
+    settings.Settings.ShowFilterRowMenu = true;
+    settings.Styles.Header.Font.Bold = true;
+    settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = true;
+    settings.SettingsDetail.ShowDetailRow = true;
+
+    // Pagination
+
+    settings.SettingsPager.FirstPageButton.Visible = true;
+    settings.SettingsPager.LastPageButton.Visible = true;
+    settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+
+
+    // Buttons column: Add, Edit, Delete
+
+    settings.Columns.Add(column =>
+
+    {
+
+        column.Width = Unit.Pixel(57);
+
+        column.Caption = Strings.NumberSign;
+
+        column.SetDataItemTemplateContent(c =>
+
+        {
+
+            ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+
+                // Button Edit
+
+                (bool)ViewBag.CanEdit ?
+
+                    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openMaterielEditModal(\"{0}\")", DataBinder.Eval(c.DataItem, DbColumns.MaterielId)) }) :
+
+                    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+
+
+
+                // Button Delete
+
+                (bool)ViewBag.CanDelete ?
+
+                Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+
+                            new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+
+                Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+
+
+
+            );
+
+        });
+
+        column.SetHeaderTemplateContent(c =>
+
+        {
+
+            ViewContext.Writer.Write(
+
+             // Button Add (column header)
+
+             // (bool)ViewBag.CanAdd ?
+
+             Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+            //Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString() 
+
+
+            // Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+
+
+            );
+
+        });
+
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+
+        column.Settings.AllowSort = DefaultBoolean.False;
+
+        column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+
+    });
+
+
+    // Code
+
+    settings.Columns.Add(column =>
+
+    {
+        column.FieldName = "MaterielId";
+        column.Caption = "Id";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(15);
+    });
+
+    // Num série
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "NumeroSerie";
+        column.Caption = "Numéro de Série";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(30);
+    });
+
+    // Libelle
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "LibelleMateriel";
+        column.Caption = "Libellé du Materiel";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(100);
+    });
+
+    // Domaine
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "Domaine.LibelleDomaine";
+        column.Caption = "Domaine";
+        column.Settings.AllowCellMerge = DefaultBoolean.True;
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
+
+    // Fournisseur
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "Fournisseur.NomFournisseur";
+        column.Caption = "Fournisseur";
+        column.Settings.AllowCellMerge = DefaultBoolean.True;
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(30);
+    });
+
+    // Model
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "Model.LibelleModel";
+        column.Caption = "Model";
+        column.Settings.AllowCellMerge = DefaultBoolean.True;
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
+
+
+    // BonCommande
+    settings.Columns.Add(column =>
+
+    {
+        column.FieldName = "NumeroBonCommande";
+        column.Caption = "Numéro du bon";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(30);
+
+
+    });
+
+    // Prix Achat
+    settings.Columns.Add(column =>
+
+    {
+        column.FieldName = "PrixAchat";
+        column.Caption = "Prix d'achat";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
+
+    // Note
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "Garantie", caption: "Garantie", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
+
+    // Numéro immo
+
+    //settings.Columns.Add(column =>
+
+    //{
+    //    column.FieldName = "NumeroImmobilisation";
+    //    column.Caption = "Numero d'immobilisation";
+    //    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+    //});  // Date d'acquisition
+
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "DateAcquisition", caption: "Date d'acquisition", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
+    // Button
+    settings.Columns.Add(column =>
+    {
+        column.Width = Unit.Pixel(30);
+        column.Caption = "Matériel Associé";
+        column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+            Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.FolderIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openAssocieModal({{ MaterielId:{0},DomaineId:{1}}})", DataBinder.Eval(c.DataItem, DbColumns.MaterielId), DataBinder.Eval(c.DataItem, DbColumns.DomaineId)) })
+            );
+        });
+    });
+    // Adding event to display row detail
+    settings.SetDetailRowTemplateContent(c =>
+    {
+        string idmateriel = (DataBinder.Eval(c.DataItem, DbColumns.MaterielId)??"").ToString();
+        if (!string.IsNullOrEmpty(idmateriel))
+        {
+         Html.RenderAction(SinbaConstants.Actions.ComposantPartial, new { MaterielId = idmateriel });
+        }
+    });
+
+    // Keeping grid state
+    settings.ClientLayout = (s, e) =>
+    {
+        if (e.LayoutMode == ClientLayoutMode.Loading)
+        {
+            if (Session[Strings.Acces] != null)
+                e.LayoutData = (string)Session[Strings.GridStateMateriel];
+        }
+        else
+            Session[Strings.GridStateMateriel] = e.LayoutData;
+    };
+}).Bind(Model).GetHtml()

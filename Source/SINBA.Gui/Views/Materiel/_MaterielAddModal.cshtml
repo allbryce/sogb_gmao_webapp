@@ -1,0 +1,167 @@
+﻿@model Materiel
+@{
+    Html.EnableClientValidation(false);
+}
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "MaterielModal";
+    settings.Width = 1000;
+    settings.AllowDragging = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.CloseOnEscape = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.HeaderText = "Matériel";
+    settings.Modal = true;
+    settings.AutoUpdatePosition = true;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    if (!(ViewBag.AddMode = true))
+    {
+        settings.LoadContentViaCallback = LoadContentViaCallback.OnFirstShow;
+    }
+
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.SetContent(() =>
+    {
+        using (ViewBag.AddMode = true ?
+         Html.BeginForm("Add", "Materiel", FormMethod.Post, new { id = "Materiel", @class = "edit_form" }) :
+         Html.BeginForm("Edit", "Materiel", FormMethod.Post, new { id = "Materiel", @class = "edit_form" }))
+        {
+            Html.Hidden("MaterielID");
+
+            @Html.DevExpress().FormLayout(setting => {
+                setting.Name = "ModalModeFormLayout";
+                setting.RequiredMarkDisplayMode = RequiredMarkMode.None;
+                setting.Width = Unit.Percentage(100);
+                setting.Height = Unit.Percentage(100);
+                setting.ColumnCount = 4;
+                setting.NestedExtensionWidth = Unit.Percentage(100);
+
+                //setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                //Numero de série
+                setting.Items.Add(m => m.NumeroSerie, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                //Libelle
+                setting.Items.Add(m => m.LibelleMateriel, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                // Libelle domaine
+                setting.Items.Add(m => m.DomaineId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Domaine",
+                    valueField: "DomaineId",
+                    textField: "LibelleDomaine",
+                    displayColumns: new string[] {"LibelleDomaine"}
+                    , dataSource: ViewBag.Domaine));
+
+                //Libelle fournisseur
+                setting.Items.Add(m => m.FournisseurId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Fournisseur",
+                    valueField: "FournisseurId",
+                    textField: "NomFournisseur",
+                    displayColumns: new string[] {"NomFournisseur" }
+                    , dataSource: ViewBag.Fournisseur));
+
+
+                //Libelle model
+                setting.Items.Add(m => m.NumeroModel, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Model",
+                    valueField: "NumeroModel",
+                    textField: "LibelleModel",
+                    displayColumns: new string[] {"LibelleModel" }
+                    , dataSource: ViewBag.Model));
+
+                // Sous Famille
+                setting.Items.Add(m => m.SousFamilleId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Sous Famille",
+                    valueField: "SousFamilleId",
+                    textField: "LibelleSousFamille",
+                    displayColumns: new string[] {"LibelleSousFamille" }
+                    , dataSource: ViewBag.SousFamille));
+
+
+                //Numero du bon de commande
+                setting.Items.Add(m => m.NumeroBonCommande, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox, maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                //Classe materiel
+                setting.Items.Add(m => m.ClasseMaterielId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Classe du materiel",
+                    valueField: "ClasseMaterielId",
+                    textField: "LibelleClasse",
+                    displayColumns: new string[] { "LibelleClasse" }
+                    , dataSource: ViewBag.Classemateriel));
+
+                //Libelle type materiel
+                setting.Items.Add(m => m.TypeMaterielId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "Type du materiel",
+                    valueField: "TypeMaterielId",
+                    textField: "LibelleTypeMateriel",
+                    displayColumns: new string[] { "LibelleTypeMateriel" }
+                    , dataSource: ViewBag.TypeMateriel));
+
+                //Date D'acquisition
+                setting.Items.Add(m => m.DateAcquisition, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+                //Date De mise en service
+                setting.Items.Add(m => m.DateMiseEnService, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+                // Actif
+                setting.Items.Add(m => m.Actif, checkbox =>ViewHelper.FormLayoutCheckBoxSetting(checkbox));
+
+                //Prix d'achat
+                setting.Items.Add(m => m.PrixAchat, textBox => ViewHelper.FormLayoutNumericTextBoxSettings(textBox, maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                //Groupe inventaire
+
+                setting.Items.Add(m => m.GroupeInventaireId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                    valueType: typeof(string),
+                    caption: "GroupeInventaire",
+                    valueField: "GroupeInventaireId",
+                    textField: "LibelleGroupeInventaire",
+                    displayColumns: new string[] {"LibelleGroupeInventaire"}
+                    , dataSource: ViewBag.GroupeInventaire));
+
+                //Garantie
+                setting.Items.Add(m => m.Garantie, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+                // Observation
+                setting.Items.Add(m => m.Note, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: 200));
+
+                // Boutons Enregistrer/Annuler
+                setting.Items.Add(i => {
+                    i.ShowCaption = DefaultBoolean.False;
+                    i.SetNestedContent(() => {
+                        Html.DevExpress().Button(
+                            buttonSettings => {
+                                buttonSettings.Name = "btnUpdate";
+                                buttonSettings.ControlStyle.CssClass = "button";
+                                buttonSettings.Width = 80;
+                                buttonSettings.Text = "OK";
+                                buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveMateriel(); } ";
+
+
+                            }
+                        ).Render();
+                        Html.DevExpress().Button(
+                            buttonSettings => {
+                                buttonSettings.Name = "btnCancel";
+                                buttonSettings.ControlStyle.CssClass = "button";
+                                buttonSettings.Width = 80;
+                                buttonSettings.Text = "Annuler";
+                                buttonSettings.ClientSideEvents.Click = "function(s, e){ MaterielModal.Hide(); }";
+                            }
+                        ).Render();
+                    });
+                });
+            }).Render();
+        }
+    });
+
+}).GetHtml()
+
+
+

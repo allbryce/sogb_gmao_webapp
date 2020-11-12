@@ -1,0 +1,15 @@
+﻿@model IEnumerable
+<script src="~/Scripts/gmao/Materiel.js" type="text/javascript"></script>
+
+@using (Html.BeginForm((bool)ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Index, SinbaConstants.Controllers.Materiel, FormMethod.Post, new { id = "frmMateriel", @class = CssClasses.EditForm }))
+{
+    Html.AntiForgeryToken();
+    Html.Hidden("linkmateriel", Url.Action(SinbaConstants.Actions.GetMateriel, SinbaConstants.Controllers.Materiel));
+
+
+    @Html.Partial(ViewNames.MaterielAddModal, new Materiel())
+    @Html.Partial(ViewNames.CaracteristiquesModal, new Sinba.BusinessModel.Entity.ViewModels.ComposantCaracteristiqueViewModel())
+}
+@Html.Partial(ViewNames.AssocieAddModal, new AssocierMateriel())
+@Html.Partial(ViewNames.ListPartial, Model)
+@Html.Hidden("linkcaracteristique", Url.Action(SinbaConstants.Actions.GetCaracteristique, SinbaConstants.Controllers.Materiel))

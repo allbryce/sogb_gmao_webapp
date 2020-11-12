@@ -1,0 +1,52 @@
+﻿@model  AssocierMateriel
+@{
+    Html.EnableClientValidation(false);
+}
+
+@Html.DevExpress().PopupControl(
+    settings =>
+    {
+
+        settings.Name = "AssocieModal";
+        settings.Width = 600;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.None;
+        settings.HeaderText = "Matériels Associés";
+        settings.Modal = true;
+        settings.AutoUpdatePosition = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SetContent(() =>
+        {
+            Html.RenderPartial(ViewNames.AssocierMaterielPartial, new List<AssocierMateriel>());
+
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnok";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "OK";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveCaracteristiques(s,e); } ";
+                }
+            ).Render();
+
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnAnnuler";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "Fermer";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ AssocieModal.Hide(); }";
+                }
+            ).Render();
+
+
+        });
+    }).GetHtml()
+
+
+

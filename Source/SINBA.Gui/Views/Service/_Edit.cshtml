@@ -1,0 +1,97 @@
+﻿@using DevExpress.XtraGauges.Core.Drawing;
+
+@model Sinba.BusinessModel.Entity.Service
+
+
+
+
+@{
+
+    Html.EnableClientValidation();
+
+}
+
+
+
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Service, FormMethod.Post, new { @class = CssClasses.EditForm }))
+
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+    @Html.AntiForgeryToken()
+    @Html.DevExpress().FormLayout(settings =>
+
+{
+
+    settings.Name = "serviceFormLayout";
+
+    // Code
+    if (ViewBag.AddMode == true)
+    {
+        settings.Items.Add(m => m.ServiceId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+
+       maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    }
+   
+
+    // Libelle
+
+    settings.Items.Add(m => m.LibelleService, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    // Direction
+
+    settings.Items.Add(m => m.DepartementId, ComboBox => ViewHelper.FormLayoutComboBoxSettings(ComboBox,
+
+        valueType: typeof(string),
+        caption:"Libelle departement",
+        valueField: "DepartementId",
+        textField: "LibelleDepartement",
+        displayColumns: new string[] { "LibelleDepartement" },
+        dataSource: ViewBag.Departement
+
+
+        ));
+
+    // Boutons Enregistrer/Annuler
+
+    settings.Items.Add(item =>
+
+    {
+
+        item.Caption = string.Empty;
+
+        item.SetNestedContent(() =>
+
+        {
+
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+
+                    name: "btnValider",
+
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+
+                    text: CommonResource.btnCancel,
+
+                    controller: SinbaConstants.Controllers.Service,
+
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+
+        });
+
+    });
+
+
+
+}).GetHtml()
+
+}

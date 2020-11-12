@@ -1,0 +1,584 @@
+﻿
+
+@Html.DevExpress().GridView(
+
+    settings =>
+
+    {
+
+        settings.Name = "gridComposant";
+        settings.KeyFieldName = DbColumns.ComposantId;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Composant, Action = SinbaConstants.Actions.ListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+
+
+        settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
+
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+
+
+        // Buttons column: Add, Edit, Delete
+
+        settings.Columns.Add(column =>
+
+        {
+
+            column.Width = Unit.Pixel(57);
+
+            column.Caption = Strings.NumberSign;
+
+            column.SetDataItemTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+
+                    // Button Edit
+
+                    (bool)ViewBag.CanEdit ?
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip }) :
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+
+
+
+                    // Button Delete
+
+                    (bool)ViewBag.CanDelete ?
+
+                    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+
+                                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+
+                    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+
+
+
+                );
+
+            });
+
+            column.SetHeaderTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(
+
+                // Button Add (column header)
+
+                // (bool)ViewBag.CanAdd ?
+
+                 Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString()
+
+                //Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+
+                // Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+
+
+                );
+
+            });
+
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+
+            column.Settings.AllowSort = DefaultBoolean.False;
+
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+
+        });
+
+
+        // Code
+
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "ComposantId";
+            column.Caption = "Composant Id";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        });
+
+        // Num série
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "DomaineId";
+            column.Caption = "Domaine";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Libelle
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "LibelleComposant";
+            column.Caption = "Libellé du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Domaine
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "OrdreComposant";
+            column.Caption = "Ordre du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        // Quantité
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Quantite";
+            column.Caption = "Quantité";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+        // Model
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Plafond";
+            column.Caption = "Plafond";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        settings.Columns.Add(column =>
+        {
+            column.MinWidth = 90;
+            column.Caption = "Composants";
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+                     // Button
+                     //  Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString()
+                     Html.ActionLink(Strings.EmptyLink, SinbaConstants.Controllers.Composant, SinbaConstants.Actions.Index,
+                        new { @class = CssClasses.PlusIcon, title ="Composants" })
+                );
+            });
+        });
+
+
+        // Keeping grid state
+
+        settings.ClientLayout = (s, e) =>
+        {
+
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.Acces] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateMateriel];
+            }
+            else
+                Session[Strings.GridStateMateriel] = e.LayoutData;
+
+        };
+
+
+
+    }).Bind(Model).GetHtml()
+
+@Html.DevExpress().GridView(
+
+    settings =>
+
+    {
+
+        settings.Name = "gridComposant";
+        settings.KeyFieldName = DbColumns.ComposantId;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action = SinbaConstants.Actions.ComposantPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+
+
+        settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
+
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+
+
+        // Buttons column: Add, Edit, Delete
+
+        settings.Columns.Add(column =>
+
+        {
+
+            column.Width = Unit.Pixel(57);
+
+            column.Caption = Strings.NumberSign;
+
+            column.SetDataItemTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+
+                    // Button Edit
+
+                    (bool)ViewBag.CanEdit ?
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openMaterielEditModal(\"{0}\")", DataBinder.Eval(c.DataItem, DbColumns.ComposantId)) }) :
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+
+
+
+                    // Button Delete
+
+                    (bool)ViewBag.CanDelete ?
+
+                    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+
+                                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+
+                    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+
+
+
+                );
+
+            });
+
+            column.SetHeaderTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(
+
+                // Button Add (column header)
+
+                // (bool)ViewBag.CanAdd ?
+
+                 Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+                //Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+
+                // Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+
+
+                );
+
+            });
+
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+
+            column.Settings.AllowSort = DefaultBoolean.False;
+
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+
+        });
+
+
+        // Code
+
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "ComposantId";
+            column.Caption = "Composant Id";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        });
+
+        // Num série
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "DomaineId";
+            column.Caption = "Domaine";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Libelle
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "LibelleComposant";
+            column.Caption = "Libellé du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Domaine
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "OrdreComposant";
+            column.Caption = "Ordre du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        // Quantité
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Quantite";
+            column.Caption = "Quantité";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+        // Model
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Plafond";
+            column.Caption = "Plafond";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        settings.Columns.Add(column =>
+        {
+            column.MinWidth = 90;
+            column.Caption = "Composants";
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+                     // Button
+                     //  Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString()
+                     Html.ActionLink(Strings.EmptyLink, SinbaConstants.Controllers.Composant, SinbaConstants.Actions.Index,
+                        new { @class = CssClasses.PlusIcon, title ="Composants" })
+                );
+            });
+        });
+
+
+        // Keeping grid state
+
+        settings.ClientLayout = (s, e) =>
+        {
+
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.Acces] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateMateriel];
+            }
+            else
+                Session[Strings.GridStateMateriel] = e.LayoutData;
+
+        };
+
+
+
+    }).Bind(Model).GetHtml()
+
+@Html.DevExpress().GridView(
+
+    settings =>
+
+    {
+
+        settings.Name = "gridComposant";
+        settings.KeyFieldName = DbColumns.ComposantId;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Composant, Action = SinbaConstants.Actions.ListPartial };
+        settings.Settings.ShowFilterRow = true;
+        settings.Settings.ShowFilterRowMenu = true;
+        settings.Styles.Header.Font.Bold = true;
+
+        // Pagination
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+
+
+
+        // Buttons column: Add, Edit, Delete
+
+        settings.Columns.Add(column =>
+
+        {
+
+            column.Width = Unit.Pixel(57);
+
+            column.Caption = Strings.NumberSign;
+
+            column.SetDataItemTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
+
+                    // Button Edit
+
+                    (bool)ViewBag.CanEdit ?
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openMaterielEditModal(\"{0}\")", DataBinder.Eval(c.DataItem, DbColumns.ComposantId)) }) :
+
+                        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
+
+
+
+
+                    // Button Delete
+
+                    (bool)ViewBag.CanDelete ?
+
+                    Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) },
+
+                                new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+
+                    Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
+
+
+
+                );
+
+            });
+
+            column.SetHeaderTemplateContent(c =>
+
+            {
+
+                ViewContext.Writer.Write(
+
+                // Button Add (column header)
+
+                // (bool)ViewBag.CanAdd ?
+
+                 Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+                //Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
+
+
+                // Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
+
+
+                );
+
+            });
+
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+
+            column.Settings.AllowSort = DefaultBoolean.False;
+
+            column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+
+        });
+
+
+        // Code
+
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "ComposantId";
+            column.Caption = "Composant Id";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        });
+
+        // Num série
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "DomaineId";
+            column.Caption = "Domaine";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Libelle
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "LibelleComposant";
+            column.Caption = "Libellé du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+        // Domaine
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "OrdreComposant";
+            column.Caption = "Ordre du Composant";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        // Quantité
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Quantite";
+            column.Caption = "Quantité";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+        // Model
+        settings.Columns.Add(column =>
+
+        {
+            column.FieldName = "Plafond";
+            column.Caption = "Plafond";
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+        });
+
+
+        settings.Columns.Add(column =>
+        {
+            column.MinWidth = 90;
+            column.Caption = "Composants";
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+            column.SetDataItemTemplateContent(c =>
+            {
+                ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+                     // Button
+                     //  Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString()
+                     Html.ActionLink(Strings.EmptyLink, SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Index,
+                        new { @class = CssClasses.PlusIcon, title ="Composants" })
+                );
+            });
+        });
+
+
+        // Keeping grid state
+
+        settings.ClientLayout = (s, e) =>
+        {
+
+            if (e.LayoutMode == ClientLayoutMode.Loading)
+            {
+                if (Session[Strings.Acces] != null)
+                    e.LayoutData = (string)Session[Strings.GridStateMateriel];
+            }
+            else
+                Session[Strings.GridStateMateriel] = e.LayoutData;
+
+        };
+
+
+
+    }).Bind(Model).GetHtml()
