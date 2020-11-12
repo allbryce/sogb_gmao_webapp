@@ -9,6 +9,10 @@
         /// <summary>Index</summary>
         public const string Index = "Index";
         public const string Contact = "_Contact";
+        public const string ComposantPartial = "_ComposantPartial";
+        public const string AssocieModal = "_AssocieAddModal";
+        public const string CaracteristiquesModal = "_CaracteristiquesModal";
+        public const string AssocieAddModal = "_AssocieAddModal"; 
 
         public const string PersonnePhysiquePartial = "_PersonnePhysiquePartial";
         public const string PersonneMoralePartial = "_PersonneMoralePartial";
@@ -23,6 +27,8 @@
 
         /// <summary>_List</summary>
         public const string ListPartial = "_List";
+    
+
         //public const string DonneesGeographiquePartial = "_DonneesGeographiquePartial";
         
         public const string AddCessionModal = "_AddCessionModal";
@@ -35,6 +41,7 @@
         public const string GridLookupLocalitePartial = "_GridLookupLocalitePartial";
      
         public const string GridLookupPlantationPartial = "_GridLookupPlantationPartial";
+        public const string AssocierMaterielPartial = "_GridAssocierMaterielPartial";
 
         public const string ListBCCCSitePartial = "_ListBCCCSite";
         public const string ListBCCNSitePartial = "_ListBCCNSite";
@@ -110,6 +117,8 @@
         public const string AddPartial = "_Add";
         public const string CentreDeCoutPartial = "_CentreDeCoutPartial";
         public const string ContactPartial = "_ContactPartial";
+        public const string MaterielAddModal = "_MaterielAddModal";
+        public const string GridAssociePartial = "_GridAssociePartial";
 
         public const string OrganismePartial = "_OrganismePartial";
         public const string ProjetPartial = "_ProjetPartial";

@@ -33,6 +33,8 @@ namespace Sinba.Resources
             public const string CboNaturePartial = "CboNaturePartial";
             public const string CallBackPanelPartial = "CallBackPanelPartial"; 
             public const string ContactDirigeantPartial = "ContactDirigeantPartial";
+            public const string ComposantPartial = "ComposantPartial";
+            public const string AssocieMaterielPartial = "AssocieMaterielPartial";
 
             //--------------------------------------------D--------------------------------
             public const string DivisionCallBack = "DivisionCallBack";
@@ -66,7 +68,9 @@ namespace Sinba.Resources
             public const string GetCultureList = "GetCultureList";
 
             public const string GetPlantationList = "GetPlantationList";
-            public const string GetActeur = "GetActeur";
+            public const string GetMateriel = "GetMateriel";
+            public const string GetCaracteristique = "GetCaracteristique";
+            public const string AssocierMaterielPartial = "AssocierMaterielPartial";
             public const string GetCulture = "GetCulture";
 
 
@@ -171,6 +175,7 @@ namespace Sinba.Resources
             //--------------------------------------------Z--------------------------------
             /// <summary>ListPartial</summary>
             public const string ListPartial = "ListPartial";
+            public const string AddPartial = "AddPartial";
             public const string MoveUdDownOTValidateurFamille = "MoveUdDownOTValidateurFamille";
             public const string ModalPartial = "ModalPartial";
             public const string ModalPlanteurPartial = "ModalPlanteurPartial";
@@ -187,6 +192,9 @@ namespace Sinba.Resources
 
             /// <summary>Edit</summary>
             public const string Edit = "Edit";
+            public const string EditUnite = "EditUnite";
+            public const string EditCaracteristique = "EditCaracteristique";
+            public const string EditComposant = "EditComposant";
             public const string GetValeurParEmploye = "GetValeurParEmploye";
             /// <summary>MultiEdit</summary>
             public const string MultiEdit = "MultiEdit";
@@ -198,6 +206,7 @@ namespace Sinba.Resources
 
             /// <summary>Add</summary>
             public const string Add = "Add";
+            public const string MaterielAddModalPartial = "MaterielAddModalPartial";
 
             public const string AddContact = "AddContact";
             public const string EditContact = "EditContact";
@@ -378,6 +387,8 @@ namespace Sinba.Resources
 
             /// <summary>ActionsFonctionPartial</summary>
             public const string ActionsFonctionPartial = "ActionsFonctionPartial";
+            /// <summary>ActionsMaterielPartial</summary>
+            public const string ActionsMaterielPartial = "ActionsMaterielPartial";
 
             /// <summary>TypeContactActivitePartial</summary>
             public const string TypeContactActivitePartial = "TypeContactActivitePartial";
@@ -483,10 +494,17 @@ namespace Sinba.Resources
         {
             public const string Home = "Home";
             public const string Contact = "Contact";
+            public const string DonneesDeBase = "DonneesDeBase";
             public const string Account = "Account";
             public const string Manage = "Manage";
             public const string Fonction = "Fonction";
             public const string Profil = "Profil";
+            public const string Departement = "Departement";
+            public const string Direction = "Direction";
+            public const string Service= "Service";
+            public const string Materiel = "Materiel";
+            public const string Composant = "Composant";
+            public const string Sections = "Sections";
             public const string ProfilRight = "ProfilRight";
             public const string Utilisateur = "Utilisateur";
             public const string UtilisateurRight = "UtilisateurRight";
@@ -518,6 +536,7 @@ namespace Sinba.Resources
             public const string Site = "Site";
             public const string Rubrique = "Rubrique";
             public const string AnneePlanting = "AnneePlanting";
+     
 
         }
         #endregion
@@ -561,7 +580,14 @@ namespace Sinba.Resources
 
                 /// <summary>CodeDirectionMax: 10</summary>
                 public const int CodeDirectionMax = 10;
-                
+
+                /// <summary>CodeDirectionMax: 10</summary>
+                public const int CodeSctionsMax = 10;
+
+                /// <summary>CodeServiceMax: 10</summary>
+                public const int CodeServiceMax = 10;
+
+
                 /// <summary>IdSocieteMax: 10</summary>
                 public const int IdSocieteMax = 10;
 

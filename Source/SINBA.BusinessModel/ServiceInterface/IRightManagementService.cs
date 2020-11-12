@@ -91,14 +91,7 @@ namespace Sinba.BusinessModel.ServiceInterface
 
         #region Societe
 
-        ListDto<Societe> GetSocieteList();
-
-        SimpleDto<Societe> GetSociete(string id);
-
-        BoolDto InsertSociete(Societe societe);
-
-        BoolDto UpdateSociete(Societe societe);
-
+      
         BoolDto DeleteSociete(string id);
 
         BoolDto IsSocieteIdUnique(string id);
@@ -134,7 +127,7 @@ namespace Sinba.BusinessModel.ServiceInterface
 
         BoolDto InsertSiteUtilisateur(SiteUtilisateur siteUtilisateur);
 
-         void DeleteSiteUtilisateurByIdUser(string idUser);
+        void DeleteSiteUtilisateurByIdUser(string idUser);
 
         BoolDto DeleteSiteUtilisateur(string idUser, string idSite);
 

@@ -7,6 +7,7 @@
         settings.Settings.ShowFilterRow = true;
         settings.Settings.ShowFilterRowMenu = true;
         settings.Styles.Header.Font.Bold = true;
+        //settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
 
         // Pagination
         settings.SettingsPager.FirstPageButton.Visible = true;
@@ -17,7 +18,9 @@
         settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
         settings.SettingsDetail.ShowDetailRow = true;
 
-        // Buttons column: Add, Edit, Delete
+
+
+        //Buttons column: Add, Edit, Delete
         settings.Columns.Add(column =>
         {
             column.Width = Unit.Pixel(57);
@@ -71,7 +74,7 @@
         // Adding event to display row detail
         settings.SetDetailRowTemplateContent(c =>
         {
-            Html.RenderAction(SinbaConstants.Actions.ActionsFonctionPartial, new { codeFonction = DataBinder.Eval(c.DataItem, DbColumns.Code) });
+            Html.RenderAction(SinbaConstants.Actions.ActionsFonctionPartial, new { codeFonction = DataBinder.Eval(c.DataItem, DbColumns.Code)});
         });
 
         // Keeping grid state

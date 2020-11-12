@@ -9,9 +9,7 @@ using System.Linq;
 
 namespace Sinba.BusinessLogic.Services
 {
-    /// <summary>
-    /// Implémentation du service Right management
-    /// </summary>
+   
     [ServiceLog]
     [SinbaServiceExceptionHandler]
     public class RightManagementService : SinbaServiceBase, IRightManagementService
@@ -555,7 +553,8 @@ namespace Sinba.BusinessLogic.Services
               p => p.SiteUtilisateur);
             return lst;
         }
-       public BoolDto InsertSite(Site site)
+
+        public BoolDto InsertSite(Site site)
         {
             BoolDto dto = new BoolDto();
             this.UnitOfWork.SiteRepository.Insert(site);

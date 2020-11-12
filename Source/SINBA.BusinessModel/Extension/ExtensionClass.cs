@@ -232,5 +232,28 @@ namespace Sinba.BusinessModel.Entity
         //{
         //    return value.Where(x => x.IdSysListeType == (int)type).ToList();
         //}
+
+        #region DateTime
+        /// <summary>
+        /// Gets the java script date.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns></returns>
+        public static long GetJavaScriptDate(this DateTime? date)
+        {
+            return date.HasValue ? date.Value.ToJavaScriptDate() : 0;
+        }
+
+        /// <summary>
+        /// Gets the java script date.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns></returns>
+        public static long ToJavaScriptDate(this DateTime date)
+        {
+            return Convert.ToInt64(date.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds);
+        }
+        #endregion
+
     }
 }

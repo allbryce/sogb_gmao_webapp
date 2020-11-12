@@ -127,6 +127,7 @@ namespace Sinba.Gui.Controllers
             if (profilRight.IdHidden < 0 && profil != null)
             {
                 List<string> actions = GetTokens(formCollection);
+                var test = Request.Params.GetValues("Actions");
                 foreach (string codeAction in actions)
                 {
                     profil.ProfilRights.Add(new ProfilRight()
@@ -333,7 +334,7 @@ namespace Sinba.Gui.Controllers
         {
             string tokenValues;
             List<string> ret = new List<string>();
-            if ((tokenValues = formCollection["Actions_TKV"]) != null)
+            if ((tokenValues = formCollection["ActionsToken"]) != null)
             {
                 tokenValues = tokenValues.Replace("[", string.Empty).Replace("]", string.Empty).Replace("\"", string.Empty);
                 var tokens = tokenValues.Split(Strings.TokenValueSeparator.ToCharArray());

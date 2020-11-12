@@ -27,7 +27,7 @@
 
                 ComboBoxSettings s = (ComboBoxSettings)comboBox.NestedExtensionSettings;
                 s.Name = DbColumns.CodeFonction;
-                s.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) { Actions.PerformCallback(); }";
+                s.Properties.ClientSideEvents.SelectedIndexChanged = "function(s, e) { ActionsToken.PerformCallback(); }";
             });
         }
         else

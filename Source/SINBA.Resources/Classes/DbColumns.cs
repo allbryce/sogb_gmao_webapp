@@ -45,6 +45,7 @@ namespace Sinba.Resources
         
         //------------------ D -----------------------------------------------
         public const string DenyAccess = "DenyAccess";
+        public const string DateInsertion = "DateInsertion";
 
         //------------------ E -----------------------------------------------
         public const string Email = "Email";
@@ -61,6 +62,14 @@ namespace Sinba.Resources
 
         //------------------ I -----------------------------------------------
         public const string Id = "Id";
+        public const string DirectionId = "DirectionId";
+        public const string ComposantId = "ComposantId";
+        public const string DomaineId = "DomaineId";
+        public const string DepartementId = "DepartementId";
+        public const string CaracteristiqueComposantId = "CaracteristiqueComposantId";
+        public const string ServiceId = "ServiceId";
+        public const string MaterielId = "MaterielId";
+        public const string SectionsId = "SectionsId";
         public const string IdHidden = "IdHidden";
         public const string IdProfil = "IdProfil";
         public const string IdSite = "IdSite";

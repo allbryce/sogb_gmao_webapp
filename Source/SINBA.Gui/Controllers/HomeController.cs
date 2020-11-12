@@ -49,8 +49,7 @@ namespace Sinba_Gui.Controllers
         {
             return SinbaView("Index");
         }
-
-
+       
     }
 }
 

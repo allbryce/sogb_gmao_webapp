@@ -122,10 +122,13 @@
     <Compile Include="..\..\Common\SharedVersionAssemblyInfo.cs">
       <Link>Properties\SharedVersionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="RequiresPostSharp.cs" />
     <Compile Include="Services\ParametreService.cs" />
-    <Compile Include="Services\RightManagementService.cs" />
     <Compile Include="Services\DonneesDeBaseService.cs" />
+    <Compile Include="Services\RightManagementService.cs" />
     <Compile Include="Services\SinbaServiceBase.cs" />
     <Compile Include="SinbaServiceExceptionHandlerAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,10 +137,60 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="bin\Debug\Sinba.BusinessLogic.dll.config" />
+    <None Include="bin\Debug\Sinba.BusinessLogic.pssym" />
+    <None Include="bin\Debug\Sinba.BusinessModel.dll.config" />
+    <None Include="bin\Debug\Sinba.Resources.dll.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\DPV.BusinessLogic.csproj.CopyComplete" />
+    <None Include="obj\Debug\DPV.BusinessLogic.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\DPV.BusinessLogic.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\GMAO.BusinessLogic.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\GMAO.BusinessLogic.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\GMAO.BusinessLogic.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
+    <None Include="Sinba.BusinessLogic.ruleset" />
     <None Include="Sinba.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\Dev.Tools.Architecture.dll" />
+    <Content Include="bin\Debug\Dev.Tools.Common.dll" />
+    <Content Include="bin\Debug\Dev.Tools.EntityFramework.dll" />
+    <Content Include="bin\Debug\Dev.Tools.Exceptions.dll" />
+    <Content Include="bin\Debug\Dev.Tools.Logger.dll" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\fr\EntityFramework.resources.dll" />
+    <Content Include="bin\Debug\fr\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="bin\Debug\log4net.dll" />
+    <Content Include="bin\Debug\log4net.xml" />
+    <Content Include="bin\Debug\LoggerLog4Net.dll" />
+    <Content Include="bin\Debug\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Debug\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="bin\Debug\PostSharp.dll" />
+    <Content Include="bin\Debug\PostSharp.xml" />
+    <Content Include="bin\Debug\Sinba.BusinessLogic.dll" />
+    <Content Include="bin\Debug\Sinba.BusinessLogic.pdb" />
+    <Content Include="bin\Debug\Sinba.BusinessModel.dll" />
+    <Content Include="bin\Debug\Sinba.BusinessModel.pdb" />
+    <Content Include="bin\Debug\Sinba.Resources.dll" />
+    <Content Include="bin\Debug\Sinba.Resources.pdb" />
+    <Content Include="bin\Debug\System.Web.Mvc.dll" />
+    <Content Include="bin\Debug\System.Web.Mvc.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.xml" />
+    <Content Include="obj\Debug\DPV.BusinessLogic.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\GMAO.BusinessLogic.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SINBA.BusinessModel\GMAO.BusinessModel.csproj">
       <Project>{e7e36e72-9646-47ec-b74e-2b922c7a2822}</Project>
@@ -147,6 +200,11 @@
       <Project>{FAE762DD-B6FC-4A20-9BDE-B52DBF9CFD7C}</Project>
       <Name>GMAO.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\en\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -371,6 +371,8 @@ namespace Sinba.Gui.TemplateCode
         public static string GetCurrentSectionPageTitle()
         {
             StringBuilder builder = new StringBuilder();
+           if (CurrentSection != null)
+            { 
             if (CurrentSection.IsErrorPage)
             {
                 builder.Append("Error Page - ");
@@ -378,6 +380,7 @@ namespace Sinba.Gui.TemplateCode
                 if (!UserSectionItemsModel.GetUserCurrent().IsRootSection)
                     builder.Append(" Section");
             }
+            
             else if (CurrentSection is SectionPageModel)
             {
                 string item = UserSectionItemsModel.GetUserCurrent().Title;
@@ -390,6 +393,7 @@ namespace Sinba.Gui.TemplateCode
                 builder.Append(string.IsNullOrEmpty(item) ? group : item);
                 builder.Append(" > ");
                 builder.Append(sectionGroup.Title);
+            }
             }
             builder.Append(" | PV");
             return builder.ToString();

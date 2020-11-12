@@ -39,6 +39,8 @@ namespace Sinba.Resources
 
         /// <summary>Données de base</summary>
         public const string DonneesDeBase = "DonneesDeBase";
+        /// <summary>DOrganigramme</summary>
+        public const string Organigramme = "Organigramme";
 
         /// <summary>Plantation</summary>
         public const string Plantation = "Plantation";
@@ -80,6 +82,8 @@ namespace Sinba.Resources
 
         /// <summary>Acces</summary>
         public const string Acces = "Acces";
+        public const string GridStateDirection = " GridStateDirection";
+        public const string GridStateDepartement = " GridStateDepartement";
 
         /// <summary>Budget</summary>
         public const string Budget = "Budget";
@@ -143,6 +147,8 @@ namespace Sinba.Resources
         /// <summary>GridState</summary>
         public const string GridStateContact = "GridStateContact";
         public const string GridStateFonction = "GridStateFonction";
+        public const string GridStateMateriel = "GridStateMateriel";
+        public const string GridStateComposant = "GridStateComposant";
         public const string GridStateNature = "GridStateNature";
         public const string GridStateProfil = "GridStateProfil";
         public const string GridStateProfilRight = "GridStateProfilRight";
@@ -154,7 +160,8 @@ namespace Sinba.Resources
         public const string GridStatePieceIdentite = "GridStatePieceIdentite";
         public const string GridStateGroupement = "GridStateGroupement";
         public const string GridTypeContact = "GridTypeContact";
-        
+        public const string GridStateSections = " GridStateSection";
+
         public const string GridStateActivite = "GridStateActivite";
         public const string GridStateSociete = "GridStateSociete";
         public const string GridStatePlantation = "GridStatePlantation";

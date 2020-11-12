@@ -42,10 +42,10 @@ namespace Sinba.Gui.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="SinbaControllerBase"/> class.
         /// </summary>
-        protected SinbaControllerBase()
-        {
-            LanguageConfig.ChangeLanguage("fr");
-        }
+        //protected SinbaControllerBase()
+        //{
+        //    LanguageConfig.ChangeLanguage("fr");
+        //}
         #endregion
 
         #region Methods

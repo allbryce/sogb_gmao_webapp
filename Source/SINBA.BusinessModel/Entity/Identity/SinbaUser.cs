@@ -44,11 +44,12 @@ namespace Sinba.BusinessModel.Entity
 
         [NotMapped]
         [Display(Name = ResourceNames.Entity.Sites, ResourceType = typeof(EntityColumnResource))]
-        public string ListeSite {
+        public string ListeSite
+        {
             get
             {
                 var valeur = "";
-                if(SiteUtilisateurs.Count>0)
+                if (SiteUtilisateurs.Count > 0)
                 {
                     valeur = string.Join(" ; ", SiteUtilisateurs.Select(p => p.IdSite).ToArray());
                 }
@@ -71,3 +72,4 @@ namespace Sinba.BusinessModel.Entity
         #endregion
     }
 }
+

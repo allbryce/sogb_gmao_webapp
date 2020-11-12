@@ -350,31 +350,31 @@ namespace Sinba.Gui.Controllers
             return SinbaView(ViewNames.NotAuthorized, AccountResource.NotAuthorizedTitle);
         }
 
-        [AllowAnonymous]
-        public JsonResult GetUserSites(string username, string password)
-        {
-            JsonResult result = new JsonResult();
-            result.Data = null;
-            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+        //[AllowAnonymous]
+        //public JsonResult GetUserSites(string username, string password)
+        //{
+        //    JsonResult result = new JsonResult();
+        //    result.Data = null;
+        //    result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
 
-            var user = UserManager.Find(username, password);
-            if (user != null)
-            {
+        //    var user = UserManager.Find(username, password);
+        //    if (user != null)
+        //    {
 
-                if (user.SiteUtilisateurs.Count > 0)
-                {
-                    var sites = user.SiteUtilisateurs.Select(s => new { Id = s.IdSite, Libelle = s.Site.Libelle });
-                    if (sites.ToList().Count == 1) Session[DbColumns.IdSite] = sites.FirstOrDefault().Id;
-                    return Json(new {HasError=false, Data = sites, Message = Sinba.Resources.Resources.Entity.EntityCommonResource.msgSuccess }, JsonRequestBehavior.AllowGet);
-                }
-            }
-            else
-            {
-                return Json(new { HasError = true, Data =new List<Site>(), Message = EntityCommonResource.errorLoginPassword }, JsonRequestBehavior.AllowGet);
-            }
+        //        if (user.SiteUtilisateurs.Count > 0)
+        //        {
+        //            var sites = user.SiteUtilisateurs.Select(s => new { Id = s.IdSite, Libelle = s.Site.Libelle });
+        //            if (sites.ToList().Count == 1) Session[DbColumns.IdSite] = sites.FirstOrDefault().Id;
+        //            return Json(new {HasError=false, Data = sites, Message = Sinba.Resources.Resources.Entity.EntityCommonResource.msgSuccess }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Json(new { HasError = true, Data =new List<Site>(), Message = EntityCommonResource.errorLoginPassword }, JsonRequestBehavior.AllowGet);
+        //    }
 
-            return Json(new List<Site>(), JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(new List<Site>(), JsonRequestBehavior.AllowGet);
+        //}
 
 
         #endregion
@@ -466,5 +466,12 @@ namespace Sinba.Gui.Controllers
 
         }
         #endregion
+        public ActionResult Index()
+        {
+            return SinbaView("Login");
+        }
+
     }
+    
+
 }

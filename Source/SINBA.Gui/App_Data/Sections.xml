@@ -1,4 +1,4 @@
-﻿<SectionItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+﻿ <SectionItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SectionItem Key="Parametres" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Paramètres" NavItemTitle="Paramètres" OrderIndex="0" IntegrationHighlighted="true">    
   </SectionItem>
   
@@ -12,17 +12,29 @@
     <SectionGroup Key="Acces" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Accès">
       <Keywords>Accès, Administration</Keywords>
       <Section Key="Profil" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Profil"></Section>
-      <Section Key="Utilisateur" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Utilisateur"></Section>
+      <Section Key="Utilisateur" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Utilisateurs"></Section>
     </SectionGroup>
     
   </SectionItem>
   
 
-  <SectionItem Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de base" NavItemTitle="Données de base" OrderIndex="1" IntegrationHighlighted="true">
+  <SectionItem Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données de base" NavItemTitle="Données de base" OrderIndex="2" IntegrationHighlighted="true">
 
-    <SectionGroup Key="DonneesDeBase" HelpUrl="" Title="Données de base">
+    <SectionGroup Key="Organigramme" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Organigramme">
       <Keywords>Liste</Keywords>
-    </SectionGroup>
+      
+      <Section Key="Direction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Direction"></Section>
+      <Section Key="Departement" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Département"></Section>
+      <Section Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données élémentaires"></Section>
+      <Section Key="Materiel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Matériel"></Section>
+      <Section Key="Service" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Service"></Section>
+      <Section Key="Sections" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Sections"></Section> 
+     
+   
+      
+       
+     </SectionGroup>
+
 
   </SectionItem>
 
