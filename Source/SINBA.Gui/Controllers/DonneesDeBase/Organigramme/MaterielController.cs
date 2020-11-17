@@ -12,6 +12,7 @@ using Dev.Tools.Exceptions;
 using Dev.Tools.Logger;
 using Sinba.BusinessModel.Entity.ViewModels;
 
+
 namespace Sinba.Gui.Controllers
 
 {
@@ -29,6 +30,7 @@ namespace Sinba.Gui.Controllers
         #region Variables
         private IDonneesDeBaseService donnesDeBaseService;
         private string userId;
+        long id;
         #endregion
         public override string ControllerName { get { return SinbaConstants.Controllers.Materiel; } }
         public MaterielController(IDonneesDeBaseService donnesDeBaseService)
@@ -88,8 +90,6 @@ namespace Sinba.Gui.Controllers
             return RedirectToAction(SinbaConstants.Actions.Index);
         }
 
-        //[Route(SinbaConstants.Routes.EditId)]
-
         [HttpPost, ValidateInput(false)]
         public ActionResult Edit(Materiel materiel)
         {
@@ -137,22 +137,31 @@ namespace Sinba.Gui.Controllers
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
         public JsonResult GetMaterielDomaine(long domaineid, long materielid )
         {
-            if (!ModelState.IsValid)
-            {
-                FillViewBag(true);
-            }            
+            List<AssocierMateriel> lst = new List<AssocierMateriel>();
+            List<AssociematerielViewModel> list = new List<AssociematerielViewModel>();
+            FillViewBag(true);
+            FillAuthorizedActionsViewBag();                        
             GetAssocierMaterielList(domaineid);
-            ViewData[DbColumns.MaterielId] = materielid;
-            return Json(true, JsonRequestBehavior.AllowGet); 
+            lst = GetAssocierMateriel(materielid);
+            foreach(AssocierMateriel item in lst)
+            {
+                list.Add(item.ToViewModel());
+            }
+            return Json(list, JsonRequestBehavior.AllowGet); 
         }
         [HttpPost,AllowAnonymous]
-        public ActionResult AssocierMaterielPartial( long materielid )
+        public ActionResult AssocierMaterielPartial( )
         {
-            if (!ModelState.IsValid)
+            List<AssocierMateriel> lst = new List<AssocierMateriel>();
+            List<AssociematerielViewModel> list = new List<AssociematerielViewModel>();
+            FillViewBag(true);
+            FillAuthorizedActionsViewBag();
+            lst = GetAssocierMateriel(id);
+            foreach (AssocierMateriel item in lst)
             {
-                FillViewBag(true);
+                list.Add(item.ToViewModel());
             }
-            return SinbaView(ViewNames.AssocierMaterielPartial, GetAssocierMateriel(materielid));
+            return SinbaView(ViewNames.AssocieAddModal, list);
         }
         #region Delete
 
@@ -166,6 +175,16 @@ namespace Sinba.Gui.Controllers
             }
             return RedirectToAction(SinbaConstants.Actions.Index);
         }
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Delete)]
+        public ActionResult DeleteComposant(long materielid, long composantid, DateTime dateinsertion)
+        {
+            if(materielid!=0 && composantid!= 0)
+            {
+                var dto =donnesDeBaseService.RemoveComposant(materielid, composantid, dateinsertion);
+            }
+            return RedirectToAction(SinbaConstants.Actions.Index);
+        }
+
         #endregion
         #region Modal screens
         #region Modal views
@@ -302,7 +321,6 @@ namespace Sinba.Gui.Controllers
         {
             var lstModel = new List<Model>();
             var dto = donnesDeBaseService.GetModelList();
-
             if (!TreatDto(dto) && dto.Value != null)
             {
                 lstModel = dto.Value.ToList();
@@ -314,7 +332,6 @@ namespace Sinba.Gui.Controllers
         {
             var lstTypeMateriel = new List<TypeMateriel>();
             var dto = donnesDeBaseService.GetTypeMaterielList();
-
             if (!TreatDto(dto) && dto.Value != null)
             {
                 lstTypeMateriel = dto.Value.ToList();
@@ -326,7 +343,6 @@ namespace Sinba.Gui.Controllers
         {
             var lstFournisseur = new List<Fournisseur>();
             var dto = donnesDeBaseService.GetFournisseurList();
-
             if (!TreatDto(dto) && dto.Value != null)
             {
                 lstFournisseur = dto.Value.ToList();
@@ -337,7 +353,6 @@ namespace Sinba.Gui.Controllers
         {
             var lstComposant = new List<Composant>();
             var dto = donnesDeBaseService.GetComposantList();
-
             if (!TreatDto(dto) && dto.Value != null)
             {
                 lstComposant = dto.Value.ToList();

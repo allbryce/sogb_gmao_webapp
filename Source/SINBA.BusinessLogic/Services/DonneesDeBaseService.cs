@@ -162,33 +162,22 @@ namespace Sinba.BusinessLogic.Services
             this.UnitOfWork.DepartementRepository.EnableTracking = true;
 
             Departement dbDepartement = this.UnitOfWork.DepartementRepository.Get(p => p.DepartementId == departement.DepartementId).FirstOrDefault();
-
-
-
             if (dbDepartement != null)
-
             {
-
                 dbDepartement.DepartementId = departement.DepartementId;
                 dbDepartement.LibelleDepartement = departement.LibelleDepartement;
                 dbDepartement.DirectionId = departement.DirectionId;
                 this.UnitOfWork.Commit();
                 dto.Value = true;
             }
-
             return dto;
-
         }
+
         public BoolDto DeleteDepartement(long id)
-
         {
-
-            BoolDto dto = new BoolDto();
-
+            BoolDto dto = new BoolDto();      
             Departement departementToDelete = UnitOfWork.DepartementRepository.Get(n => n.DepartementId == id, null, n => n.Service).FirstOrDefault();
-
             if (departementToDelete != null)
-
             {
                 if (!departementToDelete.IsUsed)
                 { 
@@ -200,11 +189,9 @@ namespace Sinba.BusinessLogic.Services
                 {
                     dto.Errors.Add("Le département en question est lié à un service");
                 }
-
             }
-
             return dto;
-
+       
         }
         #endregion
 
@@ -226,8 +213,8 @@ namespace Sinba.BusinessLogic.Services
         public ListDto<AssocierMateriel> GetAssocierMaterielListWithDependencies(long materielid)
         {
             ListDto<AssocierMateriel> lst = new ListDto<AssocierMateriel>();
-            this.UnitOfWork.MaterielRepository.EnableTracking = false;
-            lst.Value = this.UnitOfWork.AssocierMaterielRepository.Get(p=>p.MaterielId == materielid, null,p=>p.Materiel);
+            this.UnitOfWork.AssocierMaterielRepository.EnableTracking = false;
+            lst.Value = this.UnitOfWork.AssocierMaterielRepository.Get(p=>p.MaterielId == materielid,null,p=>p.Materiel);
             return lst;
         }
     
@@ -257,15 +244,10 @@ namespace Sinba.BusinessLogic.Services
         }
 
         public ListDto<Departement> GetComposerMaterielList()
-
         {
-
             ListDto<Departement> lst = new ListDto<Departement>();
-
             this.UnitOfWork.DepartementRepository.EnableTracking = false;
-
             lst.Value = this.UnitOfWork.DepartementRepository.Get();
-
             return lst;
 
         }
@@ -528,6 +510,19 @@ namespace Sinba.BusinessLogic.Services
             }      
             return dto;
         }
+        public BoolDto RemoveComposant(long materielid, long composantid, DateTime dateinsertion)
+        {
+            ComposerMateriel ComposantTodelete = UnitOfWork.ComposerMaterielRepository.Get(n => n.MaterielId == materielid && n.ComposantId == composantid && n.DateInsertion == dateinsertion, null, x => x.PossederCaracteristiques).FirstOrDefault();
+            BoolDto dto = new BoolDto();
+            this.UnitOfWork.ServiceRepository.EnableTracking = false;
+               if(ComposantTodelete != null )
+               {                   
+                    UnitOfWork.ComposerMaterielRepository.Delete(ComposantTodelete);
+                    UnitOfWork.Commit();
+                    dto.Value = true;
+               }
+            return dto;
+        }
 
         #endregion #region Materiel
 
@@ -683,88 +678,54 @@ namespace Sinba.BusinessLogic.Services
 
         #endregion
 
-
-
         #region Composant
         public ListDto<Composant> GetComposantListWithDependencies()
-
         {
-
             ListDto<Composant> lst = new ListDto<Composant>();
-
-            this.UnitOfWork.ServiceRepository.EnableTracking = false;
-
+            this.UnitOfWork.ServiceRepository.EnableTracking = false;      
             lst.Value = this.UnitOfWork.ComposantRepository.Get(null, null, x => x.ComposerMateriel);
             // x => x.CaracteristiqueComposant,
            // x => x.Domaine
-
             return lst;
-
         }
-
 
         public BoolDto InsertComposant(Composant composant)
-
         {
-
             BoolDto dto = new BoolDto();
-
             this.UnitOfWork.ComposantRepository.Insert(composant);
-
             this.UnitOfWork.Commit();
-
             dto.Value = true;
-
             return dto;
-
         }
         public SimpleDto<Composant> GetComposant(long id)
-
         {
-
             SimpleDto<Composant> dto = new SimpleDto<Composant>();
-
             this.UnitOfWork.ComposantRepository.EnableTracking = false;
-
             dto.Value = this.UnitOfWork.ComposantRepository.Get(p => p.ComposantId == id).FirstOrDefault();
-
             return dto;
         }
 
         public ListDto<Composant> GetComposantList()
-
         {
-
             ListDto<Composant> lst = new ListDto<Composant>();
-
             this.UnitOfWork.ComposantRepository.EnableTracking = false;
-
             lst.Value = this.UnitOfWork.ComposantRepository.Get();
-
             return lst;
-
         }
 
         public ListDto<ComposerMateriel> GetComposantMateriel(long id)
-        {
-            
+        {            
             ListDto<ComposerMateriel> dtomaterielcomposant = new ListDto<ComposerMateriel>();
             this.UnitOfWork.ComposerMaterielRepository.EnableTracking = true;
             dtomaterielcomposant.Value = this.UnitOfWork.ComposerMaterielRepository.Get(p => p.MaterielId == id);
-            return dtomaterielcomposant;
-            
+            return dtomaterielcomposant;            
         }
 
-
         public BoolDto UpdateComposant(Composant composant)
-
         {
-
             BoolDto dto = new BoolDto();
-
             this.UnitOfWork.ComposantRepository.EnableTracking = true;
-            Composant dbComposant = this.UnitOfWork.ComposantRepository.Get(p => p.ComposantId == composant.ComposantId).FirstOrDefault();
-            
+            Composant dbComposant = this.UnitOfWork.ComposantRepository.Get(p => p.ComposantId == composant.ComposantId).FirstOrDefault();            
             if (dbComposant != null)
             {
                 dbComposant.ComposantId = composant.ComposantId;
@@ -773,18 +734,12 @@ namespace Sinba.BusinessLogic.Services
                 dbComposant.OrdreComposant = composant.OrdreComposant;
                 this.UnitOfWork.Commit();
                 dto.Value = true;
-
             }
-
             return dto;
-
         }
-
-
 
         public BoolDto DeleteComposant(long id)
         {
-
             BoolDto dto = new BoolDto();
             Composant ComposantToDelete = UnitOfWork.ComposantRepository.Get(n => n.ComposantId == id, null).FirstOrDefault();
             if (ComposantToDelete != null)
@@ -793,9 +748,7 @@ namespace Sinba.BusinessLogic.Services
                 UnitOfWork.Commit();
                 dto.Value = true;
             }
-
             return dto;
-
         }
 
         public ListDto<CaracteristiqueComposant> GetCaracteristiqueComposantList()

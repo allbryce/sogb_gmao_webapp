@@ -237,7 +237,7 @@ namespace Sinba.Gui.Controllers
             {
                 lstDirection = dtoDirection.Value.ToList();
             }
-            ViewBag.Materiel = lstDirection;
+            ViewBag.Direction = lstDirection;
             ViewBag.AddMode = addMode;
         }
 

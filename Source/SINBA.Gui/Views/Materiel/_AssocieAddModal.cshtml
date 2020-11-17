@@ -1,4 +1,4 @@
-﻿@model  AssocierMateriel
+﻿@model  List<Sinba.BusinessModel.Entity.ViewModels.AssociematerielViewModel>
 @{
     Html.EnableClientValidation(false);
 }
@@ -15,12 +15,13 @@
         settings.PopupAnimationType = AnimationType.None;
         settings.HeaderText = "Matériels Associés";
         settings.Modal = true;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action = SinbaConstants.Actions.AssocierMaterielPartial };
         settings.AutoUpdatePosition = true;
         settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
         settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
         settings.SetContent(() =>
         {
-            Html.RenderPartial(ViewNames.AssocierMaterielPartial, new List<AssocierMateriel>());
+            Html.RenderPartial(ViewNames.AssocierMaterielPartial, new List<Sinba.BusinessModel.Entity.ViewModels.AssociematerielViewModel>());
 
             Html.DevExpress().Button(
                 buttonSettings =>
@@ -32,7 +33,6 @@
                     buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveCaracteristiques(s,e); } ";
                 }
             ).Render();
-
             Html.DevExpress().Button(
                 buttonSettings =>
                 {

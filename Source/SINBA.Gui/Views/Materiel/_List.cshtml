@@ -200,6 +200,14 @@
         column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
         column.Width = Unit.Pixel(50);
     });
+    settings.Columns.Add(column =>
+
+    {
+        column.FieldName = "Note";
+        column.Caption = "Note";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+    });
     // Button
     settings.Columns.Add(column =>
     {
@@ -219,7 +227,7 @@
         string idmateriel = (DataBinder.Eval(c.DataItem, DbColumns.MaterielId)??"").ToString();
         if (!string.IsNullOrEmpty(idmateriel))
         {
-         Html.RenderAction(SinbaConstants.Actions.ComposantPartial, new { MaterielId = idmateriel });
+            Html.RenderAction(SinbaConstants.Actions.ComposantPartial, new { MaterielId = idmateriel });
         }
     });
 

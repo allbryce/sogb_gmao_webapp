@@ -260,6 +260,7 @@ namespace Sinba.Resources
 
             /// <summary>Delete</summary>
             public const string Delete = "Delete";
+            public const string DeleteComposant = "DeleteComposant";
 
             /// <summary>Dupliquer</summary>
             public const string Dupliquer = "Dupliquer";

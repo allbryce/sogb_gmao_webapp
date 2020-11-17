@@ -5,6 +5,7 @@ namespace Sinba.BusinessModel.Entity
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using Sinba.BusinessModel.Entity.ViewModels;
 
     [Table("AssocierMateriel")]
     public partial class AssocierMateriel
@@ -25,9 +26,18 @@ namespace Sinba.BusinessModel.Entity
 
         [Column(TypeName = "date")]
         public DateTime? DateRetrait { get; set; }
-
         public virtual Materiel Materiel { get; set; }
-
         public virtual Materiel Materiel1 { get; set; }
+
+        public AssociematerielViewModel ToViewModel()
+        {
+            var associemateriel = new AssociematerielViewModel(){
+                MaterielId = MaterielId,
+                MaterielAssocieId = MaterielAssocieId,
+                LibelleMaterielAssocie = Materiel?.LibelleMateriel,
+                LibelleMateriel = Materiel1?.LibelleMateriel
+            };        
+            return associemateriel;
+        }
     }
 }

@@ -99,5 +99,18 @@ function deleteGridRow(key, gridName, deleteUrl) {
             });
     }
 }
+function InitGridViewByName(gridname) {
+    let grid = ASPxClientControl.GetControlCollection().GetByName(gridname)
+    let indices = grid.batchEditApi.GetRowVisibleIndices();
+    for (let index = 0; index < indices.length; index++) {
+        grid.DeleteRow(index);
+    }
+}
+function InitGridView(grid) {
+    let indices = grid.batchEditApi.GetRowVisibleIndices();
+    for (let index = 0; index < indices.length; index++) {
+        grid.DeleteRow(index);
+    }
+}
 
 

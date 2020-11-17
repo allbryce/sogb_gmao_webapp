@@ -41,7 +41,7 @@
                     (bool)ViewBag.CanAdd ?
                         Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, new { idProfil = ViewBag.IdProfil }, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString() :
                         Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
-                );
+                ); 
             });
             column.Settings.AllowDragDrop = DefaultBoolean.False;
             column.Settings.AllowSort = DefaultBoolean.False;

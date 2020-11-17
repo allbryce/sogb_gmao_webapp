@@ -28,13 +28,10 @@ namespace Sinba.BusinessModel.Entity
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long MaterielId { get; set; }
-
         public int? Quantite { get; set; }
-
         public int? Plafond { get; set; }
 
         public virtual Composant Composant { get; set; }
-
         public virtual Materiel Materiel { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

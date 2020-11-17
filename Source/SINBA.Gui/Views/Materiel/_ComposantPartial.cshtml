@@ -37,7 +37,7 @@
 
                  // Button Delete
                  (bool)ViewBag.CanDelete ?
-                 Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) }, new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
+                 Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.DeleteComposant, null, new { MaterielId = ViewData[DbColumns.MaterielId], ComposantId =DataBinder.Eval(c.DataItem, DbColumns.ComposantId), DateInsertion = DataBinder.Eval(c.DataItem, DbColumns.DateInsertion) }, new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
                  Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
              );
          });
@@ -55,9 +55,7 @@
 
              //Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
              // Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
-
              );
-
          });
 
          column.Settings.AllowDragDrop = DefaultBoolean.False;

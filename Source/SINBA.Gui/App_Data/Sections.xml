@@ -25,7 +25,6 @@
       
       <Section Key="Direction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Direction"></Section>
       <Section Key="Departement" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Département"></Section>
-      <Section Key="DonneesDeBase" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Données élémentaires"></Section>
       <Section Key="Materiel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Matériel"></Section>
       <Section Key="Service" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Service"></Section>
       <Section Key="Sections" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Sections"></Section> 

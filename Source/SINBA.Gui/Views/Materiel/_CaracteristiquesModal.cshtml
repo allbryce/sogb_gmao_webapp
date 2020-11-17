@@ -57,8 +57,8 @@
                 ViewHelper.GridViewDefaultSettings(setting, "gridCaracteristique",
                 allowDragDrop: false,
                 allowSortResize: false,
-                showFilter: false, 
-                enablePaging: false, 
+                showFilter: false,
+                enablePaging: false,
                 gridViewEditingMode: GridViewEditingMode.Batch);
                 setting.KeyFieldName = "ComposantcaracteristiqueId";
                 setting.CallbackRouteValues = new { Controller = "Materiel", Action = "Loadcaracteristique" };
@@ -70,22 +70,16 @@
 
                 setting.Columns.Add(column =>
                 {
-
                     column.Width = Unit.Pixel(25);
                     column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", setting.Name, CommonResource.btnAddTooltip);
-                    //column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+                    column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
                     //column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)
                     column.Settings.AllowDragDrop = DefaultBoolean.False;
                     column.Settings.AllowSort = DefaultBoolean.False;
                     column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
                     column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
                     column.FixedStyle = GridViewColumnFixedStyle.Left;
-
-
-
                 });
-
-
                 setting.Columns.Add(c =>
                 {
                     c.FieldName = "CaracteristiqueComposantId";
@@ -96,8 +90,6 @@
                         p.ValueField = "CaracteristiqueComposantId";
                         p.ValueType = typeof(long);
                         p.DataSource = ViewBag.CaracteristiqueComposant;
-
-
                     });
                     c.Width = 500;
                     c.ReadOnly = false;
@@ -110,8 +102,6 @@
                     c.ReadOnly = false;
 
                 });
-
-
                 setting.Columns.Add(c =>
                 {
                     c.FieldName = "UniteId";
@@ -128,8 +118,6 @@
                     c.ReadOnly = false;
 
                 });
-
-
             }).Bind(Model.Caracteristiques.ToList()).Render();
 
 

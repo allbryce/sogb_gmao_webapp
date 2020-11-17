@@ -44,7 +44,7 @@ namespace Sinba.Gui.Controllers
         [ClaimsAuthorize(SinbaConstants.Controllers.DonneesDeBase, SinbaConstants.Actions.Index)]
         public ActionResult ListPartial()
         {
-            FillViewBag();
+            FillViewBag(true);
             FillAuthorizedActionsViewBag();
             return PartialView(ViewNames.ListPartial);
         }

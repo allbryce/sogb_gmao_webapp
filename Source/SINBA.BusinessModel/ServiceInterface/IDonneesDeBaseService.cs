@@ -56,7 +56,6 @@ namespace Sinba.BusinessModel.ServiceInterface
 
         #endregion
 
-
         #region Service
 
         ListDto<Service> GetServiceList();
@@ -119,15 +118,13 @@ namespace Sinba.BusinessModel.ServiceInterface
         //ListDto<Departement> GetDepartementListWithDependencies(string idSociete);
 
         SimpleDto<Materiel> GetMateriel(long id);
-
         SimpleDto<PossederCaracteristiques> GetPossederCaracteristiques(long composantid, long materielid);
-
         BoolDto InsertMateriel(Materiel materiel);
-//        BoolDto InsertPossederCaracteristique(PossederCaracteristiques Possedercaracteristique);
+//      BoolDto InsertPossederCaracteristique(PossederCaracteristiques Possedercaracteristique);
 
         BoolDto UpdateMateriel(Materiel materiel);
-
         BoolDto DeleteMateriel(long id);
+        BoolDto RemoveComposant(long materielid, long composantid, DateTime dateinsertion);  
         //object UpdateMateriel(Materiel materiel);
 
         //BoolDto IsMaterielCodeUsed(string code, int id, string idSociete);
@@ -140,23 +137,17 @@ namespace Sinba.BusinessModel.ServiceInterface
 
         ListDto<Composant> GetComposantList();
         ListDto<Unite> GetUniteList();
-         ListDto<CaracteristiqueComposant> GetCaracteristiqueComposantList();
-
+        ListDto<CaracteristiqueComposant> GetCaracteristiqueComposantList();
         ListDto<ComposerMateriel> GetComposantMateriel(long id);
         ListDto<ComposerMateriel> GetComposerMaterielListWithDependencies(long id);
         ListDto<AssocierMateriel> GetAssocierMaterielListWithDependencies(long materielid); 
         ListDto<Materiel> GetAssocierMaterielList(long materielid); 
-
         ListDto<Composant> GetComposantListWithDependencies();
-
         //ListDto<Composant> GetComposantListWithDependencies(string id);
 
         SimpleDto<Composant> GetComposant(long id);
-
         BoolDto InsertComposant(Composant composant);
-
         BoolDto UpdateComposant(Composant composant);
-
         BoolDto DeleteComposant(long id);
         ////object UpdateMateriel(Materiel materiel);
 
