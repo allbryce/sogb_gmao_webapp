@@ -2,49 +2,62 @@
 var currentMaterielID;
 var gridname;
 var isError;
-var canClose =true;
+var canClose = true;
+var currentDomaineID
 
  //Open Add Modal 
 function openMaterielAddModal() {
     isAddMode = true;
+    InitMaterielModal();
+    //MaterielId.Hide();
     MaterielModal.Show();
 }
 function openCaracteristiquesAddModal( item ) {
 
     currentMaterielID = item.MaterielId;
     isAddMode = true;
+    gridname = "gridComposant_" + currentMaterielID;
+    InitComposantModal();
     CaracteristiquesModal.Show();
-   gridname = "gridComposant_"+currentMaterielID;
+  
 }
 function openAssocieModal(item) {
 
-    SetGridView(GetMaterielDomaine(item.DomaineId, item.MaterielId));
     currentMaterielID = item.MaterielId;
-    //gridAssociation.PerformCallback();
+    currentDomaineID = item.DomaineId;
+    //SetGridView(GetMaterielDomaine(item.DomaineId, item.MaterielId));
     AssocieModal.Show();
+    gridAssociation.PerformCallback();
+
+}
+
+function AssocierMaterielBeginCallback(s, e) {
+    e.customArgs['MaterielId'] = currentMaterielID;
+    e.customArgs['DomaineId'] = currentDomaineID;
 }
 //Open Edit Modal
 function openCaracteristiquesEditModal(item) {
 
+    isAddMode = false;
     var caracteristique = GetComposant(item.MaterielId, item.ComposantId, item.DateInsertion);
     setComposant(caracteristique);
     CaracteristiquesModal.Show();
     currentMaterielID = item.MaterielId;
     gridname = "gridComposant_" + currentMaterielID;
-
 }
 function openMaterielEditModal(materielid) {
     isAddMode = false;
+    currentMaterielID = materielid;
     currentMateriel = GetMateriel(materielid);
     SetMateriel(currentMateriel);
     MaterielModal.Show();
 }
-function MaterielEdit()
-{
+function RecupererMateriel(){
     if (DateAcquisition.GetValue.toUTCString < DateMiseEnService.GetValue.toUTCString) {
         window.alert("La mise en service ne peut pas se faire avant l'acquisition");        
     }
-    var materiel = {}  
+    var materiel = {}
+    materiel.MaterielId = currentMaterielID;
     materiel.NumeroSerie = NumeroSerie.GetValue();
     materiel.LibelleMateriel = LibelleMateriel.GetValue();
     materiel.DomaineId = DomaineId.GetValue();
@@ -56,94 +69,103 @@ function MaterielEdit()
     materiel.TypeMaterielId = TypeMaterielId.GetValue();
     materiel.Note = Note.GetValue();
     if (Garantie.GetValue() !== null) {
-        materiel.Garantie = Garantie.GetValue.toUTCString();
+        materiel.Garantie = Garantie.GetValue().toUTCString();
     }
     if (DateAcquisition.GetValue() !== null) {
         materiel.DateAcquisition = DateAcquisition.GetValue().toUTCString();
     }
     if (DateMiseEnService.GetValue() !== null) {
         materiel.DateMiseEnService = DateMiseEnService.GetValue().toUTCString();
-
+    }
+    if (GroupeInventaireId.GetValue() !== null) {
+        materiel.GroupeInventaireId = GroupeInventaireId.GetValue();
     } 
     materiel.PrixAchat = PrixAchat.GetValue();
-    EditMateriel(materiel);
+    materiel.Actif = Actif.GetValue();
+    return materiel;
 }
 //Save
 function SaveCaracteristiques(s,e) {
-    var test;
-    if (isAddMode) {
-        test = CarateristiqueAdd();
-    }
-    else {
-        caracteristiqueEdit();
-    }    
+    var test = CarateristiqueAdd();  
+    //else {
+    //    caracteristiqueEdit();
+    //}    
     if (canClose) {
-
         CaracteristiquesModal.Hide();
-
-    } else {
-        window.alert("Erreur! vérifiez vos entrées");
-    }
-
+    } 
     if (!test) {
         gridname.PerformCallback;
-    } else {
-        window.alert("Une erreur s'est produite lors de l'exécution de cette tâche. Veuillez réessayer SVP");
     }
 }
+
 function SaveMateriel() {
-
+    
     if (isAddMode === true) {
-
-        MaterielAdd();
-
+        AddMateriel(RecupererMateriel()); 
     }
     else {
-
-        MaterielEdit();
+        EditMateriel(RecupererMateriel());
     }
-
     gridMateriel.PerformCallback();
     if (canClose)
     {
-
         MaterielModal.Hide();
-
     }
 }
-function MaterielAdd()
-{
+function SaveAssocierMateriel() {
 
-    if (DateAcquisition.GetValue.toUTCString < DateMiseEnService.GetValue.toUTCString) {
-        window.alert("La mise en service ne peut pas se faire avant l'acquisition");
-        canClose = false;
-    }
-   
-    var materiel = {};
-    materiel.NumeroSerie = NumeroSerie.GetValue();
-    materiel.LibelleMateriel = LibelleMateriel.GetValue();
-    materiel.DomaineId = DomaineId.GetValue();
-    materiel.FournisseurId = FournisseurId.GetValue();
-    materiel.NumeroModel = NumeroModel.GetValue();
-    materiel.SousFamilleId = SousFamilleId.GetValue();
-    materiel.NumeroBonCommande = NumeroBonCommande.GetValue();
-    materiel.ClasseMaterielId = ClasseMaterielId.GetValue();
-    materiel.TypeMaterielId = TypeMaterielId.GetValue();
-    materiel.Garantie = Garantie.GetValue().toUTCString();
-    materiel.Actif = Actif.GetValue();
-    materiel.Note = Note.GetValue();
-    if (DateAcquisition.GetValue() !== null) {
-        materiel.DateAcquisition = DateAcquisition.GetValue().toUTCString();
-    }
-    if (DateMiseEnService.GetValue() !== null) {
-        materiel.DateMiseEnService = DateMiseEnService.GetValue().toUTCString();
-    }
-    materiel.PrixAchat = PrixAchat.GetValue();
-    AddMateriel(materiel);
+    ComitAssocieMateriel(GetAssocieMateriel());
+    AssocieModal.Hide();
 }
+function GetAssocieMateriel() {
+    
+    var indices = gridAssociation.batchEditApi.GetRowVisibleIndices();
+    var Association = [];
+    if (indices !== null) {
+        if (indices.length === 0) {
+            return JSON.stringify(caracteristique);
+        } else {
+            for (var i = 0; i < indices.length; i++) {
+                var currentAssociation = {
+                    MaterielId: currentMaterielID,
+                    MaterielAssocieId: gridAssociation.batchEditApi.GetCellValue(indices[i], 'MaterielAssocieId', false),
+                    DateInstallation: gridAssociation.batchEditApi.GetCellValue(indices[i], 'DateInstallation', false),
+                    DateRetrait: gridAssociation.batchEditApi.GetCellValue(indices[i], 'DateRetrait', false),
+                };
+                if (currentAssociation.MaterielId !== null && currentAssociation.MaterielAssocieId !== null && currentAssociation.DateInstallation != null) {
+                    Association.push(currentAssociation);
+                }
+            }
+            return JSON.stringify(Association);
+        }
+    }
+    return JSON.stringify(Association);
+    
+}
+
+function InitMaterielModal() {
+    NumeroSerie.SetValue(null);
+    LibelleMateriel.SetValue(null);
+    DomaineId.SetValue(null);
+    FournisseurId.SetValue(null);
+    NumeroModel.SetValue(null);
+    SousFamilleId.SetValue(null);
+    NumeroBonCommande.SetValue(null);
+    ClasseMaterielId.SetValue(null);
+    TypeMaterielId.SetValue(null);
+    Garantie.SetValue(null);
+    Actif.SetValue(null);
+    Note.SetValue(null);
+    DateAcquisition.SetValue(null);
+    DateMiseEnService.SetValue(null);
+    PrixAchat.SetValue(null);
+}
+
 //
 //Setting
 function SetMateriel(materiel) {
+    InitMaterielModal();
+    //MaterielId.SetValue(currentMaterielID);
     NumeroSerie.SetValue(materiel.NumeroSerie);
     LibelleMateriel.SetValue(materiel.LibelleMateriel);
     DomaineId.SetValue(materiel.DomaineId);
@@ -157,18 +179,29 @@ function SetMateriel(materiel) {
     Note.SetValue(materiel.Note);
     Actif.SetValue(materiel.Actif);
     GroupeInventaireId.SetValue(materiel.GroupeInventaireId);
-    Garantie.SetValue(materiel.Garantie);
+    if (materiel.Garantie != null) {
+    Garantie.SetValue(new Date(parseInt(materiel.Garantie.replace('/Date(', ''))));
+    }
+    if (materiel.DateMiseEnService != null) {
+        DateMiseEnService.SetValue(new Date(parseInt(materiel.DateMiseEnService.replace('/Date(', ''))));
+    }
+    if (materiel.DateAcquisition != null) {
+       DateAcquisition.SetValue(new Date(parseInt(materiel.DateAcquisition.replace('/Date(', ''))));
+    }
 }
+
 function setComposant(caracteristique) {
+
+    InitComposantModal();
     ComposantId.SetValue(caracteristique.ComposantId);
     Quantite.SetValue(caracteristique.Quantite);
     if (caracteristique.DateInsertion != null) {
-        let date = new Date(caracteristique.DateInsertion);
+        //let date = new Date(caracteristique.DateInsertion);
+        var date = new Date(parseInt(caracteristique.DateInsertion.replace('/Date(', '')));
         DateInsertion.SetValue(date);
     }
     Plafond.SetValue(caracteristique.Plafond);
     var items = caracteristique.Caracteristiques;
-    var y = 0;
     for (var lib = 0; lib < items.length; lib++) {
         gridCaracteristique.AddNewRow();
     }
@@ -176,22 +209,16 @@ function setComposant(caracteristique) {
     for (var i = 0; i < indices.length; i++) {
         gridCaracteristique.batchEditApi.SetCellValue(indices[i], 'CaracteristiqueComposantId', items[i].CaracteristiqueComposantId);
         gridCaracteristique.batchEditApi.SetCellValue(indices[i], 'Valeur', items[i].Valeur);
-        gridCaracteristique.batchEditApi.SetCellValue(indices[i], 'Unite', items[i].UniteId);
+        gridCaracteristique.batchEditApi.SetCellValue(indices[i], 'UniteId', items[i].UniteId);
     }
 }
-//
 
-//GridViews
-function InitGridViewByName(gridname) {
-    let grid = ASPxClientControl.GetControlCollection().GetByName(gridname)
-    let indices = gridname.batchEditApi.GetRowVisibleIndices();
-    for (let index = 0; index < indices.length; index++) {
-        gridname.DeleteRow(index);
-    }
-}
+// Dé
 function SetGridView(item) {
-    //
-    InitGridViewByName(gridAssociation);
+    let index = gridAssociation.batchEditApi.GetRowVisibleIndices();
+    for (let i = 0; i < index.length+1; i++) {
+        gridAssociation.DeleteRow(-i);
+    }    
     //
     var indice = gridAssociation.batchEditApi.GetRowVisibleIndices();
     if (item.length != indice.length) {
@@ -200,22 +227,36 @@ function SetGridView(item) {
         }
     }
     var indices = gridAssociation.batchEditApi.GetRowVisibleIndices();
-    //
-
-        for (let i = 0; i < item.length; i++) {
-            //if (item[i].DateInstallation != null) {
-            //   gridAssociation.batchEditApi.SetCellValue(indices[i], 'DateInstallation', item[i].DateInstallation);
-            //}
-            gridAssociation.batchEditApi.SetCellValue(indices[i], 'MaterielId', item[i].MaterielId);
+    // let date = new Date(item[i].DateInstallation);
+    for (let i = 0; i < item.length; i++){
+        
+            if (item[i].DateInstallation != null) {
+                let date = new Date(parseInt(item[i].DateInstallation.replace('/Date(', '')));          
+                //let date = datestring.getDate() + "/" + datestring.getMonth() + "/" + datestring.getFullYear();                
+                gridAssociation.batchEditApi.SetCellValue(indices[i],'DateInstallation',date);
+            }
+            gridAssociation.batchEditApi.SetCellValue(indices[i], 'MaterielId', currentMaterielID);
             gridAssociation.batchEditApi.SetCellValue(indices[i], 'MaterielAssocieId', item[i].MaterielAssocieId);
             gridAssociation.batchEditApi.SetCellValue(indices[i], 'LibelleMaterielAssocie', item[i].LibelleMaterielAssocie);
-            //if (item[i].DateRetrait != null) {
-            //    gridAssociation.batchEditApi.SetCellValue(indices[i], 'DateRetrait', item[i].DateRetrait);
-            //}
+        if (item[i].DateRetrait != null) {
+            let datestring = new Date(parseInt(item[i].DateRetrait.replace('/Date(', '')));
+            let date = datestring.getDate() + "/" + datestring.getMonth() + "/" + datestring.getFullYear();
+            gridAssociation.batchEditApi.SetCellValue(indices[i], 'DateRetrait', date);
         }
-   
-    
+            //gridAssociation.batchEditApi.SetCellValue(indices[i], 'DateRetrait', date);
+    }
 }
+function InitComposantModal() {
+    ComposantId.SetValue(null);
+    Quantite.SetValue(null);
+    Plafond.SetValue(null);
+    DateInsertion.SetValue(null);
+    var index = gridCaracteristique.batchEditApi.GetRowVisibleIndices();
+    for (let i = 0; i < index.length + 1; i++) {
+        gridCaracteristique.DeleteRow(-i);
+    }
+}
+
 /***Recupération de la grille caracteristique **/
 function GetCaracteristiques() {
 
@@ -231,7 +272,7 @@ function GetCaracteristiques() {
                     Valeur: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'Valeur', false),
                     UniteId: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'UniteId', false),
                 };
-                if (currentcaracteristique.CaracteristiqueComposantId !== null && currentcaracteristique.UniteId !== null) {
+                if (currentcaracteristique.CaracteristiqueComposantId !== null && currentcaracteristique.UniteId !== null && ComposantId != null && DateInsertion != null) {
                     caracteristique.push(currentcaracteristique);
                 }
             }
@@ -254,38 +295,76 @@ function CarateristiqueAdd() {
          Composantcaracteristique.DateInsertion= DateInsertion.GetValue().toUTCString()
             }
     Composantcaracteristique.CaracteristiqueComposantString = GetCaracteristiques();
-    isError = AddCaracteristique(Composantcaracteristique);
+    if (isAddMode) {
+        isError = AddCaracteristique(Composantcaracteristique);
+    }
+    else {
+        isError = CaracteristiqueEdit(Composantcaracteristique);
+    }
+    InitComposantModal();
     if (isError) {
 
         window.alert("Une erreur s'est produite, veuillez vérifier votre saisie");
         canClose = false;
-    } else {
+    }
+    else {
         
     }   
 }
-function caracteristiqueEdit() {
+//function caracteristiqueEdit() {
 
-    var Composermateriel = {};
-    var possedercaracteristique = {};
+//    var Composermateriel = {};
+//    var possedercaracteristique = {};
 
-    Composermateriel.composantId = composantId;
-    Composermateriel.DateIsertion = DateInsertion;
-    Composermateriel.Quantite = Quantite;
-    Composermateriel.Plafond = Plafond;
-    possedercaracteristique.CaracteristiqueComposantId = CaracteristiqueComposantId;
-    possedercaracteristique.Valeur = Valeur;
-    possedercaracteristique.UniteId = UniteId;
-    EditCaracteristique(Composermateriel, possedercaracteristique);
-}
+//    Composermateriel.composantId = composantId;
+//    Composermateriel.DateIsertion = DateInsertion;
+//    Composermateriel.Quantite = Quantite;
+//    Composermateriel.Plafond = Plafond;
 
+//    //possedercaracteristique.CaracteristiqueComposantId = CaracteristiqueComposantId;
+//    //possedercaracteristique.Valeur = Valeur;
+//    //possedercaracteristique.UniteId = UniteId;
+//    //EditCaracteristique(Composermateriel, possedercaracteristique);
+
+//    var indices = gridCaracteristique.batchEditApi.GetRowVisibleIndices();
+//    for (var i = 0; i < indices.length; i++) {
+//        var caracteristique = {
+//            CaracteristiqueComposantId: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'CaracteristiqueComposantId', false),
+//            Valeur: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'Valeur', false),
+//            UniteId: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'UniteId', false),
+//        };
+//        if (caracteristique.CaracteristiqueComposantId !== null && caracteristique.UniteId !== null) {
+//            possedercaracteristique.push(caracteristique);
+//        }
+//    }
+//    //possedercaracteristique = JSON.stringify(possedercaracteristique);
+//        EditCaracteristique(Composermateriel, possedercaracteristique);
+//}
 // Json
-function AddMateriel(materiel) {
+function AddMateriel(materiel){
     var lien = $("#linkmateriel").val();
     $.ajax({
         url: "Materiel/Add",
         type: 'POST',
         async: false,
-        data: { 'materiel': materiel },
+        data: {'materiel': materiel},
+        success: function (result) {
+            if (result !== null) {
+                materiel = result;
+            }
+        },
+        complete: function () {
+        }
+    });
+}
+
+function ComitAssocieMateriel(associemateriel) {
+    var lien = $("#linkmateriel").val();
+    $.ajax({
+        url: "Materiel/AddAssocieMateriel",
+        type: 'POST',
+        async: false,
+        data: { 'associemateriel': associemateriel},
         success: function (result) {
             if (result !== null) {
                 materiel = result;
@@ -302,6 +381,24 @@ function AddCaracteristique(composantcaracteristique) {
         type: 'POST',
         async: false,
         data: { 'composantcaracteristique': composantcaracteristique },
+        success: function (result) {
+            if (result !== null) {
+                composantcaracteristique = result; 
+            }
+        },
+        complete: function () {
+        }
+    });
+    return composantcaracteristique;
+}
+
+function CaracteristiqueEdit(composantcaracteristique) {
+    var lien = $("#linkcaracteristique").val();
+    $.ajax({
+        url: "Materiel/EditCaracteristique",
+        type: 'POST',
+        async: false,
+        data:  composantcaracteristique ,
         success: function (result) {
             if (result !== null) {
                 composantcaracteristique = result; 
@@ -359,7 +456,7 @@ function GetMaterielDomaine(domaineid,materielid) {
             url: "Materiel/GetMaterielDomaine",
             type: 'POST',
             async: false,
-            data: { 'domaineid': domaineid, 'materielid': materielid },
+            data: { 'domaineid': domaineid, 'materielid': materielid }, 
             success: function (result) {
                 //result = JSON.parse(result);
                 if (result !== null) {
@@ -379,7 +476,7 @@ function GetComposant(materielid, composantid, Dateinsertion){
             async: false,
             data: { 'materielid': materielid,'composantid': composantid,'Dateinsertion': Dateinsertion },
             success: function (result) {
-                //result = JSON.parse(result);
+                //result = JSON.parse(result)
                 if (result !== null) {
                     composant = result;
                 }

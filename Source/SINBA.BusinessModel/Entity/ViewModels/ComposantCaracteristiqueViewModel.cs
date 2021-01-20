@@ -20,13 +20,13 @@ namespace Sinba.BusinessModel.Entity.ViewModels
             MaterielId = composerMateriel.MaterielId;
             Quantite = composerMateriel.Quantite;
             Plafond = composerMateriel.Plafond;
+            DateInsertion = composerMateriel.DateInsertion;
             ComposantId = composerMateriel.ComposantId;
             foreach(var item in composerMateriel.PossederCaracteristiques)
             {
                 Caracteristiques.Add(new PossederCaracteristiques() {
                     ComposantId = item.ComposantId,
                     MaterielId = item.MaterielId,
-                    DateInsertion = item.DateInsertion,
                     UniteId = item.UniteId,
                     Valeur = item.Valeur,
                     CaracteristiqueComposantId = item.CaracteristiqueComposantId
@@ -61,6 +61,5 @@ namespace Sinba.BusinessModel.Entity.ViewModels
             }
             return composermateriel;
         }
-
     }
 }

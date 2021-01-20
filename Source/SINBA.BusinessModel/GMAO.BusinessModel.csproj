@@ -219,6 +219,7 @@
     <Compile Include="Entity\DB\Utilisateur.cs" />
     <Compile Include="Entity\Identity\SinbaUser.cs" />
     <Compile Include="Entity\ViewModels\AssociematerielViewModel.cs" />
+    <Compile Include="Entity\ViewModels\ComposantViewModel.cs" />
     <Compile Include="Entity\ViewModels\ComposantCaracteristiqueViewModel.cs" />
     <Compile Include="Entity\ViewModels\GridLookupViewModel.cs" />
     <Compile Include="Entity\ViewModels\AccountViewModels.cs" />

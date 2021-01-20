@@ -70,7 +70,7 @@ namespace Sinba.Resources
             public const string GetPlantationList = "GetPlantationList";
             public const string GetMateriel = "GetMateriel";
             public const string GetCaracteristique = "GetCaracteristique";
-            public const string AssocierMaterielPartial = "AssocierMaterielPartial";
+            //public const string AssocierMaterielPartial = "AssocierMaterielPartial";
             public const string GetCulture = "GetCulture";
 
 
@@ -194,6 +194,8 @@ namespace Sinba.Resources
             public const string Edit = "Edit";
             public const string EditUnite = "EditUnite";
             public const string EditCaracteristique = "EditCaracteristique";
+            public const string AssocierMaterielPartial = "AssocierMaterielPartial";
+            public const string Association = "AssocierPartial";
             public const string EditComposant = "EditComposant";
             public const string GetValeurParEmploye = "GetValeurParEmploye";
             /// <summary>MultiEdit</summary>

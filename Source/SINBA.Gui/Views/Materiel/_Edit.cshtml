@@ -37,9 +37,13 @@
                     //Code
                     //     if (ViewBag.AddMode == true)
                     //  {
-                    setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+                    //setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
 
-                    maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+                    //maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+                    setting.Items.Add(m => m.MaterielId, label =>
+                    {
+                        ViewHelper.FormLayoutLabelSettings(label);
+                    });
                     // }
 
                     //Numero de série

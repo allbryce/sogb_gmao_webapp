@@ -18,7 +18,6 @@
     {
         settings.LoadContentViaCallback = LoadContentViaCallback.OnFirstShow;
     }
-
     settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
     settings.SetContent(() =>
     {
@@ -27,7 +26,6 @@
          Html.BeginForm("Edit", "Materiel", FormMethod.Post, new { id = "Materiel", @class = "edit_form" }))
         {
             Html.Hidden("MaterielID");
-
             @Html.DevExpress().FormLayout(setting => {
                 setting.Name = "ModalModeFormLayout";
                 setting.RequiredMarkDisplayMode = RequiredMarkMode.None;
@@ -36,7 +34,14 @@
                 setting.ColumnCount = 4;
                 setting.NestedExtensionWidth = Unit.Percentage(100);
 
-                //setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+                //setting.Items.Add(m => m.MaterielId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox, maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+                Html.HiddenFor(m => m.MaterielId);
+
+                //setting.Items.Add(m => m.MaterielId, label =>
+                //{
+                //    ViewHelper.FormLayoutLabelSettings(label);
+                //});
 
                 //Numero de série
                 setting.Items.Add(m => m.NumeroSerie, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: SinbaConstants.NumericValues.Length.LibelleMax));

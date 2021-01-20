@@ -29,6 +29,7 @@
                 set.Height = Unit.Percentage(100);
                 set.ColumnCount = 3;
                 set.NestedExtensionWidth = Unit.Percentage(100);
+
                 set.Items.Add(m => m.ComposantId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
                       valueType: typeof(string),
                       caption: "Composant",
@@ -102,6 +103,7 @@
                     c.ReadOnly = false;
 
                 });
+
                 setting.Columns.Add(c =>
                 {
                     c.FieldName = "UniteId";
@@ -120,8 +122,6 @@
                 });
             }).Bind(Model.Caracteristiques.ToList()).Render();
 
-
-
             Html.DevExpress().Button(
                 buttonSettings =>
                 {
@@ -130,7 +130,6 @@
                     buttonSettings.Width = 80;
                     buttonSettings.Text = "OK";
                     buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveCaracteristiques(s,e); } ";
-
 
                 }
             ).Render();

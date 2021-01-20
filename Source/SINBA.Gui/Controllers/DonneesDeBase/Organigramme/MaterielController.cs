@@ -30,17 +30,17 @@ namespace Sinba.Gui.Controllers
         #region Variables
         private IDonneesDeBaseService donnesDeBaseService;
         private string userId;
-        long id;
+        //long id;
+        //long id;
         #endregion
         public override string ControllerName { get { return SinbaConstants.Controllers.Materiel; } }
         public MaterielController(IDonneesDeBaseService donnesDeBaseService)
 
         {
-
             this.donnesDeBaseService = donnesDeBaseService;
             userId = GetUserId();
         }
-       #region Materiel
+        #region Materiel
         #region Views
         public ActionResult Index()
         {
@@ -117,6 +117,14 @@ namespace Sinba.Gui.Controllers
             return PartialView(ViewNames.ComposantPartial, GetComposerMateriel(materiel.MaterielId));
         }
 
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Index)]
+        public ActionResult AssocierPartial(long materielid, long domaineid)
+        {           
+            FillViewBag();
+            FillAuthorizedActionsViewBag();
+            return PartialView(ViewNames.AssocieAddModal);
+        }
+
 
         [HttpPost, ValidateInput(false)]
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
@@ -127,41 +135,55 @@ namespace Sinba.Gui.Controllers
                 FillViewBag(true);
             }
             var test = new ComposerMateriel();
-            test = ComposantCaracteristique.ToComposerMateriel();
             var dto = donnesDeBaseService.InsertComposerMateriel(ComposantCaracteristique.ToComposerMateriel());
             TreatDto(dto);
-            return Json(dto.HasError, JsonRequestBehavior.AllowGet); ;
+            return Json(dto.HasError, JsonRequestBehavior.AllowGet); 
+        }
+        [HttpPost, AllowAnonymous]
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Edit)]
+        public JsonResult AddAssocieMateriel(string associemateriel)
+        {
+            if (!ModelState.IsValid)
+            {
+                FillViewBag(true);
+            }
+            //var associe = new List<AssocierMateriel>();
+            var associe = new AssociematerielViewModel();
+            List<AssocierMateriel> associe1 = associe.ToAssocieMateriel(associemateriel).ToList();
+            //foreach(AssocierMateriel item in associe1)
+           //{
+                var dto = donnesDeBaseService.InsertAssocieMateriel(associe1);
+           // }
+            return Json(true, JsonRequestBehavior.AllowGet); 
         }
 
         [HttpPost, ValidateInput(false)]
-        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
-        public JsonResult GetMaterielDomaine(long domaineid, long materielid )
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Edit)]
+        public JsonResult EditCaracteristique(ComposantCaracteristiqueViewModel possedercaracteristique)
         {
-            List<AssocierMateriel> lst = new List<AssocierMateriel>();
-            List<AssociematerielViewModel> list = new List<AssociematerielViewModel>();
-            FillViewBag(true);
-            FillAuthorizedActionsViewBag();                        
-            GetAssocierMaterielList(domaineid);
-            lst = GetAssocierMateriel(materielid);
-            foreach(AssocierMateriel item in lst)
+            if (!ModelState.IsValid)
             {
-                list.Add(item.ToViewModel());
+                FillViewBag(true);
             }
-            return Json(list, JsonRequestBehavior.AllowGet); 
+            var dto = donnesDeBaseService.UpdateCaracteristique(possedercaracteristique.ToComposerMateriel());
+            return Json(true);
         }
+
         [HttpPost,AllowAnonymous]
-        public ActionResult AssocierMaterielPartial( )
+        public ActionResult AssocierMaterielPartial(long materielid,long domaineid)
         {
             List<AssocierMateriel> lst = new List<AssocierMateriel>();
             List<AssociematerielViewModel> list = new List<AssociematerielViewModel>();
             FillViewBag(true);
             FillAuthorizedActionsViewBag();
-            lst = GetAssocierMateriel(id);
+            lst = GetAssocierMateriel(materielid);
+            ViewBag.AssocierMateriel = GetAssocierMaterielList(domaineid);
             foreach (AssocierMateriel item in lst)
             {
                 list.Add(item.ToViewModel());
             }
-            return SinbaView(ViewNames.AssocieAddModal, list);
+            return PartialView(ViewNames.AssocierMaterielPartial, list);
+            //return SinbaView(ViewNames.AssocieAddModal, list);
         }
         #region Delete
 
@@ -260,6 +282,7 @@ namespace Sinba.Gui.Controllers
             ViewBag.Unite = GetUnite();
             ViewBag.Composant = Getcomposant();
             ViewBag.CaracteristiqueComposant = GetCaracteristiqueComposant();
+
         }
         #endregion
 
@@ -378,7 +401,6 @@ namespace Sinba.Gui.Controllers
             {
                 lstmateriel = dto.Value.ToList();
             }
-            ViewBag.AssocierMateriel = lstmateriel;
             return lstmateriel;
         }
         private List<AssocierMateriel> GetAssocierMateriel(long materielid)

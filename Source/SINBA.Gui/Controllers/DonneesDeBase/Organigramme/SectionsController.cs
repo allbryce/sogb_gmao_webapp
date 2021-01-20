@@ -46,15 +46,10 @@ namespace Sinba.Gui.Controllers
             userId = GetUserId();
         }
         public ActionResult Index()
-
         {
-
             FillViewBag();
-
             FillAuthorizedActionsViewBag();
-
             return SinbaView(ViewNames.Index, GetSectionsList());
-
         }
 
 
@@ -63,45 +58,22 @@ namespace Sinba.Gui.Controllers
         [ClaimsAuthorize(SinbaConstants.Controllers.Sections, SinbaConstants.Actions.Index)]
 
         public ActionResult ListPartial()
-
         {
-
             FillViewBag();
-
             FillAuthorizedActionsViewBag();
-
             return PartialView(ViewNames.ListPartial, GetSectionsList());
-
         }
 
 
-
-        /// <summary>
-
-        /// Gets the Direction list.
-
-        /// </summary>
-
-        /// <returns></returns>
-
         private List<Sections> GetSectionsList()
-
         {
-
             List<Sections> lst = new List<Sections>();
-
             var dto = donnesDeBaseService.GetSectionsListWithDependencies();
-
             if (!TreatDto(dto) && dto.Value != null)
-
             {
-
                 lst = dto.Value.ToList();
-
             }
-
             return lst;
-
         }
  
 
@@ -112,125 +84,62 @@ namespace Sinba.Gui.Controllers
             Sections sections = new Sections();
             FillViewBag(true);
             return SinbaView(ViewNames.EditPartial, sections);
-
         }
 
         [HttpPost, ValidateInput(false)]
-
         public ActionResult Add(Sections sections)
-
         {
-
             if (!ModelState.IsValid)
-
             {
-
                 FillViewBag(true);
-
                 return SinbaView(ViewNames.EditPartial, sections);
-
             }
-            var dto = donnesDeBaseService.InsertSections(sections);
-
+            var dto = donnesDeBaseService.InsertSections(sections);    
             TreatDto(dto);
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
-          [Route(SinbaConstants.Routes.EditId)]
-
-        public ActionResult Edit(long id)
-
-        {
-
-            if (id != 0)
-
-            {
-
-                var dto = donnesDeBaseService.GetSections(id);
-
-                TreatDto(dto);
-
-                var sections = dto.Value;
-
-
-
-                if (sections != null)
-
-                {
-
-                    FillViewBag();
-
-                    return SinbaView(ViewNames.EditPartial, sections);
-
-                }
-
-            }
-
-
-
-            return RedirectToAction(SinbaConstants.Actions.Index);
-
-        }
-        [HttpPost, ValidateInput(false)]
-
         [Route(SinbaConstants.Routes.EditId)]
-
-        public ActionResult Edit(Sections sections)
-
+        public ActionResult Edit(long id)
         {
-
-            if (!ModelState.IsValid)
-
+            if (id != 0)
             {
-
-                FillViewBag();
-
-                return SinbaView(ViewNames.EditPartial, sections);
-
+                var dto = donnesDeBaseService.GetSections(id);
+                TreatDto(dto);
+                var sections = dto.Value;           
+                if (sections != null)
+                {
+                    FillViewBag();
+                    return SinbaView(ViewNames.EditPartial, sections);
+                }
             }
-
-
-
-            // Edit mode (Update Entity)
-
-
-
-            var dto = donnesDeBaseService.UpdateSections(sections);
-
-            TreatDto(dto);
-
-
-
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
 
-        #endregion
-
-
-
-        #region Delete
-
-        [Route(SinbaConstants.Routes.DeleteId)]
-
-        public ActionResult Delete(long id)
-
+        [HttpPost, ValidateInput(false)]
+        [Route(SinbaConstants.Routes.EditId)]
+        public ActionResult Edit(Sections sections)
         {
-
-            if (id != 0)
-
+            if (!ModelState.IsValid)
             {
-
-                var dtoDelete = donnesDeBaseService.DeleteSections(id);
-
-                TreatDto(dtoDelete);
-
+                FillViewBag();
+                return SinbaView(ViewNames.EditPartial, sections);
             }
-
-
-
+            var dto = donnesDeBaseService.UpdateSections(sections);
+            TreatDto(dto);
+          return RedirectToAction(SinbaConstants.Actions.Index);
+        }
+        #endregion
+    
+        #region Delete
+        [Route(SinbaConstants.Routes.DeleteId)]
+        public ActionResult Delete(long id)
+        {
+            if (id != 0)
+            {
+                var dtoDelete = donnesDeBaseService.DeleteSections(id);
+                TreatDto(dtoDelete);
+            }
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
 
         #endregion

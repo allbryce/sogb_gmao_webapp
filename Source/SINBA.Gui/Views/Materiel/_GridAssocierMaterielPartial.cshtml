@@ -1,4 +1,8 @@
-﻿@Html.DevExpress().GridView(settings =>
+﻿
+@{
+    Html.EnableClientValidation(false);
+}
+@Html.DevExpress().GridView(settings =>
 {
     ViewHelper.GridViewDefaultSettings(settings, "gridAssociation",
     allowDragDrop: false,
@@ -6,32 +10,28 @@
     showFilter: false,
     enablePaging: false,
     gridViewEditingMode: GridViewEditingMode.Batch);
-    settings.KeyFieldName = DbColumns.MaterielId;
+    settings.KeyFieldName = DbColumns.MaterielAssocieId;
     settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action = SinbaConstants.Actions.AssocierMaterielPartial };
-    settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
+    //settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
     settings.CommandColumn.Visible = true;
     settings.CommandColumn.ShowDeleteButton = true;
     settings.CommandColumn.Width = Unit.Pixel(100);
+    settings.ClientSideEvents.BeginCallback = "AssocierMaterielBeginCallback";
     // Pagination
 
     // Buttons column: Add, Edit, Delete
-    //settings.Columns.Add(column =>
-    //{
-    //    column.Width = Unit.Pixel(45);
-    //    column.Caption = Strings.NumberSign;
-
-    //    column.SetHeaderTemplateContent(c =>
-    //    {
-    //        ViewContext.Writer.Write(
-    //        // Button Add (column header)
-    //        Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip, onclick = "openMaterielAddModal()" }).ToHtmlString()
-    //        );
-    //    });
-    //    column.Settings.AllowDragDrop = DefaultBoolean.False;
-    //    column.Settings.AllowSort = DefaultBoolean.False;
-    //    column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
-    //});
-
+    settings.Columns.Add(column =>
+    {
+        column.Width = Unit.Pixel(25);
+        column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", settings.Name, CommonResource.btnAddTooltip);
+        //column.SetDataItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)));
+        //column.SetEditItemTemplateContent(c => ViewContext.Writer.Write(string.Format("<span class=\"glyphicon glyphicon-green glyphicon-trash linkbutton\" onclick=\"(function(s, e) {{ {0}.DeleteRow(GetVisibleIndex(event)); }} )()\" title=\"{1}\"></span>", settings.Name, CommonResource.btnDeleteTooltip)
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.FixedStyle = GridViewColumnFixedStyle.Left;
+    });
 
     //Code
     settings.Columns.Add(column =>
@@ -39,7 +39,7 @@
         column.FieldName = "MaterielId";
         column.Caption = "Id du Materiel ";
         column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-        column.Width = Unit.Pixel(30);
+        column.Width = Unit.Pixel(100);
         column.ReadOnly = true;
     });
 
@@ -54,7 +54,7 @@
             p.ValueType = typeof(long);
             p.DataSource = ViewBag.AssocierMateriel;
         });
-        c.Width = 250;
+        c.Width = 300;
         c.ReadOnly = false;
     });
 

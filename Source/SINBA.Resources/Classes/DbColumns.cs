@@ -69,6 +69,8 @@ namespace Sinba.Resources
         public const string CaracteristiqueComposantId = "CaracteristiqueComposantId";
         public const string ServiceId = "ServiceId";
         public const string MaterielId = "MaterielId";
+        public const string DateInstallation = "DateInstallation";
+        public const string MaterielAssocieId = "MaterielAssocieId";
         public const string SectionsId = "SectionsId";
         public const string IdHidden = "IdHidden";
         public const string IdProfil = "IdProfil";

@@ -10,11 +10,19 @@ namespace Sinba.BusinessModel.Entity.ViewModels
     
     public class AssociematerielViewModel
     {
-        public long? MaterielAssocieId { get; set; }
+        public long MaterielAssocieId { get; set; }
         public DateTime DateInstallation { get; set; }
         public long MaterielId { get; set; }
         public DateTime? DateRetrait { get; set; }
         public string LibelleMaterielAssocie { get; set;}
         public string LibelleMateriel { get; set; }
+
+        public ICollection<AssocierMateriel> ToAssocieMateriel(string viewModel)
+        {
+           ICollection<AssocierMateriel> associe = JsonConvert.DeserializeObject<AssocierMateriel[]>(viewModel).ToList();
+            
+
+            return associe;
+        }
     }
 }

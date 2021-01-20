@@ -6,7 +6,6 @@
     Html.AntiForgeryToken();
     Html.Hidden("linkmateriel", Url.Action(SinbaConstants.Actions.GetMateriel, SinbaConstants.Controllers.Materiel));
 
-
     @Html.Partial(ViewNames.MaterielAddModal, new Materiel())
     @Html.Partial(ViewNames.CaracteristiquesModal, new Sinba.BusinessModel.Entity.ViewModels.ComposantCaracteristiqueViewModel())
 }

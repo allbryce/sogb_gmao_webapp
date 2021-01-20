@@ -192,8 +192,8 @@
     //    column.Caption = "Numero d'immobilisation";
     //    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
 
-    //});  // Date d'acquisition
-
+    //});  
+    // Date d'acquisition
     settings.Columns.Add(column =>
     {
         ViewHelper.GridViewDateColumn(column, fieldName: "DateAcquisition", caption: "Date d'acquisition", dateTimeFormat: SinbaDateTimeFormat.Date);
@@ -201,7 +201,6 @@
         column.Width = Unit.Pixel(50);
     });
     settings.Columns.Add(column =>
-
     {
         column.FieldName = "Note";
         column.Caption = "Note";
@@ -219,6 +218,8 @@
             ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
             Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.FolderIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openAssocieModal({{ MaterielId:{0},DomaineId:{1}}})", DataBinder.Eval(c.DataItem, DbColumns.MaterielId), DataBinder.Eval(c.DataItem, DbColumns.DomaineId)) })
             );
+
+            //@Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.AssocierMaterielPartial, null, new { MaterielId = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) }, new { DomaineId = DataBinder.Eval(c.DataItem, DbColumns.DomaineId) }, new { @class = CssClasses.FolderIcon, title = CommonResource.btnEditTooltip });
         });
     });
     // Adding event to display row detail

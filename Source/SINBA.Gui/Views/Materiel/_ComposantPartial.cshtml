@@ -117,17 +117,15 @@
 
      });
 
-     // Num série
      settings.Columns.Add(column =>
      {
-         column.FieldName = "ComposerMateriel.DateInsertion";
-         column.Caption = "Date d'insertion";
+         ViewHelper.GridViewDateColumn(column, fieldName: "DateInsertion", caption: "Date d'insertion", dateTimeFormat: SinbaDateTimeFormat.Date);
          column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
+         column.Width = Unit.Pixel(200);
      });
      // Caractéristiques
 
-    
+
 
 
 

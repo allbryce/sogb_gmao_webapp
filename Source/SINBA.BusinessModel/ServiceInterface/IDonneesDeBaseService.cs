@@ -158,6 +158,8 @@ namespace Sinba.BusinessModel.ServiceInterface
         #region Composer,caracteristique
 
         BoolDto InsertComposerMateriel(ComposerMateriel Composermateriel);
+        BoolDto UpdateCaracteristique(ComposerMateriel Composermateriel);
+        BoolDto InsertAssocieMateriel(List<AssocierMateriel> Composermateriel);
         //BoolDto InsertPossederCaracteristiques(PossederCaracteristiques possedercaracteristique);
         //BoolDto UpdateComposerMateriel(ComposerMateriel composermateriel);
         //BoolDto UpdatePossederCaracteristiques(PossederCaracteristiques possedercaracteristiques);

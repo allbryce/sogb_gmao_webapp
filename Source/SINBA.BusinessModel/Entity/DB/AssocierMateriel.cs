@@ -32,10 +32,12 @@ namespace Sinba.BusinessModel.Entity
         public AssociematerielViewModel ToViewModel()
         {
             var associemateriel = new AssociematerielViewModel(){
-                MaterielId = MaterielId,
-                MaterielAssocieId = MaterielAssocieId,
-                LibelleMaterielAssocie = Materiel?.LibelleMateriel,
-                LibelleMateriel = Materiel1?.LibelleMateriel
+                MaterielId = this.MaterielId,
+                MaterielAssocieId = this.MaterielAssocieId,
+                LibelleMaterielAssocie = this.Materiel1?.LibelleMateriel,
+                LibelleMateriel =this. Materiel?.LibelleMateriel,
+                DateInstallation = this.DateInstallation,
+                DateRetrait = this.DateRetrait
             };        
             return associemateriel;
         }
