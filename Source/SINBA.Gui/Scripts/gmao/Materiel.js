@@ -21,14 +21,17 @@ function openCaracteristiquesAddModal( item ) {
     CaracteristiquesModal.Show();
   
 }
+function openAffectationModal(item) {
+    currentMaterielID = item;
+    //ChargerModal();
+    AffectationModal.show();
+}
 function openAssocieModal(item) {
 
     currentMaterielID = item.MaterielId;
     currentDomaineID = item.DomaineId;
-    //SetGridView(GetMaterielDomaine(item.DomaineId, item.MaterielId));
     AssocieModal.Show();
     gridAssociation.PerformCallback();
-
 }
 
 function AssocierMaterielBeginCallback(s, e) {
@@ -52,36 +55,42 @@ function openMaterielEditModal(materielid) {
     SetMateriel(currentMateriel);
     MaterielModal.Show();
 }
-function RecupererMateriel(){
-    if (DateAcquisition.GetValue.toUTCString < DateMiseEnService.GetValue.toUTCString) {
-        window.alert("La mise en service ne peut pas se faire avant l'acquisition");        
-    }
+function RecupererMateriel() {
     var materiel = {}
-    materiel.MaterielId = currentMaterielID;
-    materiel.NumeroSerie = NumeroSerie.GetValue();
-    materiel.LibelleMateriel = LibelleMateriel.GetValue();
-    materiel.DomaineId = DomaineId.GetValue();
-    materiel.FournisseurId = FournisseurId.GetValue();
-    materiel.NumeroModel = NumeroModel.GetValue();
-    materiel.SousFamilleId = SousFamilleId.GetValue();
-    materiel.NumeroBonCommande = NumeroBonCommande.GetValue();
-    materiel.ClasseMaterielId = ClasseMaterielId.GetValue();
-    materiel.TypeMaterielId = TypeMaterielId.GetValue();
-    materiel.Note = Note.GetValue();
-    if (Garantie.GetValue() !== null) {
-        materiel.Garantie = Garantie.GetValue().toUTCString();
+    if (DateAcquisition.GetValue.toUTCString < DateMiseEnService.GetValue.toUTCString) {
+        window.alert("La mise en service ne peut pas se faire avant l'acquisition");
     }
-    if (DateAcquisition.GetValue() !== null) {
-        materiel.DateAcquisition = DateAcquisition.GetValue().toUTCString();
+    else {
+        materiel.MaterielId = currentMaterielID;
+        materiel.NumeroSerie = NumeroSerie.GetValue();
+        materiel.LibelleMateriel = LibelleMateriel.GetValue();
+        materiel.DomaineId = DomaineId.GetValue();
+        materiel.FournisseurId = FournisseurId.GetValue();
+        materiel.NumeroModel = NumeroModel.GetValue();
+        materiel.SousFamilleId = SousFamilleId.GetValue();
+        materiel.NumeroBonCommande = NumeroBonCommande.GetValue();
+        materiel.ClasseMaterielId = ClasseMaterielId.GetValue();
+        materiel.TypeMaterielId = TypeMaterielId.GetValue();
+        materiel.Note = Note.GetValue();
+        materiel.Immobilise = Immobilise.GetValue();
+        materiel.NumeroImmobilisation = NumeroImmobilisation.GetValue();
+        if (Garantie.GetValue() !== null) {
+            materiel.Garantie = Garantie.GetValue().toUTCString();
+        }
+        if (DateAcquisition.GetValue() !== null) {
+            materiel.DateAcquisition = DateAcquisition.GetValue().toUTCString();
+        }
+        if (DateMiseEnService.GetValue() !== null) {
+            materiel.DateMiseEnService = DateMiseEnService.GetValue().toUTCString();
+        }
+        if (DateSortie.GetValue() !== null) {
+            materiel.DateSortie = DateSortie.GetValue().toUTCString();
+        }     
+        materiel.GroupeInventaireId = GroupeInventaireId.GetValue();       
+        materiel.PrixAchat = PrixAchat.GetValue();
+        materiel.Actif = Actif.GetValue();
     }
-    if (DateMiseEnService.GetValue() !== null) {
-        materiel.DateMiseEnService = DateMiseEnService.GetValue().toUTCString();
-    }
-    if (GroupeInventaireId.GetValue() !== null) {
-        materiel.GroupeInventaireId = GroupeInventaireId.GetValue();
-    } 
-    materiel.PrixAchat = PrixAchat.GetValue();
-    materiel.Actif = Actif.GetValue();
+   
     return materiel;
 }
 //Save
@@ -159,6 +168,10 @@ function InitMaterielModal() {
     DateAcquisition.SetValue(null);
     DateMiseEnService.SetValue(null);
     PrixAchat.SetValue(null);
+    Immobilise.SetValue(null);
+    DateSortie.SetValue(null);
+    NumeroImmobilisation.SetValue(null);
+    GroupeInventaireId.SetValue(null);
 }
 
 //
@@ -175,6 +188,8 @@ function SetMateriel(materiel) {
     NumeroBonCommande.SetValue(materiel.NumeroBonCommande);
     ClasseMaterielId.SetValue(materiel.ClasseMaterielId);
     TypeMaterielId.SetValue(materiel.TypeMaterielId);
+    NumeroImmobilisation.SetValue(materiel.NumeroImmobilisation);
+    Immobilise.SetValue(materiel.Immobilise);
     PrixAchat.SetValue(materiel.PrixAchat);
     Note.SetValue(materiel.Note);
     Actif.SetValue(materiel.Actif);
@@ -188,6 +203,9 @@ function SetMateriel(materiel) {
     if (materiel.DateAcquisition != null) {
        DateAcquisition.SetValue(new Date(parseInt(materiel.DateAcquisition.replace('/Date(', ''))));
     }
+    if (materiel.DateSortie != null) {
+        DateSortie.SetValue(new Date(parseInt(materiel.DateSortie.replace('/Date(', ''))));
+    }
 }
 
 function setComposant(caracteristique) {
@@ -200,7 +218,7 @@ function setComposant(caracteristique) {
         var date = new Date(parseInt(caracteristique.DateInsertion.replace('/Date(', '')));
         DateInsertion.SetValue(date);
     }
-    Plafond.SetValue(caracteristique.Plafond);
+    //Plafond.SetValue(caracteristique.Plafond);
     var items = caracteristique.Caracteristiques;
     for (var lib = 0; lib < items.length; lib++) {
         gridCaracteristique.AddNewRow();
@@ -249,7 +267,6 @@ function SetGridView(item) {
 function InitComposantModal() {
     ComposantId.SetValue(null);
     Quantite.SetValue(null);
-    Plafond.SetValue(null);
     DateInsertion.SetValue(null);
     var index = gridCaracteristique.batchEditApi.GetRowVisibleIndices();
     for (let i = 0; i < index.length + 1; i++) {
@@ -289,7 +306,6 @@ function CarateristiqueAdd() {
             MaterielId: currentMaterielID,
             ComposantId: ComposantId.GetValue(),
             Quantite: Quantite.GetValue(),
-            Plafond: Plafond.GetValue()     
         };
      if(DateInsertion.GetValue() !== null) {
          Composantcaracteristique.DateInsertion= DateInsertion.GetValue().toUTCString()
@@ -311,35 +327,7 @@ function CarateristiqueAdd() {
         
     }   
 }
-//function caracteristiqueEdit() {
 
-//    var Composermateriel = {};
-//    var possedercaracteristique = {};
-
-//    Composermateriel.composantId = composantId;
-//    Composermateriel.DateIsertion = DateInsertion;
-//    Composermateriel.Quantite = Quantite;
-//    Composermateriel.Plafond = Plafond;
-
-//    //possedercaracteristique.CaracteristiqueComposantId = CaracteristiqueComposantId;
-//    //possedercaracteristique.Valeur = Valeur;
-//    //possedercaracteristique.UniteId = UniteId;
-//    //EditCaracteristique(Composermateriel, possedercaracteristique);
-
-//    var indices = gridCaracteristique.batchEditApi.GetRowVisibleIndices();
-//    for (var i = 0; i < indices.length; i++) {
-//        var caracteristique = {
-//            CaracteristiqueComposantId: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'CaracteristiqueComposantId', false),
-//            Valeur: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'Valeur', false),
-//            UniteId: gridCaracteristique.batchEditApi.GetCellValue(indices[i], 'UniteId', false),
-//        };
-//        if (caracteristique.CaracteristiqueComposantId !== null && caracteristique.UniteId !== null) {
-//            possedercaracteristique.push(caracteristique);
-//        }
-//    }
-//    //possedercaracteristique = JSON.stringify(possedercaracteristique);
-//        EditCaracteristique(Composermateriel, possedercaracteristique);
-//}
 // Json
 function AddMateriel(materiel){
     var lien = $("#linkmateriel").val();
@@ -352,6 +340,19 @@ function AddMateriel(materiel){
             if (result !== null) {
                 materiel = result;
             }
+        },
+        complete: function () {
+        }
+    });
+}
+function ChargerModal(){
+    var lien = $("#linkaffectation").val();
+    $.ajax({
+        url: "Materiel/LoadAffectation",
+        type: 'POST',
+        async: false,
+        data: {},
+        success: function (result) {           
         },
         complete: function () {
         }
@@ -449,24 +450,7 @@ function EditMateriel(materiel) {
         return materiel;
 
 }
-function GetMaterielDomaine(domaineid,materielid) {
-    var lien = $("#linkmateriel").val();
-    var associermateriel = {};
-        $.ajax({
-            url: "Materiel/GetMaterielDomaine",
-            type: 'POST',
-            async: false,
-            data: { 'domaineid': domaineid, 'materielid': materielid }, 
-            success: function (result) {
-                //result = JSON.parse(result);
-                if (result !== null) {
-                    associermateriel = result;
-                }
-            },
-            complete: function () {}
-    });
-    return associermateriel;
-}
+
 function GetComposant(materielid, composantid, Dateinsertion){
     var composant = {};
     var lien = $("#linkcaracteristique").val();

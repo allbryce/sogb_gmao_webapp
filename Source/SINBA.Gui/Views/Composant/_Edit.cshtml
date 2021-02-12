@@ -1,211 +1,63 @@
-﻿@Html.DevExpress().GridView(
+﻿@model Sinba.BusinessModel.Entity.Composant
+@{
+    Html.EnableClientValidation();
+}
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Composant, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken() ;
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "composantFormLayout";
 
-   settings =>
+    // Code
+    if (ViewBag.AddMode == false)
+    {
+        settings.Items.Add(m => m.ComposantId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
 
-   {
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+    }
 
+    // Libelle
 
-       settings.Name = "gridDepartement";
+    settings.Items.Add(m => m.LibelleComposant, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
 
-       settings.KeyFieldName = DbColumns.ComposantId;
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
 
-       settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Composant, Action = SinbaConstants.Actions.ListPartial };
+    settings.Items.Add(m => m.DomaineId, c => ViewHelper.FormLayoutComboBoxSettings(c,
+         valueType: typeof(string),
+         caption: "Domaine",
+         valueField: "DomaineId",
+         textField: "LibelleDomaine",
+         displayColumns: new string[] { "LibelleDomaine" }
+         , dataSource: ViewBag.Domaine));
 
-       settings.Settings.ShowFilterRow = true;
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
 
-       settings.Settings.ShowFilterRowMenu = true;
+                    name: "btnValider",
 
-       settings.Styles.Header.Font.Bold = true;
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
 
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
 
+                    text: CommonResource.btnCancel,
 
-       // Pagination
+                    controller: SinbaConstants.Controllers.Composant,
 
-       settings.SettingsPager.FirstPageButton.Visible = true;
+                    action: SinbaConstants.Actions.Index)).GetHtml());
 
-       settings.SettingsPager.LastPageButton.Visible = true;
+        });
 
-       settings.SettingsPager.PageSizeItemSettings.Visible = true;
+    });
 
 
 
-       // Buttons column: Add, Edit, Delete
+}).GetHtml()
 
-       settings.Columns.Add(column =>
-
-       {
-
-           column.Width = Unit.Pixel(57);
-
-           column.Caption = Strings.NumberSign;
-
-           column.SetDataItemTemplateContent(c =>
-
-           {
-
-               ViewContext.Writer.Write(CssClasses.EditDeleteButtonAlign,
-
-                   // Button Edit
-
-                   (bool)ViewBag.CanEdit ?
-
-                       Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Edit, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.ComposantId) },
-
-                           new { @class = CssClasses.PencilIcon, title = CommonResource.btnEditTooltip }) :
-
-                           Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PencilIconDisabled, title = CommonResource.btnTooltipNotAuthorised }),
-
-
-
-                           // Button Delete
-
-                           (bool)ViewBag.CanDelete ?
-
-                           (bool)DataBinder.Eval(c.DataItem, DbColumns.IsUsed) ?
-
-                           Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnDeleteIsUsed }) :
-
-                           Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Delete, null, new { id = DataBinder.Eval(c.DataItem, DbColumns.ComposantId) },
-
-                           new { @class = CssClasses.TrashIcon, title = CommonResource.btnDeleteTooltip, onclick = Strings.DeleteConfirmMsg }) :
-
-                           Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.TrashIconDisabled, title = CommonResource.btnTooltipNotAuthorised })
-
-
-
-                           );
-
-           });
-
-           column.SetHeaderTemplateContent(c =>
-
-           {
-
-               ViewContext.Writer.Write(
-
-               // Button Add (column header)
-
-               (bool)ViewBag.CanAdd ?
-
-               Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.Add, null, null, new { @class = CssClasses.PlusIcon, title = CommonResource.btnAddTooltip }).ToHtmlString() :
-
-               Html.Label(Strings.EmptyLink, null, new { @class = CssClasses.PlusIconDisabled, title = CommonResource.btnTooltipNotAuthorised }).ToHtmlString()
-
-               );
-
-           });
-
-           column.Settings.AllowDragDrop = DefaultBoolean.False;
-
-           column.Settings.AllowSort = DefaultBoolean.False;
-
-           column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
-
-       });
-
-
-
-
-
-
-
-       // Composant Id
-
-       settings.Columns.Add(column =>
-
-       {
-
-           column.FieldName = "ComposantId";
-
-           column.Caption = "Composant Id";
-
-           column.Settings.AllowCellMerge = DefaultBoolean.True;
-
-           column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
-       });
-
-       // Domaine Id
-
-       settings.Columns.Add(column =>
-
-       {
-
-           column.FieldName = "DomaineId";
-
-           column.Caption = "Domaine Id";
-
-           column.Settings.AllowCellMerge = DefaultBoolean.True;
-
-           column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
-       });
-
-
-
-
-       // Libelle
-
-       settings.Columns.Add(column =>
-       {
-           column.FieldName = "LibelleComposant";
-           column.Caption = "Libellé du Composant";
-           column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
-       });
-
-
-       // Ordre Composant
-
-       settings.Columns.Add(column =>
-
-       {
-
-           column.FieldName = "OrdreComposant";
-
-           column.Caption = "Ordren du Composant ";
-           column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
-       });
-
-       settings.Columns.Add(column =>
-
-       {
-
-           column.FieldName = "Plafond";
-
-           column.Caption = "Plafond ";
-           column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
-
-       });
-
-
-
-
-
-
-       // Keeping grid state
-
-       settings.ClientLayout = (s, e) =>
-
-       {
-
-           if (e.LayoutMode == ClientLayoutMode.Loading)
-
-           {
-
-               if (Session[Strings.GridStateComposant] != null)
-
-                   e.LayoutData = (string)Session[Strings.GridStateComposant];
-
-           }
-
-           else
-
-               Session[Strings.GridStateComposant] = e.LayoutData;
-
-       };
-
-
-
-   }).Bind(Model).GetHtml()
+}

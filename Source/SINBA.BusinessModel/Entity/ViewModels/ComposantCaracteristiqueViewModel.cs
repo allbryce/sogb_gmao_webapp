@@ -24,7 +24,7 @@ namespace Sinba.BusinessModel.Entity.ViewModels
             ComposantId = composerMateriel.ComposantId;
             foreach(var item in composerMateriel.PossederCaracteristiques)
             {
-                Caracteristiques.Add(new PossederCaracteristiques() {
+                Caracteristiques.Add(new PossederCaracteristiques()  {
                     ComposantId = item.ComposantId,
                     MaterielId = item.MaterielId,
                     UniteId = item.UniteId,

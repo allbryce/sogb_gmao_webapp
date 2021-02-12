@@ -111,11 +111,17 @@
                 //Date D'acquisition
                 setting.Items.Add(m => m.DateAcquisition, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
 
+                //Date de Dortie
+                setting.Items.Add(m => m.DateSortie, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
                 //Date De mise en service
                 setting.Items.Add(m => m.DateMiseEnService, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
 
                 // Actif
                 setting.Items.Add(m => m.Actif, checkbox =>ViewHelper.FormLayoutCheckBoxSetting(checkbox));
+
+                //Immobilisé
+                setting.Items.Add(m => m.Immobilise, checkbox =>ViewHelper.FormLayoutCheckBoxSetting(checkbox));
 
                 //Prix d'achat
                 setting.Items.Add(m => m.PrixAchat, textBox => ViewHelper.FormLayoutNumericTextBoxSettings(textBox, maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
@@ -135,6 +141,9 @@
 
                 // Observation
                 setting.Items.Add(m => m.Note, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: 200));
+
+                //Numero d'Immobilisation
+                setting.Items.Add(m => m.NumeroImmobilisation, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,maxLength: 200));
 
                 // Boutons Enregistrer/Annuler
                 setting.Items.Add(i => {

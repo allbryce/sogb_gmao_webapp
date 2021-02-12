@@ -1,0 +1,58 @@
+﻿@model Sinba.BusinessModel.Entity.Model
+@{
+                /**/
+
+                Html.EnableClientValidation();
+}
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Model, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken() ;
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "NumeroModelFormLayout";
+
+    // Code
+    if (ViewBag.AddMode == false)
+    {
+        settings.Items.Add(m => m.NumeroModel, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+    }
+
+    // Libelle
+
+    settings.Items.Add(m => m.LibelleModel, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    settings.Items.Add(m => m.MarqueId, c => ViewHelper.FormLayoutComboBoxSettings(c,
+        valueType: typeof(string),
+        caption: "Marque",
+        valueField: "MarqueId",
+        textField: "LibelleMarque",
+        displayColumns: new string[] { "LibelleMarque" }
+        , dataSource: ViewBag.Marque));
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+
+                    name: "btnValider",
+
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Model,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+        });
+
+    });
+
+}).GetHtml()
+
+}

@@ -15,13 +15,10 @@ namespace Sinba.BusinessModel.Entity.ViewModels
         public long MaterielId { get; set; }
         public DateTime? DateRetrait { get; set; }
         public string LibelleMaterielAssocie { get; set;}
-        public string LibelleMateriel { get; set; }
-
+        public string LibelleMateriel { get; set; }  
         public ICollection<AssocierMateriel> ToAssocieMateriel(string viewModel)
         {
-           ICollection<AssocierMateriel> associe = JsonConvert.DeserializeObject<AssocierMateriel[]>(viewModel).ToList();
-            
-
+           ICollection<AssocierMateriel> associe = JsonConvert.DeserializeObject<AssocierMateriel[]>(viewModel).ToList();                       
             return associe;
         }
     }

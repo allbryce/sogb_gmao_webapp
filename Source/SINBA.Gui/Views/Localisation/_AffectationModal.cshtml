@@ -1,0 +1,51 @@
+﻿@model  List<Materiel>
+@{
+    Html.EnableClientValidation(false);
+}
+
+@Html.DevExpress().PopupControl(
+    settings =>
+    {
+
+        settings.Name = "AffectationModal";
+        settings.Width = 600;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.None;
+        settings.HeaderText = "Matériel affectés";
+        settings.Modal = true;
+        settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Localisation, Action = SinbaConstants.Actions.AffectationModal, LocalisationId = (ViewData[DbColumns.LocalisationId]?? "").ToString() };
+        settings.AutoUpdatePosition = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SetContent(() =>
+        {
+            Html.RenderPartial(ViewNames.AffectationPartial, new List<LocaliserMateriel>());
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnok";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "OK";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveAffectationModal(s,e); } ";
+                }
+            ).Render();
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnAnnuler";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "Fermer";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ AffectationModal.Hide(); }";
+                }
+            ).Render();
+
+
+        });
+    }).GetHtml()
+
+
+

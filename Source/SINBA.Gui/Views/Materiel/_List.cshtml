@@ -102,6 +102,7 @@
         column.Caption = "Id";
         column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
         column.Width = Unit.Pixel(15);
+
     });
 
     // Num série
@@ -117,7 +118,7 @@
     settings.Columns.Add(column =>
     {
         column.FieldName = "LibelleMateriel";
-        column.Caption = "Libellé du Materiel";
+        column.Caption = "Materiel";
         column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
         column.Width = Unit.Pixel(100);
     });
@@ -220,6 +221,18 @@
             );
 
             //@Html.ActionLink(Strings.EmptyLink, SinbaConstants.Actions.AssocierMaterielPartial, null, new { MaterielId = DataBinder.Eval(c.DataItem, DbColumns.MaterielId) }, new { DomaineId = DataBinder.Eval(c.DataItem, DbColumns.DomaineId) }, new { @class = CssClasses.FolderIcon, title = CommonResource.btnEditTooltip });
+        });
+    });
+    settings.Columns.Add(column =>
+    {
+        column.Width = Unit.Pixel(30);
+        column.Caption = "Affectation";
+        column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.SetDataItemTemplateContent(c =>
+        {
+            ViewContext.Writer.Write(CssClasses.ViewContextOneElementAlign,
+            Html.Label(Strings.EmptyLink, null, new {@class = CssClasses.FolderIcon, title = CommonResource.btnEditTooltip, onclick = string.Format("openAffectationModal(\"{0}\")", DataBinder.Eval(c.DataItem, DbColumns.MaterielId))})
+            );
         });
     });
     // Adding event to display row detail

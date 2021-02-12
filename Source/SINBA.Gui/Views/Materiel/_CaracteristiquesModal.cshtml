@@ -42,10 +42,11 @@
                      caption: "Quantite",
                      widthPixel: 100
                 ));
-                set.Items.Add(c => c.Plafond, textbox => ViewHelper.FormLayoutNumericTextBoxSettings(textbox,
-                     caption: "Plafond",
-                     widthPixel: 100
-                ));
+
+                //set.Items.Add(m => m.Plafond, label =>
+                //{
+                //    ViewHelper.FormLayoutLabelSettings(label);
+                //});
                 set.Items.Add(c => c.DateInsertion, date => ViewHelper.FormLayoutDateEditSettings(date,
                     caption: "Date d'insertion",
                     width: 150

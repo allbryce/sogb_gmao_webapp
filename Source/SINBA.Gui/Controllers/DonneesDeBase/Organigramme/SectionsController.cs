@@ -25,21 +25,14 @@ namespace Sinba.Gui.Controllers
     [ClaimsAuthorize]
     #endregion
     public class SectionsController : DonneesDeBaseOrganigrammeController
-
-
-
     {
         #region Variables
         private IDonneesDeBaseService donnesDeBaseService;
 
-
         private string userId;
         #endregion
         public override string ControllerName { get { return SinbaConstants.Controllers.Sections; } }
-
-
         public SectionsController(IDonneesDeBaseService donnesDeBaseService)
-
         {
 
             this.donnesDeBaseService = donnesDeBaseService;

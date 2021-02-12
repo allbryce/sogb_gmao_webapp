@@ -17,18 +17,19 @@ namespace Sinba.Gui.Controllers
 
     [IHMLog()]
     [IhmExceptionHandler()]
-    [RoutePrefix("DonneesDeBase/Organigramme/Composant")]
+    [RoutePrefix("DonneesDeBase/GestionMateriel/Marque")]
     [Route("{action=Index}")]
     [ClaimsAuthorize]
     #endregion
-    public class ComposantController : DonneesDeBaseOrganigrammeController
+    public class MarqueController : DonneesDeBaseGestionMaterielController
     {
         #region Variables
         private IDonneesDeBaseService donnesDeBaseService;
         private string userId;
+        long marqueid;
         #endregion
-        public override string ControllerName { get { return SinbaConstants.Controllers.Composant; } }
-        public ComposantController(IDonneesDeBaseService donnesDeBaseService)
+        public override string ControllerName { get { return SinbaConstants.Controllers.Marque; } }
+        public MarqueController(IDonneesDeBaseService donnesDeBaseService)
 
         {
 
@@ -37,25 +38,23 @@ namespace Sinba.Gui.Controllers
         }
 
         #region List
+
+        [ClaimsAuthorize(SinbaConstants.Controllers.Marque, SinbaConstants.Actions.Index)]
         public ActionResult Index()
 
         {
-
             FillViewBag();
-
             FillAuthorizedActionsViewBag();
-
-            return SinbaView(ViewNames.ListPartial, GetComposantList());
-
+            return SinbaView(ViewNames.ListPartial, GetMarqueList());
         }
-        [ClaimsAuthorize(SinbaConstants.Controllers.Composant, SinbaConstants.Actions.Index)]
 
+        [ClaimsAuthorize(SinbaConstants.Controllers.Marque, SinbaConstants.Actions.Index)]
         public ActionResult ListPartial()
 
         {
             FillViewBag();
             FillAuthorizedActionsViewBag();
-            return PartialView(ViewNames.ComposantPartial, GetComposantList());
+            return PartialView(ViewNames.ListPartial, GetMarqueList());
         }
        
 
@@ -65,73 +64,57 @@ namespace Sinba.Gui.Controllers
         #region Add
 
         [HttpPost, ValidateInput(false)]
-
-        public ActionResult Add(Composant composant)
+        public ActionResult Add(Marque marque)
         {
-
             if (!ModelState.IsValid)
-
             {
-
                 FillViewBag(true);
                 //return SinbaView(ViewNames.EditPartial, materiel);
-
             }
-            var dto = donnesDeBaseService.InsertComposant(composant);
+            var dto = donnesDeBaseService.InsertMarque(marque);
             TreatDto(dto);
-            return RedirectToAction(SinbaConstants.Actions.Index);
-
+            return RedirectToAction(SinbaConstants.Actions.Index);       
         }
-        [Route(SinbaConstants.Routes.EditId)]
-
-        public ActionResult Edit(long id)
-
+        [HttpGet]
+        [ClaimsAuthorize]
+        [Route(SinbaConstants.Routes.Add)]
+        public ActionResult Add()
         {
+            Marque marque = new Marque();
+            FillViewBag(true);
+            return SinbaView(ViewNames.EditPartial, marque);
+        }
 
+        [Route(SinbaConstants.Routes.EditId)]
+        public ActionResult Edit(long id)
+        {
             if (id != 0)
             {
-
-                var dto = donnesDeBaseService.GetComposant(id);
-
+                marqueid = id;
+                var dto = donnesDeBaseService.GetMarque(id);
                 TreatDto(dto);
-
-                var composant = dto.Value;
-                if (composant != null)
-
+                var marque = dto.Value;
+                if (marque != null)
                 {
-
                     FillViewBag();
-
-                    return SinbaView(ViewNames.ListPartial, composant);
-
+                    return SinbaView(ViewNames.EditPartial, marque);
                 }
-
             }
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
+
         [HttpPost, ValidateInput(false)]
-
         [Route(SinbaConstants.Routes.EditId)]
-
-        public ActionResult Edit(Composant composant)
-
+        public ActionResult Edit(Marque marque)
         {
-
             if (!ModelState.IsValid)
-
             {
-
                 FillViewBag();
-
-                return SinbaView(ViewNames.EditPartial, composant);
-
+                return SinbaView(ViewNames.EditPartial, marque);
             }
-            var dto = donnesDeBaseService.UpdateComposant(composant);
-
+            var dto = donnesDeBaseService.UpdateMarque(marque);
             TreatDto(dto);
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
 
         #endregion
@@ -144,12 +127,13 @@ namespace Sinba.Gui.Controllers
         {
             if (id != 0)
             {
-                var dtoDelete = donnesDeBaseService.DeleteComposant(id);
+                var dtoDelete = donnesDeBaseService.DeleteMarque(id);
                 TreatDto(dtoDelete);
             }
             return RedirectToAction(SinbaConstants.Actions.Index);
         }
         #endregion
+
         #region Other Methods
 
         /// <summary>
@@ -169,52 +153,43 @@ namespace Sinba.Gui.Controllers
 
 
         #region ViewBag
-
         private void FillAuthorizedActionsViewBag()
-
         {
-
-            var actions = User.Identity.GetAuthorizedActions(SinbaConstants.Controllers.Composant);
+            var actions = User.Identity.GetAuthorizedActions(SinbaConstants.Controllers.Marque);
             ViewBag.CanAdd = actions.Contains(SinbaConstants.Actions.Add);
             ViewBag.CanEdit = actions.Contains(SinbaConstants.Actions.Edit);
             ViewBag.CanDelete = actions.Contains(SinbaConstants.Actions.Delete);
-
-        }
-
+        }   
         private void FillViewBag(bool addMode = false)
-
         {
-            var lstDirection = new List<Direction>();
-            var dtoDirection = donnesDeBaseService.GetDirectionList();
-            if (!TreatDto(dtoDirection) && dtoDirection.Value != null)
-            {
-                lstDirection = dtoDirection.Value.ToList();
-            }
-            ViewBag.Materiel = lstDirection;
+            ViewBag.Domaine = GetDomaineList();
             ViewBag.AddMode = addMode;
         }
-
         #endregion
 
         #region List
-        private List<Composant> GetComposantList()
-
+        private List<Marque> GetMarqueList()
         {
-
-            List<Composant> lst = new List<Composant>();
-            var dto = donnesDeBaseService.GetComposantList();
-
+            List<Marque> lst = new List<Marque>();
+            var dto = donnesDeBaseService.GetMarqueList();       
             if (!TreatDto(dto) && dto.Value != null)
-
             {
-
                 lst = dto.Value.ToList();
-
             }
-
             return lst;
-
         }
+
+        private List<Domaine> GetDomaineList()
+        {
+            var lstDomaine = new List<Domaine>();
+            var dto = donnesDeBaseService.GetDomaineList();
+            if (!TreatDto(dto) && dto.Value != null)
+            {
+                lstDomaine = dto.Value.ToList();
+            }
+            return lstDomaine;
+        }
+
         #endregion
 
     }

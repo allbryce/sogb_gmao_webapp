@@ -369,7 +369,7 @@
                 .IsUnicode(false);
 
             modelBuilder.Entity<Localisation>()
-                .Property(e => e.LibelleLocalisaton)
+                .Property(e => e.LibelleLocalisation)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Localisation>()

@@ -18,16 +18,12 @@ namespace Sinba.BusinessModel.Entity
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long NumeroInventaire { get; set; }
-
         public long LocalisationId { get; set; }
 
         [Required]
         public string LocalisationActuelle { get; set; }
-
         public virtual Inventaire Inventaire { get; set; }
-
         public virtual Localisation Localisation { get; set; }
-
         public virtual Materiel Materiel { get; set; }
     }
 }

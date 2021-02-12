@@ -25,6 +25,6 @@ namespace Sinba.BusinessModel.Entity
         public string Commentaire { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InventorierMaterield> InventorierMaterield { get; set; }
+        public virtual ICollection<InventorierMaterield> InventorierMaterield { get; set; }        
     }
 }

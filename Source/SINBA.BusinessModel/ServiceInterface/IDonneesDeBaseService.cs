@@ -26,27 +26,24 @@ namespace Sinba.BusinessModel.ServiceInterface
         BoolDto DeleteDirection(long id);
 
         //BoolDto IsDirectionCodeUsed(string code, int id, string idSociete);
-
-
-
         #endregion
 
         #region Departement
-
+        
         ListDto<Departement> GetDepartementList();
+        ListDto<LocaliserMateriel> GetLocaliserMaterielList();
 
         //ListDto<Departement> GetDepartementList(string idSociete);
 
         ListDto<Departement> GetDepartementListWithDependencies();
 
+        ListDto<LocaliserMateriel> GetLocaliserMaterielListWithDependencies();
+
         //ListDto<Departement> GetDepartementListWithDependencies(string idSociete);
-
         SimpleDto<Departement> GetDepartement(long id);
-
         BoolDto InsertDepartement(Departement departement);
-
-        BoolDto UpdateDepartement(Departement departement);
-
+        BoolDto InsertLocaliserMateriel(LocaliserMateriel localiser);
+        BoolDto UpdateDepartement(Departement departement);   
         BoolDto DeleteDepartement(long id);
         //object UpdateDirection(Departement departement);
 
@@ -114,6 +111,7 @@ namespace Sinba.BusinessModel.ServiceInterface
 
         ListDto<Materiel> GetMaterielListWithDependencies();
         ListDto<Materiel> GetMaterielListWithDependencies(long domaineid);
+        ListDto<LocaliserMateriel> GetAffecterMaterielList(long localisationid);
 
         //ListDto<Departement> GetDepartementListWithDependencies(string idSociete);
 
@@ -136,6 +134,18 @@ namespace Sinba.BusinessModel.ServiceInterface
         #region Composant
 
         ListDto<Composant> GetComposantList();
+        ListDto<Famille> GetFamilleList();
+        ListDto<Marque> GetMarqueList();
+        ListDto<Localisation> GetLocalisationList();
+        SimpleDto<Domaine> GetDomaine(long id);
+        SimpleDto<Marque> GetMarque(long id);
+        SimpleDto<Localisation> GetLocalisation(long id);
+        SimpleDto<Model> GetModel(long id);
+        SimpleDto<Classemateriel> GetClasseMateriel(long id);
+        SimpleDto<Famille> GetFamille(long id);
+        SimpleDto<Fournisseur> GetFournisseur(long id);
+        SimpleDto<GroupeInventaire> GetGroupeInventaire(long id);
+        SimpleDto<SousFamille> GetSousFamille(long id);
         ListDto<Unite> GetUniteList();
         ListDto<CaracteristiqueComposant> GetCaracteristiqueComposantList();
         ListDto<ComposerMateriel> GetComposantMateriel(long id);
@@ -146,9 +156,43 @@ namespace Sinba.BusinessModel.ServiceInterface
         //ListDto<Composant> GetComposantListWithDependencies(string id);
 
         SimpleDto<Composant> GetComposant(long id);
+        SimpleDto<Unite> GetUnite(long id);
         BoolDto InsertComposant(Composant composant);
+        BoolDto InsertMarque(Marque marque);
+        BoolDto InsertLocalisation(Localisation localisation);
+        BoolDto InsertFamille(Famille famille);
+        BoolDto InsertFournisseur(Fournisseur famille);
+        BoolDto InsertGroupeInventaire(GroupeInventaire groupe);
+        BoolDto InsertSousFamille(SousFamille famille);
+        BoolDto InsertModel(Model model);
+        BoolDto InsertClasseMateriel(Classemateriel classe);
+        BoolDto InsertUnite(Unite unite);
+        BoolDto InsertDomaine(Domaine domaine);
+        BoolDto Insertcaracteristique(CaracteristiqueComposant caracteristique);
         BoolDto UpdateComposant(Composant composant);
+        BoolDto UpdateMarque(Marque marque);
+        BoolDto UpdateLocalisation(Localisation marque);
+        BoolDto UpdateFamille(Famille famille);
+        BoolDto UpdateFournisseur(Fournisseur fournisseur);
+        BoolDto UpdateSousFamille(SousFamille sousFamille);
+        BoolDto UpdateModel(Model model);
+        BoolDto UpdateClasseMateriel(Classemateriel classe);
+        BoolDto UpdateUnite(Unite unite);
+        BoolDto UpdateDomaine(Domaine domaine);
+        BoolDto UpdateGroupeInventaire(GroupeInventaire groupe);
+        BoolDto UpdateCaracteristiqueComposant(CaracteristiqueComposant caracteristique);
         BoolDto DeleteComposant(long id);
+        BoolDto DeleteMarque(long id);
+        BoolDto DeleteLocalisation(long id);
+        BoolDto DeleteFamille(long id);
+        BoolDto DeleteFournisseur(long id);
+        BoolDto DeleteSousFamille(long id);
+        BoolDto DeleteModel(long id);
+        BoolDto DeleteClasseMateriel(long id);
+        BoolDto DeleteCaracteristique(long id);
+        BoolDto DeleteUnite(long id);
+        BoolDto DeleteGroupeInventaire(long id);
+        BoolDto DeleteDomaine(long id);
         ////object UpdateMateriel(Materiel materiel);
 
         ////BoolDto IsMaterielCodeUsed(string code, int id, string idSociete);
@@ -169,6 +213,8 @@ namespace Sinba.BusinessModel.ServiceInterface
         #region Lists
 
         ListDto<Domaine> GetDomaineList();
+        SimpleDto<CaracteristiqueComposant> GetCaracteristique(long caracteristique);
+        ListDto<CaracteristiqueComposant> GetCaracteristiqueList();
         ListDto<GroupeInventaire> GetGroupeInventaireList();
         ListDto<Classemateriel> GetClassematerielList();
         ListDto<SousFamille> GetSousFamilleList();

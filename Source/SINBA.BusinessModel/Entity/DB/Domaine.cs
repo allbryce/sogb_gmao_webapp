@@ -31,5 +31,6 @@ namespace Sinba.BusinessModel.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utilisateur> Utilisateur { get; set; }
+        public bool IsUsed { get { return Materiel.Count > 0 || Composant.Count > 0 ||Utilisateur.Count>0; } }
     }
 }

@@ -1,0 +1,83 @@
+﻿@{
+    Html.EnableClientValidation(false);
+}
+ @Html.DevExpress().GridView(settings =>
+{
+    ViewHelper.GridViewDefaultSettings(settings, "gridAffecterMateriel",
+
+    allowDragDrop: false,
+    allowSortResize: true,
+    showFilter: false,
+    enablePaging: true,
+    gridViewEditingMode: GridViewEditingMode.Batch);
+    settings.KeyFieldName = DbColumns.MaterielAssocieId;
+    settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Localisation, Action = SinbaConstants.Actions.AffectationPartial, id = (ViewData[DbColumns.LocalisationId] ?? "") };
+    settings.SettingsEditing.Mode = GridViewEditingMode.Batch;
+    settings.CommandColumn.Visible = true;
+    settings.CommandColumn.ShowDeleteButton = true;
+    settings.CommandColumn.Width = Unit.Pixel(100);
+    settings.ClientSideEvents.BeginCallback = "AffecterMaterielBeginCallback";
+    // Pagination
+
+    // Buttons column: Add, Edit, Delete
+    settings.Columns.Add(column =>
+    {
+        column.Width = Unit.Pixel(25);
+        column.Caption = string.Format("<span class=\"glyphicon glyphicon-green glyphicon-plus linkbutton\" onclick=\"{0}.AddNewRow();\" title=\"{1}\"></span>", settings.Name, CommonResource.btnAddTooltip);
+        column.Settings.AllowDragDrop = DefaultBoolean.False;
+        column.Settings.AllowSort = DefaultBoolean.False;
+        column.HeaderStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.CellStyle.HorizontalAlign = HorizontalAlign.Center;
+        column.FixedStyle = GridViewColumnFixedStyle.Left;
+    });
+
+    //Code
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "LocalisationId";
+        column.Caption = "Id de la localisation ";
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(50);
+        column.ReadOnly = true;
+    });
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "MaterielId";
+        c.Caption = "Materiel Attribué ";
+        c.EditorProperties().ComboBox(p =>
+        {
+            p.TextField = "LibelleMateriel";
+            p.ValueField = "MaterielId";
+            p.ValueType = typeof(long);
+            p.DataSource = ViewBag.Localisation;
+        });
+        c.Width = 500;
+        c.ReadOnly = false;
+    });
+
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "DateAffectation", caption: "Date de l'Affectation", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(300);
+    });
+    settings.Columns.Add(column =>
+    {
+        ViewHelper.GridViewDateColumn(column, fieldName: "DateFin", caption: "Date de retrait", dateTimeFormat: SinbaDateTimeFormat.Date);
+        column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        column.Width = Unit.Pixel(300);
+    });
+
+    // Keeping grid state
+    settings.ClientLayout = (s, e) =>
+    {
+        if (e.LayoutMode == ClientLayoutMode.Loading)
+        {
+            if (Session[Strings.Acces] != null)
+                e.LayoutData = (string)Session[Strings.GridStateMateriel];
+        }
+        else
+            Session[Strings.GridStateMateriel] = e.LayoutData;
+    };
+}).Bind(Model).GetHtml()

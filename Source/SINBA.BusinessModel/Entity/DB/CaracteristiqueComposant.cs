@@ -16,7 +16,7 @@ namespace Sinba.BusinessModel.Entity
             Composant = new HashSet<Composant>();
         }
 
-        
+
         public long CaracteristiqueComposantId { get; set; }
 
         [Required]
@@ -28,5 +28,6 @@ namespace Sinba.BusinessModel.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Composant> Composant { get; set; }
+        public bool IsUsed { get { return (Composant.Count>0||PossederCaracteristiques.Count>0); } }
     }
 }

@@ -53,7 +53,6 @@ namespace Sinba.Gui.Controllers
 
         }
         [ClaimsAuthorize(SinbaConstants.Controllers.Direction, SinbaConstants.Actions.Index)]
-
         public ActionResult ListPartial()
 
         {
@@ -77,24 +76,15 @@ namespace Sinba.Gui.Controllers
         {
 
             var actions = User.Identity.GetAuthorizedActions(SinbaConstants.Controllers.Direction);
-
-            ViewBag.CanAdd = actions.Contains(SinbaConstants.Actions.Add);
-
+            ViewBag.CanAdd = actions.Contains(SinbaConstants.Actions.Add);     
             ViewBag.CanEdit = actions.Contains(SinbaConstants.Actions.Edit);
-
             ViewBag.CanDelete = actions.Contains(SinbaConstants.Actions.Delete);
 
         }
-
         private void FillViewBag(bool addMode = false)
-
         {
-
             ViewBag.AddMode = addMode;
-
         }
-
-
 
         #endregion
 
@@ -109,76 +99,47 @@ namespace Sinba.Gui.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-
         public ActionResult Add(Direction direction)
-
         {
-
             if (!ModelState.IsValid)
-
             {
-
                 FillViewBag(true);
-
                 return SinbaView(ViewNames.EditPartial, direction);
-
             }
             var dto = donnesDeBaseService.InsertDirection(direction);
-
             TreatDto(dto);
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
+
         [Route(SinbaConstants.Routes.EditId)]
-
         public ActionResult Edit(long id)
-
         {
-
             if (id!=0)
             {
-
                 var dto = donnesDeBaseService.GetDirection(id);
-
                 TreatDto(dto);
-
                 var direction = dto.Value;
                 if (direction != null)
-
                 {
-
                     FillViewBag();
-
                     return SinbaView(ViewNames.EditPartial, direction);
-
                 }
-
             }
-            return RedirectToAction(SinbaConstants.Actions.Index);
-
+            return RedirectToAction(SinbaConstants.Actions.Index);     
         }
+
         [HttpPost, ValidateInput(false)]
-
         [Route(SinbaConstants.Routes.EditId)]
-
         public ActionResult Edit(Direction direction)
-
         {
-
             if (!ModelState.IsValid)
-
             {
-
                 FillViewBag();
-
                 return SinbaView(ViewNames.EditPartial, direction);
-
             }
             var dto = donnesDeBaseService.UpdateDirection(direction);
-
             TreatDto(dto);
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
 
         #endregion

@@ -25,19 +25,30 @@
       
       <Section Key="Direction" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Direction"></Section>
       <Section Key="Departement" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Département"></Section>
-      <Section Key="Materiel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Matériel"></Section>
       <Section Key="Service" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Service"></Section>
       <Section Key="Sections" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Sections"></Section> 
-     
-   
-      
-       
+    
      </SectionGroup>
 
+    <SectionGroup Key="GestionMateriel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Gestion du Materiel">
 
-  </SectionItem>
-
-  
+      <Keywords>Liste</Keywords>
+      <Section Key="Caracteristique" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Caractéristiques"></Section>
+      <Section Key="Composant" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Composants"></Section>
+      <Section Key="Domaine" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Domaine"></Section>
+      <Section Key="Unite" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Unites"></Section>
+      <Section Key="Marque" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Marques"></Section>
+      <Section Key="Model" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Modèle"></Section>
+      <Section Key="Famille" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Famille de Matériel"></Section>
+      <Section Key="SousFamille" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Sous Familles"></Section>
+      <Section Key="ClasseMateriel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Classes de Materiel"></Section>
+      <Section Key="Fournisseur" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Fournisseurs"></Section>
+      <Section Key="Inventaire" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Groupe Inventaire"></Section>
+      <Section Key="Materiel" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Matériel"></Section>          
+      <Section Key="Localisation" HelpUrl="http://10.22.11.37:8090/display/SF" Title="Localisation"></Section>
+    </SectionGroup>
+    
+  </SectionItem> 
   <Search>
     <Synonyms>
     </Synonyms>

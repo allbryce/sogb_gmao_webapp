@@ -1,0 +1,60 @@
+﻿@model Sinba.BusinessModel.Entity.ViewModels.LocalisationViewModel
+@{
+    Html.EnableClientValidation();
+}
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Localisation, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken()          
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "localisationFormLayout";
+
+    // Code
+
+    settings.Items.Add(m => m.LocalisationId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+     maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+
+    // Libelle
+    settings.Items.Add(m => m.LibelleLocalisation, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+     maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+    if(ViewBag.AddMode == true)
+    {
+        // Direction
+        settings.Items.Add(m => m.LibelleService, ComboBox => ViewHelper.FormLayoutComboBoxSettings(ComboBox,
+            valueType: typeof(string),
+            caption: "Service",
+            valueField: "LibelleService",
+            textField: "LibelleService",
+            displayColumns: new string[] { "LibelleService" }
+            , dataSource: ViewBag.Service
+            ));
+
+        settings.Items.Add(m => m.LibelleDepartement, ComboBox => ViewHelper.FormLayoutComboBoxSettings(ComboBox,
+            valueType: typeof(string),
+            caption: "Departement",
+            valueField: "LibelleDepartement",
+            textField: "LibelleDepartement",
+            displayColumns: new string[] { "LibelleDepartement" }
+            , dataSource: ViewBag.Departement
+            ));
+    }
+
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+                    name: "btnValider",
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Localisation,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+        });
+    });
+}).GetHtml()
+}

@@ -1,0 +1,85 @@
+﻿@model LocaliserMateriel
+@{
+    Html.EnableClientValidation(false);
+}
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "AffectationModal";
+    settings.Width = 1000;
+    settings.AllowDragging = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.CloseOnEscape = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.HeaderText = "Affectation";
+    settings.Modal = true;
+    settings.CallbackRouteValues = new { Controller = SinbaConstants.Controllers.Materiel, Action = SinbaConstants.Actions.AffectationPartial };
+    settings.AutoUpdatePosition = true;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+    if (!(ViewBag.AddMode = true))
+    {
+        settings.LoadContentViaCallback = LoadContentViaCallback.OnFirstShow;
+    }
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.SetContent(() =>
+    {
+        using (ViewBag.AddMode = true ?
+         Html.BeginForm("Add", "Affectation", FormMethod.Post, new { id = "Affectation", @class = "edit_form" }):
+         Html.BeginForm("Edit", "Affectation", FormMethod.Post, new { id = "Affectation", @class = "edit_form" }))
+        {
+            Html.Hidden("MaterielID");
+            @Html.DevExpress().FormLayout(setting =>
+            {
+                setting.Name = "ModalModeFormLayout_{0}";
+                setting.RequiredMarkDisplayMode = RequiredMarkMode.None;
+                setting.Width = Unit.Percentage(100);
+                setting.Height = Unit.Percentage(100);
+                setting.ColumnCount = 4;
+                setting.NestedExtensionWidth = Unit.Percentage(100);
+
+                //Libelle Localisation
+                setting.Items.Add(m => m.LocalisationId, comboBox => ViewHelper.FormLayoutComboBoxSettings(comboBox,
+                valueType: typeof(string),
+                caption: "Nouvelle Localisation",
+                valueField: "LocalisationId",
+                textField: "LibelleLocalisation",
+                displayColumns: new string[] { "LibelleLocalisation" }
+                , dataSource: ViewBag.Localisation));
+
+                //Date D'affectation
+                setting.Items.Add(m => m.DateAffectation, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+                setting.Items.Add(m => m.DateFin, textBox => ViewHelper.FormLayoutDateEditSettings(textBox));
+
+                // Boutons Enregistrer/Annuler
+                setting.Items.Add(i => {
+                    i.ShowCaption = DefaultBoolean.False;
+                    i.SetNestedContent(() => {
+                        Html.DevExpress().Button(
+                            buttonSettings =>
+                            {
+                                buttonSettings.Name = "btnUpdate";
+                                buttonSettings.ControlStyle.CssClass = "button";
+                                buttonSettings.Width = 80;
+                                buttonSettings.Text = "OK";
+                                buttonSettings.ClientSideEvents.Click = "function(s, e){ SaveAffectation(); } ";
+                            }).Render();
+
+                        Html.DevExpress().Button(
+                            buttonSettings => {
+                                buttonSettings.Name = "btnCancel";
+                                buttonSettings.ControlStyle.CssClass = "button";
+                                buttonSettings.Width = 80;
+                                buttonSettings.Text = "Annuler";
+                                buttonSettings.ClientSideEvents.Click = "function(s, e){ AffectationModal.Hide(); }";
+                            }
+                        ).Render();
+                    });
+                });
+            }).Render();
+        }
+    });
+
+}).GetHtml()
+
+
+

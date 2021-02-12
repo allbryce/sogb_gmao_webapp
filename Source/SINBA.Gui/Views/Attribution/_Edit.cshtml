@@ -1,0 +1,42 @@
+﻿@model Sinba.BusinessModel.Entity.CaracteristiqueComposant
+@{
+    Html.EnableClientValidation();
+}
+@using (Html.BeginForm(ViewBag.AddMode ? SinbaConstants.Actions.Add : SinbaConstants.Actions.Edit, SinbaConstants.Controllers.Caracteristique, FormMethod.Post, new { @class = CssClasses.EditForm }))
+{
+    @Html.AntiForgeryToken();
+    @Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "caracteristiqueFormLayout";
+
+    // Code
+    if (ViewBag.AddMode == false)
+    {
+        settings.Items.Add(m => m.CaracteristiqueComposantId, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+    }
+
+    // Libelle
+    settings.Items.Add(m => m.LibelleCaracteristique, textBox => ViewHelper.FormLayoutTextBoxSettings(textBox,
+        maxLength: SinbaConstants.NumericValues.Length.LibelleMax));
+
+    // Boutons Enregistrer/Annuler
+    settings.Items.Add(item =>
+    {
+        item.Caption = string.Empty;
+        item.SetNestedContent(() =>
+        {
+            ViewContext.Writer.Write(CssClasses.TwoButtonsAlign,
+                Html.DevExpress().Button(btnSettings => ViewHelper.SubmitButtonSettings(btnSettings,
+
+                    name: "btnValider",
+                    text: ViewBag.AddMode ? CommonResource.btnSave : CommonResource.btnUpdate)).GetHtml(),
+                Html.DevExpress().Button(btnSettings => ViewHelper.CancelButtonSettings(btnSettings,
+                    text: CommonResource.btnCancel,
+                    controller: SinbaConstants.Controllers.Caracteristique,
+                    action: SinbaConstants.Actions.Index)).GetHtml());
+        });
+    });
+}).GetHtml()
+
+}

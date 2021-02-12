@@ -1,0 +1,6 @@
+﻿@model IEnumerable
+<script src="@Url.VersionedContent("~/Scripts/gmao/Affectation.js")" type="text/javascript"></script>
+@*<script src="@Url.VersionedContent("~/Scripts/gmao/Affectation.js")" type="text/javascript"></script>*@
+
+@Html.Partial(ViewNames.ListPartial, new List<Sinba.BusinessModel.Entity.ViewModels.LocalisationViewModel>())
+@Html.Partial(ViewNames.AffectationModal, new List<LocaliserMateriel>())

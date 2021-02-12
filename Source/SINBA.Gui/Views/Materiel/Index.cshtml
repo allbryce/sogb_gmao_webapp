@@ -10,5 +10,6 @@
     @Html.Partial(ViewNames.CaracteristiquesModal, new Sinba.BusinessModel.Entity.ViewModels.ComposantCaracteristiqueViewModel())
 }
 @Html.Partial(ViewNames.AssocieAddModal, new List<Sinba.BusinessModel.Entity.ViewModels.AssociematerielViewModel>())
+@Html.Partial(ViewNames.AffectationModal, new LocaliserMateriel())
 @Html.Partial(ViewNames.ListPartial, Model)
 @Html.Hidden("linkcaracteristique", Url.Action(SinbaConstants.Actions.GetCaracteristique, SinbaConstants.Controllers.Materiel))

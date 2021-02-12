@@ -17,15 +17,13 @@ namespace Sinba.Gui.Controllers
 
 {
     #region Attributes
-
     [IHMLog()]
     [IhmExceptionHandler()]
-    [RoutePrefix("DonneesDeBase/Organigramme/Materiel")]
+    [RoutePrefix("DonneesDeBase/GestionMateriel/Materiel")]
     [Route("{action=Index}")]
     [ClaimsAuthorize]
     #endregion
-    public class MaterielController : DonneesDeBaseOrganigrammeController
-
+    public class MaterielController : DonneesDeBaseGestionMaterielController
     {
         #region Variables
         private IDonneesDeBaseService donnesDeBaseService;
@@ -50,16 +48,14 @@ namespace Sinba.Gui.Controllers
             lst = GetMaterielList();
             return SinbaView(ViewNames.Index, GetMaterielList());
         }
-
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Index)]
         public ActionResult ListPartial()
         {
             FillViewBag();
             FillAuthorizedActionsViewBag();
             return PartialView(ViewNames.ListPartial, GetMaterielList());
-        }
+        }                 
         #region Add
-
         [HttpPost, ValidateInput(false)]
         public ActionResult Add(Materiel materiel)
         {
@@ -101,12 +97,12 @@ namespace Sinba.Gui.Controllers
             var dto = donnesDeBaseService.UpdateMateriel(materiel);
             TreatDto(dto);
             return RedirectToAction(SinbaConstants.Actions.Index);
-
         }
         #endregion
         #endregion
         #endregion
 
+        #region Autres
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Index)]
         public ActionResult ComposantPartial(Materiel materiel)
         {
@@ -117,14 +113,33 @@ namespace Sinba.Gui.Controllers
             return PartialView(ViewNames.ComposantPartial, GetComposerMateriel(materiel.MaterielId));
         }
 
-        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Index)]
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
         public ActionResult AssocierPartial(long materielid, long domaineid)
         {           
             FillViewBag();
             FillAuthorizedActionsViewBag();
             return PartialView(ViewNames.AssocieAddModal);
         }
+        [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
+        public ActionResult AffectationPartial()
+        {           
+            FillViewBag();
+            FillAuthorizedActionsViewBag();
+            return PartialView(ViewNames.AffectationModal);
+        }
 
+
+        //[HttpPost, ValidateInput(false)]
+        //[ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
+        //public JsonResult LoadAffectation()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        FillViewBag(true);
+        //    }
+        //    AffectationPartial();
+        //    return Json(true); 
+        //}
 
         [HttpPost, ValidateInput(false)]
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Add)]
@@ -139,6 +154,7 @@ namespace Sinba.Gui.Controllers
             TreatDto(dto);
             return Json(dto.HasError, JsonRequestBehavior.AllowGet); 
         }
+
         [HttpPost, AllowAnonymous]
         [ClaimsAuthorize(SinbaConstants.Controllers.Materiel, SinbaConstants.Actions.Edit)]
         public JsonResult AddAssocieMateriel(string associemateriel)
@@ -147,13 +163,9 @@ namespace Sinba.Gui.Controllers
             {
                 FillViewBag(true);
             }
-            //var associe = new List<AssocierMateriel>();
             var associe = new AssociematerielViewModel();
-            List<AssocierMateriel> associe1 = associe.ToAssocieMateriel(associemateriel).ToList();
-            //foreach(AssocierMateriel item in associe1)
-           //{
-                var dto = donnesDeBaseService.InsertAssocieMateriel(associe1);
-           // }
+            List<AssocierMateriel> associe1 = associe.ToAssocieMateriel(associemateriel).ToList();           
+            var dto = donnesDeBaseService.InsertAssocieMateriel(associe1);          
             return Json(true, JsonRequestBehavior.AllowGet); 
         }
 
@@ -183,8 +195,9 @@ namespace Sinba.Gui.Controllers
                 list.Add(item.ToViewModel());
             }
             return PartialView(ViewNames.AssocierMaterielPartial, list);
-            //return SinbaView(ViewNames.AssocieAddModal, list);
         }
+        #endregion
+
         #region Delete
 
         [Route(SinbaConstants.Routes.DeleteId)]
@@ -206,9 +219,10 @@ namespace Sinba.Gui.Controllers
             }
             return RedirectToAction(SinbaConstants.Actions.Index);
         }
-
         #endregion
+
         #region Modal screens
+
         #region Modal views
         [AllowAnonymous]
         public ActionResult MaterielAddModalPartial()
@@ -228,6 +242,7 @@ namespace Sinba.Gui.Controllers
 
         
         #endregion
+
         #region Json
         [AllowAnonymous]
         public JsonResult GetMateriel(long materielid)
@@ -282,6 +297,7 @@ namespace Sinba.Gui.Controllers
             ViewBag.Unite = GetUnite();
             ViewBag.Composant = Getcomposant();
             ViewBag.CaracteristiqueComposant = GetCaracteristiqueComposant();
+            ViewBag.Localisation = GetLocalisationList();
 
         }
         #endregion
@@ -369,7 +385,7 @@ namespace Sinba.Gui.Controllers
             if (!TreatDto(dto) && dto.Value != null)
             {
                 lstFournisseur = dto.Value.ToList();
-            }
+            }          
             return lstFournisseur;
         }
         private List<Composant> GetComposant()
@@ -446,6 +462,17 @@ namespace Sinba.Gui.Controllers
                 lstComposant = dto.Value.ToList();
             }
             return lstComposant;
+        }
+        private List<Localisation> GetLocalisationList()
+        {
+            var lst = new List<Localisation>();
+            var dto = donnesDeBaseService.GetLocalisationList();
+
+            if (!TreatDto(dto) && dto.Value != null)
+            {
+                lst = dto.Value.ToList();
+            }
+            return lst;
         }       
         #endregion
     }
